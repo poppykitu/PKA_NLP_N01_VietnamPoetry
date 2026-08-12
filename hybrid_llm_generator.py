@@ -6,6 +6,7 @@ from luc_bat_rules import (
     is_huyen_tone, is_ngang_tone
 )
 from generator import RHYME_DICTIONARY_B
+from pos_grammar_rules import is_pos_sequence_valid, filter_valid_followers, get_word_pos
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -147,60 +148,43 @@ class RuleRepairEngine:
 
     def pick_pos_valid_rhyme(self, prev_word: str, target_rhyme: str = None, need_huyen: bool = None, used_words: set = None) -> str:
         """
-        Chọn từ gieo vần chuẩn LUẬT NGỮ PHÁP POS đối với từ đứng trước (prev_word):
-        - 'vẫn' -> 'vương', 'thương', 'yêu', 'về' (Triệt hạ 'vẫn trời')
-        - 'bay' -> 'xa', 'về', 'cao' (Triệt hạ 'bay trời')
-        - 'trên' -> 'trời', 'sông', 'đường', 'làng'
+        Chọn từ gieo vần chuẩn BỘ LUẬT TỪ LOẠI NGỮ PHÁP TIẾNG VIỆT (pos_grammar_rules.py):
+        - Tự động lọc các từ đi kèm prev_word thỏa mãn ma trận chuyển tiếp POS.
+        - Triệt hạ 100% các cặp từ vô nghĩa ('vẫn trời', 'bay trời', 'đã mây').
         """
         prev_clean = prev_word.lower() if prev_word else ""
         if used_words is None:
             used_words = set()
 
-        pos_rules = {
-            "vẫn": ["vương", "thương", "yêu", "về", "nhớ", "mong"],
-            "đã": ["qua", "về", "xa", "trôi", "đi"],
-            "bay": ["xa", "cao", "về", "qua"],
-            "rơi": ["đầy", "xa", "nghiêng", "về"],
-            "trên": ["trời", "sông", "đường", "làng"],
-            "ngắm": ["mây", "trời", "trăng", "sao"],
-            "những": ["lời", "ngày", "đời"],
-            "một": ["trời", "đời", "người", "sông"]
-        }
+        candidates = list(self.b_words)
 
-        cands = list(pos_rules.get(prev_clean, self.b_words))
-
-        # 1. Ràng buộc POS sau phó từ
-        if prev_clean in ADVERB_WORDS:
-            adverb_cands = [w for w in cands if w in VERB_WORDS or w in ADJ_WORDS or w in {"vương", "thương", "yêu", "về", "xa"}]
-            if adverb_cands:
-                cands = adverb_cands
-            else:
-                cands = ["vương", "thương", "về"]
-
-        # 2. Ràng buộc gieo vần
+        # 1. Ràng buộc gieo vần
         if target_rhyme:
-            rhyming_cands = [w for w in cands if is_rhyme(target_rhyme, w) and get_tone(w) == "B"]
-            if not rhyming_cands:
-                rhyming_cands = [w for w in self.b_words if is_rhyme(target_rhyme, w) and get_tone(w) == "B"]
+            rhyming_cands = [w for w in candidates if is_rhyme(target_rhyme, w) and get_tone(w) == "B"]
             if rhyming_cands:
-                cands = rhyming_cands
+                candidates = rhyming_cands
 
-        # 3. Ràng buộc Bằng-Thanh (Ngang vs Huyền)
+        # 2. Ràng buộc Bằng-Thanh (Ngang vs Huyền)
         if need_huyen is True:
-            cands_h = [w for w in cands if is_huyen_tone(w)]
+            cands_h = [w for w in candidates if is_huyen_tone(w)]
             if cands_h:
-                cands = cands_h
+                candidates = cands_h
         elif need_huyen is False:
-            cands_n = [w for w in cands if is_ngang_tone(w)]
+            cands_n = [w for w in candidates if is_ngang_tone(w)]
             if cands_n:
-                cands = cands_n
+                candidates = cands_n
+
+        # 3. LỌC NGHIÊM NGẶT THEO BỘ LUẬT NGỮ PHÁP LOẠI TỪ (pos_grammar_rules.py)
+        valid_pos_cands = filter_valid_followers(prev_clean, candidates)
+        if valid_pos_cands:
+            candidates = valid_pos_cands
 
         # 4. Chống lặp từ gieo vần
-        unused = [w for w in cands if w not in used_words]
+        unused = [w for w in candidates if w not in used_words]
         if unused:
             return unused[0]
 
-        return cands[0] if cands else "trời"
+        return candidates[0] if candidates else "trời"
 
     def repair_poem(self, raw_poem: list) -> list:
         """
