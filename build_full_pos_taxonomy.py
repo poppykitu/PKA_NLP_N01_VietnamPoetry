@@ -93,7 +93,7 @@ def build_full_pos_taxonomy_gemma():
     gemma_pos_dict = {}
 
     start_time = time.time()
-    for i in range(0, min(len(vocab_list), 200), batch_size):
+    for i in range(0, len(vocab_list), batch_size):
         batch = vocab_list[i:i + batch_size]
         res = classifier.classify_batch_words_gemma(batch)
         if res:
