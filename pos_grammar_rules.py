@@ -7,7 +7,9 @@
 ================================================================================
 """
 
+import os
 import sys
+import pickle
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -64,6 +66,19 @@ for pos_tag, words in POS_TAXONOMY.items():
         if w_clean not in WORD_TO_POS_SET:
             WORD_TO_POS_SET[w_clean] = set()
         WORD_TO_POS_SET[w_clean].add(pos_tag)
+
+# Nạp từ điển 29,224 từ vựng đã gán nhãn tự động từ pos_dict_full.pkl nếu có
+POS_CACHE_FILE = "pos_dict_full.pkl"
+if os.path.exists(POS_CACHE_FILE):
+    try:
+        with open(POS_CACHE_FILE, "rb") as f:
+            full_pos_dict = pickle.load(f)
+            for w, tags in full_pos_dict.items():
+                if w not in WORD_TO_POS_SET:
+                    WORD_TO_POS_SET[w] = set()
+                WORD_TO_POS_SET[w].update(tags)
+    except Exception:
+        pass
 
 # ------------------------------------------------------------------------------
 # 2. MA TRẬN QUY TẮC CHUYỂN TIẾP NGỮ PHÁP (POS TRANSITION MATRIX)
