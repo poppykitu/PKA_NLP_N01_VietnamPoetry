@@ -8,14 +8,22 @@ from luc_bat_rules import (
 from generator import RHYME_DICTIONARY_B
 from pos_grammar_rules import is_pos_sequence_valid, filter_valid_followers, get_word_pos_set
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
-
-
 import json
 import requests
 import urllib.request
 import urllib.error
+
+
+def safe_print(msg: str):
+    try:
+        sys.stdout.write(str(msg) + "\n")
+        sys.stdout.flush()
+    except Exception:
+        try:
+            sys.stdout.buffer.write((str(msg) + "\n").encode('utf-8', errors='ignore'))
+            sys.stdout.buffer.flush()
+        except Exception:
+            pass
 
 
 class LLMDraftGenerator:
@@ -34,35 +42,56 @@ class LLMDraftGenerator:
             "model": self.model_name,
             "messages": [
                 {
-                    "role": "system",
-                    "content": "Bạn là một nhà thơ Việt Nam. Hãy làm bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề yêu cầu. Chỉ trả lời đúng 4 câu thơ, mỗi câu 1 dòng."
-                },
-                {
                     "role": "user",
-                    "content": f"Hãy làm bài thơ Lục Bát về chủ đề: {prompt}"
+                    "content": f"Hãy làm một bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề: {prompt}. Chỉ viết đúng 4 dòng thơ."
                 }
             ],
             "temperature": 0.7,
-            "max_tokens": 150
+            "max_tokens": 350
         }
 
         try:
-            res = requests.post(self.api_url, json=payload, timeout=30)
+            safe_print(f"  [*] Đang kết nối LM Studio API (chờ model sinh thơ chủ đề '{prompt}')...")
+            res = requests.post(self.api_url, json=payload, timeout=180)
             if res.status_code == 200:
                 res_data = res.json()
-                raw_text = res_data['choices'][0]['message']['content'].strip()
+                msg_obj = res_data['choices'][0]['message']
+                raw_text = msg_obj.get('content', '') or ''
+                if not raw_text.strip() and 'reasoning_content' in msg_obj:
+                    raw_text = msg_obj.get('reasoning_content', '') or ''
+                raw_text = raw_text.strip()
+
+                safe_print(f"  [LM Studio RAW Output]:\n{raw_text}\n")
                 lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
                 poem_words = []
-                for line in lines[:4]:
-                    words = [re.sub(r'[^\w\s]', '', w) for w in line.split() if w.strip()]
-                    words = [w for w in words if w]
-                    if words:
+                for line in lines:
+                    clean_text = re.sub(r'\(\d+\)\s*$', '', line).strip()
+                    clean_text = re.sub(r'^.*?Line\s*\d+[\*\:\s]*', '', clean_text, flags=re.IGNORECASE).strip()
+                    clean_text = re.sub(r'^[\*\-\d\.\:\s]+', '', clean_text).strip()
+
+                    if any(clean_text.startswith(k) for k in ["Form", "Length", "Topic", "Constraint", "Language", "Phase"]):
+                        continue
+
+                    words = [w.strip(".,!?:;\"'()[]") for w in clean_text.split() if w.strip()]
+                    # Lọc lấy các từ Tiếng Việt (bỏ các từ tiếng Anh thuần túy)
+                    words = [w for w in words if w and not re.match(r'^[a-zA-Z]{3,}$', w)]
+                    if 5 <= len(words) <= 9:
                         poem_words.append(words)
-                if len(poem_words) == 4:
-                    print(f"  [LM Studio API] Đã kết nối & sinh bản thảo trực tiếp cho chủ đề '{prompt}' từ local model '{self.model_name}'!")
-                    return poem_words
+                    if len(poem_words) == 4:
+                        break
+
+                if len(poem_words) >= 4:
+                    safe_print(f"  [LM Studio API] ✓ Đã sinh bản thảo thô trực tiếp cho chủ đề '{prompt}' từ local model '{self.model_name}'!")
+                    return poem_words[:4]
+                elif poem_words:
+                    safe_print(f"  [LM Studio API] ✓ Đã sinh bản thảo {len(poem_words)} câu từ '{self.model_name}'!")
+                    while len(poem_words) < 4:
+                        poem_words.append(list(poem_words[-1]))
+                    return poem_words[:4]
+            else:
+                safe_print(f"  [LM Studio API Error] HTTP Status {res.status_code}: {res.text[:200]}")
         except Exception as e:
-            print(f"  [Notice] Chưa kết nối được LM Studio API ({e}). Đang dùng bản thảo mẫu...")
+            safe_print(f"  [Notice] Lỗi kết nối LM Studio API ({type(e).__name__}: {e}). Đang dùng bản thảo dự phòng...")
 
         return None
 
