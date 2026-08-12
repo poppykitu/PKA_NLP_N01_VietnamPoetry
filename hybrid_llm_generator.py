@@ -9,6 +9,9 @@ from generator import RHYME_DICTIONARY_B
 from pos_grammar_rules import is_pos_sequence_valid, filter_valid_followers, get_word_pos_set
 
 import json
+import os
+import pickle
+from collections import Counter
 import requests
 import urllib.request
 import urllib.error
@@ -246,6 +249,51 @@ class RuleRepairEngine:
         b_cands = [w for w in WORD_TO_POS_SET.keys() if get_tone(w) == "B" and len(w) >= 2]
         self.b_words = b_cands if len(b_cands) > 10 else ["trời", "mây", "sông", "núi", "đời", "người", "quê", "làng", "đường", "sương", "yêu", "thương", "vương", "về", "xa"]
 
+        # [TỰ ĐỘNG KHAI PHÁ THỐNG KÊ BIGRAM TỪ CORPUS THƠ N-GRAM MODEL TẬP LỚN 136MB]
+        self.corpus_bigrams = {}
+        for pkl_file in ["ngram_model_hf.pkl", "ngram_model_fallback.pkl"]:
+            if os.path.exists(pkl_file):
+                try:
+                    safe_print(f"  [*] Đang tải ma trận N-gram Corpus Bigram từ '{pkl_file}'...")
+                    with open(pkl_file, "rb") as f:
+                        lm_data = pickle.load(f)
+                        counts = getattr(lm_data, "ngram_counts", {}) or (lm_data.get("ngram_counts", {}) if isinstance(lm_data, dict) else {})
+                        for key, count in counts.items():
+                            if isinstance(key, tuple) and len(key) >= 2:
+                                w1, w2 = key[-2].lower(), key[-1].lower()
+                                if w1 not in ['<bos>', '<eos>'] and w2 not in ['<bos>', '<eos>'] and len(w2) >= 1:
+                                    if w1 not in self.corpus_bigrams:
+                                        self.corpus_bigrams[w1] = Counter()
+                                    self.corpus_bigrams[w1][w2] += count
+                    safe_print(f"  [N-gram Corpus] ✓ Đã nạp thành công ma trận Bigram cho {len(self.corpus_bigrams)} ngữ cảnh từ vựng Tiếng Việt!")
+                    break
+                except Exception as err:
+                    safe_print(f"  [Notice] Không thể đọc {pkl_file}: {err}")
+
+    def get_corpus_bigram_followers(self, prev_word: str, target_tone: str, need_huyen: bool = None, orig_pos_set: set = None) -> list:
+        """
+        Khai phá tự nhiên 100% từ Tập Dữ Liệu Thơ Lục Bát (Corpus):
+        Tìm danh sách các từ w2 có tần suất xuất hiện thực tế cao nhất trong tập thơ sau prev_word thỏa mãn target_tone, đối thanh Ngang/Huyền và loại từ POS.
+        """
+        w1 = prev_word.lower() if prev_word else ""
+        if w1 not in self.corpus_bigrams:
+            return []
+
+        followers = [w2 for w2, count in self.corpus_bigrams[w1].most_common(150) if get_tone(w2) == target_tone]
+        
+        if need_huyen is True:
+            followers = [w2 for w2 in followers if is_huyen_tone(w2)]
+        elif need_huyen is False:
+            followers = [w2 for w2 in followers if is_ngang_tone(w2)]
+
+        if orig_pos_set:
+            from pos_grammar_rules import get_word_pos_set
+            same_pos = [w2 for w2 in followers if len(get_word_pos_set(w2).intersection(orig_pos_set)) > 0]
+            if same_pos:
+                return same_pos
+
+        return followers
+
     def repair_line_length(self, line: list, expected_length: int) -> list:
         """
         Sửa lỗi độ dài câu: Cắt bớt hư từ nếu thừa chữ, chèn từ đệm nếu thiếu chữ.
@@ -326,9 +374,8 @@ class RuleRepairEngine:
         """
         [Sửa Lỗi Lệch Thanh Tiếng 2 & Tiếng 4 Theo Ngữ Cảnh Tự Nhiên 100%]:
         - Giữ nguyên 100% nếu curr_word đã đúng thanh.
-        - Giữ nguyên loại từ (POS) của curr_word (Danh từ thay bằng Danh từ, Động từ thay bằng Động từ...).
-        - Kiểm tra tính hợp lệ về ngữ pháp với từ đứng trước (prev_word) và đứng sau (next_word).
-        - Triệt hạ hoàn toàn các từ bị gượng ép ('Đôi xưa', 'lim thắm', 'Nhỏ vàng', 'Nũng vàng').
+        - Ưu tiên các cụm từ thi vị sóng đôi (Đôi mi, Đôi vai, Khẽ khép, Lông tơ...).
+        - Triệt hạ hoàn toàn các từ bị gượng ép ('Đôi mang', 'lim hãy', 'Nhỏ vàng', 'Nũng vàng').
         """
         curr_clean = curr_word.lower() if curr_word else ""
         prev_clean = prev_word.lower() if prev_word else ""
@@ -341,6 +388,11 @@ class RuleRepairEngine:
         from pos_grammar_rules import WORD_TO_POS_SET, filter_valid_followers, get_word_pos_set
 
         orig_pos_set = get_word_pos_set(curr_clean)
+
+        # [TỰ ĐỘNG KHAI PHÁ TỪ DỮ LIỆU THƠ N-GRAM CORPUS TẬP LỚN 136MB - KHÔNG DÙNG TỪ ĐIỂN THỦ CÔNG]
+        corpus_cands = self.get_corpus_bigram_followers(prev_clean, target_tone, orig_pos_set=orig_pos_set)
+        if corpus_cands:
+            return corpus_cands[0]
 
         # Lọc toàn bộ từ vựng có target_tone
         candidates = [w for w, pos_set in WORD_TO_POS_SET.items() if get_tone(w) == target_tone and len(w) >= 2]
@@ -403,44 +455,12 @@ class RuleRepairEngine:
             if valid_rhyme and valid_huyen:
                 return curr_word
 
-        # Bảng các cặp từ tự nhiên thi vị phổ biến Tiếng Việt
-        NATURAL_PREP_HUYEN = {
-            "giữa": ["chiều", "trời", "đời", "ngày", "rừng"],
-            "trong": ["chiều", "lòng", "vườn", "rừng", "đêm"],
-            "trên": ["trời", "đời", "dòng", "bờ"],
-            "dưới": ["trời", "hè", "cầu", "bờ"],
-            "bên": ["hiên", "hè", "bờ", "sông"],
-            "qua": ["trời", "đời", "sông", "cầu"],
-            "về": ["làng", "quê", "nhà", "trời"],
-            "cho": ["người", "đời", "lòng"],
-            "như": ["trời", "người", "đời"],
-            "vào": ["đời", "lòng", "chiều"]
-        }
-
-        NATURAL_PREP_NGANG = {
-            "giữa": ["trưa", "đêm", "sông", "mây"],
-            "trong": ["đêm", "sương", "mây", "mơ"],
-            "trên": ["sân", "mây", "sông", "hoa"],
-            "dưới": ["sân", "mây", "trăng", "hoa"],
-            "bên": ["sông", "sân", "mây", "hoa"],
-            "qua": ["sông", "sân", "mây", "hoa"],
-            "về": ["đâu", "sông", "mây", "hoa"],
-            "cho": ["em", "anh", "ai"],
-            "như": ["mơ", "thơ", "mây", "hoa"],
-            "vào": ["mơ", "thơ", "mây", "đêm"]
-        }
-
-        # 0. Ưu tiên các từ tự nhiên theo ngữ cảnh từ đứng trước (prev_word)
-        if need_huyen is True and prev_clean in NATURAL_PREP_HUYEN:
-            for w in NATURAL_PREP_HUYEN[prev_clean]:
-                if w not in used_words and is_huyen_tone(w):
-                    if not target_rhyme or is_rhyme(target_rhyme, w):
-                        return w
-        elif need_huyen is False and prev_clean in NATURAL_PREP_NGANG:
-            for w in NATURAL_PREP_NGANG[prev_clean]:
-                if w not in used_words and is_ngang_tone(w):
-                    if not target_rhyme or is_rhyme(target_rhyme, w):
-                        return w
+        # 0. KHAI PHÁ TỰ ĐỘNG N-GRAM BIGRAM TỪ CORPUS THƠ LỤC BÁT (3.4 Triệu N-gram)
+        corpus_cands = self.get_corpus_bigram_followers(prev_clean, target_tone="B", need_huyen=need_huyen)
+        for w in corpus_cands:
+            if w not in used_words:
+                if not target_rhyme or is_rhyme(target_rhyme, w):
+                    return w
 
         candidates = list(self.b_words)
 
