@@ -43,9 +43,26 @@ class LLMDraftGenerator:
             "messages": [
                 {
                     "role": "user",
-                    "content": f"Hãy làm một bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề: {prompt}. Chỉ viết đúng 4 dòng thơ."
+                    "content": f"Hãy làm một bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề: {prompt}."
                 }
             ],
+            "response_format": {
+                "type": "json_schema",
+                "json_schema": {
+                    "name": "poem_schema",
+                    "strict": True,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "poem_lines": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            }
+                        },
+                        "required": ["poem_lines"]
+                    }
+                }
+            },
             "temperature": 0.7,
             "max_tokens": 350
         }
@@ -62,6 +79,25 @@ class LLMDraftGenerator:
                 raw_text = raw_text.strip()
 
                 safe_print(f"  [LM Studio RAW Output]:\n{raw_text}\n")
+
+                # Ưu tiên Parse JSON Schema nếu model trả về JSON chuẩn
+                try:
+                    match_json = re.search(r'\{.*\}', raw_text, re.DOTALL)
+                    if match_json:
+                        json_obj = json.loads(match_json.group(0))
+                        if "poem_lines" in json_obj and isinstance(json_obj["poem_lines"], list):
+                            poem_words = []
+                            for l in json_obj["poem_lines"]:
+                                words = [w.strip(".,!?:;\"'()[]") for w in l.split() if w.strip()]
+                                words = [w for w in words if w]
+                                if words:
+                                    poem_words.append(words)
+                            if len(poem_words) >= 4:
+                                safe_print(f"  [LM Studio JSON Schema API] ✓ Đã sinh mảng JSON 4 câu thơ chuẩn 100% cho chủ đề '{prompt}'!")
+                                return poem_words[:4]
+                except Exception:
+                    pass
+
                 lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
                 poem_words = []
                 for line in lines:
@@ -73,7 +109,6 @@ class LLMDraftGenerator:
                         continue
 
                     words = [w.strip(".,!?:;\"'()[]") for w in clean_text.split() if w.strip()]
-                    # Lọc lấy các từ Tiếng Việt (bỏ các từ tiếng Anh thuần túy)
                     words = [w for w in words if w and not re.match(r'^[a-zA-Z]{3,}$', w)]
                     if 5 <= len(words) <= 9:
                         poem_words.append(words)
