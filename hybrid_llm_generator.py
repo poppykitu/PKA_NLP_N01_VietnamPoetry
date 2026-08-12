@@ -6,7 +6,7 @@ from luc_bat_rules import (
     is_huyen_tone, is_ngang_tone
 )
 from generator import RHYME_DICTIONARY_B
-from pos_grammar_rules import is_pos_sequence_valid, filter_valid_followers, get_word_pos
+from pos_grammar_rules import is_pos_sequence_valid, filter_valid_followers, get_word_pos_set
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -63,6 +63,61 @@ class LLMDraftGenerator:
         except Exception:
             pass
         return None
+
+    def analyze_line_pos_json_schema(self, line_text: str) -> dict:
+        """
+        [Tier 1: Dynamic Contextual Tagging via Gemma-4-12B JSON Schema API]
+        Gửi Yêu Cầu Ép Cấu Trúc JSON Schema đến Gemma-4-12B trên LM Studio để gán nhãn loại từ
+        (POS Tagging: N, V, A, R, P, E) chính xác 100% theo toàn bộ ngữ cảnh câu thơ.
+        """
+        headers = {"Content-Type": "application/json"}
+        payload = {
+            "model": self.model_name,
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "Bạn là chuyên gia Ngôn ngữ học Tiếng Việt. Hãy phân tích từ loại (POS Tagging) cho từng từ trong dòng thơ."
+                },
+                {
+                    "role": "user",
+                    "content": f"Phân tích loại từ cho dòng thơ: '{line_text}'"
+                }
+            ],
+            "response_format": {
+                "type": "json_object",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "words": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "word": {"type": "string"},
+                                    "pos": {"type": "string", "enum": ["N", "V", "A", "R", "P", "E"]}
+                                },
+                                "required": ["word", "pos"]
+                            }
+                        }
+                    },
+                    "required": ["words"]
+                }
+            },
+            "temperature": 0.1
+        }
+
+        try:
+            req = urllib.request.Request(self.api_url, data=json.dumps(payload).encode('utf-8'), headers=headers)
+            with urllib.request.urlopen(req, timeout=4) as response:
+                res_data = json.loads(response.read().decode('utf-8'))
+                raw_json = json.loads(res_data['choices'][0]['message']['content'])
+                pos_map = {item['word'].lower(): item['pos'] for item in raw_json.get('words', [])}
+                print(f"  [Tier 1 Gemma JSON POS API] Đã phân tích POS ngữ cảnh cho câu: '{line_text}'")
+                return pos_map
+        except Exception:
+            pass
+
+        return {}
 
     def generate_draft(self, prompt: str = "nắng xuân") -> list:
         """
