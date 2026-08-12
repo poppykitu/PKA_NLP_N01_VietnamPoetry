@@ -36,7 +36,7 @@ MIN_VOCAB_HF = 300    # Mô hình train từ HF dataset phải có ít nhất 30
 MIN_VOCAB_FALLBACK = 50  # Mô hình fallback có ít nhất 50 từ
 
 
-def main(use_hf_dataset: bool = False, force_rebuild: bool = False):
+def main(use_hf_dataset: bool = False, force_rebuild: bool = False, seed_input: str = None):
     model_cache_file = "ngram_model_hf.pkl" if use_hf_dataset else "ngram_model_fallback.pkl"
     ngram_lm = None
     min_vocab = MIN_VOCAB_HF if use_hf_dataset else MIN_VOCAB_FALLBACK
@@ -71,7 +71,7 @@ def main(use_hf_dataset: bool = False, force_rebuild: bool = False):
 
         print(f"[✓] Tổng số bài thơ Lục bát thuần túy hợp lệ thu thập được: {len(luc_bat_data)}")
 
-        print_section_header("4. HUẤN LUYỆN MÔ HÌNH N-GRAM (KNESER-NEY SMOOTHING) & LỌC TỪ VỰNG")
+        print_section_header("4. HUẤN LUỆN MÔ HÌNH N-GRAM (KNESER-NEY SMOOTHING) & LỌC TỪ VỰNG")
         min_f = 5 if (use_hf_dataset and len(luc_bat_data) > 100) else 1
         ngram_lm = NGramLanguageModel(n=3, k=0.1, min_freq=min_f, discount=0.75)
 
@@ -117,13 +117,17 @@ def main(use_hf_dataset: bool = False, force_rebuild: bool = False):
         match = is_rhyme(w1, w2)
         print(f"    • is_rhyme('{w1}', '{w2}') -> {match}")
 
-    print_section_header("5. SINH THƠ LỤC BÁT THỬ NGHIỆM TỨC THỜI TỪ MÔ HÌNH CACHE")
+    print_section_header("5. SINH THƠ LỤC BÁT THỬ NGHIỆM TỪ MÔ HÌNH N-GRAM KNESER-NEY")
     generator = LucBatPoemGenerator(ngram_lm)
 
-    seed_words = ["truyện", "trời", "nắng"]
+    if seed_input:
+        seed_words = [seed_input.strip()]
+    else:
+        seed_words = ["truyện", "trời", "nắng"]
+
     for idx, seed in enumerate(seed_words, 1):
         print(f"\n" + "-" * 70)
-        print(f"=== BÀI THƠ THỬ NGHIỆM {idx}: TỪ GỢI Ý (SEED): '{seed.upper()}' ===")
+        print(f"=== BÀI THƠ LỤC BÁT THEO SEED = '{seed.upper()}' ===")
         print("-" * 70)
 
         generated_poem, best_eval, _ = generator.generate_best_poem(seed_word=seed, num_pairs=2, num_candidates=5)
@@ -147,10 +151,15 @@ def main(use_hf_dataset: bool = False, force_rebuild: bool = False):
             for err in rule_eval['errors']:
                 print("      - Lỗi:", err)
 
-    print_section_header("HOÀN THÀNH PIPELINE TỐI ƯU TỐC ĐỘ BẰNG CACHE")
+    print_section_header("HOÀN THÀNH PIPELINE N-GRAM KNESER-NEY POETRY GENERATION")
 
 
 if __name__ == "__main__":
-    use_hf = "--hf" in sys.argv
-    rebuild = "--rebuild" in sys.argv
-    main(use_hf_dataset=use_hf, force_rebuild=rebuild)
+    import argparse
+    parser = argparse.ArgumentParser(description="Mô hình N-gram Kneser-Ney sinh thơ Lục Bát Tiếng Việt")
+    parser.add_argument("--seed", "--prompt", type=str, default=None, help="Từ gợi ý khởi tạo bài thơ (ví dụ: 'mèo', 'hoa', 'mưa')")
+    parser.add_argument("--hf", action="store_true", help="Sử dụng tập dữ liệu HuggingFace N-gram lớn (136MB)")
+    parser.add_argument("--rebuild", action="store_true", help="Buộc huấn luyện lại mô hình không dùng cache")
+    args = parser.parse_args()
+
+    main(use_hf_dataset=args.hf, force_rebuild=args.rebuild, seed_input=args.seed)
