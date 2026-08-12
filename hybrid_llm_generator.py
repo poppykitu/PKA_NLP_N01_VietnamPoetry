@@ -384,20 +384,59 @@ class RuleRepairEngine:
     def pick_pos_valid_rhyme(self, prev_word: str, curr_word: str = None, target_rhyme: str = None, need_huyen: bool = None, used_words: set = None) -> str:
         """
         Chọn từ gieo vần chuẩn BỘ LUẬT TỪ LOẠI NGỮ PHÁP TIẾNG VIỆT (pos_grammar_rules.py):
-        - Nếu từ hiện tại (curr_word) đã đúng vần và đúng thanh Bằng -> Giữ nguyên!
-        - Tự động lọc các từ đi kèm prev_word thỏa mãn ma trận chuyển tiếp POS.
+        - Nếu từ hiện tại (curr_word) đã đúng vần và đúng thanh Bằng -> Giữ nguyên 100%!
+        - Tự động ưu tiên từ tự nhiên theo ngữ cảnh đi kèm prev_word (tránh các từ kỳ quặc như 'bình biên', 'giữa còn').
         """
         prev_clean = prev_word.lower() if prev_word else ""
         curr_clean = curr_word.lower() if curr_word else ""
         if used_words is None:
             used_words = set()
 
-        # Nếu curr_word đã đúng vần & thanh Bằng & đúng đối thanh -> Giữ nguyên!
+        # Nếu curr_word đã đúng vần & thanh Bằng & đúng đối thanh -> Giữ nguyên 100%!
         if curr_clean and get_tone(curr_clean) == "B":
             valid_rhyme = True if not target_rhyme else is_rhyme(target_rhyme, curr_clean)
             valid_huyen = True if need_huyen is None else (is_huyen_tone(curr_clean) if need_huyen else is_ngang_tone(curr_clean))
             if valid_rhyme and valid_huyen:
                 return curr_word
+
+        # Bảng các cặp từ tự nhiên thi vị phổ biến Tiếng Việt
+        NATURAL_PREP_HUYEN = {
+            "giữa": ["chiều", "trời", "đời", "ngày", "rừng"],
+            "trong": ["chiều", "lòng", "vườn", "rừng", "đêm"],
+            "trên": ["trời", "đời", "dòng", "bờ"],
+            "dưới": ["trời", "hè", "cầu", "bờ"],
+            "bên": ["hiên", "hè", "bờ", "sông"],
+            "qua": ["trời", "đời", "sông", "cầu"],
+            "về": ["làng", "quê", "nhà", "trời"],
+            "cho": ["người", "đời", "lòng"],
+            "như": ["trời", "người", "đời"],
+            "vào": ["đời", "lòng", "chiều"]
+        }
+
+        NATURAL_PREP_NGANG = {
+            "giữa": ["trưa", "đêm", "sông", "mây"],
+            "trong": ["đêm", "sương", "mây", "mơ"],
+            "trên": ["sân", "mây", "sông", "hoa"],
+            "dưới": ["sân", "mây", "trăng", "hoa"],
+            "bên": ["sông", "sân", "mây", "hoa"],
+            "qua": ["sông", "sân", "mây", "hoa"],
+            "về": ["đâu", "sông", "mây", "hoa"],
+            "cho": ["em", "anh", "ai"],
+            "như": ["mơ", "thơ", "mây", "hoa"],
+            "vào": ["mơ", "thơ", "mây", "đêm"]
+        }
+
+        # 0. Ưu tiên các từ tự nhiên theo ngữ cảnh từ đứng trước (prev_word)
+        if need_huyen is True and prev_clean in NATURAL_PREP_HUYEN:
+            for w in NATURAL_PREP_HUYEN[prev_clean]:
+                if w not in used_words and is_huyen_tone(w):
+                    if not target_rhyme or is_rhyme(target_rhyme, w):
+                        return w
+        elif need_huyen is False and prev_clean in NATURAL_PREP_NGANG:
+            for w in NATURAL_PREP_NGANG[prev_clean]:
+                if w not in used_words and is_ngang_tone(w):
+                    if not target_rhyme or is_rhyme(target_rhyme, w):
+                        return w
 
         candidates = list(self.b_words)
 
