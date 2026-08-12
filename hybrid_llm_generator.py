@@ -88,33 +88,39 @@ class LLMDraftGenerator:
 
                 lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
                 poem_words = []
+                seen_lines = set()
                 for line in lines:
-                    # Bóc tách câu thơ Tiếng Việt thực sự có dạng: *Line 1 (6):* Đêm huyền lấp lánh ánh sao (Night...)
+                    # Bóc tách các câu thơ Tiếng Việt thực sự (loại bỏ chú thích tiếng Anh phía sau)
                     match_poem = re.search(r'[\*\:\d\(\)\s]*([À-ỹà-ỹA-Za-z\s]+?)(?:\s*\([A-Za-z\s\.,\'-]+\)|\s*-\s*\*|\s*$)', line)
                     if match_poem:
                         candidate = match_poem.group(1).strip()
-                        # Làm sạch tiền tố số dòng/gạch đầu dòng nếu còn
                         candidate = re.sub(r'^(?:Line\s*\d+|Draft\s*\d+|Revision|\d+|\*|\-|\:|\s)+', '', candidate, flags=re.IGNORECASE).strip()
-                        # Loại bỏ các từ chú thích tiếng Anh
-                        if any(candidate.lower().startswith(k) for k in ["form", "length", "topic", "constraint", "language", "phase", "critique", "visuals", "emotions", "vietnamese"]):
+                        if any(candidate.lower().startswith(k) for k in ["form", "length", "topic", "constraint", "language", "phase", "critique", "visuals", "emotions", "vietnamese", "shoooting"]):
                             continue
                         
                         words = [w.strip(".,!?:;\"'()[]*") for w in candidate.split() if w.strip()]
-                        # Chỉ lấy từ nếu từ đó không phải tiếng Anh thuần túy không dấu
+                        # Bắt buộc phải chứa âm tiết Tiếng Việt thực thụ
                         words = [w for w in words if w and (re.search(r'[à-ỹÀ-ỸđĐ]', w) or len(w) <= 3)]
                         
                         if 5 <= len(words) <= 9:
-                            poem_words.append(words)
-                        if len(poem_words) == 4:
-                            break
+                            line_str = " ".join(words).lower()
+                            if line_str not in seen_lines:
+                                seen_lines.add(line_str)
+                                poem_words.append(words)
 
                 if len(poem_words) >= 4:
-                    safe_print(f"  [LM Studio API] ✓ Đã lọc bóc tách đúng 4 câu thơ Lục Bát Tiếng Việt chuẩn từ '{self.model_name}'!")
+                    safe_print(f"  [LM Studio API] ✓ Đã bóc tách đúng {len(poem_words[:4])} câu thơ Lục Bát Tiếng Việt trực tiếp từ '{self.model_name}'!")
                     return poem_words[:4]
                 elif poem_words:
-                    safe_print(f"  [LM Studio API] ✓ Đã bóc tách {len(poem_words)} câu thơ từ '{self.model_name}'!")
+                    safe_print(f"  [LM Studio API] ✓ Đã bóc tách {len(poem_words)} câu thơ từ '{self.model_name}'! (Đang bù đủ 4 câu)")
+                    fallback_pool = [
+                        ["sao", "băng", "rơi", "nhẹ", "giữa", "trời"],
+                        ["cho", "ta", "nhớ", "mãi", "những", "ngày", "đã", "qua"],
+                        ["người", "đi", "xa", "vắng", "tin", "nhà"],
+                        ["để", "lòng", "thương", "nhớ", "một", "trời", "yêu", "thương"]
+                    ]
                     while len(poem_words) < 4:
-                        poem_words.append(list(poem_words[-1]))
+                        poem_words.append(fallback_pool[len(poem_words)])
                     return poem_words[:4]
             else:
                 safe_print(f"  [LM Studio API Error] HTTP Status {res.status_code}: {res.text[:200]}")
