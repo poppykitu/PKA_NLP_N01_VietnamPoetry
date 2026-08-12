@@ -70,6 +70,10 @@ class LLMDraftGenerator:
         try:
             safe_print(f"  [*] Đang kết nối LM Studio API (chờ model sinh thơ chủ đề '{prompt}')...")
             res = requests.post(self.api_url, json=payload, timeout=180)
+            if res.status_code != 200 and "response_format" in payload:
+                payload.pop("response_format")
+                res = requests.post(self.api_url, json=payload, timeout=180)
+
             if res.status_code == 200:
                 res_data = res.json()
                 msg_obj = res_data['choices'][0]['message']
