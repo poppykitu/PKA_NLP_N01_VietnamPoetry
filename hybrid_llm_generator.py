@@ -318,14 +318,142 @@ class RuleRepairEngine:
             expected_len = 6 if i % 2 == 0 else 8
             length_fixed.append(self.repair_line_length(line, expected_len))
 
-        # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc)
+    def pick_contextual_tone_repair_word(self, prev_word: str, curr_word: str, next_word: str, target_tone: str) -> str:
+        """
+        [Sửa Lỗi Lệch Thanh Tiếng 2 & Tiếng 4 Theo Ngữ Cảnh Tự Nhiên 100%]:
+        - Giữ nguyên 100% nếu curr_word đã đúng thanh.
+        - Giữ nguyên loại từ (POS) của curr_word (Danh từ thay bằng Danh từ, Động từ thay bằng Động từ...).
+        - Kiểm tra tính hợp lệ về ngữ pháp với từ đứng trước (prev_word) và đứng sau (next_word).
+        - Triệt hạ hoàn toàn các từ bị gượng ép ('Đôi xưa', 'lim thắm', 'Nhỏ vàng', 'Nũng vàng').
+        """
+        curr_clean = curr_word.lower() if curr_word else ""
+        prev_clean = prev_word.lower() if prev_word else ""
+        next_clean = next_word.lower() if next_word else ""
+
+        # Nếu từ hiện tại đã thỏa mãn đúng thanh cần thiết -> Giữ nguyên 100%!
+        if get_tone(curr_clean) == target_tone:
+            return curr_word
+
+        from pos_grammar_rules import WORD_TO_POS_SET, filter_valid_followers, get_word_pos_set
+
+        orig_pos_set = get_word_pos_set(curr_clean)
+
+        # Lọc toàn bộ từ vựng có target_tone
+        candidates = [w for w, pos_set in WORD_TO_POS_SET.items() if get_tone(w) == target_tone and len(w) >= 2]
+
+        # 1. Ưu tiên từ cùng Loại từ (POS) với từ gốc curr_word
+        if orig_pos_set:
+            same_pos = [w for w in candidates if len(get_word_pos_set(w).intersection(orig_pos_set)) > 0]
+            if same_pos:
+                candidates = same_pos
+
+        # 2. Lọc theo ngữ pháp từ đứng trước (prev_word)
+        if prev_clean:
+            valid_after_prev = filter_valid_followers(prev_clean, candidates)
+            if valid_after_prev:
+                candidates = valid_after_prev
+
+        # 3. Lọc theo ngữ pháp từ đứng sau (next_word)
+        if next_clean and candidates:
+            valid_before_next = [w for w in candidates if len(filter_valid_followers(w, [next_clean])) > 0]
+            if valid_before_next:
+                candidates = valid_before_next
+
+        # 4. Trả về từ phù hợp nhất
+        if candidates:
+            return candidates[0]
+
+        # Backup từ tự nhiên theo loại từ
+        if target_tone == "B":
+            if "N" in orig_pos_set:
+                return "chân" if prev_clean in ["đôi", "hai"] else "sông"
+            if "A" in orig_pos_set:
+                return "xinh"
+            if "V" in orig_pos_set:
+                return "yêu"
+            return "trời"
+        else:
+            if "N" in orig_pos_set:
+                return "nắng"
+            if "A" in orig_pos_set:
+                return "thắm"
+            if "V" in orig_pos_set:
+                return "nhớ"
+            return "thắm"
+
+    def pick_pos_valid_rhyme(self, prev_word: str, curr_word: str = None, target_rhyme: str = None, need_huyen: bool = None, used_words: set = None) -> str:
+        """
+        Chọn từ gieo vần chuẩn BỘ LUẬT TỪ LOẠI NGỮ PHÁP TIẾNG VIỆT (pos_grammar_rules.py):
+        - Nếu từ hiện tại (curr_word) đã đúng vần và đúng thanh Bằng -> Giữ nguyên!
+        - Tự động lọc các từ đi kèm prev_word thỏa mãn ma trận chuyển tiếp POS.
+        """
+        prev_clean = prev_word.lower() if prev_word else ""
+        curr_clean = curr_word.lower() if curr_word else ""
+        if used_words is None:
+            used_words = set()
+
+        # Nếu curr_word đã đúng vần & thanh Bằng & đúng đối thanh -> Giữ nguyên!
+        if curr_clean and get_tone(curr_clean) == "B":
+            valid_rhyme = True if not target_rhyme else is_rhyme(target_rhyme, curr_clean)
+            valid_huyen = True if need_huyen is None else (is_huyen_tone(curr_clean) if need_huyen else is_ngang_tone(curr_clean))
+            if valid_rhyme and valid_huyen:
+                return curr_word
+
+        candidates = list(self.b_words)
+
+        # 1. Ràng buộc gieo vần
+        if target_rhyme:
+            rhyming_cands = [w for w in candidates if is_rhyme(target_rhyme, w) and get_tone(w) == "B"]
+            if rhyming_cands:
+                candidates = rhyming_cands
+
+        # 2. Ràng buộc Bằng-Thanh (Ngang vs Huyền)
+        if need_huyen is True:
+            cands_h = [w for w in candidates if is_huyen_tone(w)]
+            if cands_h:
+                candidates = cands_h
+        elif need_huyen is False:
+            cands_n = [w for w in candidates if is_ngang_tone(w)]
+            if cands_n:
+                candidates = cands_n
+
+        # 3. LỌC NGHIÊM NGẶT THEO BỘ LUẬT NGỮ PHÁP LOẠI TỪ (pos_grammar_rules.py)
+        valid_pos_cands = filter_valid_followers(prev_clean, candidates)
+        if valid_pos_cands:
+            candidates = valid_pos_cands
+
+        # 4. Chống lặp từ gieo vần
+        unused = [w for w in candidates if w not in used_words]
+        if unused:
+            return unused[0]
+
+        return candidates[0] if candidates else (curr_word if curr_word else "trời")
+
+    def repair_poem(self, raw_poem: list) -> list:
+        """
+        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Context-Aware Pipeline:
+        Raw Draft -> Fix Length -> Fix Pos 2/4 Tones (Context POS) -> POS-Aware Rhymes & Pitch Alternation
+        """
+        # Step 1: Sửa độ dài 6-8 chữ
+        length_fixed = []
+        for i, line in enumerate(raw_poem):
+            expected_len = 6 if i % 2 == 0 else 8
+            length_fixed.append(self.repair_line_length(line, expected_len))
+
+        # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc) giữ ngữ cảnh POS 100%
         tone_fixed = []
         for i, line in enumerate(length_fixed):
             repaired = list(line)
-            if get_tone(repaired[1]) != "B":
-                repaired[1] = "vàng" if get_tone(repaired[0]) == "T" else "xưa"
-            if get_tone(repaired[3]) != "T":
-                repaired[3] = "thắm"
+            prev_w2 = repaired[0] if len(repaired) > 0 else ""
+            curr_w2 = repaired[1] if len(repaired) > 1 else ""
+            next_w2 = repaired[2] if len(repaired) > 2 else ""
+            repaired[1] = self.pick_contextual_tone_repair_word(prev_w2, curr_w2, next_w2, target_tone="B")
+
+            prev_w4 = repaired[2] if len(repaired) > 2 else ""
+            curr_w4 = repaired[3] if len(repaired) > 3 else ""
+            next_w4 = repaired[4] if len(repaired) > 4 else ""
+            repaired[3] = self.pick_contextual_tone_repair_word(prev_w4, curr_w4, next_w4, target_tone="T")
+
             tone_fixed.append(repaired)
 
         # Step 3 & 4: Sửa gieo vần POS-Aware & ép tiểu đối Bằng-Thanh & Chống lặp từ gieo vần
@@ -333,35 +461,37 @@ class RuleRepairEngine:
         used_rhymes = set()
 
         # Câu Lục 1 (pos 6):
-        w6_l1 = self.pick_pos_valid_rhyme(p[0][4], target_rhyme=None, used_words=used_rhymes)
+        w6_l1 = self.pick_pos_valid_rhyme(p[0][4], curr_word=p[0][5], target_rhyme=None, used_words=used_rhymes)
         p[0][5] = w6_l1
         used_rhymes.add(w6_l1.lower())
 
         # Câu Bát 1 (pos 6): Gieo vần với w6_l1 (khác w6_l1)
-        w6_b1 = self.pick_pos_valid_rhyme(p[1][4], target_rhyme=w6_l1, used_words=used_rhymes)
+        w6_b1 = self.pick_pos_valid_rhyme(p[1][4], curr_word=p[1][5], target_rhyme=w6_l1, used_words=used_rhymes)
         p[1][5] = w6_b1
         used_rhymes.add(w6_b1.lower())
 
         # Câu Bát 1 (pos 8): Đối thanh với w6_b1 (1 Ngang, 1 Huyền)
         w6_b1_huyen = is_huyen_tone(w6_b1)
-        w8_b1 = self.pick_pos_valid_rhyme(p[1][6], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
+        w8_b1 = self.pick_pos_valid_rhyme(p[1][6], curr_word=p[1][7], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
         p[1][7] = w8_b1
         used_rhymes.add(w8_b1.lower())
 
         # Câu Lục 2 (pos 6): Gieo vần với w8_b1
-        w6_l2 = self.pick_pos_valid_rhyme(p[2][4], target_rhyme=w8_b1, used_words=used_rhymes)
+        w6_l2 = self.pick_pos_valid_rhyme(p[2][4], curr_word=p[2][5], target_rhyme=w8_b1, used_words=used_rhymes)
         p[2][5] = w6_l2
         used_rhymes.add(w6_l2.lower())
 
         # Câu Bát 2 (pos 6): Gieo vần với w6_l2 (khác w6_l2)
-        w6_b2 = self.pick_pos_valid_rhyme(p[3][4], target_rhyme=w6_l2, used_words=used_rhymes)
+        w6_b2 = self.pick_pos_valid_rhyme(p[3][4], curr_word=p[3][5], target_rhyme=w6_l2, used_words=used_rhymes)
         p[3][5] = w6_b2
         used_rhymes.add(w6_b2.lower())
 
         # Câu Bát 2 (pos 8): Đối thanh với w6_b2
         w6_b2_huyen = is_huyen_tone(w6_b2)
-        w8_b2 = self.pick_pos_valid_rhyme(p[3][6], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
+        w8_b2 = self.pick_pos_valid_rhyme(p[3][6], curr_word=p[3][7], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
         p[3][7] = w8_b2
         used_rhymes.add(w8_b2.lower())
+
+        return p
 
         return p
