@@ -22,7 +22,7 @@ class LLMDraftGenerator:
     - Tích hợp kết nối trực tiếp LM Studio Local AI Server (http://localhost:1234/v1) cho model Gemma-4-e2b.
     - Tự động fallback về bản thảo thử nghiệm nếu chưa mở LM Studio.
     """
-    def __init__(self, api_url: str = "http://127.0.0.1:1234/v1/chat/completions", model_name: str = "google/gemma-4-e2b"):
+    def __init__(self, api_url: str = "http://127.0.0.1:1234/v1/chat/completions", model_name: str = "google/gemma-4-12b-qat"):
         self.api_url = api_url
         self.model_name = model_name
 
@@ -100,19 +100,25 @@ class LLMDraftGenerator:
         return draft_samples["nắng"]
 
 
+# Tập từ phó từ (R) bắt buộc đi kèm Động từ / Tính từ phía sau
+ADVERB_WORDS = {"vẫn", "đã", "sẽ", "đang", "cũng", "còn", "rất", "quá", "chẳng", "không", "chưa"}
+VERB_WORDS = {"bay", "đi", "về", "rơi", "trôi", "mong", "chờ", "nhớ", "thương", "vương", "yêu", "qua"}
+NOUN_WORDS = {"trời", "mây", "sông", "núi", "đời", "người", "quê", "làng", "đường", "sương", "đêm", "ngày", "nhà", "sân"}
+ADJ_WORDS = {"xa", "cao", "dài", "rộng", "đầy", "xanh", "vàng", "hồng", "thắm", "tươi", "buồn", "sầu"}
+
+
 class RuleRepairEngine:
     """
-    Tầng 2: Rule Repair Engine (Symbolic Repair Stage)
-    Bộ Sửa Lỗi Tự Động dựa trên Kỷ Luật Thi Ca:
+    Tầng 2: Rule Repair Engine (Symbolic Repair Stage - Nâng Cấp POS-Aware Grammar Rules):
     1. Sửa lỗi thừa/thiếu chữ (đưa về chuẩn 6 và 8 chữ).
-    2. Sửa lỗi Bằng-Trắc ở các tiếng 2, 4, 6, 8.
-    3. Tra Từ Điển Vần khóa chuẩn Vần Chân & Vần Lưng.
-    4. Ép Tiểu đối Bằng-Thanh Ngang vs Huyền ở câu Bát.
+    2. Kiểm tra nhịp POS: Sau phó từ (vẫn, đã, sẽ) BẮT BUỘC là Động từ/Tính từ (vẫn vương, vẫn thương, không dùng 'vẫn trời').
+    3. Kiểm tra nhịp POS: Sau động từ (bay, rơi) BẮT BUỘC là Trạng từ/Tính từ (bay về, bay xa, không dùng 'bay trời').
+    4. Tra Từ Điển Vần khóa chuẩn Vần Chân & Vần Lưng.
+    5. Ép Tiểu đối Bằng-Thanh Ngang vs Huyền ở câu Bát.
     """
 
     def __init__(self):
-        self.b_words = ["trời", "mây", "sông", "núi", "đời", "người", "quê", "làng", "đường", "sương", "yêu", "thương"]
-        self.t_words = ["nắng", "mưa", "gió", "tuyết", "bão", "bóng", "nhớ", "ngóng", "đắng", "cay"]
+        self.b_words = ["trời", "mây", "sông", "núi", "đời", "người", "quê", "làng", "đường", "sương", "yêu", "thương", "vương", "về", "xa"]
 
     def repair_line_length(self, line: list, expected_length: int) -> list:
         """
@@ -124,7 +130,7 @@ class RuleRepairEngine:
         while len(repaired) > expected_length:
             removed = False
             for i in range(1, len(repaired) - 1):
-                if repaired[i].lower() in ["đâu", "đã", "thì", "mà", "là", "rằng", "hay", "đi", "nhà"]:
+                if repaired[i].lower() in ["đâu", "đã", "thì", "mà", "là", "rằng", "hay", "đi", "nhà", "này"]:
                     repaired.pop(i)
                     removed = True
                     break
@@ -139,68 +145,67 @@ class RuleRepairEngine:
 
         return repaired
 
-    def repair_tones(self, line: list, is_luc: bool) -> list:
+    def pick_pos_valid_rhyme(self, prev_word: str, target_rhyme: str = None, need_huyen: bool = None, used_words: set = None) -> str:
         """
-        Sửa lỗi Bằng-Trắc ở vị trí 2, 4, 6 (và 8).
+        Chọn từ gieo vần chuẩn LUẬT NGỮ PHÁP POS đối với từ đứng trước (prev_word):
+        - 'vẫn' -> 'vương', 'thương', 'yêu', 'về' (Triệt hạ 'vẫn trời')
+        - 'bay' -> 'xa', 'về', 'cao' (Triệt hạ 'bay trời')
+        - 'trên' -> 'trời', 'sông', 'đường', 'làng'
         """
-        repaired = list(line)
-        # Pos 2: Bằng
-        if get_tone(repaired[1]) != "B":
-            repaired[1] = "cao" if get_tone(repaired[0]) == "B" else "vàng"
-        # Pos 4: Trắc
-        if get_tone(repaired[3]) != "T":
-            repaired[3] = "thắm" if get_tone(repaired[2]) == "B" else "nhẹ"
-        # Pos 6: Bằng
-        if get_tone(repaired[5]) != "B":
-            repaired[5] = "trời"
+        prev_clean = prev_word.lower() if prev_word else ""
+        if used_words is None:
+            used_words = set()
 
-        # Pos 8 (câu Bát): Bằng
-        if not is_luc and len(repaired) >= 8:
-            if get_tone(repaired[7]) != "B":
-                repaired[7] = "thương"
+        pos_rules = {
+            "vẫn": ["vương", "thương", "yêu", "về", "nhớ", "mong"],
+            "đã": ["qua", "về", "xa", "trôi", "đi"],
+            "bay": ["xa", "cao", "về", "qua"],
+            "rơi": ["đầy", "xa", "nghiêng", "về"],
+            "trên": ["trời", "sông", "đường", "làng"],
+            "ngắm": ["mây", "trời", "trăng", "sao"],
+            "những": ["lời", "ngày", "đời"],
+            "một": ["trời", "đời", "người", "sông"]
+        }
 
-        return repaired
+        cands = list(pos_rules.get(prev_clean, self.b_words))
 
-    def repair_rhyme_and_pitch(self, poem: list) -> list:
-        """
-        Sửa gieo vần & ép tiểu đối Bằng-Thanh (Ngang vs Huyền).
-        """
-        repaired_poem = [list(line) for line in poem]
+        # 1. Ràng buộc POS sau phó từ
+        if prev_clean in ADVERB_WORDS:
+            adverb_cands = [w for w in cands if w in VERB_WORDS or w in ADJ_WORDS or w in {"vương", "thương", "yêu", "về", "xa"}]
+            if adverb_cands:
+                cands = adverb_cands
+            else:
+                cands = ["vương", "thương", "về"]
 
-        # Khóa vần Lục 1 (pos 6) vs Bát 1 (pos 6)
-        w6_l1 = repaired_poem[0][5]
-        if not is_rhyme(w6_l1, repaired_poem[1][5]):
-            cands = [w for w in self.b_words if is_rhyme(w6_l1, w)]
-            repaired_poem[1][5] = cands[0] if cands else "trời"
+        # 2. Ràng buộc gieo vần
+        if target_rhyme:
+            rhyming_cands = [w for w in cands if is_rhyme(target_rhyme, w) and get_tone(w) == "B"]
+            if not rhyming_cands:
+                rhyming_cands = [w for w in self.b_words if is_rhyme(target_rhyme, w) and get_tone(w) == "B"]
+            if rhyming_cands:
+                cands = rhyming_cands
 
-        # Khóa vần Bát 1 (pos 8) vs Lục 2 (pos 6)
-        w8_b1 = repaired_poem[1][7]
-        if not is_rhyme(w8_b1, repaired_poem[2][5]):
-            cands = [w for w in self.b_words if is_rhyme(w8_b1, w)]
-            repaired_poem[2][5] = cands[0] if cands else "thương"
+        # 3. Ràng buộc Bằng-Thanh (Ngang vs Huyền)
+        if need_huyen is True:
+            cands_h = [w for w in cands if is_huyen_tone(w)]
+            if cands_h:
+                cands = cands_h
+        elif need_huyen is False:
+            cands_n = [w for w in cands if is_ngang_tone(w)]
+            if cands_n:
+                cands = cands_n
 
-        # Khóa vần Lục 2 (pos 6) vs Bát 2 (pos 6)
-        w6_l2 = repaired_poem[2][5]
-        if not is_rhyme(w6_l2, repaired_poem[3][5]):
-            cands = [w for w in self.b_words if is_rhyme(w6_l2, w)]
-            repaired_poem[3][5] = cands[0] if cands else "đường"
+        # 4. Chống lặp từ gieo vần
+        unused = [w for w in cands if w not in used_words]
+        if unused:
+            return unused[0]
 
-        # Ép tiểu đối Bằng-Thanh cho các câu Bát (pos 6 vs pos 8: 1 Ngang, 1 Huyền)
-        for bat_idx in [1, 3]:
-            w6 = repaired_poem[bat_idx][5]
-            w8 = repaired_poem[bat_idx][7]
-            if is_huyen_tone(w6) == is_huyen_tone(w8):
-                if is_huyen_tone(w6):
-                    repaired_poem[bat_idx][7] = "thương" if is_ngang_tone("thương") else "mây"
-                else:
-                    repaired_poem[bat_idx][7] = "về" if is_huyen_tone("về") else "đời"
-
-        return repaired_poem
+        return cands[0] if cands else "trời"
 
     def repair_poem(self, raw_poem: list) -> list:
         """
-        Toàn bộ quy trình Sửa Lỗi Tự Động (Neuro-Symbolic Pipeline):
-        Raw Draft -> Fix Length -> Fix Pos 2/4 Tones -> Fix Rhymes & Pitch Alternation
+        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware (Neuro-Symbolic Pipeline):
+        Raw Draft -> Fix Length -> Fix Pos 2/4 Tones -> POS-Aware Rhymes & Pitch Alternation
         """
         # Step 1: Sửa độ dài 6-8 chữ
         length_fixed = []
@@ -208,34 +213,50 @@ class RuleRepairEngine:
             expected_len = 6 if i % 2 == 0 else 8
             length_fixed.append(self.repair_line_length(line, expected_len))
 
-        # Step 2: Sửa thanh tiếng 2 (B) và tiếng 4 (T)
+        # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc)
         tone_fixed = []
         for i, line in enumerate(length_fixed):
             repaired = list(line)
-            # Pos 2 -> Thanh Bằng
             if get_tone(repaired[1]) != "B":
                 repaired[1] = "vàng" if get_tone(repaired[0]) == "T" else "xưa"
-            # Pos 4 -> Thanh Trắc
             if get_tone(repaired[3]) != "T":
-                repaired[3] = "thắm" if get_tone(repaired[2]) == "B" else "nhẹ"
+                repaired[3] = "thắm"
             tone_fixed.append(repaired)
 
-        # Step 3 & 4: Sửa gieo vần & ép tiểu đối Bằng-Thanh
+        # Step 3 & 4: Sửa gieo vần POS-Aware & ép tiểu đối Bằng-Thanh & Chống lặp từ gieo vần
         p = [list(line) for line in tone_fixed]
+        used_rhymes = set()
 
-        # Khóa cặp vần 1: Lục 1 (pos 6) vs Bát 1 (pos 6)
-        w6_l1 = "trời"
+        # Câu Lục 1 (pos 6):
+        w6_l1 = self.pick_pos_valid_rhyme(p[0][4], target_rhyme=None, used_words=used_rhymes)
         p[0][5] = w6_l1
-        p[1][5] = "lời"  # Bằng, vần với trời
+        used_rhymes.add(w6_l1.lower())
 
-        # Bát 1 pos 8 phải Bằng và tiểu đối thanh với pos 6 ("lời" là Huyền -> pos 8 phải là Ngang)
-        p[1][7] = "thương" # Ngang
+        # Câu Bát 1 (pos 6): Gieo vần với w6_l1 (khác w6_l1)
+        w6_b1 = self.pick_pos_valid_rhyme(p[1][4], target_rhyme=w6_l1, used_words=used_rhymes)
+        p[1][5] = w6_b1
+        used_rhymes.add(w6_b1.lower())
 
-        # Khóa cặp vần 2: Bát 1 (pos 8 "thương") vs Lục 2 (pos 6) vs Bát 2 (pos 6)
-        p[2][5] = "đường" # Huyền, vần với thương
-        p[3][5] = "vương" # Ngang, vần với thương
+        # Câu Bát 1 (pos 8): Đối thanh với w6_b1 (1 Ngang, 1 Huyền)
+        w6_b1_huyen = is_huyen_tone(w6_b1)
+        w8_b1 = self.pick_pos_valid_rhyme(p[1][6], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
+        p[1][7] = w8_b1
+        used_rhymes.add(w8_b1.lower())
 
-        # Bát 2 pos 8 phải Bằng và tiểu đối thanh với pos 6 ("vương" là Ngang -> pos 8 phải là Huyền)
-        p[3][7] = "xa" if is_huyen_tone("vương") else "hồng"
+        # Câu Lục 2 (pos 6): Gieo vần với w8_b1
+        w6_l2 = self.pick_pos_valid_rhyme(p[2][4], target_rhyme=w8_b1, used_words=used_rhymes)
+        p[2][5] = w6_l2
+        used_rhymes.add(w6_l2.lower())
+
+        # Câu Bát 2 (pos 6): Gieo vần với w6_l2 (khác w6_l2)
+        w6_b2 = self.pick_pos_valid_rhyme(p[3][4], target_rhyme=w6_l2, used_words=used_rhymes)
+        p[3][5] = w6_b2
+        used_rhymes.add(w6_b2.lower())
+
+        # Câu Bát 2 (pos 8): Đối thanh với w6_b2
+        w6_b2_huyen = is_huyen_tone(w6_b2)
+        w8_b2 = self.pick_pos_valid_rhyme(p[3][6], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
+        p[3][7] = w8_b2
+        used_rhymes.add(w8_b2.lower())
 
         return p
