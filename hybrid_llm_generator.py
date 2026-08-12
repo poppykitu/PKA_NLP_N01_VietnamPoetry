@@ -46,8 +46,7 @@ class LLMDraftGenerator:
                     "content": f"Hãy làm một bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề: {prompt}."
                 }
             ],
-            "temperature": 0.7,
-            "max_tokens": 300
+            "temperature": 0.7
         }
 
         try:
