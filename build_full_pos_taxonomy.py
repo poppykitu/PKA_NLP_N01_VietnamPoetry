@@ -133,13 +133,19 @@ def build_full_pos_taxonomy_gemma():
             gemma_pos_dict.update(res)
             print(f"   [✓ Gemma-4-12B API] Đã phân loại xong batch {batch_idx} ({len(gemma_pos_dict)}/{len(vocab_list)} từ).")
 
-            # Lưu checkpoint cứ sau mỗi 10 batch
-            if batch_idx % 10 == 0:
+            # Lưu checkpoint cứ sau mỗi 5 batch
+            if batch_idx % 5 == 0:
                 with open(output_pickle, "wb") as f:
                     pickle.dump(gemma_pos_dict, f)
+                # Cập nhật file JSON liên tục
+                json_export = {}
+                for word, pos_set in gemma_pos_dict.items():
+                    json_export[word] = list(pos_set)
+                with open("pos_dict_gemma.json", "w", encoding="utf-8") as f:
+                    json.dump(json_export, f, ensure_ascii=False, indent=2)
         else:
-            print(f"   [!] Tạm dừng tại batch {batch_idx}. Bạn có thể tiếp tục chạy lại bất cứ lúc nào!")
-            break
+            print(f"   [Notice] Bỏ qua batch {batch_idx} bị lỗi API và tiếp tục batch tiếp theo...")
+            continue
 
     if gemma_pos_dict:
         with open(output_pickle, "wb") as f:

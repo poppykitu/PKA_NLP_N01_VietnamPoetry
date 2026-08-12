@@ -1,717 +1,17360 @@
 {
   "ac": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "ai": [
-    "N (Danh từ (Noun))",
-    "P (Đại từ (Pronoun))"
+    "P",
+    "N"
   ],
   "am": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "an": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "anh": [
-    "N (Danh từ (Noun))",
-    "P (Đại từ (Pronoun))"
+    "P",
+    "N"
   ],
   "ao": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "are": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "au": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "ba": [
-    "N (Danh từ (Noun))",
-    "P (Đại từ (Pronoun))"
+    "P",
+    "N"
   ],
   "ban": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bang": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bao": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bay": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "be": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bi": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bia": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "binh": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "biên": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "biêng": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "biếc": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "biếm": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "biến": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "biếng": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "biết": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "biếu": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "biền": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "biều": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "biển": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "biểu": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "biệt": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bo": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bodh": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bom": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bon": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bong": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bu": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bung": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "buôn": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "buông": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "buốt": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "buồm": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "buồn": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "buồng": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "buổi": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "buộc": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "buột": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bà": [
-    "N (Danh từ (Noun))",
-    "P (Đại từ (Pronoun))"
+    "P",
+    "N"
   ],
   "bài": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bàn": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bàng": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bành": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bào": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bàu": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bày": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bá": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bác": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bách": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bái": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bám": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bán": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "báng": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bánh": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "báo": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bát": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "báu": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bân": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bâng": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bâu": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bây": [
-    "R (Phó từ/Trạng từ (Adverb))",
-    "P (Đại từ (Pronoun))"
+    "R",
+    "P"
   ],
   "bã": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bãi": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bão": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bè": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bèn": [
-    "R (Phó từ/Trạng từ (Adverb))"
+    "R"
   ],
   "bèo": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bé": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bén": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "béo": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bét": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bê": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bên": [
-    "N (Danh từ (Noun))",
-    "P (Đại từ (Pronoun))"
+    "P",
+    "N"
   ],
   "bênh": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bêu": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bì": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bìm": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bình": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bí": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bích": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bím": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bò": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bòn": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bòng": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bó": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bóc": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bói": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bón": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bóng": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bóp": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bót": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bô": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bôi": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bôn": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bông": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bõ": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bù": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bùa": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bùi": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bùn": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bùng": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bú": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "búa": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "búi": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bún": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "búng": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "búp": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bút": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "băm": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "băn": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "băng": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bĩu": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bơ": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bơi": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bưa": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bưng": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bưu": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bươi": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bươm": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bước": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bướm": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bướu": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bưởi": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bạ": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bạc": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bạch": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bại": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bạn": [
-    "N (Danh từ (Noun))",
-    "P (Đại từ (Pronoun))"
+    "P",
+    "N"
   ],
   "bạo": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bạt": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bản": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bảng": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bảo": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bảy": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bấc": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bấm": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bấn": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bấp": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bất": [
-    "E (Giới từ (Preposition))",
-    "A (Tính từ (Adjective))"
+    "A",
+    "E"
   ],
   "bấu": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bấy": [
-    "R (Phó từ/Trạng từ (Adverb))",
-    "A (Tính từ (Adjective))",
-    "P (Đại từ (Pronoun))"
+    "R",
+    "P",
+    "A"
   ],
   "bầm": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bần": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bầu": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bầy": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bẩm": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bẩn": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bẩy": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bẫy": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bậc": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bậm": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bận": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bập": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bật": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bậu": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bắc": [
-    "V (Động từ (Verb))",
-    "E (Giới từ (Preposition))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "E",
+    "N"
   ],
   "bắn": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bắp": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bắt": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bằm": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bằn": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bằng": [
-    "E (Giới từ (Preposition))",
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))",
-    "P (Đại từ (Pronoun))"
+    "V",
+    "P",
+    "A",
+    "E"
   ],
   "bẵng": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bặm": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bặt": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bẹ": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bẹo": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bẹp": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bẻ": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bẽ": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bẽn": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bế": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bến": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bếp": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bề": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bền": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bềnh": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bể": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bệ": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bệch": [
-    "A (Tính từ (Adjective))"
+    "A"
   ],
   "bện": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bệnh": [
-    "V (Động từ (Verb))",
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "V",
+    "A",
+    "N"
   ],
   "bỉ": [
-    "A (Tính từ (Adjective))",
-    "N (Danh từ (Noun))"
+    "A",
+    "N"
   ],
   "bỉnh": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bị": [
-    "V (Động từ (Verb))",
-    "E (Giới từ (Preposition))",
-    "N (Danh từ (Noun))"
+    "V",
+    "E",
+    "N"
   ],
   "bịp": [
-    "A (Tính từ (Adjective))",
-    "V (Động từ (Verb))"
+    "V",
+    "A"
   ],
   "bịt": [
-    "V (Động từ (Verb))"
+    "V"
   ],
   "bọ": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bọc": [
-    "V (Động từ (Verb))",
-    "N (Danh từ (Noun))"
+    "V",
+    "N"
   ],
   "bọn": [
-    "N (Danh từ (Noun))"
+    "N"
   ],
   "bọng": [
-    "N (Danh từ (Noun))"
+    "N"
+  ],
+  "bối": [
+    "V",
+    "N"
+  ],
+  "bốn": [
+    "R",
+    "N",
+    "A"
+  ],
+  "bống": [
+    "N"
+  ],
+  "bốt": [
+    "N"
+  ],
+  "bồ": [
+    "P",
+    "N"
+  ],
+  "bồi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "bồn": [
+    "N"
+  ],
+  "bồng": [
+    "V",
+    "A"
+  ],
+  "bổ": [
+    "V",
+    "A"
+  ],
+  "bổn": [
+    "A",
+    "N"
+  ],
+  "bổng": [
+    "V",
+    "A"
+  ],
+  "bỗng": [
+    "R"
+  ],
+  "bộ": [
+    "V",
+    "E",
+    "N"
+  ],
+  "bội": [
+    "V",
+    "A"
+  ],
+  "bộn": [
+    "A"
+  ],
+  "bộp": [
+    "V",
+    "R",
+    "A"
+  ],
+  "bột": [
+    "N"
+  ],
+  "bớ": [
+    "V"
+  ],
+  "bới": [
+    "V"
+  ],
+  "bớt": [
+    "V",
+    "A"
+  ],
+  "bờ": [
+    "N"
+  ],
+  "bời": [
+    "V"
+  ],
+  "bờm": [
+    "N"
+  ],
+  "bởi": [
+    "V",
+    "P"
+  ],
+  "bỡ": [
+    "V",
+    "A"
+  ],
+  "bỡn": [
+    "V",
+    "A"
+  ],
+  "bợ": [
+    "V",
+    "N"
+  ],
+  "bợn": [
+    "V",
+    "A"
+  ],
+  "bợt": [
+    "A"
+  ],
+  "bụa": [
+    "N"
+  ],
+  "bụi": [
+    "V",
+    "N"
+  ],
+  "bụm": [
+    "V"
+  ],
+  "bụng": [
+    "N"
+  ],
+  "bụp": [
+    "V",
+    "R",
+    "A"
+  ],
+  "bụt": [
+    "N"
+  ],
+  "bủa": [
+    "V",
+    "N"
+  ],
+  "bức": [
+    "V",
+    "A",
+    "N"
+  ],
+  "bứt": [
+    "V"
+  ],
+  "bừa": [
+    "V",
+    "R",
+    "A"
+  ],
+  "bừng": [
+    "V",
+    "A"
+  ],
+  "bữa": [
+    "V",
+    "N"
+  ],
+  "bự": [
+    "A"
+  ],
+  "bực": [
+    "V",
+    "A"
+  ],
+  "ca": [
+    "V",
+    "N"
+  ],
+  "cai": [
+    "V",
+    "N"
+  ],
+  "cam": [
+    "V",
+    "N"
+  ],
+  "can": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cang": [
+    "V",
+    "A"
+  ],
+  "canh": [
+    "V",
+    "N"
+  ],
+  "cao": [
+    "V",
+    "A"
+  ],
+  "card": [
+    "N"
+  ],
+  "cau": [
+    "V",
+    "N"
+  ],
+  "cay": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cha": [
+    "P",
+    "N"
+  ],
+  "chai": [
+    "V",
+    "N"
+  ],
+  "chan": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chang": [
+    "V",
+    "N"
+  ],
+  "chanh": [
+    "N"
+  ],
+  "chao": [
+    "V",
+    "N"
+  ],
+  "chau": [
+    "V",
+    "N"
+  ],
+  "chay": [
+    "V",
+    "A"
+  ],
+  "che": [
+    "V"
+  ],
+  "chen": [
+    "V"
+  ],
+  "cheo": [
+    "V",
+    "A"
+  ],
+  "chi": [
+    "V",
+    "E",
+    "P",
+    "N"
+  ],
+  "chia": [
+    "V",
+    "N"
+  ],
+  "chim": [
+    "V",
+    "N"
+  ],
+  "chinh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chiu": [
+    "V"
+  ],
+  "chiêm": [
+    "V",
+    "N"
+  ],
+  "chiên": [
+    "V",
+    "N"
+  ],
+  "chiêng": [
+    "N"
+  ],
+  "chiêu": [
+    "V",
+    "N"
+  ],
+  "chiếc": [
+    "V",
+    "N"
+  ],
+  "chiếm": [
+    "V"
+  ],
+  "chiến": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chiếp": [
+    "V"
+  ],
+  "chiết": [
+    "V"
+  ],
+  "chiếu": [
+    "V",
+    "N"
+  ],
+  "chiền": [
+    "V",
+    "N"
+  ],
+  "chiều": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chiểu": [
+    "V",
+    "N"
+  ],
+  "cho": [
+    "V",
+    "E",
+    "P"
+  ],
+  "choa": [
+    "V"
+  ],
+  "choang": [
+    "V",
+    "A"
+  ],
+  "choi": [
+    "V",
+    "N"
+  ],
+  "chon": [
+    "V",
+    "A"
+  ],
+  "chong": [
+    "V",
+    "N"
+  ],
+  "choàng": [
+    "V",
+    "A"
+  ],
+  "choán": [
+    "V",
+    "A"
+  ],
+  "beo": [
+    "A",
+    "N"
+  ],
+  "bọt": [
+    "N"
+  ],
+  "bỏ": [
+    "V"
+  ],
+  "bỏng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "bố": [
+    "P",
+    "N"
+  ],
+  "bốc": [
+    "V"
+  ],
+  "chuyến": [
+    "N"
+  ],
+  "chuyếnh": [],
+  "chuyết": [],
+  "chuyền": [
+    "V",
+    "N"
+  ],
+  "chuyển": [
+    "V"
+  ],
+  "chuyện": [
+    "V",
+    "N"
+  ],
+  "chuông": [
+    "N"
+  ],
+  "chuẩn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chuếnh": [
+    "A"
+  ],
+  "chuốc": [
+    "V",
+    "N"
+  ],
+  "chuối": [
+    "N"
+  ],
+  "chuốt": [
+    "V",
+    "N"
+  ],
+  "chuồi": [
+    "V"
+  ],
+  "chuồn": [
+    "V",
+    "N"
+  ],
+  "chuồng": [
+    "N"
+  ],
+  "chuỗi": [
+    "N"
+  ],
+  "chuộc": [
+    "V",
+    "N"
+  ],
+  "chuộng": [
+    "V",
+    "A"
+  ],
+  "chuột": [
+    "N"
+  ],
+  "chà": [
+    "V",
+    "N"
+  ],
+  "chài": [
+    "V",
+    "N"
+  ],
+  "chàm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chàng": [
+    "P",
+    "N"
+  ],
+  "chành": [
+    "V",
+    "N"
+  ],
+  "chào": [
+    "V",
+    "N"
+  ],
+  "chày": [
+    "V",
+    "N"
+  ],
+  "chác": [
+    "V",
+    "A"
+  ],
+  "chách": [
+    "V",
+    "A"
+  ],
+  "chái": [
+    "V",
+    "A"
+  ],
+  "chán": [
+    "V",
+    "A"
+  ],
+  "chánh": [
+    "A",
+    "N"
+  ],
+  "cháo": [
+    "N"
+  ],
+  "chát": [
+    "V",
+    "A"
+  ],
+  "cháu": [
+    "P",
+    "N"
+  ],
+  "cháy": [
+    "V",
+    "A",
+    "N"
+  ],
+  "châm": [
+    "V",
+    "N"
+  ],
+  "chân": [
+    "A",
+    "N"
+  ],
+  "châu": [
+    "N"
+  ],
+  "chã": [
+    "N"
+  ],
+  "chãi": [
+    "V",
+    "A"
+  ],
+  "chè": [
+    "V",
+    "N"
+  ],
+  "chèn": [
+    "V"
+  ],
+  "chèo": [
+    "V",
+    "N"
+  ],
+  "chém": [
+    "V"
+  ],
+  "chén": [
+    "V",
+    "N"
+  ],
+  "chéo": [
+    "V",
+    "A"
+  ],
+  "chép": [
+    "V",
+    "N"
+  ],
+  "chê": [
+    "V"
+  ],
+  "chên": [
+    "V"
+  ],
+  "chênh": [
+    "V",
+    "A"
+  ],
+  "chì": [
+    "V",
+    "N"
+  ],
+  "chìa": [
+    "V",
+    "N"
+  ],
+  "chìm": [
+    "V",
+    "A"
+  ],
+  "chình": [
+    "V",
+    "R"
+  ],
+  "chìu": [
+    "V"
+  ],
+  "chí": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chích": [
+    "V",
+    "N"
+  ],
+  "chím": [
+    "V",
+    "N"
+  ],
+  "chín": [
+    "V",
+    "A"
+  ],
+  "chính": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chíp": [
+    "V",
+    "N"
+  ],
+  "chít": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chò": [
+    "V",
+    "N"
+  ],
+  "chòe": [
+    "N"
+  ],
+  "chòi": [
+    "V",
+    "N"
+  ],
+  "chòm": [
+    "N"
+  ],
+  "chòng": [
+    "V",
+    "N"
+  ],
+  "chó": [
+    "N"
+  ],
+  "chóc": [
+    "N"
+  ],
+  "chói": [
+    "V",
+    "A"
+  ],
+  "chóng": [
+    "V",
+    "A"
+  ],
+  "chót": [
+    "A",
+    "N"
+  ],
+  "chô": [
+    "V",
+    "N"
+  ],
+  "chôn": [
+    "V"
+  ],
+  "chông": [
+    "N"
+  ],
+  "chõ": [
+    "N"
+  ],
+  "chõng": [
+    "N"
+  ],
+  "chùa": [
+    "V",
+    "N"
+  ],
+  "chùi": [
+    "V"
+  ],
+  "chùm": [
+    "V",
+    "N"
+  ],
+  "chùng": [
+    "V",
+    "A"
+  ],
+  "chú": [
+    "P",
+    "N"
+  ],
+  "chúa": [
+    "N"
+  ],
+  "chúc": [
+    "V",
+    "N"
+  ],
+  "chúm": [
+    "V",
+    "A"
+  ],
+  "chúng": [
+    "P",
+    "N"
+  ],
+  "chút": [
+    "R",
+    "N",
+    "A"
+  ],
+  "chăm": [
+    "V",
+    "A"
+  ],
+  "chăn": [
+    "V",
+    "N"
+  ],
+  "chăng": [
+    "V",
+    "R"
+  ],
+  "chơ": [
+    "V",
+    "N"
+  ],
+  "chơi": [
+    "V",
+    "N"
+  ],
+  "chơm": [
+    "V"
+  ],
+  "chơn": [
+    "V",
+    "A"
+  ],
+  "chư": [
+    "P",
+    "N"
+  ],
+  "chưa": [
+    "R"
+  ],
+  "chưn": [
+    "N"
+  ],
+  "chưng": [
+    "V"
+  ],
+  "chương": [
+    "N"
+  ],
+  "chước": [
+    "V",
+    "N"
+  ],
+  "chướng": [
+    "V",
+    "A"
+  ],
+  "chường": [
+    "V",
+    "N"
+  ],
+  "chưởi": [
+    "V"
+  ],
+  "chạ": [
+    "V",
+    "N"
+  ],
+  "chạm": [
+    "V",
+    "N"
+  ],
+  "chạng": [
+    "A"
+  ],
+  "chạnh": [
+    "V",
+    "A"
+  ],
+  "chạp": [
+    "V",
+    "A"
+  ],
+  "chạy": [
+    "V",
+    "N"
+  ],
+  "chả": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "chải": [
+    "V"
+  ],
+  "chảy": [
+    "V",
+    "A"
+  ],
+  "chấm": [
+    "V",
+    "N"
+  ],
+  "chấp": [
+    "V"
+  ],
+  "chất": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chấu": [
+    "V",
+    "N"
+  ],
+  "chầm": [
+    "V",
+    "A"
+  ],
+  "chần": [
+    "V",
+    "A"
+  ],
+  "chầu": [
+    "V",
+    "N"
+  ],
+  "chầy": [
+    "V",
+    "A"
+  ],
+  "chẩn": [
+    "V",
+    "A"
+  ],
+  "chẩy": [
+    "V"
+  ],
+  "chẫm": [
+    "V",
+    "N"
+  ],
+  "chẫu": [
+    "N"
+  ],
+  "chậm": [
+    "V",
+    "A"
+  ],
+  "chập": [
+    "V",
+    "N"
+  ],
+  "chật": [
+    "A"
+  ],
+  "chậu": [
+    "N"
+  ],
+  "chắc": [
+    "V",
+    "R",
+    "A"
+  ],
+  "chắc chắn": [
+    "R",
+    "A"
+  ],
+  "chắp": [
+    "V",
+    "A"
+  ],
+  "chắt": [
+    "V",
+    "N"
+  ],
+  "chằm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "chằng": [
+    "V",
+    "A"
+  ],
+  "chẳng": [
+    "R",
+    "P"
+  ],
+  "chẵn": [
+    "V",
+    "A"
+  ],
+  "chặn": [
+    "V",
+    "N"
+  ],
+  "chặng": [
+    "N"
+  ],
+  "chặt": [
+    "V",
+    "A"
+  ],
+  "chẹng": [
+    "V",
+    "N"
+  ],
+  "chẹt": [
+    "V",
+    "A"
+  ],
+  "chẻ": [
+    "V",
+    "A"
+  ],
+  "chế": [
+    "V",
+    "A"
+  ],
+  "chếch": [
+    "V",
+    "A"
+  ],
+  "chếnh": [
+    "V",
+    "A"
+  ],
+  "chết": [
+    "V",
+    "A"
+  ],
+  "chề": [
+    "V",
+    "A"
+  ],
+  "chễm": [
+    "V"
+  ],
+  "chệ": [
+    "V",
+    "N"
+  ],
+  "chệnh": [
+    "V",
+    "A"
+  ],
+  "chỉ": [
+    "A",
+    "E",
+    "R",
+    "V",
+    "N"
+  ],
+  "chỉnh": [
+    "V",
+    "A"
+  ],
+  "chị": [
+    "P",
+    "N"
+  ],
+  "chịch": [
+    "V",
+    "A"
+  ],
+  "chịt": [
+    "V"
+  ],
+  "chịu": [
+    "V",
+    "A"
+  ],
+  "chọc": [
+    "V",
+    "N"
+  ],
+  "chọn": [
+    "V"
+  ],
+  "chọt": [
+    "V"
+  ],
+  "chỏm": [
+    "N"
+  ],
+  "chỏng": [
+    "V",
+    "A"
+  ],
+  "chốc": [
+    "V",
+    "N"
+  ],
+  "chối": [
+    "V",
+    "A"
+  ],
+  "chốn": [
+    "N"
+  ],
+  "chống": [
+    "V",
+    "N"
+  ],
+  "chốt": [
+    "V",
+    "N"
+  ],
+  "chồi": [
+    "N"
+  ],
+  "chồm": [
+    "V",
+    "A"
+  ],
+  "chồn": [
+    "N"
+  ],
+  "chồng": [
+    "V",
+    "N"
+  ],
+  "chổi": [
+    "N"
+  ],
+  "chổng": [
+    "V",
+    "A"
+  ],
+  "chỗ": [
+    "P",
+    "N"
+  ],
+  "chộ": [
+    "V"
+  ],
+  "chội": [
+    "V",
+    "N"
+  ],
+  "chộp": [
+    "V"
+  ],
+  "chột": [
+    "V",
+    "A"
+  ],
+  "chớ": [
+    "R",
+    "P"
+  ],
+  "chới": [
+    "V",
+    "A"
+  ],
+  "chớm": [
+    "V",
+    "A"
+  ],
+  "chớn": [
+    "A"
+  ],
+  "chớp": [
+    "V",
+    "N"
+  ],
+  "chờ": [
+    "V"
+  ],
+  "chờm": [
+    "V",
+    "A"
+  ],
+  "chờn": [
+    "V",
+    "A"
+  ],
+  "chở": [
+    "V"
+  ],
+  "chởm": [
+    "A"
+  ],
+  "chợ": [
+    "N"
+  ],
+  "chợn": [
+    "V",
+    "A"
+  ],
+  "chợp": [
+    "V",
+    "N"
+  ],
+  "chợt": [
+    "V",
+    "R",
+    "A"
+  ],
+  "chục": [
+    "V",
+    "N"
+  ],
+  "chụp": [
+    "V"
+  ],
+  "chủ": [
+    "A",
+    "N"
+  ],
+  "chứ": [
+    "R",
+    "P"
+  ],
+  "chứa": [
+    "V"
+  ],
+  "chức": [
+    "V",
+    "N"
+  ],
+  "chứng": [
+    "V",
+    "N"
+  ],
+  "chừ": [
+    "R",
+    "A"
+  ],
+  "chừa": [
+    "V",
+    "A"
+  ],
+  "chừng": [
+    "R",
+    "N"
+  ],
+  "chửa": [
+    "V",
+    "A"
+  ],
+  "chửi": [
+    "V"
+  ],
+  "chữ": [
+    "N"
+  ],
+  "chữa": [
+    "V"
+  ],
+  "chực": [
+    "V",
+    "N"
+  ],
+  "cin": [
+    "N"
+  ],
+  "co": [
+    "V",
+    "A",
+    "N"
+  ],
+  "coi": [
+    "V"
+  ],
+  "com": [
+    "N"
+  ],
+  "con": [
+    "V",
+    "P",
+    "N"
+  ],
+  "cong": [
+    "V",
+    "A"
+  ],
+  "coong": [
+    "A"
+  ],
+  "coĩ": [
+    "A"
+  ],
+  "coọc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cu": [
+    "A",
+    "N"
+  ],
+  "cua": [
+    "V",
+    "N"
+  ],
+  "cung": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "cuòng": [
+    "V",
+    "A"
+  ],
+  "cuốc": [
+    "V",
+    "N"
+  ],
+  "cuối": [
+    "A",
+    "N"
+  ],
+  "cuốn": [
+    "V",
+    "N"
+  ],
+  "cuống": [
+    "V",
+    "N"
+  ],
+  "cuồng": [
+    "V",
+    "A"
+  ],
+  "cuộc": [
+    "N"
+  ],
+  "cuội": [
+    "N"
+  ],
+  "cuộn": [
+    "V",
+    "N"
+  ],
+  "cuời": [
+    "V",
+    "N"
+  ],
+  "cà": [
+    "V",
+    "N"
+  ],
+  "cài": [
+    "V",
+    "N"
+  ],
+  "càm": [
+    "V",
+    "N"
+  ],
+  "càn": [
+    "V",
+    "A"
+  ],
+  "càng": [
+    "V",
+    "R",
+    "N"
+  ],
+  "cành": [
+    "N"
+  ],
+  "cào": [
+    "V",
+    "N"
+  ],
+  "cày": [
+    "V",
+    "N"
+  ],
+  "cá": [
+    "V",
+    "N"
+  ],
+  "các": [
+    "A",
+    "P"
+  ],
+  "cách": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cái": [
+    "A",
+    "P",
+    "N"
+  ],
+  "cám": [
+    "V",
+    "N"
+  ],
+  "cán": [
+    "V",
+    "N"
+  ],
+  "cáng": [
+    "V",
+    "N"
+  ],
+  "cánh": [
+    "V",
+    "N"
+  ],
+  "cáo": [
+    "V",
+    "N"
+  ],
+  "cát": [
+    "V",
+    "N"
+  ],
+  "câm": [
+    "V",
+    "A"
+  ],
+  "cân": [
+    "V",
+    "N"
+  ],
+  "câu": [
+    "V",
+    "N"
+  ],
+  "cây": [
+    "V",
+    "N"
+  ],
+  "cãi": [
+    "V"
+  ],
+  "cò": [
+    "V",
+    "N"
+  ],
+  "còi": [
+    "A",
+    "N"
+  ],
+  "còm": [
+    "A"
+  ],
+  "còn": [
+    "V",
+    "R",
+    "P",
+    "A"
+  ],
+  "còng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "có": [
+    "V",
+    "A"
+  ],
+  "cóc": [
+    "N"
+  ],
+  "cói": [
+    "V",
+    "N"
+  ],
+  "cóng": [
+    "V",
+    "A"
+  ],
+  "cốt": [
+    "V",
+    "N"
+  ],
+  "cô": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "côi": [
+    "A"
+  ],
+  "côn": [
+    "N"
+  ],
+  "công": [
+    "V",
+    "N"
+  ],
+  "cõi": [
+    "N"
+  ],
+  "cõng": [
+    "V"
+  ],
+  "cù": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cùm": [
+    "V",
+    "N"
+  ],
+  "cùn": [
+    "V",
+    "A"
+  ],
+  "cùng": [
+    "V",
+    "R",
+    "P",
+    "A"
+  ],
+  "cú": [
+    "V",
+    "N"
+  ],
+  "cúc": [
+    "N"
+  ],
+  "cúi": [
+    "V"
+  ],
+  "cún": [
+    "N"
+  ],
+  "cúng": [
+    "V",
+    "N"
+  ],
+  "cúp": [
+    "V",
+    "N"
+  ],
+  "cút": [
+    "V",
+    "A"
+  ],
+  "căm": [
+    "V",
+    "A"
+  ],
+  "căn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "căng": [
+    "V",
+    "A"
+  ],
+  "cũ": [
+    "V",
+    "A"
+  ],
+  "cũng": [
+    "R"
+  ],
+  "cơ": [
+    "R",
+    "P",
+    "N"
+  ],
+  "cơi": [
+    "V",
+    "N"
+  ],
+  "cơm": [
+    "N"
+  ],
+  "cơn": [
+    "N"
+  ],
+  "cư": [
+    "V",
+    "N"
+  ],
+  "cưa": [
+    "V",
+    "N"
+  ],
+  "cưu": [
+    "N"
+  ],
+  "cương": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cước": [
+    "N"
+  ],
+  "cưới": [
+    "V",
+    "N"
+  ],
+  "cướp": [
+    "V",
+    "N"
+  ],
+  "cười": [
+    "V",
+    "N"
+  ],
+  "cường": [
+    "A",
+    "N"
+  ],
+  "cưỡi": [
+    "V"
+  ],
+  "cưỡng": [
+    "V",
+    "A"
+  ],
+  "cược": [
+    "V",
+    "N"
+  ],
+  "cạ": [
+    "V",
+    "N"
+  ],
+  "cạn": [
+    "V",
+    "A"
+  ],
+  "cạnh": [
+    "V",
+    "N"
+  ],
+  "cạo": [
+    "V"
+  ],
+  "cả": [
+    "R",
+    "P",
+    "A"
+  ],
+  "cải": [
+    "V",
+    "N"
+  ],
+  "cảm": [
+    "V",
+    "N"
+  ],
+  "cảnh": [
+    "V",
+    "N"
+  ],
+  "cảo": [
+    "A",
+    "N"
+  ],
+  "cảu": [
+    "N"
+  ],
+  "cấm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cấp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cất": [
+    "V"
+  ],
+  "cấu": [
+    "V"
+  ],
+  "cấy": [
+    "V",
+    "N"
+  ],
+  "cầm": [
+    "V",
+    "N"
+  ],
+  "cần": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cầu": [
+    "V",
+    "N"
+  ],
+  "cầy": [
+    "N"
+  ],
+  "cẩm": [
+    "A",
+    "N"
+  ],
+  "cẩn": [
+    "A",
+    "N"
+  ],
+  "cận": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cập": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cậu": [
+    "P",
+    "N"
+  ],
+  "cậy": [
+    "V"
+  ],
+  "cắc": [
+    "A",
+    "N"
+  ],
+  "cắm": [
+    "V"
+  ],
+  "cắn": [
+    "V"
+  ],
+  "cắp": [
+    "V",
+    "N"
+  ],
+  "cắt": [
+    "V",
+    "N"
+  ],
+  "cằm": [
+    "N"
+  ],
+  "cằn": [
+    "A"
+  ],
+  "cẳng": [
+    "N"
+  ],
+  "cặm": [
+    "V"
+  ],
+  "cặn": [
+    "N"
+  ],
+  "cặp": [
+    "V",
+    "N"
+  ],
+  "cọ": [
+    "V",
+    "N"
+  ],
+  "cọc": [
+    "V",
+    "N"
+  ],
+  "cọng": [
+    "N"
+  ],
+  "cọp": [
+    "N"
+  ],
+  "cỏ": [
+    "N"
+  ],
+  "cỏn": [
+    "A"
+  ],
+  "cố": [
+    "V",
+    "A"
+  ],
+  "cốc": [
+    "N"
+  ],
+  "cối": [
+    "N"
+  ],
+  "cốm": [
+    "N"
+  ],
+  "cống": [
+    "V",
+    "N"
+  ],
+  "cồn": [
+    "N"
+  ],
+  "cồng": [
+    "A",
+    "N"
+  ],
+  "cổ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cổi": [
+    "N"
+  ],
+  "cổng": [
+    "N"
+  ],
+  "cỗ": [
+    "V",
+    "N"
+  ],
+  "cỗi": [
+    "A"
+  ],
+  "cộ": [
+    "V",
+    "N"
+  ],
+  "cội": [
+    "N"
+  ],
+  "cộng": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "cột": [
+    "V",
+    "N"
+  ],
+  "cớ": [
+    "N"
+  ],
+  "cớn": [
+    "N"
+  ],
+  "cờ": [
+    "N"
+  ],
+  "cời": [
+    "V"
+  ],
+  "cờm": [
+    "N"
+  ],
+  "cở": [
+    "V",
+    "N"
+  ],
+  "cởi": [
+    "V"
+  ],
+  "cỡ": [
+    "A",
+    "N"
+  ],
+  "cỡi": [
+    "N"
+  ],
+  "cỡn": [
+    "A"
+  ],
+  "cợi": [
+    "N"
+  ],
+  "cợt": [
+    "V",
+    "N"
+  ],
+  "cụ": [
+    "P",
+    "N"
+  ],
+  "cục": [
+    "V",
+    "N"
+  ],
+  "cụi": [
+    "V",
+    "A"
+  ],
+  "cụm": [
+    "V",
+    "N"
+  ],
+  "cụng": [
+    "V"
+  ],
+  "cụp": [
+    "V",
+    "A"
+  ],
+  "cụt": [
+    "V",
+    "A"
+  ],
+  "củ": [
+    "V",
+    "N"
+  ],
+  "của": [
+    "E",
+    "N"
+  ],
+  "củi": [
+    "N"
+  ],
+  "cứ": [
+    "V",
+    "R"
+  ],
+  "cứa": [
+    "V"
+  ],
+  "cứng": [
+    "V",
+    "A"
+  ],
+  "cứt": [
+    "N"
+  ],
+  "cứu": [
+    "V"
+  ],
+  "cừ": [
+    "V",
+    "A"
+  ],
+  "cừu": [
+    "N"
+  ],
+  "cử": [
+    "V",
+    "N"
+  ],
+  "cửa": [
+    "N"
+  ],
+  "cửi": [
+    "V"
+  ],
+  "cửu": [
+    "A",
+    "N"
+  ],
+  "cữ": [
+    "V",
+    "N"
+  ],
+  "cựa": [
+    "V",
+    "N"
+  ],
+  "cực": [
+    "V",
+    "A",
+    "N"
+  ],
+  "cựu": [
+    "A",
+    "N"
+  ],
+  "da": [
+    "V",
+    "N"
+  ],
+  "dai": [
+    "V",
+    "A"
+  ],
+  "dan": [
+    "V",
+    "N"
+  ],
+  "dang": [
+    "V",
+    "N"
+  ],
+  "danh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "dao": [
+    "V",
+    "N"
+  ],
+  "day": [
+    "V",
+    "N"
+  ],
+  "di": [
+    "V",
+    "N"
+  ],
+  "dim": [
+    "V",
+    "A"
+  ],
+  "dinh": [
+    "V",
+    "N"
+  ],
+  "diêm": [
+    "V",
+    "N"
+  ],
+  "diên": [
+    "V",
+    "N"
+  ],
+  "diêu": [
+    "V",
+    "A"
+  ],
+  "diú": [
+    "V",
+    "A"
+  ],
+  "diết": [
+    "V"
+  ],
+  "diều": [
+    "N"
+  ],
+  "diễm": [
+    "A",
+    "N"
+  ],
+  "diễn": [
+    "V",
+    "N"
+  ],
+  "diễu": [
+    "V",
+    "N"
+  ],
+  "diệc": [
+    "P",
+    "N"
+  ],
+  "diện": [
+    "V",
+    "N"
+  ],
+  "diệp": [
+    "N"
+  ],
+  "diệt": [
+    "V"
+  ],
+  "diệu": [
+    "A"
+  ],
+  "do": [
+    "V",
+    "P",
+    "N"
+  ],
+  "doanh": [
+    "V",
+    "N"
+  ],
+  "doi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "don": [
+    "V",
+    "N"
+  ],
+  "dong": [
+    "V",
+    "A",
+    "N"
+  ],
+  "doãn": [
+    "A",
+    "N"
+  ],
+  "du": [
+    "V",
+    "A"
+  ],
+  "dua": [
+    "V",
+    "N"
+  ],
+  "dung": [
+    "V",
+    "A",
+    "N"
+  ],
+  "duy": [
+    "A",
+    "N"
+  ],
+  "duyên": [
+    "V",
+    "N"
+  ],
+  "duyềnh": [
+    "N"
+  ],
+  "duối": [
+    "V",
+    "A"
+  ],
+  "duỗi": [
+    "V"
+  ],
+  "dzung": [
+    "N"
+  ],
+  "dzăng": [
+    "V"
+  ],
+  "dà": [
+    "V",
+    "A"
+  ],
+  "dài": [
+    "V",
+    "A"
+  ],
+  "dàn": [
+    "V",
+    "N"
+  ],
+  "dàng": [
+    "A"
+  ],
+  "dành": [
+    "V"
+  ],
+  "dào": [
+    "V",
+    "N"
+  ],
+  "dàu": [
+    "V",
+    "A"
+  ],
+  "dày": [
+    "V",
+    "A"
+  ],
+  "dái": [
+    "N"
+  ],
+  "dám": [
+    "V",
+    "A"
+  ],
+  "dán": [
+    "V",
+    "N"
+  ],
+  "dáng": [
+    "N"
+  ],
+  "đánh": [
+    "V"
+  ],
+  "dát": [
+    "V",
+    "A"
+  ],
+  "dâm": [
+    "A",
+    "N"
+  ],
+  "dân": [
+    "N"
+  ],
+  "dâng": [
+    "V"
+  ],
+  "dâu": [
+    "N"
+  ],
+  "dây": [
+    "V",
+    "N"
+  ],
+  "dã": [
+    "A",
+    "N"
+  ],
+  "dãi": [
+    "V"
+  ],
+  "dãn": [
+    "V",
+    "A"
+  ],
+  "dãy": [
+    "N"
+  ],
+  "dè": [
+    "V",
+    "A"
+  ],
+  "dèn": [
+    "N"
+  ],
+  "dép": [
+    "N"
+  ],
+  "dê": [
+    "A",
+    "N"
+  ],
+  "dì": [
+    "P",
+    "N"
+  ],
+  "dìm": [
+    "V"
+  ],
+  "dìn": [
+    "V"
+  ],
+  "dình": [
+    "V",
+    "A"
+  ],
+  "dìu": [
+    "V"
+  ],
+  "dính": [
+    "V",
+    "A"
+  ],
+  "díu": [
+    "A"
+  ],
+  "dò": [
+    "V"
+  ],
+  "dòi": [
+    "N"
+  ],
+  "dòm": [
+    "V"
+  ],
+  "dòn": [
+    "A"
+  ],
+  "dòng": [
+    "N"
+  ],
+  "dóm": [
+    "V",
+    "N"
+  ],
+  "dón": [
+    "V"
+  ],
+  "dô": [
+    "V",
+    "A"
+  ],
+  "dôi": [
+    "A"
+  ],
+  "dông": [
+    "V",
+    "N"
+  ],
+  "dõi": [
+    "V"
+  ],
+  "dù": [
+    "V",
+    "P",
+    "N"
+  ],
+  "dùm": [
+    "V",
+    "N"
+  ],
+  "dùng": [
+    "V",
+    "N"
+  ],
+  "dúi": [
+    "V",
+    "A"
+  ],
+  "dúm": [
+    "V",
+    "N"
+  ],
+  "dăm": [
+    "V",
+    "N"
+  ],
+  "dăng": [
+    "V"
+  ],
+  "dĩ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "dĩa": [
+    "N"
+  ],
+  "dũ": [
+    "A",
+    "N"
+  ],
+  "dũa": [
+    "V",
+    "N"
+  ],
+  "dũng": [
+    "A",
+    "N"
+  ],
+  "dơ": [
+    "V",
+    "A"
+  ],
+  "dơi": [
+    "N"
+  ],
+  "dư": [
+    "V",
+    "R",
+    "A"
+  ],
+  "dưa": [
+    "N"
+  ],
+  "dưng": [
+    "V",
+    "A"
+  ],
+  "dưói": [
+    "N"
+  ],
+  "dương": [
+    "A",
+    "N"
+  ],
+  "dưới": [
+    "A",
+    "P"
+  ],
+  "dường": [
+    "V",
+    "A",
+    "N"
+  ],
+  "dưỡng": [
+    "V",
+    "N"
+  ],
+  "dạ": [
+    "V",
+    "E",
+    "P",
+    "N"
+  ],
+  "dại": [
+    "V",
+    "A"
+  ],
+  "dạm": [
+    "V",
+    "A"
+  ],
+  "dạn": [
+    "A"
+  ],
+  "dạng": [
+    "N"
+  ],
+  "dạo": [
+    "V",
+    "R",
+    "N"
+  ],
+  "dạt": [
+    "V",
+    "A"
+  ],
+  "dạy": [
+    "V"
+  ],
+  "dải": [
+    "V",
+    "N"
+  ],
+  "dấn": [
+    "V"
+  ],
+  "dấu": [
+    "V",
+    "N"
+  ],
+  "dấy": [
+    "V"
+  ],
+  "dầm": [
+    "V",
+    "N"
+  ],
+  "dần": [
+    "V",
+    "R",
+    "A"
+  ],
+  "dầu": [
+    "V",
+    "N"
+  ],
+  "dầy": [
+    "A"
+  ],
+  "dẫm": [
+    "V"
+  ],
+  "dẫn": [
+    "V",
+    "N"
+  ],
+  "dẫu": [
+    "V",
+    "P"
+  ],
+  "dậm": [
+    "V",
+    "N"
+  ],
+  "dập": [
+    "V",
+    "A"
+  ],
+  "dật": [
+    "A"
+  ],
+  "dậu": [
+    "N"
+  ],
+  "dậy": [
+    "V",
+    "A"
+  ],
+  "dắng": [
+    "V",
+    "A"
+  ],
+  "dắt": [
+    "V"
+  ],
+  "dằm": [
+    "V",
+    "N"
+  ],
+  "dằn": [
+    "V"
+  ],
+  "dằng": [
+    "V",
+    "A"
+  ],
+  "dẳng": [
+    "V"
+  ],
+  "dặc": [
+    "A"
+  ],
+  "dặm": [
+    "V",
+    "N"
+  ],
+  "dặn": [
+    "V"
+  ],
+  "dặt": [
+    "V"
+  ],
+  "dẹp": [
+    "V",
+    "A"
+  ],
+  "dẻ": [
+    "A",
+    "N"
+  ],
+  "dẻo": [
+    "A"
+  ],
+  "dế": [
+    "N"
+  ],
+  "dề": [
+    "N"
+  ],
+  "dền": [
+    "V",
+    "A"
+  ],
+  "dềnh": [
+    "V",
+    "A"
+  ],
+  "dễ": [
+    "V",
+    "A"
+  ],
+  "dệt": [
+    "V"
+  ],
+  "dị": [
+    "V",
+    "A"
+  ],
+  "dịch": [
+    "V",
+    "N"
+  ],
+  "dịp": [
+    "N"
+  ],
+  "dịu": [
+    "V",
+    "A"
+  ],
+  "dọc": [
+    "V",
+    "R",
+    "A"
+  ],
+  "dọi": [
+    "V",
+    "N"
+  ],
+  "dọn": [
+    "V"
+  ],
+  "dỏi": [
+    "V"
+  ],
+  "dốc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "dối": [
+    "V",
+    "A"
+  ],
+  "dốt": [
+    "V",
+    "A"
+  ],
+  "dồi": [
+    "N"
+  ],
+  "dồn": [
+    "V"
+  ],
+  "dỗ": [
+    "V"
+  ],
+  "dỗi": [
+    "V",
+    "A"
+  ],
+  "dội": [
+    "V",
+    "A"
+  ],
+  "dộng": [
+    "V",
+    "N"
+  ],
+  "dột": [
+    "V",
+    "A"
+  ],
+  "dớ": [
+    "A"
+  ],
+  "dờ": [
+    "R",
+    "A"
+  ],
+  "dời": [
+    "V"
+  ],
+  "dờn": [
+    "V",
+    "A"
+  ],
+  "dở": [
+    "V",
+    "A"
+  ],
+  "dởm": [
+    "A"
+  ],
+  "dợm": [
+    "V"
+  ],
+  "dợn": [
+    "V",
+    "A"
+  ],
+  "dụ": [
+    "V"
+  ],
+  "dục": [
+    "A",
+    "N"
+  ],
+  "dụm": [
+    "V"
+  ],
+  "dụng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "dứt": [
+    "V",
+    "A"
+  ],
+  "dừa": [
+    "N"
+  ],
+  "dừng": [
+    "V",
+    "N"
+  ],
+  "dửng": [
+    "A"
+  ],
+  "dữ": [
+    "V",
+    "A"
+  ],
+  "dự": [
+    "V",
+    "N"
+  ],
+  "dựa": [
+    "V",
+    "A"
+  ],
+  "dựng": [
+    "V",
+    "N"
+  ],
+  "ei": [
+    "N"
+  ],
+  "em": [
+    "P",
+    "N"
+  ],
+  "eo": [
+    "N"
+  ],
+  "fh": [
+    "N"
+  ],
+  "ga": [
+    "V",
+    "N"
+  ],
+  "gai": [
+    "A",
+    "N"
+  ],
+  "game": [
+    "N"
+  ],
+  "gan": [
+    "V",
+    "A",
+    "N"
+  ],
+  "gang": [
+    "V",
+    "N"
+  ],
+  "ganh": [
+    "V"
+  ],
+  "gao": [
+    "N"
+  ],
+  "gay": [
+    "A"
+  ],
+  "gaya": [
+    "N"
+  ],
+  "ghe": [
+    "V",
+    "N"
+  ],
+  "ghen": [
+    "V",
+    "A"
+  ],
+  "ghi": [
+    "V",
+    "N"
+  ],
+  "ghinh": [
+    "N"
+  ],
+  "ghiền": [
+    "V",
+    "A"
+  ],
+  "ghè": [
+    "V"
+  ],
+  "ghé": [
+    "V"
+  ],
+  "ghém": [
+    "V"
+  ],
+  "ghép": [
+    "V",
+    "N"
+  ],
+  "ghét": [
+    "V",
+    "A"
+  ],
+  "ghê": [
+    "R",
+    "A"
+  ],
+  "ghì": [
+    "V"
+  ],
+  "ghẹo": [
+    "V"
+  ],
+  "ghẻ": [
+    "N"
+  ],
+  "ghẽ": [
+    "A"
+  ],
+  "ghế": [
+    "N"
+  ],
+  "ghếch": [
+    "V",
+    "A"
+  ],
+  "ghề": [
+    "A"
+  ],
+  "ghềnh": [
+    "N"
+  ],
+  "gi": [
+    "E",
+    "P"
+  ],
+  "gia": [
+    "V",
+    "N"
+  ],
+  "giai": [
+    "V",
+    "N"
+  ],
+  "giam": [
+    "V",
+    "N"
+  ],
+  "gian": [
+    "A",
+    "N"
+  ],
+  "giang": [
+    "V",
+    "N"
+  ],
+  "gianh": [
+    "V"
+  ],
+  "giao": [
+    "V",
+    "N"
+  ],
+  "gieo": [
+    "V"
+  ],
+  "gio": [
+    "N"
+  ],
+  "gioi": [
+    "V",
+    "A"
+  ],
+  "giong": [
+    "V",
+    "N"
+  ],
+  "giun": [
+    "N"
+  ],
+  "già": [
+    "V",
+    "A"
+  ],
+  "giảm": [
+    "V",
+    "N"
+  ],
+  "giàn": [
+    "N"
+  ],
+  "giành": [
+    "V"
+  ],
+  "giàu": [
+    "A"
+  ],
+  "giày": [
+    "N"
+  ],
+  "giá": [
+    "V",
+    "A",
+    "N"
+  ],
+  "giác": [
+    "V",
+    "N"
+  ],
+  "giáng": [
+    "V",
+    "N"
+  ],
+  "giáo": [
+    "N"
+  ],
+  "giáp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "giát": [
+    "V"
+  ],
+  "giây": [
+    "V",
+    "N"
+  ],
+  "giã": [
+    "V"
+  ],
+  "giãi": [
+    "V"
+  ],
+  "giãy": [
+    "V"
+  ],
+  "gièm": [
+    "V",
+    "A"
+  ],
+  "gié": [
+    "N"
+  ],
+  "giêng": [
+    "A",
+    "N"
+  ],
+  "giò": [
+    "V",
+    "N"
+  ],
+  "giòi": [
+    "N"
+  ],
+  "giòn": [
+    "V",
+    "A"
+  ],
+  "giòng": [
+    "V",
+    "N"
+  ],
+  "gió": [
+    "N"
+  ],
+  "gióng": [
+    "V",
+    "N"
+  ],
+  "giông": [
+    "N"
+  ],
+  "giùm": [
+    "V",
+    "A"
+  ],
+  "giúp": [
+    "V"
+  ],
+  "giăng": [
+    "V"
+  ],
+  "giũ": [
+    "V"
+  ],
+  "giũa": [
+    "V",
+    "N"
+  ],
+  "giơ": [
+    "V"
+  ],
+  "giới": [
+    "N"
+  ],
+  "giương": [
+    "V"
+  ],
+  "giường": [
+    "N"
+  ],
+  "giạt": [
+    "V"
+  ],
+  "giả": [
+    "V",
+    "A",
+    "N"
+  ],
+  "giải": [
+    "V",
+    "N"
+  ],
+  "giản": [
+    "V",
+    "A"
+  ],
+  "giảng": [
+    "V"
+  ],
+  "giấc": [
+    "N"
+  ],
+  "giấu": [
+    "V"
+  ],
+  "giấy": [
+    "N"
+  ],
+  "giần": [
+    "V",
+    "N"
+  ],
+  "giầu": [
+    "V",
+    "A"
+  ],
+  "giầy": [
+    "V",
+    "N"
+  ],
+  "giẫm": [
+    "V"
+  ],
+  "giận": [
+    "V",
+    "A"
+  ],
+  "giật": [
+    "V",
+    "A"
+  ],
+  "giậu": [
+    "N"
+  ],
+  "giậy": [
+    "V"
+  ],
+  "giắt": [
+    "V"
+  ],
+  "giằng": [
+    "V",
+    "N"
+  ],
+  "giặc": [
+    "N"
+  ],
+  "giặt": [
+    "V"
+  ],
+  "giẻ": [
+    "N"
+  ],
+  "giếc": [
+    "N"
+  ],
+  "giếng": [
+    "N"
+  ],
+  "giết": [
+    "V"
+  ],
+  "giềng": [
+    "N"
+  ],
+  "giễu": [
+    "V",
+    "A"
+  ],
+  "giọng": [
+    "N"
+  ],
+  "giọt": [
+    "V",
+    "N"
+  ],
+  "giỏ": [
+    "N"
+  ],
+  "giỏi": [
+    "A"
+  ],
+  "giống": [
+    "V",
+    "A"
+  ],
+  "giồng": [
+    "N"
+  ],
+  "giỗ": [
+    "N"
+  ],
+  "giờ": [
+    "V",
+    "R",
+    "N"
+  ],
+  "giời": [
+    "V",
+    "A",
+    "N"
+  ],
+  "giở": [
+    "V"
+  ],
+  "giỡn": [
+    "V",
+    "N"
+  ],
+  "giụa": [
+    "V"
+  ],
+  "giục": [
+    "V",
+    "A"
+  ],
+  "giữ": [
+    "V"
+  ],
+  "giữa": [
+    "A",
+    "E",
+    "R",
+    "V",
+    "N"
+  ],
+  "giựt": [
+    "V",
+    "N"
+  ],
+  "go": [
+    "V",
+    "N"
+  ],
+  "gom": [
+    "V",
+    "N"
+  ],
+  "goòng": [
+    "V",
+    "N"
+  ],
+  "guốc": [
+    "N"
+  ],
+  "guồi": [
+    "N"
+  ],
+  "guồng": [
+    "V",
+    "N"
+  ],
+  "guộc": [
+    "N"
+  ],
+  "gà": [
+    "V",
+    "N"
+  ],
+  "gài": [
+    "V",
+    "N"
+  ],
+  "gàn": [
+    "V",
+    "A"
+  ],
+  "gành": [
+    "N"
+  ],
+  "gào": [
+    "V"
+  ],
+  "gàu": [
+    "N"
+  ],
+  "gày": [
+    "A"
+  ],
+  "gác": [
+    "V",
+    "N"
+  ],
+  "gái": [
+    "A",
+    "N"
+  ],
+  "gánh": [
+    "V",
+    "N"
+  ],
+  "gáo": [
+    "N"
+  ],
+  "gáy": [
+    "V",
+    "N"
+  ],
+  "gân": [
+    "V",
+    "N"
+  ],
+  "gây": [
+    "V"
+  ],
+  "gã": [
+    "P",
+    "N"
+  ],
+  "gãi": [
+    "V"
+  ],
+  "gãy": [
+    "V",
+    "A"
+  ],
+  "gì": [
+    "E",
+    "P"
+  ],
+  "gìn": [
+    "V"
+  ],
+  "gò": [
+    "N"
+  ],
+  "gòn": [
+    "N"
+  ],
+  "góa": [
+    "V",
+    "A"
+  ],
+  "góc": [
+    "N"
+  ],
+  "gói": [
+    "V",
+    "N"
+  ],
+  "góp": [
+    "V"
+  ],
+  "gót": [
+    "N"
+  ],
+  "gôn": [
+    "N"
+  ],
+  "gông": [
+    "V",
+    "N"
+  ],
+  "gõ": [
+    "V"
+  ],
+  "gù": [
+    "V",
+    "A",
+    "N"
+  ],
+  "gùi": [
+    "V",
+    "N"
+  ],
+  "gùng": [
+    "V"
+  ],
+  "gú": [
+    "V",
+    "N"
+  ],
+  "gút": [
+    "V",
+    "N"
+  ],
+  "găm": [
+    "V",
+    "A"
+  ],
+  "gũi": [
+    "A"
+  ],
+  "gươm": [
+    "N"
+  ],
+  "gương": [
+    "N"
+  ],
+  "gượng": [
+    "V",
+    "A"
+  ],
+  "gạ": [
+    "V"
+  ],
+  "gạch": [
+    "V",
+    "N"
+  ],
+  "gại": [
+    "V",
+    "N"
+  ],
+  "gạn": [
+    "V"
+  ],
+  "gạo": [
+    "N"
+  ],
+  "gạt": [
+    "V",
+    "N"
+  ],
+  "gả": [
+    "V"
+  ],
+  "gảy": [
+    "V"
+  ],
+  "gấc": [
+    "N"
+  ],
+  "gấm": [
+    "A",
+    "N"
+  ],
+  "gấp": [
+    "V",
+    "R",
+    "A"
+  ],
+  "gấu": [
+    "V",
+    "N"
+  ],
+  "gầm": [
+    "V",
+    "N"
+  ],
+  "gần": [
+    "R",
+    "A"
+  ],
+  "gầu": [
+    "N"
+  ],
+  "gầy": [
+    "A"
+  ],
+  "gẩy": [
+    "V"
+  ],
+  "gẫm": [
+    "V"
+  ],
+  "gẫu": [
+    "V"
+  ],
+  "gẫy": [
+    "V",
+    "A"
+  ],
+  "gập": [
+    "V",
+    "A"
+  ],
+  "gật": [
+    "V"
+  ],
+  "gậy": [
+    "N"
+  ],
+  "gắm": [
+    "V"
+  ],
+  "gắn": [
+    "V",
+    "A"
+  ],
+  "gắng": [
+    "V",
+    "A"
+  ],
+  "gắt": [
+    "V",
+    "A"
+  ],
+  "gặm": [
+    "V"
+  ],
+  "gặp": [
+    "V"
+  ],
+  "gặt": [
+    "V"
+  ],
+  "gềnh": [
+    "N"
+  ],
+  "gọi": [
+    "V"
+  ],
+  "gọn": [
+    "V",
+    "A"
+  ],
+  "gọng": [
+    "N"
+  ],
+  "gọt": [
+    "V"
+  ],
+  "gỏi": [
+    "A",
+    "N"
+  ],
+  "gốc": [
+    "A",
+    "N"
+  ],
+  "gối": [
+    "V",
+    "N"
+  ],
+  "gồ": [
+    "V",
+    "A"
+  ],
+  "gồm": [
+    "V"
+  ],
+  "gồng": [
+    "V",
+    "N"
+  ],
+  "gỗ": [
+    "N"
+  ],
+  "gội": [
+    "V"
+  ],
+  "gột": [
+    "V"
+  ],
+  "gớm": [
+    "R",
+    "A"
+  ],
+  "gờm": [
+    "A"
+  ],
+  "gờn": [
+    "V"
+  ],
+  "gởi": [
+    "V"
+  ],
+  "gỡ": [
+    "V"
+  ],
+  "gợi": [
+    "V"
+  ],
+  "gợn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "gục": [
+    "V"
+  ],
+  "gừng": [
+    "N"
+  ],
+  "gửi": [
+    "V"
+  ],
+  "ha": [
+    "R",
+    "E"
+  ],
+  "hai": [
+    "A",
+    "P",
+    "N"
+  ],
+  "ham": [
+    "V",
+    "A"
+  ],
+  "han": [
+    "V",
+    "N"
+  ],
+  "hang": [
+    "V",
+    "N"
+  ],
+  "hanh": [
+    "V",
+    "N"
+  ],
+  "hao": [
+    "V",
+    "A"
+  ],
+  "hay": [
+    "V",
+    "R",
+    "A"
+  ],
+  "he": [
+    "P"
+  ],
+  "hem": [
+    "V",
+    "N"
+  ],
+  "hen": [
+    "N"
+  ],
+  "heo": [
+    "A",
+    "N"
+  ],
+  "hi": [
+    "E",
+    "P"
+  ],
+  "hiu": [
+    "A"
+  ],
+  "hiên": [
+    "N"
+  ],
+  "hiếm": [
+    "A"
+  ],
+  "hiến": [
+    "V"
+  ],
+  "hiếng": [
+    "A"
+  ],
+  "hiếp": [
+    "V"
+  ],
+  "hiếu": [
+    "A",
+    "N"
+  ],
+  "hiềm": [
+    "A"
+  ],
+  "hiền": [
+    "A"
+  ],
+  "hiểm": [
+    "A"
+  ],
+  "hiển": [
+    "V",
+    "A"
+  ],
+  "hiểu": [
+    "V"
+  ],
+  "hiện": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hiệp": [
+    "V",
+    "N"
+  ],
+  "hiệu": [
+    "V",
+    "N"
+  ],
+  "ho": [
+    "V",
+    "N"
+  ],
+  "hoa": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hoan": [
+    "V",
+    "A"
+  ],
+  "hoang": [
+    "A",
+    "N"
+  ],
+  "hoay": [
+    "V"
+  ],
+  "hoe": [
+    "N"
+  ],
+  "hoen": [
+    "V",
+    "A"
+  ],
+  "hoi": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "hom": [
+    "V",
+    "N"
+  ],
+  "hon": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hong": [
+    "V",
+    "N"
+  ],
+  "how": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hoài": [
+    "R",
+    "A"
+  ],
+  "hoàn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hoàng": [
+    "A",
+    "N"
+  ],
+  "hoành": [
+    "V",
+    "A"
+  ],
+  "hoác": [
+    "V",
+    "A"
+  ],
+  "hoạch": [
+    "N"
+  ],
+  "hoại": [
+    "V",
+    "A"
+  ],
+  "hoạn": [
+    "V",
+    "N"
+  ],
+  "hoải": [
+    "V",
+    "A"
+  ],
+  "hoảng": [
+    "V",
+    "A"
+  ],
+  "hoảnh": [
+    "A"
+  ],
+  "hoắc": [
+    "V",
+    "N"
+  ],
+  "hoắt": [
+    "V",
+    "A"
+  ],
+  "hoằn": [
+    "A"
+  ],
+  "hoặc": [
+    "C",
+    "R"
+  ],
+  "htan": [
+    "N"
+  ],
+  "hu": [
+    "V",
+    "N"
+  ],
+  "hun": [
+    "V",
+    "N"
+  ],
+  "hung": [
+    "A",
+    "N"
+  ],
+  "huy": [
+    "V",
+    "N"
+  ],
+  "huynh": [
+    "N"
+  ],
+  "huyên": [
+    "A",
+    "N"
+  ],
+  "huyết": [
+    "A",
+    "N"
+  ],
+  "huyền": [
+    "V",
+    "A",
+    "N"
+  ],
+  "huyễn": [
+    "A"
+  ],
+  "huyện": [
+    "N"
+  ],
+  "huyệt": [
+    "N"
+  ],
+  "huân": [
+    "V",
+    "N"
+  ],
+  "huơ": [
+    "V"
+  ],
+  "huấn": [
+    "V",
+    "N"
+  ],
+  "huế": [
+    "N"
+  ],
+  "huề": [
+    "V",
+    "A"
+  ],
+  "huệ": [
+    "V",
+    "N"
+  ],
+  "huống": [
+    "V",
+    "R"
+  ],
+  "huỳnh": [
+    "N"
+  ],
+  "hy": [
+    "A",
+    "N"
+  ],
+  "hà": [
+    "N"
+  ],
+  "hài": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hàm": [
+    "V",
+    "N"
+  ],
+  "hàn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hàng": [
+    "V",
+    "N"
+  ],
+  "hành": [
+    "V",
+    "N"
+  ],
+  "hànng": [],
+  "hào": [
+    "V",
+    "A",
+    "N"
+  ],
+  "há": [
+    "V",
+    "A"
+  ],
+  "hách": [
+    "V",
+    "A"
+  ],
+  "hái": [
+    "V"
+  ],
+  "hám": [
+    "V",
+    "A"
+  ],
+  "háo": [
+    "V",
+    "A"
+  ],
+  "hát": [
+    "V",
+    "N"
+  ],
+  "hâm": [
+    "V",
+    "A"
+  ],
+  "hân": [
+    "A",
+    "N"
+  ],
+  "hây": [
+    "V",
+    "A"
+  ],
+  "hãi": [
+    "V",
+    "A"
+  ],
+  "hãm": [
+    "V",
+    "A"
+  ],
+  "hãn": [
+    "A"
+  ],
+  "hãnh": [
+    "V",
+    "A"
+  ],
+  "hão": [
+    "A"
+  ],
+  "hãy": [
+    "V",
+    "A"
+  ],
+  "hè": [
+    "V",
+    "N"
+  ],
+  "hèm": [
+    "N"
+  ],
+  "hèn": [
+    "A"
+  ],
+  "hé": [
+    "V"
+  ],
+  "héo": [
+    "V",
+    "A"
+  ],
+  "hét": [
+    "V"
+  ],
+  "hê": [
+    "V",
+    "A",
+    "E"
+  ],
+  "hên": [
+    "V",
+    "A"
+  ],
+  "hênh": [
+    "A"
+  ],
+  "hì": [
+    "V",
+    "I"
+  ],
+  "hình": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hí": [
+    "V",
+    "I"
+  ],
+  "hít": [
+    "V"
+  ],
+  "hò": [
+    "V",
+    "N"
+  ],
+  "hòa": [
+    "V",
+    "A"
+  ],
+  "hòe": [
+    "N"
+  ],
+  "hòi": [
+    "V"
+  ],
+  "hòm": [
+    "N"
+  ],
+  "hòn": [
+    "N"
+  ],
+  "hòng": [
+    "V",
+    "A"
+  ],
+  "hóa": [
+    "V",
+    "N"
+  ],
+  "hóc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hóm": [
+    "A",
+    "N"
+  ],
+  "hóng": [
+    "V",
+    "A"
+  ],
+  "hót": [
+    "V"
+  ],
+  "hô": [
+    "V",
+    "N"
+  ],
+  "hôi": [
+    "V",
+    "A"
+  ],
+  "hôm": [
+    "V",
+    "N"
+  ],
+  "hôn": [
+    "V",
+    "N"
+  ],
+  "hùa": [
+    "V",
+    "A"
+  ],
+  "hùm": [
+    "N"
+  ],
+  "hùn": [
+    "V"
+  ],
+  "hùng": [
+    "A",
+    "N"
+  ],
+  "hú": [
+    "V",
+    "N"
+  ],
+  "húi": [
+    "V"
+  ],
+  "húng": [
+    "V",
+    "N"
+  ],
+  "húp": [
+    "V"
+  ],
+  "hút": [
+    "V",
+    "N"
+  ],
+  "hăm": [
+    "V",
+    "A"
+  ],
+  "hăng": [
+    "V",
+    "A"
+  ],
+  "hũ": [
+    "N"
+  ],
+  "hơ": [
+    "V"
+  ],
+  "hơi": [
+    "R",
+    "N",
+    "A"
+  ],
+  "hơm": [
+    "V"
+  ],
+  "hơn": [
+    "V",
+    "R",
+    "A"
+  ],
+  "hư": [
+    "V",
+    "A"
+  ],
+  "hưng": [
+    "V",
+    "N"
+  ],
+  "hưu": [
+    "V",
+    "N"
+  ],
+  "hương": [
+    "V",
+    "N"
+  ],
+  "hươu": [
+    "N"
+  ],
+  "hướm": [
+    "V"
+  ],
+  "hướng": [
+    "V",
+    "N"
+  ],
+  "hườm": [
+    "N"
+  ],
+  "hườn": [
+    "N"
+  ],
+  "hường": [
+    "A",
+    "N"
+  ],
+  "hưởng": [
+    "V"
+  ],
+  "hạ": [
+    "V",
+    "A",
+    "E",
+    "N"
+  ],
+  "hạc": [
+    "N"
+  ],
+  "hại": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hạn": [
+    "V",
+    "N"
+  ],
+  "hạng": [
+    "N"
+  ],
+  "hạnh": [
+    "A",
+    "N"
+  ],
+  "hạo": [
+    "N"
+  ],
+  "hạt": [
+    "V",
+    "N"
+  ],
+  "hả": [
+    "V",
+    "R",
+    "P"
+  ],
+  "hải": [
+    "A",
+    "N"
+  ],
+  "hấp": [
+    "V",
+    "N"
+  ],
+  "hất": [
+    "V"
+  ],
+  "hấu": [
+    "N"
+  ],
+  "hầm": [
+    "V",
+    "N"
+  ],
+  "hầu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hẩm": [
+    "V",
+    "A"
+  ],
+  "hẩy": [
+    "V"
+  ],
+  "hẫng": [
+    "V",
+    "A"
+  ],
+  "hận": [
+    "V",
+    "N"
+  ],
+  "hậu": [
+    "R",
+    "N",
+    "A"
+  ],
+  "hắc": [
+    "A"
+  ],
+  "hắn": [
+    "P"
+  ],
+  "hắt": [
+    "V",
+    "A"
+  ],
+  "hằn": [
+    "V",
+    "A"
+  ],
+  "hằng": [
+    "A",
+    "N"
+  ],
+  "hẳn": [
+    "R",
+    "A"
+  ],
+  "hẹ": [
+    "N"
+  ],
+  "hẹn": [
+    "V",
+    "N"
+  ],
+  "hẹp": [
+    "A"
+  ],
+  "hến": [
+    "N"
+  ],
+  "hết": [
+    "V",
+    "R",
+    "A"
+  ],
+  "hề": [
+    "A",
+    "N"
+  ],
+  "hều": [
+    "A"
+  ],
+  "hể": [
+    "V"
+  ],
+  "hển": [
+    "V",
+    "A"
+  ],
+  "hễ": [
+    "V",
+    "R"
+  ],
+  "hệ": [
+    "N"
+  ],
+  "hệt": [
+    "V",
+    "A"
+  ],
+  "hỉ": [
+    "V",
+    "A"
+  ],
+  "hỉm": [
+    "A"
+  ],
+  "hỉnh": [
+    "A"
+  ],
+  "họ": [
+    "P",
+    "N"
+  ],
+  "họa": [
+    "V",
+    "N"
+  ],
+  "học": [
+    "V"
+  ],
+  "họn": [
+    "A"
+  ],
+  "họng": [
+    "N"
+  ],
+  "họp": [
+    "V"
+  ],
+  "hỏa": [
+    "A",
+    "N"
+  ],
+  "hỏi": [
+    "V",
+    "N"
+  ],
+  "hỏn": [
+    "A"
+  ],
+  "hỏng": [
+    "V",
+    "A"
+  ],
+  "hố": [
+    "V",
+    "N"
+  ],
+  "hốc": [
+    "V",
+    "N"
+  ],
+  "hối": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hống": [
+    "V",
+    "A"
+  ],
+  "hốt": [
+    "V",
+    "A"
+  ],
+  "hồ": [
+    "V",
+    "N"
+  ],
+  "hồi": [
+    "V",
+    "R",
+    "N"
+  ],
+  "hồn": [
+    "N"
+  ],
+  "hồng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hổ": [
+    "N"
+  ],
+  "hổi": [
+    "V",
+    "A"
+  ],
+  "hổm": [
+    "A",
+    "N"
+  ],
+  "hổn": [
+    "A"
+  ],
+  "hổng": [
+    "V",
+    "A"
+  ],
+  "hỗn": [
+    "V",
+    "A"
+  ],
+  "hộ": [
+    "V",
+    "E",
+    "N"
+  ],
+  "hộc": [
+    "V",
+    "N"
+  ],
+  "hội": [
+    "V",
+    "N"
+  ],
+  "hộp": [
+    "V",
+    "N"
+  ],
+  "hột": [
+    "N"
+  ],
+  "hớ": [
+    "V",
+    "A"
+  ],
+  "hớn": [
+    "V",
+    "A"
+  ],
+  "hớp": [
+    "V",
+    "N"
+  ],
+  "hờ": [
+    "V",
+    "A"
+  ],
+  "hời": [
+    "V",
+    "A"
+  ],
+  "hờn": [
+    "V",
+    "A"
+  ],
+  "hở": [
+    "V",
+    "R",
+    "A"
+  ],
+  "hỡi": [
+    "P",
+    "I"
+  ],
+  "hợp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "hục": [
+    "V",
+    "A"
+  ],
+  "hụi": [
+    "N"
+  ],
+  "hụt": [
+    "V",
+    "A"
+  ],
+  "hủ": [
+    "A",
+    "N"
+  ],
+  "hủy": [
+    "V"
+  ],
+  "hứa": [
+    "V"
+  ],
+  "hức": [
+    "V",
+    "N"
+  ],
+  "hứng": [
+    "V",
+    "N"
+  ],
+  "hừng": [
+    "V",
+    "A"
+  ],
+  "hửng": [
+    "V",
+    "A"
+  ],
+  "hững": [
+    "V",
+    "A"
+  ],
+  "hữu": [
+    "A",
+    "N"
+  ],
+  "hực": [
+    "V",
+    "A"
+  ],
+  "hỷ": [
+    "A",
+    "N"
+  ],
+  "im": [
+    "V",
+    "A"
+  ],
+  "in": [
+    "V",
+    "A"
+  ],
+  "iu": [
+    "V"
+  ],
+  "ke": [
+    "V",
+    "A"
+  ],
+  "kem": [
+    "V",
+    "N"
+  ],
+  "ken": [
+    "N"
+  ],
+  "keo": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kha": [
+    "A",
+    "E",
+    "N"
+  ],
+  "khai": [
+    "V",
+    "N"
+  ],
+  "khan": [
+    "V",
+    "A"
+  ],
+  "khang": [
+    "A"
+  ],
+  "khanh": [
+    "N"
+  ],
+  "khao": [
+    "V"
+  ],
+  "khay": [
+    "N"
+  ],
+  "khe": [
+    "V",
+    "N"
+  ],
+  "khen": [
+    "V"
+  ],
+  "kheo": [
+    "V",
+    "A"
+  ],
+  "khi": [
+    "R",
+    "N"
+  ],
+  "khinh": [
+    "V",
+    "A"
+  ],
+  "khiêm": [
+    "A",
+    "N"
+  ],
+  "khiên": [
+    "V",
+    "N"
+  ],
+  "khiêu": [
+    "V"
+  ],
+  "khiếm": [
+    "A",
+    "N"
+  ],
+  "khiến": [
+    "V"
+  ],
+  "khiếp": [
+    "V",
+    "A"
+  ],
+  "khiết": [
+    "A"
+  ],
+  "khiếu": [
+    "V",
+    "N"
+  ],
+  "khiễng": [
+    "V"
+  ],
+  "kho": [
+    "N"
+  ],
+  "khoa": [
+    "V",
+    "N"
+  ],
+  "khoai": [
+    "A",
+    "N"
+  ],
+  "khoan": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khoang": [
+    "V",
+    "N"
+  ],
+  "khoanh": [
+    "V",
+    "N"
+  ],
+  "khoe": [
+    "V",
+    "A"
+  ],
+  "khom": [
+    "V"
+  ],
+  "khoác": [
+    "V"
+  ],
+  "khoái": [
+    "V",
+    "A"
+  ],
+  "khoán": [
+    "V",
+    "N"
+  ],
+  "khoét": [
+    "V"
+  ],
+  "khoí": [
+    "V",
+    "N"
+  ],
+  "khoăn": [
+    "V"
+  ],
+  "khoải": [
+    "V",
+    "A"
+  ],
+  "khoảng": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "khoảnh": [
+    "V",
+    "N"
+  ],
+  "khoắc": [
+    "V"
+  ],
+  "khoắt": [
+    "V"
+  ],
+  "khu": [
+    "V",
+    "N"
+  ],
+  "khua": [
+    "V"
+  ],
+  "khum": [
+    "V"
+  ],
+  "khung": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khuy": [
+    "N"
+  ],
+  "khuya": [
+    "A",
+    "N"
+  ],
+  "khuynh": [
+    "V",
+    "A"
+  ],
+  "khuyên": [
+    "V",
+    "N"
+  ],
+  "khuyến": [
+    "V"
+  ],
+  "khuyết": [
+    "V",
+    "A"
+  ],
+  "khuân": [
+    "V"
+  ],
+  "khuâng": [
+    "N"
+  ],
+  "khuây": [
+    "V"
+  ],
+  "khuê": [
+    "A",
+    "N"
+  ],
+  "khuôn": [
+    "V",
+    "N"
+  ],
+  "khuất": [
+    "V",
+    "A"
+  ],
+  "khuấy": [
+    "V"
+  ],
+  "khuẩy": [
+    "V"
+  ],
+  "khuỷu": [
+    "N"
+  ],
+  "khà": [
+    "V",
+    "E"
+  ],
+  "khàn": [
+    "A"
+  ],
+  "khàng": [
+    "A"
+  ],
+  "khá": [
+    "V",
+    "R",
+    "A"
+  ],
+  "khác": [
+    "A",
+    "P"
+  ],
+  "khách": [
+    "N"
+  ],
+  "khái": [
+    "N"
+  ],
+  "khám": [
+    "V",
+    "N"
+  ],
+  "kháng": [
+    "V",
+    "A"
+  ],
+  "khánh": [
+    "N"
+  ],
+  "khát": [
+    "V",
+    "A"
+  ],
+  "khâm": [
+    "N"
+  ],
+  "khâng": [
+    "A"
+  ],
+  "khâu": [
+    "V",
+    "N"
+  ],
+  "khè": [
+    "V",
+    "N"
+  ],
+  "khèn": [
+    "N"
+  ],
+  "khéo": [
+    "V",
+    "A"
+  ],
+  "khép": [
+    "V",
+    "A"
+  ],
+  "khét": [
+    "V",
+    "A"
+  ],
+  "khê": [
+    "A"
+  ],
+  "khêu": [
+    "V"
+  ],
+  "khì": [
+    "V",
+    "A"
+  ],
+  "khí": [
+    "N"
+  ],
+  "khía": [
+    "V",
+    "N"
+  ],
+  "khích": [
+    "V"
+  ],
+  "khít": [
+    "A"
+  ],
+  "khò": [
+    "V",
+    "N"
+  ],
+  "khòm": [
+    "V",
+    "A"
+  ],
+  "khó": [
+    "V",
+    "A"
+  ],
+  "khóa": [
+    "V",
+    "N"
+  ],
+  "khóc": [
+    "V"
+  ],
+  "khóe": [
+    "N"
+  ],
+  "khói": [
+    "N"
+  ],
+  "khóm": [
+    "N"
+  ],
+  "khô": [
+    "V",
+    "A"
+  ],
+  "khôi": [
+    "A",
+    "N"
+  ],
+  "khôn": [
+    "V",
+    "A"
+  ],
+  "không": [
+    "V",
+    "R",
+    "P",
+    "A"
+  ],
+  "khùng": [
+    "V",
+    "A"
+  ],
+  "khú": [
+    "V"
+  ],
+  "khúc": [
+    "V",
+    "N"
+  ],
+  "khúm": [
+    "V"
+  ],
+  "khăn": [
+    "N"
+  ],
+  "khăng": [
+    "V",
+    "A"
+  ],
+  "khơi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khư": [
+    "V",
+    "A"
+  ],
+  "khương": [
+    "N"
+  ],
+  "khướt": [
+    "A"
+  ],
+  "khạc": [
+    "V"
+  ],
+  "khạo": [
+    "V",
+    "A"
+  ],
+  "khả": [
+    "V",
+    "A"
+  ],
+  "khải": [
+    "A",
+    "N"
+  ],
+  "khảm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khản": [
+    "V",
+    "A"
+  ],
+  "khảo": [
+    "V",
+    "A"
+  ],
+  "khảy": [
+    "V"
+  ],
+  "khấc": [
+    "A",
+    "N"
+  ],
+  "khấn": [
+    "V",
+    "N"
+  ],
+  "khấp": [
+    "A"
+  ],
+  "khất": [
+    "V",
+    "A"
+  ],
+  "khấu": [
+    "V",
+    "N"
+  ],
+  "khẩn": [
+    "V",
+    "A"
+  ],
+  "khẩu": [
+    "A",
+    "N"
+  ],
+  "khập": [
+    "V",
+    "A"
+  ],
+  "khắc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khắp": [
+    "R",
+    "A"
+  ],
+  "khắt": [
+    "A"
+  ],
+  "khằn": [
+    "V",
+    "A"
+  ],
+  "khẳm": [
+    "A"
+  ],
+  "khẻ": [
+    "A"
+  ],
+  "khẽ": [
+    "R",
+    "A"
+  ],
+  "khế": [
+    "N"
+  ],
+  "khề": [
+    "V",
+    "A"
+  ],
+  "khều": [
+    "V"
+  ],
+  "khểnh": [
+    "V",
+    "A"
+  ],
+  "khỉ": [
+    "N"
+  ],
+  "khị": [
+    "V"
+  ],
+  "khỏa": [
+    "V"
+  ],
+  "khỏe": [
+    "V",
+    "A"
+  ],
+  "khỏi": [
+    "V",
+    "A",
+    "E"
+  ],
+  "khỏng": [
+    "N"
+  ],
+  "khố": [
+    "N"
+  ],
+  "khốc": [
+    "V",
+    "A"
+  ],
+  "khối": [
+    "N"
+  ],
+  "khốn": [
+    "V",
+    "A"
+  ],
+  "khổ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khớp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "khờ": [
+    "A"
+  ],
+  "khởi": [
+    "V",
+    "N"
+  ],
+  "khủ": [
+    "V",
+    "N"
+  ],
+  "khủng": [
+    "A",
+    "N"
+  ],
+  "khứ": [
+    "V",
+    "N"
+  ],
+  "khừ": [
+    "V",
+    "A"
+  ],
+  "khử": [
+    "V",
+    "N"
+  ],
+  "kia": [
+    "A",
+    "P"
+  ],
+  "kim": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kinh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kiên": [
+    "A",
+    "N"
+  ],
+  "kiêng": [
+    "V"
+  ],
+  "kiêu": [
+    "V",
+    "A"
+  ],
+  "kiếm": [
+    "V",
+    "N"
+  ],
+  "kiến": [
+    "V",
+    "N"
+  ],
+  "kiếng": [
+    "N"
+  ],
+  "kiếp": [
+    "V",
+    "N"
+  ],
+  "kiền": [
+    "N"
+  ],
+  "kiềng": [
+    "N"
+  ],
+  "kiều": [
+    "A",
+    "N"
+  ],
+  "kiểm": [
+    "V",
+    "N"
+  ],
+  "kiển": [
+    "A"
+  ],
+  "kiểng": [
+    "A",
+    "N"
+  ],
+  "kiểu": [
+    "V",
+    "N"
+  ],
+  "kiệm": [
+    "V",
+    "A"
+  ],
+  "kiệt": [
+    "V",
+    "A"
+  ],
+  "kiệu": [
+    "N"
+  ],
+  "kè": [
+    "V",
+    "N"
+  ],
+  "kèm": [
+    "V",
+    "A"
+  ],
+  "kèn": [
+    "N"
+  ],
+  "kèo": [
+    "N"
+  ],
+  "kém": [
+    "V",
+    "A"
+  ],
+  "kén": [
+    "V",
+    "N"
+  ],
+  "kéo": [
+    "V",
+    "N"
+  ],
+  "kép": [
+    "A",
+    "N"
+  ],
+  "két": [
+    "V",
+    "N"
+  ],
+  "kê": [
+    "V",
+    "N"
+  ],
+  "kênh": [
+    "V",
+    "N"
+  ],
+  "kêu": [
+    "V",
+    "N"
+  ],
+  "kì": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kìa": [
+    "R",
+    "P"
+  ],
+  "kìm": [
+    "V",
+    "N"
+  ],
+  "kình": [
+    "A",
+    "N"
+  ],
+  "kí": [
+    "V",
+    "N"
+  ],
+  "kích": [
+    "V",
+    "N"
+  ],
+  "kín": [
+    "A"
+  ],
+  "kính": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kíp": [
+    "N"
+  ],
+  "ký": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kĩ": [
+    "R",
+    "A"
+  ],
+  "kẹo": [
+    "V",
+    "N"
+  ],
+  "kẹp": [
+    "V",
+    "N"
+  ],
+  "kẹt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kẻ": [
+    "V",
+    "P",
+    "N"
+  ],
+  "kẻng": [
+    "N"
+  ],
+  "kẻo": [
+    "R"
+  ],
+  "kẽ": [
+    "V",
+    "N"
+  ],
+  "kẽm": [
+    "N"
+  ],
+  "kẽo": [
+    "R"
+  ],
+  "kế": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kết": [
+    "V",
+    "N"
+  ],
+  "kếu": [
+    "V"
+  ],
+  "kề": [
+    "V",
+    "A"
+  ],
+  "kềnh": [
+    "A"
+  ],
+  "kể": [
+    "V"
+  ],
+  "kệ": [
+    "V",
+    "N"
+  ],
+  "kệch": [
+    "A"
+  ],
+  "kỉ": [
+    "N"
+  ],
+  "kị": [
+    "V",
+    "A"
+  ],
+  "kịch": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kịp": [
+    "V",
+    "A"
+  ],
+  "kỳ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "kỵ": [
+    "V",
+    "N"
+  ],
+  "kỷ": [
+    "V",
+    "N"
+  ],
+  "kỹ": [
+    "V",
+    "A"
+  ],
+  "la": [
+    "V",
+    "A",
+    "E",
+    "N"
+  ],
+  "lai": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lam": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lan": [
+    "V",
+    "N"
+  ],
+  "lang": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lanh": [
+    "V",
+    "A"
+  ],
+  "lao": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lau": [
+    "V"
+  ],
+  "lay": [
+    "V"
+  ],
+  "le": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lem": [
+    "V",
+    "A"
+  ],
+  "len": [
+    "N"
+  ],
+  "leo": [
+    "V",
+    "N"
+  ],
+  "li": [
+    "V",
+    "N"
+  ],
+  "lia": [
+    "V"
+  ],
+  "lim": [
+    "V",
+    "N"
+  ],
+  "linh": [
+    "A",
+    "N"
+  ],
+  "liên": [
+    "V",
+    "A",
+    "N"
+  ],
+  "liêng": [
+    "A",
+    "N"
+  ],
+  "liêu": [
+    "A",
+    "N"
+  ],
+  "liếc": [
+    "V",
+    "N"
+  ],
+  "liếm": [
+    "V"
+  ],
+  "liếng": [
+    "A"
+  ],
+  "liếp": [
+    "N"
+  ],
+  "liềm": [
+    "V",
+    "N"
+  ],
+  "liền": [
+    "V",
+    "R",
+    "A"
+  ],
+  "liều": [
+    "V",
+    "A",
+    "N"
+  ],
+  "liểng": [
+    "N"
+  ],
+  "liễm": [
+    "V",
+    "A"
+  ],
+  "liễu": [
+    "N"
+  ],
+  "liệm": [
+    "V"
+  ],
+  "liệng": [
+    "V"
+  ],
+  "liệt": [
+    "V",
+    "A"
+  ],
+  "liệu": [
+    "V",
+    "A",
+    "P"
+  ],
+  "lo": [
+    "V",
+    "A"
+  ],
+  "loa": [
+    "V",
+    "N"
+  ],
+  "loan": [
+    "V",
+    "N"
+  ],
+  "loang": [
+    "V",
+    "A"
+  ],
+  "loanh": [
+    "N"
+  ],
+  "loay": [
+    "V",
+    "A"
+  ],
+  "loe": [
+    "V",
+    "A"
+  ],
+  "loi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lom": [
+    "V",
+    "A"
+  ],
+  "lon": [
+    "V",
+    "A",
+    "N"
+  ],
+  "long": [
+    "V",
+    "A",
+    "N"
+  ],
+  "loong": [
+    "V",
+    "A",
+    "N"
+  ],
+  "loà": [
+    "V"
+  ],
+  "loài": [
+    "N"
+  ],
+  "loàn": [
+    "V",
+    "A"
+  ],
+  "loàng": [
+    "A"
+  ],
+  "loáng": [
+    "V",
+    "A"
+  ],
+  "loãng": [
+    "V",
+    "A"
+  ],
+  "loại": [
+    "V",
+    "N"
+  ],
+  "loạn": [
+    "V",
+    "A"
+  ],
+  "loạng": [
+    "V",
+    "A"
+  ],
+  "loạt": [
+    "V",
+    "N"
+  ],
+  "loằng": [
+    "A"
+  ],
+  "lu": [
+    "N"
+  ],
+  "lua": [
+    "V",
+    "N"
+  ],
+  "lui": [
+    "V"
+  ],
+  "lum": [
+    "V",
+    "A"
+  ],
+  "lung": [
+    "A",
+    "N"
+  ],
+  "luyên": [
+    "A"
+  ],
+  "luyênh": [
+    "A"
+  ],
+  "luyến": [
+    "V",
+    "N"
+  ],
+  "luyện": [
+    "V",
+    "N"
+  ],
+  "luân": [
+    "N"
+  ],
+  "luôn": [
+    "R",
+    "A"
+  ],
+  "luông": [
+    "V"
+  ],
+  "luận": [
+    "V",
+    "N"
+  ],
+  "luật": [
+    "N"
+  ],
+  "luống": [
+    "N"
+  ],
+  "luồn": [
+    "V"
+  ],
+  "luồng": [
+    "N"
+  ],
+  "luộc": [
+    "V"
+  ],
+  "ly": [
+    "V",
+    "A",
+    "N"
+  ],
+  "là": [
+    "V",
+    "Đ"
+  ],
+  "lài": [
+    "V",
+    "N"
+  ],
+  "làm": [
+    "V",
+    "N"
+  ],
+  "làn": [
+    "N"
+  ],
+  "làng": [
+    "N"
+  ],
+  "lành": [
+    "V",
+    "A"
+  ],
+  "lào": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lâu": [
+    "R",
+    "A"
+  ],
+  "lá": [
+    "N"
+  ],
+  "lác": [
+    "V",
+    "A"
+  ],
+  "lách": [
+    "V",
+    "N"
+  ],
+  "lái": [
+    "V",
+    "N"
+  ],
+  "lán": [
+    "V",
+    "N"
+  ],
+  "láng": [
+    "V",
+    "A"
+  ],
+  "lánh": [
+    "V"
+  ],
+  "láo": [
+    "V",
+    "A"
+  ],
+  "lát": [
+    "V",
+    "R",
+    "N"
+  ],
+  "láu": [
+    "A"
+  ],
+  "láy": [
+    "V"
+  ],
+  "lâm": [
+    "V",
+    "N"
+  ],
+  "lân": [
+    "V",
+    "N"
+  ],
+  "lâng": [
+    "V"
+  ],
+  "lây": [
+    "V",
+    "A"
+  ],
+  "lã": [
+    "V",
+    "A"
+  ],
+  "lãi": [
+    "V",
+    "N"
+  ],
+  "lãm": [
+    "V"
+  ],
+  "lãng": [
+    "A",
+    "N"
+  ],
+  "lãnh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lão": [
+    "A",
+    "N"
+  ],
+  "lè": [
+    "V",
+    "A"
+  ],
+  "lèn": [
+    "V",
+    "N"
+  ],
+  "lèo": [
+    "V",
+    "A"
+  ],
+  "lén": [
+    "V",
+    "A"
+  ],
+  "léng": [
+    "A"
+  ],
+  "léo": [
+    "V",
+    "A"
+  ],
+  "lép": [
+    "V",
+    "A"
+  ],
+  "lét": [
+    "V",
+    "A"
+  ],
+  "lê": [
+    "V",
+    "N"
+  ],
+  "lên": [
+    "V",
+    "R",
+    "A"
+  ],
+  "lênh": [
+    "V",
+    "A"
+  ],
+  "lêu": [
+    "A"
+  ],
+  "lì": [
+    "V",
+    "A"
+  ],
+  "lìa": [
+    "V"
+  ],
+  "lìm": [
+    "V",
+    "A"
+  ],
+  "lình": [
+    "N"
+  ],
+  "lí": [
+    "R",
+    "N",
+    "A"
+  ],
+  "lích": [
+    "N"
+  ],
+  "lính": [
+    "N"
+  ],
+  "lít": [
+    "V",
+    "N"
+  ],
+  "líu": [
+    "V",
+    "A"
+  ],
+  "lò": [
+    "N"
+  ],
+  "lòe": [
+    "V",
+    "A"
+  ],
+  "lòi": [
+    "V"
+  ],
+  "lòm": [
+    "V",
+    "A"
+  ],
+  "lòn": [
+    "V",
+    "N"
+  ],
+  "lòng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lònh": [
+    "V"
+  ],
+  "ló": [
+    "V",
+    "A"
+  ],
+  "lóc": [
+    "V",
+    "N"
+  ],
+  "lóe": [
+    "V",
+    "A"
+  ],
+  "lói": [
+    "A"
+  ],
+  "lóng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lót": [
+    "V",
+    "N"
+  ],
+  "lô": [
+    "N"
+  ],
+  "lôi": [
+    "V",
+    "N"
+  ],
+  "lôn": [
+    "V",
+    "N"
+  ],
+  "lông": [
+    "N"
+  ],
+  "lõa": [
+    "A"
+  ],
+  "lõm": [
+    "V",
+    "A"
+  ],
+  "lõng": [
+    "A"
+  ],
+  "lù": [
+    "A"
+  ],
+  "lùa": [
+    "V"
+  ],
+  "lùi": [
+    "V",
+    "A"
+  ],
+  "lùm": [
+    "V",
+    "N"
+  ],
+  "lùn": [
+    "A"
+  ],
+  "lùng": [
+    "V"
+  ],
+  "lú": [
+    "V",
+    "A"
+  ],
+  "lúa": [
+    "N"
+  ],
+  "lúc": [
+    "R",
+    "N"
+  ],
+  "lúi": [
+    "V"
+  ],
+  "lúm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lún": [
+    "V",
+    "A"
+  ],
+  "lúng": [
+    "V"
+  ],
+  "lúp": [
+    "V"
+  ],
+  "lút": [
+    "V",
+    "A"
+  ],
+  "lý": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lăm": [
+    "A",
+    "N"
+  ],
+  "lăn": [
+    "V",
+    "N"
+  ],
+  "lăng": [
+    "V",
+    "N"
+  ],
+  "lĩnh": [
+    "V",
+    "N"
+  ],
+  "lũ": [
+    "V",
+    "N"
+  ],
+  "lũi": [
+    "V",
+    "A"
+  ],
+  "lũng": [
+    "N"
+  ],
+  "lũy": [
+    "N"
+  ],
+  "lơ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lơi": [
+    "V",
+    "A"
+  ],
+  "lơn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lư": [
+    "N"
+  ],
+  "lưa": [
+    "V",
+    "N"
+  ],
+  "lưng": [
+    "V",
+    "N"
+  ],
+  "lưu": [
+    "V",
+    "N"
+  ],
+  "lưông": [
+    "N"
+  ],
+  "lương": [
+    "V",
+    "N"
+  ],
+  "lưới": [
+    "V",
+    "N"
+  ],
+  "lướng": [
+    "V"
+  ],
+  "lướt": [
+    "V",
+    "N"
+  ],
+  "lười": [
+    "V",
+    "A"
+  ],
+  "lườm": [
+    "V"
+  ],
+  "lường": [
+    "V",
+    "N"
+  ],
+  "lưỡi": [
+    "N"
+  ],
+  "lưỡng": [
+    "A",
+    "N"
+  ],
+  "lược": [
+    "V",
+    "N"
+  ],
+  "lượm": [
+    "V"
+  ],
+  "lượn": [
+    "V"
+  ],
+  "lượng": [
+    "V",
+    "N"
+  ],
+  "lượt": [
+    "V",
+    "N"
+  ],
+  "lạ": [
+    "A"
+  ],
+  "lạc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lạch": [
+    "V",
+    "N"
+  ],
+  "lại": [
+    "V",
+    "R",
+    "A"
+  ],
+  "lạn": [
+    "A",
+    "N"
+  ],
+  "lạng": [
+    "V",
+    "N"
+  ],
+  "lạnh": [
+    "V",
+    "A"
+  ],
+  "lạp": [
+    "A",
+    "N"
+  ],
+  "lạt": [
+    "V",
+    "A"
+  ],
+  "lạy": [
+    "V"
+  ],
+  "lả": [
+    "V",
+    "A"
+  ],
+  "lảng": [
+    "V",
+    "A"
+  ],
+  "lảnh": [
+    "V",
+    "A"
+  ],
+  "lấm": [
+    "V",
+    "A"
+  ],
+  "lấp": [
+    "V",
+    "A"
+  ],
+  "lất": [
+    "V",
+    "A"
+  ],
+  "lấu": [
+    "V",
+    "N"
+  ],
+  "lấy": [
+    "V",
+    "P"
+  ],
+  "lầm": [
+    "V",
+    "A"
+  ],
+  "lần": [
+    "V",
+    "N"
+  ],
+  "lầu": [
+    "N"
+  ],
+  "lầy": [
+    "V",
+    "A"
+  ],
+  "lẩn": [
+    "V"
+  ],
+  "lẩu": [
+    "N"
+  ],
+  "lẩy": [
+    "V",
+    "N"
+  ],
+  "lẫm": [
+    "A"
+  ],
+  "lẫn": [
+    "V",
+    "A"
+  ],
+  "lẫy": [
+    "V",
+    "N"
+  ],
+  "lận": [
+    "V",
+    "A"
+  ],
+  "lập": [
+    "V",
+    "N"
+  ],
+  "lật": [
+    "V",
+    "A"
+  ],
+  "lậu": [
+    "A",
+    "N"
+  ],
+  "lậy": [
+    "V",
+    "N"
+  ],
+  "lắc": [
+    "V",
+    "A"
+  ],
+  "lắm": [
+    "R",
+    "A"
+  ],
+  "lắng": [
+    "V",
+    "A"
+  ],
+  "lắp": [
+    "V"
+  ],
+  "lắt": [
+    "V",
+    "A"
+  ],
+  "lằm": [
+    "A"
+  ],
+  "lằn": [
+    "V",
+    "A"
+  ],
+  "lằng": [
+    "A"
+  ],
+  "lẳng": [
+    "V",
+    "A"
+  ],
+  "lặn": [
+    "V",
+    "A"
+  ],
+  "lặng": [
+    "V",
+    "A"
+  ],
+  "lẹ": [
+    "V",
+    "A"
+  ],
+  "lẹo": [
+    "V",
+    "N"
+  ],
+  "lẹt": [
+    "V",
+    "A"
+  ],
+  "lẻ": [
+    "V",
+    "A"
+  ],
+  "lẻn": [
+    "V"
+  ],
+  "lẻo": [
+    "A"
+  ],
+  "lẽ": [
+    "V",
+    "A"
+  ],
+  "lẽn": [
+    "V"
+  ],
+  "lếch": [
+    "V",
+    "A"
+  ],
+  "lết": [
+    "V"
+  ],
+  "lề": [
+    "V",
+    "N"
+  ],
+  "lều": [
+    "N"
+  ],
+  "lể": [
+    "V"
+  ],
+  "lễ": [
+    "N"
+  ],
+  "lệ": [
+    "N"
+  ],
+  "lệch": [
+    "V",
+    "A"
+  ],
+  "lệnh": [
+    "V",
+    "N"
+  ],
+  "lịch": [
+    "A",
+    "N"
+  ],
+  "lịm": [
+    "V",
+    "A"
+  ],
+  "lịp": [
+    "N"
+  ],
+  "lọ": [
+    "N"
+  ],
+  "lọc": [
+    "V",
+    "N"
+  ],
+  "lọi": [
+    "V"
+  ],
+  "lọng": [
+    "N"
+  ],
+  "lọp": [
+    "V"
+  ],
+  "lọt": [
+    "V",
+    "A"
+  ],
+  "lỏn": [
+    "V"
+  ],
+  "lỏng": [
+    "V",
+    "A"
+  ],
+  "lố": [
+    "V",
+    "A"
+  ],
+  "lốc": [
+    "V",
+    "N"
+  ],
+  "lối": [
+    "N"
+  ],
+  "lốp": [
+    "V",
+    "N"
+  ],
+  "lốt": [
+    "N"
+  ],
+  "lồ": [
+    "V",
+    "A"
+  ],
+  "lồi": [
+    "V",
+    "A"
+  ],
+  "lồng": [
+    "V",
+    "N"
+  ],
+  "lổ": [
+    "A"
+  ],
+  "lỗ": [
+    "V",
+    "N"
+  ],
+  "lỗi": [
+    "V",
+    "N"
+  ],
+  "lộ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lộc": [
+    "N"
+  ],
+  "lội": [
+    "V",
+    "N"
+  ],
+  "lộn": [
+    "V",
+    "R",
+    "A"
+  ],
+  "lộng": [
+    "V",
+    "A"
+  ],
+  "lộp": [
+    "V",
+    "A"
+  ],
+  "lột": [
+    "V"
+  ],
+  "lớn": [
+    "V",
+    "A"
+  ],
+  "lớp": [
+    "V",
+    "N"
+  ],
+  "lờ": [
+    "V",
+    "A"
+  ],
+  "lời": [
+    "V",
+    "N"
+  ],
+  "lở": [
+    "V",
+    "A"
+  ],
+  "lởm": [
+    "A"
+  ],
+  "lởn": [
+    "V",
+    "A"
+  ],
+  "lỡ": [
+    "V",
+    "R",
+    "A"
+  ],
+  "lợi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lợm": [
+    "V",
+    "A"
+  ],
+  "lợn": [
+    "N"
+  ],
+  "lợp": [
+    "V"
+  ],
+  "lợt": [
+    "V",
+    "A"
+  ],
+  "lụa": [
+    "V",
+    "N"
+  ],
+  "lục": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "lụi": [
+    "V",
+    "A"
+  ],
+  "lụn": [
+    "V",
+    "A"
+  ],
+  "lụng": [
+    "V",
+    "A"
+  ],
+  "lụt": [
+    "V",
+    "N"
+  ],
+  "lụy": [
+    "V",
+    "A",
+    "N"
+  ],
+  "lủ": [
+    "N"
+  ],
+  "lủi": [
+    "V",
+    "A"
+  ],
+  "lủng": [
+    "V",
+    "A"
+  ],
+  "lứa": [
+    "V",
+    "N"
+  ],
+  "lừ": [
+    "V",
+    "A"
+  ],
+  "lừa": [
+    "V",
+    "N"
+  ],
+  "lừng": [
+    "V",
+    "A"
+  ],
+  "lửa": [
+    "V",
+    "N"
+  ],
+  "lửng": [
+    "A",
+    "N"
+  ],
+  "lữ": [
+    "V",
+    "N"
+  ],
+  "lữa": [
+    "N"
+  ],
+  "lững": [
+    "V",
+    "A"
+  ],
+  "lự": [
+    "V"
+  ],
+  "lựa": [
+    "V",
+    "A"
+  ],
+  "lực": [
+    "V",
+    "N"
+  ],
+  "lựu": [
+    "N"
+  ],
+  "ma": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mai": [
+    "V",
+    "A",
+    "N"
+  ],
+  "man": [
+    "V",
+    "A"
+  ],
+  "mang": [
+    "V",
+    "N"
+  ],
+  "manh": [
+    "A",
+    "N"
+  ],
+  "mao": [
+    "A",
+    "N"
+  ],
+  "mau": [
+    "V",
+    "A"
+  ],
+  "may": [
+    "V",
+    "A",
+    "N"
+  ],
+  "me": [
+    "P",
+    "N"
+  ],
+  "mem": [
+    "N"
+  ],
+  "men": [
+    "N"
+  ],
+  "meo": [
+    "V",
+    "N"
+  ],
+  "mi": [
+    "A",
+    "N"
+  ],
+  "minh": [
+    "A",
+    "N"
+  ],
+  "miên": [
+    "A",
+    "N"
+  ],
+  "miêng": [
+    "V",
+    "N"
+  ],
+  "miếng": [
+    "N"
+  ],
+  "miết": [
+    "V",
+    "A"
+  ],
+  "miếu": [
+    "N"
+  ],
+  "miền": [
+    "A",
+    "N"
+  ],
+  "miều": [
+    "A",
+    "N"
+  ],
+  "miễn": [
+    "V",
+    "A"
+  ],
+  "miễu": [
+    "N"
+  ],
+  "miệng": [
+    "N"
+  ],
+  "miệt": [
+    "A"
+  ],
+  "miột": [
+    "A"
+  ],
+  "mo": [
+    "V",
+    "N"
+  ],
+  "moi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mon": [
+    "V",
+    "N"
+  ],
+  "mong": [
+    "V",
+    "A"
+  ],
+  "mua": [
+    "V",
+    "N"
+  ],
+  "mui": [
+    "V",
+    "N"
+  ],
+  "mun": [
+    "A",
+    "N"
+  ],
+  "mung": [
+    "N"
+  ],
+  "muôi": [
+    "N"
+  ],
+  "muôn": [
+    "A",
+    "N"
+  ],
+  "muông": [
+    "A",
+    "N"
+  ],
+  "muối": [
+    "V",
+    "N"
+  ],
+  "muốn": [
+    "V",
+    "A"
+  ],
+  "muống": [
+    "N"
+  ],
+  "muốt": [
+    "V",
+    "N"
+  ],
+  "muồi": [
+    "N"
+  ],
+  "muồng": [
+    "V",
+    "N"
+  ],
+  "muỗi": [
+    "N"
+  ],
+  "muội": [
+    "N"
+  ],
+  "muộn": [
+    "R",
+    "A"
+  ],
+  "muời": [
+    "A",
+    "N"
+  ],
+  "my": [
+    "A",
+    "N"
+  ],
+  "mà": [
+    "R",
+    "P",
+    "E"
+  ],
+  "mài": [
+    "V",
+    "N"
+  ],
+  "màn": [
+    "V",
+    "N"
+  ],
+  "màng": [
+    "V",
+    "N"
+  ],
+  "mành": [
+    "N"
+  ],
+  "mào": [
+    "N"
+  ],
+  "màu": [
+    "A",
+    "N"
+  ],
+  "mày": [
+    "P",
+    "N"
+  ],
+  "má": [
+    "V",
+    "N"
+  ],
+  "mác": [
+    "N"
+  ],
+  "mách": [
+    "V"
+  ],
+  "mái": [
+    "V",
+    "N"
+  ],
+  "mán": [
+    "A",
+    "N"
+  ],
+  "máng": [
+    "N"
+  ],
+  "mánh": [
+    "A",
+    "N"
+  ],
+  "mát": [
+    "V",
+    "A"
+  ],
+  "máu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "máy": [
+    "V",
+    "N"
+  ],
+  "mâm": [
+    "N"
+  ],
+  "mân": [
+    "V",
+    "N"
+  ],
+  "mâu": [
+    "N"
+  ],
+  "mây": [
+    "V",
+    "N"
+  ],
+  "mã": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mãi": [
+    "V",
+    "R",
+    "A"
+  ],
+  "mãn": [
+    "V",
+    "A"
+  ],
+  "mãng": [
+    "A",
+    "N"
+  ],
+  "mãnh": [
+    "A"
+  ],
+  "mão": [
+    "N"
+  ],
+  "mè": [
+    "N"
+  ],
+  "mèm": [
+    "A"
+  ],
+  "mèn": [
+    "N"
+  ],
+  "mèo": [
+    "N"
+  ],
+  "mé": [
+    "V",
+    "N"
+  ],
+  "méo": [
+    "V",
+    "A"
+  ],
+  "mép": [
+    "N"
+  ],
+  "mét": [
+    "N"
+  ],
+  "mê": [
+    "V",
+    "A"
+  ],
+  "mêm": [
+    "A"
+  ],
+  "mên": [
+    "V",
+    "N"
+  ],
+  "mênh": [
+    "A"
+  ],
+  "mì": [
+    "N"
+  ],
+  "mìn": [
+    "N"
+  ],
+  "mình": [
+    "A",
+    "P",
+    "N"
+  ],
+  "mí": [
+    "V",
+    "N"
+  ],
+  "mía": [
+    "N"
+  ],
+  "mím": [
+    "V"
+  ],
+  "mít": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mò": [
+    "V"
+  ],
+  "mòi": [
+    "V",
+    "N"
+  ],
+  "mòn": [
+    "V",
+    "A"
+  ],
+  "mòng": [
+    "V",
+    "N"
+  ],
+  "móc": [
+    "V",
+    "N"
+  ],
+  "món": [
+    "A",
+    "N"
+  ],
+  "móng": [
+    "V",
+    "N"
+  ],
+  "mô": [
+    "V",
+    "P",
+    "N"
+  ],
+  "môi": [
+    "N"
+  ],
+  "môn": [
+    "V",
+    "N"
+  ],
+  "mông": [
+    "V",
+    "N"
+  ],
+  "mõ": [
+    "V",
+    "A"
+  ],
+  "mõm": [
+    "N"
+  ],
+  "mù": [
+    "V",
+    "A"
+  ],
+  "mùa": [
+    "V",
+    "N"
+  ],
+  "mùi": [
+    "V",
+    "N"
+  ],
+  "mùng": [
+    "V",
+    "N"
+  ],
+  "múa": [
+    "V",
+    "N"
+  ],
+  "múc": [
+    "V"
+  ],
+  "múi": [
+    "N"
+  ],
+  "mút": [
+    "V"
+  ],
+  "măng": [
+    "N"
+  ],
+  "mũ": [
+    "N"
+  ],
+  "mũi": [
+    "V",
+    "N"
+  ],
+  "mơ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mơn": [
+    "V",
+    "A"
+  ],
+  "mưa": [
+    "V",
+    "N"
+  ],
+  "mưu": [
+    "V",
+    "N"
+  ],
+  "mươi": [
+    "A",
+    "N"
+  ],
+  "mươn": [
+    "A"
+  ],
+  "mương": [
+    "N"
+  ],
+  "mướn": [
+    "V"
+  ],
+  "mướp": [
+    "N"
+  ],
+  "mướt": [
+    "V",
+    "A"
+  ],
+  "mười": [
+    "A",
+    "N"
+  ],
+  "mường": [
+    "N"
+  ],
+  "mượn": [
+    "V"
+  ],
+  "mượt": [
+    "A"
+  ],
+  "mạ": [
+    "V",
+    "N"
+  ],
+  "mạc": [
+    "A",
+    "N"
+  ],
+  "mạch": [
+    "V",
+    "N"
+  ],
+  "mại": [
+    "V",
+    "N"
+  ],
+  "mạn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mạng": [
+    "N"
+  ],
+  "mạnh": [
+    "V",
+    "A"
+  ],
+  "mạo": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mạp": [
+    "A"
+  ],
+  "mạt": [
+    "V",
+    "N"
+  ],
+  "mả": [
+    "N"
+  ],
+  "mải": [
+    "V",
+    "A"
+  ],
+  "mảng": [
+    "V",
+    "N"
+  ],
+  "mảnh": [
+    "A",
+    "N"
+  ],
+  "mấn": [
+    "N"
+  ],
+  "mấp": [
+    "V",
+    "A"
+  ],
+  "mất": [
+    "V",
+    "A"
+  ],
+  "mấy": [
+    "R",
+    "P",
+    "A"
+  ],
+  "mầm": [
+    "V",
+    "N"
+  ],
+  "mần": [
+    "V"
+  ],
+  "mầu": [
+    "A",
+    "N"
+  ],
+  "mầy": [
+    "P"
+  ],
+  "mẩn": [
+    "A",
+    "N"
+  ],
+  "mẩu": [
+    "N"
+  ],
+  "mẩy": [
+    "A"
+  ],
+  "mẫn": [
+    "A"
+  ],
+  "mẫu": [
+    "A",
+    "N"
+  ],
+  "mậm": [
+    "V",
+    "A"
+  ],
+  "mận": [
+    "N"
+  ],
+  "mập": [
+    "V",
+    "A"
+  ],
+  "mật": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mậu": [
+    "A",
+    "N"
+  ],
+  "mắc": [
+    "V",
+    "A"
+  ],
+  "mắm": [
+    "N"
+  ],
+  "mắn": [
+    "A"
+  ],
+  "mắng": [
+    "V"
+  ],
+  "mắt": [
+    "N"
+  ],
+  "mằn": [
+    "A"
+  ],
+  "mặc": [
+    "V",
+    "N"
+  ],
+  "mặn": [
+    "V",
+    "A"
+  ],
+  "mặt": [
+    "V",
+    "N"
+  ],
+  "mẹ": [
+    "P",
+    "N"
+  ],
+  "mẹo": [
+    "N"
+  ],
+  "mẹp": [
+    "V",
+    "N"
+  ],
+  "mẹt": [
+    "N"
+  ],
+  "mẻ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mẽ": [
+    "V",
+    "N"
+  ],
+  "mến": [
+    "V",
+    "A"
+  ],
+  "mếu": [
+    "V"
+  ],
+  "mềm": [
+    "V",
+    "A"
+  ],
+  "mền": [
+    "N"
+  ],
+  "mễ": [
+    "N"
+  ],
+  "mệ": [
+    "N"
+  ],
+  "mệnh": [
+    "N"
+  ],
+  "mệt": [
+    "V",
+    "A"
+  ],
+  "mỉa": [
+    "V",
+    "A"
+  ],
+  "mỉm": [
+    "V"
+  ],
+  "mị": [
+    "V",
+    "A"
+  ],
+  "mịn": [
+    "A"
+  ],
+  "mịt": [
+    "V",
+    "A"
+  ],
+  "mọc": [
+    "V"
+  ],
+  "mọi": [
+    "A",
+    "P"
+  ],
+  "mọn": [
+    "A"
+  ],
+  "mọng": [
+    "V",
+    "A"
+  ],
+  "mọt": [
+    "V",
+    "N"
+  ],
+  "mỏ": [
+    "N"
+  ],
+  "mỏi": [
+    "V",
+    "A"
+  ],
+  "mỏng": [
+    "A"
+  ],
+  "mốc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mối": [
+    "V",
+    "N"
+  ],
+  "mống": [
+    "N"
+  ],
+  "mốt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mồ": [
+    "N"
+  ],
+  "mồi": [
+    "V",
+    "N"
+  ],
+  "mồm": [
+    "N"
+  ],
+  "mồng": [
+    "N"
+  ],
+  "mổ": [
+    "V",
+    "N"
+  ],
+  "mỗi": [
+    "R",
+    "A"
+  ],
+  "mộ": [
+    "V",
+    "N"
+  ],
+  "mộc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mộng": [
+    "V",
+    "N"
+  ],
+  "một": [
+    "R",
+    "P",
+    "N",
+    "A"
+  ],
+  "mớ": [
+    "V",
+    "N"
+  ],
+  "mới": [
+    "V",
+    "R",
+    "A"
+  ],
+  "mớm": [
+    "V"
+  ],
+  "mờ": [
+    "V",
+    "A"
+  ],
+  "mời": [
+    "V"
+  ],
+  "mở": [
+    "V",
+    "A"
+  ],
+  "mởn": [
+    "V",
+    "A"
+  ],
+  "mỡ": [
+    "A",
+    "N"
+  ],
+  "mỡi": [
+    "V",
+    "A"
+  ],
+  "mợ": [
+    "P",
+    "N"
+  ],
+  "mụ": [
+    "A",
+    "N"
+  ],
+  "mục": [
+    "V",
+    "A",
+    "N"
+  ],
+  "mủ": [
+    "N"
+  ],
+  "mủm": [
+    "A"
+  ],
+  "mủn": [
+    "V",
+    "A"
+  ],
+  "mức": [
+    "A",
+    "N"
+  ],
+  "mừng": [
+    "V",
+    "A"
+  ],
+  "mửa": [
+    "V"
+  ],
+  "mực": [
+    "A",
+    "N"
+  ],
+  "mỵ": [
+    "A",
+    "N"
+  ],
+  "mỹ": [
+    "A",
+    "N"
+  ],
+  "na": [
+    "A",
+    "N"
+  ],
+  "nai": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nam": [
+    "A",
+    "N"
+  ],
+  "nan": [
+    "A",
+    "N"
+  ],
+  "nang": [
+    "V",
+    "N"
+  ],
+  "nanh": [
+    "N"
+  ],
+  "nao": [
+    "V",
+    "A"
+  ],
+  "nay": [
+    "R",
+    "A",
+    "N"
+  ],
+  "ne": [
+    "R"
+  ],
+  "nem": [
+    "V",
+    "N"
+  ],
+  "neo": [
+    "V",
+    "N"
+  ],
+  "new": [
+    "A"
+  ],
+  "nga": [
+    "A",
+    "N"
+  ],
+  "ngai": [
+    "V",
+    "N"
+  ],
+  "ngan": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ngang": [
+    "V",
+    "R",
+    "A"
+  ],
+  "ngao": [
+    "V",
+    "A"
+  ],
+  "ngay": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "nghe": [
+    "V"
+  ],
+  "nghen": [
+    "V",
+    "R"
+  ],
+  "nghi": [
+    "V",
+    "A"
+  ],
+  "nghinh": [
+    "V"
+  ],
+  "nghiêm": [
+    "V",
+    "A"
+  ],
+  "nghiên": [
+    "V",
+    "N"
+  ],
+  "nghiêng": [
+    "V",
+    "A"
+  ],
+  "nghiêu": [
+    "A"
+  ],
+  "nghiến": [
+    "V"
+  ],
+  "nghiền": [
+    "V",
+    "A"
+  ],
+  "nghiện": [
+    "V",
+    "A"
+  ],
+  "nghiệp": [
+    "N"
+  ],
+  "nghiệt": [
+    "V",
+    "A"
+  ],
+  "nghèo": [
+    "V",
+    "A"
+  ],
+  "nghê": [
+    "N"
+  ],
+  "nghênh": [
+    "V",
+    "A"
+  ],
+  "nghêu": [
+    "N"
+  ],
+  "nghì": [
+    "V"
+  ],
+  "nghìn": [
+    "A",
+    "N"
+  ],
+  "nghí": [
+    "V"
+  ],
+  "nghía": [
+    "V"
+  ],
+  "nghĩ": [
+    "V"
+  ],
+  "nghĩa": [
+    "A",
+    "N"
+  ],
+  "nghẹn": [
+    "V",
+    "A"
+  ],
+  "nghẻo": [
+    "V",
+    "A"
+  ],
+  "nghề": [
+    "N"
+  ],
+  "nghển": [
+    "V",
+    "A"
+  ],
+  "nghễnh": [
+    "A"
+  ],
+  "nghệ": [
+    "A",
+    "N"
+  ],
+  "nghệch": [
+    "A"
+  ],
+  "nghỉ": [
+    "V",
+    "N"
+  ],
+  "nghị": [
+    "V",
+    "N"
+  ],
+  "nghịch": [
+    "V",
+    "A"
+  ],
+  "nghiu": [
+    "V"
+  ],
+  "ngo": [
+    "A"
+  ],
+  "ngoa": [
+    "V",
+    "A"
+  ],
+  "ngoai": [
+    "V",
+    "A",
+    "E"
+  ],
+  "ngoan": [
+    "V",
+    "A"
+  ],
+  "ngoi": [
+    "V",
+    "N"
+  ],
+  "ngon": [
+    "A"
+  ],
+  "ngoài": [
+    "R",
+    "E",
+    "N",
+    "A"
+  ],
+  "ngoái": [
+    "V"
+  ],
+  "ngoáy": [
+    "V"
+  ],
+  "ngoãn": [
+    "A"
+  ],
+  "ngoèo": [
+    "A"
+  ],
+  "ngoại": [
+    "A",
+    "E",
+    "N"
+  ],
+  "ngoảnh": [
+    "V"
+  ],
+  "ngoắc": [
+    "V",
+    "A"
+  ],
+  "ngoắt": [
+    "V",
+    "A"
+  ],
+  "ngoằn": [
+    "A"
+  ],
+  "ngoặc": [
+    "V",
+    "N"
+  ],
+  "ngoẹn": [
+    "A"
+  ],
+  "ngoẻo": [
+    "V",
+    "A"
+  ],
+  "ngu": [
+    "A"
+  ],
+  "ngun": [
+    "A"
+  ],
+  "nguy": [
+    "A",
+    "N"
+  ],
+  "nguyên": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nguyền": [
+    "V"
+  ],
+  "nguyễn": [
+    "N"
+  ],
+  "nguyện": [
+    "V",
+    "N"
+  ],
+  "nguyệt": [
+    "N"
+  ],
+  "nguôi": [
+    "V",
+    "A"
+  ],
+  "nguýt": [
+    "V"
+  ],
+  "nguẩy": [
+    "V"
+  ],
+  "nguồn": [
+    "N"
+  ],
+  "nguội": [
+    "V",
+    "A"
+  ],
+  "ngà": [
+    "A",
+    "N"
+  ],
+  "ngài": [
+    "P",
+    "N"
+  ],
+  "ngàn": [
+    "V",
+    "N"
+  ],
+  "ngàng": [
+    "A",
+    "N"
+  ],
+  "ngành": [
+    "N"
+  ],
+  "ngào": [
+    "V",
+    "A"
+  ],
+  "ngày": [
+    "V",
+    "N"
+  ],
+  "ngác": [
+    "V",
+    "A"
+  ],
+  "ngách": [
+    "N"
+  ],
+  "ngái": [
+    "A"
+  ],
+  "ngán": [
+    "V",
+    "A"
+  ],
+  "ngáo": [
+    "V",
+    "A"
+  ],
+  "ngát": [
+    "V",
+    "A"
+  ],
+  "ngáy": [
+    "V"
+  ],
+  "ngâm": [
+    "V",
+    "N"
+  ],
+  "ngân": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ngâu": [
+    "A",
+    "N"
+  ],
+  "ngây": [
+    "V",
+    "A"
+  ],
+  "ngã": [
+    "V",
+    "N"
+  ],
+  "ngãi": [
+    "V"
+  ],
+  "ngãng": [
+    "V",
+    "A"
+  ],
+  "ngò": [
+    "N"
+  ],
+  "ngòi": [
+    "V",
+    "N"
+  ],
+  "ngòn": [
+    "N"
+  ],
+  "ngó": [
+    "V",
+    "N"
+  ],
+  "ngóc": [
+    "V",
+    "A"
+  ],
+  "ngói": [
+    "N"
+  ],
+  "ngón": [
+    "A",
+    "N"
+  ],
+  "ngóng": [
+    "V",
+    "A"
+  ],
+  "ngót": [
+    "V",
+    "A"
+  ],
+  "ngô": [
+    "N"
+  ],
+  "ngôi": [
+    "V",
+    "N"
+  ],
+  "ngôn": [
+    "N"
+  ],
+  "ngông": [
+    "V",
+    "A"
+  ],
+  "ngõ": [
+    "N"
+  ],
+  "ngùi": [
+    "V",
+    "A"
+  ],
+  "ngùn": [
+    "V",
+    "N"
+  ],
+  "ngùng": [
+    "V",
+    "A"
+  ],
+  "ngúc": [
+    "V"
+  ],
+  "ngúng": [
+    "A"
+  ],
+  "ngút": [
+    "V",
+    "A"
+  ],
+  "ngăm": [
+    "V",
+    "A"
+  ],
+  "ngăn": [
+    "V",
+    "N"
+  ],
+  "ngũ": [
+    "A",
+    "N"
+  ],
+  "ngơ": [
+    "V",
+    "A"
+  ],
+  "ngơi": [
+    "V",
+    "N"
+  ],
+  "ngư": [
+    "N"
+  ],
+  "ngưng": [
+    "V",
+    "A"
+  ],
+  "ngưu": [
+    "N"
+  ],
+  "ngươi": [
+    "P"
+  ],
+  "ngươn": [
+    "N"
+  ],
+  "ngước": [
+    "V"
+  ],
+  "người": [
+    "P",
+    "N"
+  ],
+  "ngưỡng": [
+    "N"
+  ],
+  "ngược": [
+    "V",
+    "A"
+  ],
+  "ngượng": [
+    "V",
+    "A"
+  ],
+  "ngạc": [
+    "A"
+  ],
+  "ngại": [
+    "V",
+    "A"
+  ],
+  "ngạo": [
+    "A"
+  ],
+  "ngạt": [
+    "V",
+    "A"
+  ],
+  "ngả": [
+    "V",
+    "N"
+  ],
+  "ngải": [
+    "N"
+  ],
+  "ngảnh": [
+    "V",
+    "N"
+  ],
+  "ngấm": [
+    "V",
+    "A"
+  ],
+  "ngấn": [
+    "V",
+    "N"
+  ],
+  "ngất": [
+    "V",
+    "A"
+  ],
+  "ngấy": [
+    "V",
+    "A"
+  ],
+  "ngầm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ngần": [
+    "V",
+    "A"
+  ],
+  "ngầu": [
+    "V",
+    "A"
+  ],
+  "ngầy": [
+    "V",
+    "N"
+  ],
+  "ngẩm": [
+    "V"
+  ],
+  "ngẩn": [
+    "V",
+    "A"
+  ],
+  "ngẩng": [
+    "V"
+  ],
+  "ngẫm": [
+    "V"
+  ],
+  "ngẫn": [
+    "A"
+  ],
+  "ngẫu": [
+    "V",
+    "A"
+  ],
+  "ngậm": [
+    "V"
+  ],
+  "ngập": [
+    "V",
+    "A"
+  ],
+  "ngật": [
+    "V"
+  ],
+  "ngậy": [
+    "V",
+    "A"
+  ],
+  "ngắc": [
+    "V",
+    "A"
+  ],
+  "ngắm": [
+    "V"
+  ],
+  "ngắn": [
+    "A"
+  ],
+  "ngắt": [
+    "V",
+    "A"
+  ],
+  "ngặt": [
+    "A"
+  ],
+  "ngịu": [
+    "A"
+  ],
+  "ngọ": [
+    "A",
+    "N"
+  ],
+  "ngọc": [
+    "A",
+    "N"
+  ],
+  "ngọn": [
+    "N"
+  ],
+  "ngọng": [
+    "V",
+    "A"
+  ],
+  "ngọt": [
+    "V",
+    "A"
+  ],
+  "ngỏ": [
+    "V",
+    "N"
+  ],
+  "ngốc": [
+    "A",
+    "N"
+  ],
+  "ngốn": [
+    "V"
+  ],
+  "ngồi": [
+    "V"
+  ],
+  "ngồn": [
+    "A"
+  ],
+  "ngồng": [
+    "V",
+    "N"
+  ],
+  "ngổ": [
+    "A"
+  ],
+  "ngổn": [
+    "A"
+  ],
+  "ngỗ": [
+    "V",
+    "A"
+  ],
+  "ngỗng": [
+    "N"
+  ],
+  "ngộ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ngột": [
+    "A"
+  ],
+  "ngớ": [
+    "V",
+    "A"
+  ],
+  "ngớn": [
+    "V",
+    "A"
+  ],
+  "ngớt": [
+    "V",
+    "A"
+  ],
+  "ngờ": [
+    "V",
+    "A"
+  ],
+  "ngời": [
+    "V",
+    "A"
+  ],
+  "ngở": [
+    "V",
+    "A"
+  ],
+  "ngởn": [
+    "V",
+    "A"
+  ],
+  "ngỡ": [
+    "V",
+    "A"
+  ],
+  "ngợ": [
+    "A"
+  ],
+  "ngợi": [
+    "V"
+  ],
+  "ngợm": [
+    "A"
+  ],
+  "ngợp": [
+    "V",
+    "A"
+  ],
+  "ngụ": [
+    "V"
+  ],
+  "ngụa": [
+    "N"
+  ],
+  "ngục": [
+    "N"
+  ],
+  "ngụm": [
+    "V",
+    "N"
+  ],
+  "ngụp": [
+    "V"
+  ],
+  "ngụt": [
+    "V",
+    "A"
+  ],
+  "ngụy": [
+    "V",
+    "A"
+  ],
+  "ngủ": [
+    "V",
+    "N"
+  ],
+  "ngủi": [
+    "A"
+  ],
+  "ngủn": [
+    "A"
+  ],
+  "ngứa": [
+    "V",
+    "A"
+  ],
+  "ngừa": [
+    "V"
+  ],
+  "ngừng": [
+    "V",
+    "A"
+  ],
+  "ngửa": [
+    "V",
+    "A"
+  ],
+  "ngửi": [
+    "V"
+  ],
+  "ngửng": [
+    "V"
+  ],
+  "ngữ": [
+    "N"
+  ],
+  "ngự": [
+    "V",
+    "A"
+  ],
+  "ngựa": [
+    "N"
+  ],
+  "ngực": [
+    "N"
+  ],
+  "nha": [
+    "E",
+    "P",
+    "A"
+  ],
+  "nhai": [
+    "V",
+    "N"
+  ],
+  "nham": [
+    "V",
+    "A"
+  ],
+  "nhan": [
+    "V",
+    "N"
+  ],
+  "nhang": [
+    "V",
+    "N"
+  ],
+  "nhanh": [
+    "V",
+    "R",
+    "A"
+  ],
+  "nhau": [
+    "R",
+    "P"
+  ],
+  "nhe": [
+    "R"
+  ],
+  "nhem": [
+    "V",
+    "A"
+  ],
+  "nhen": [
+    "P"
+  ],
+  "nheo": [
+    "V"
+  ],
+  "nhi": [
+    "A",
+    "N"
+  ],
+  "nhiên": [
+    "V",
+    "A"
+  ],
+  "nhiều": [
+    "R",
+    "A"
+  ],
+  "nhiếp": [
+    "V",
+    "N"
+  ],
+  "nhiễm": [
+    "V",
+    "A"
+  ],
+  "nhiễu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nhiệm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nhiệt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nho": [
+    "N"
+  ],
+  "nhoi": [
+    "V",
+    "A"
+  ],
+  "nhom": [
+    "N"
+  ],
+  "nhon": [
+    "A"
+  ],
+  "nhoài": [
+    "V",
+    "A"
+  ],
+  "nhoằng": [
+    "A"
+  ],
+  "nhoẹt": [
+    "A"
+  ],
+  "nhoẻn": [
+    "V"
+  ],
+  "nhu": [
+    "V",
+    "A"
+  ],
+  "nhung": [
+    "A",
+    "N"
+  ],
+  "nhuyễn": [
+    "V",
+    "A"
+  ],
+  "nhuần": [
+    "V",
+    "A"
+  ],
+  "nhuệ": [
+    "A"
+  ],
+  "nhuốc": [
+    "A"
+  ],
+  "nhuốm": [
+    "V"
+  ],
+  "nhuộm": [
+    "V",
+    "N"
+  ],
+  "nhà": [
+    "N"
+  ],
+  "nhài": [
+    "N"
+  ],
+  "nhàm": [
+    "V",
+    "A"
+  ],
+  "nhàn": [
+    "V",
+    "A"
+  ],
+  "nhàng": [
+    "A"
+  ],
+  "nhành": [
+    "N"
+  ],
+  "nhào": [
+    "V"
+  ],
+  "nhàu": [
+    "V"
+  ],
+  "nhá": [
+    "V",
+    "P"
+  ],
+  "nhác": [
+    "V",
+    "A"
+  ],
+  "nhách": [
+    "V"
+  ],
+  "nhái": [
+    "V",
+    "N"
+  ],
+  "nhánh": [
+    "A",
+    "N"
+  ],
+  "nháo": [
+    "V",
+    "A"
+  ],
+  "nháp": [
+    "V",
+    "N"
+  ],
+  "nhát": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nháy": [
+    "V"
+  ],
+  "nhâm": [
+    "A",
+    "N"
+  ],
+  "nhân": [
+    "V",
+    "N"
+  ],
+  "nhây": [
+    "V",
+    "A"
+  ],
+  "nhã": [
+    "A"
+  ],
+  "nhãn": [
+    "N"
+  ],
+  "nhãng": [
+    "V",
+    "A"
+  ],
+  "nhão": [
+    "V",
+    "A"
+  ],
+  "nhè": [
+    "V",
+    "A"
+  ],
+  "nhèm": [
+    "V"
+  ],
+  "nhé": [
+    "R"
+  ],
+  "nhéo": [
+    "V"
+  ],
+  "nhét": [
+    "V"
+  ],
+  "nhì": [
+    "R",
+    "N",
+    "A"
+  ],
+  "nhìn": [
+    "V"
+  ],
+  "nhí": [
+    "A",
+    "N"
+  ],
+  "nhích": [
+    "V"
+  ],
+  "nhíu": [
+    "V"
+  ],
+  "nhòa": [
+    "V",
+    "A"
+  ],
+  "nhòe": [
+    "V",
+    "A"
+  ],
+  "nhòm": [
+    "V"
+  ],
+  "nhóc": [
+    "A",
+    "N"
+  ],
+  "nhói": [
+    "V",
+    "A"
+  ],
+  "nhóm": [
+    "V",
+    "N"
+  ],
+  "nhón": [
+    "V"
+  ],
+  "nhót": [
+    "N"
+  ],
+  "nhô": [
+    "V",
+    "A"
+  ],
+  "nhôi": [
+    "A"
+  ],
+  "nhôn": [
+    "V",
+    "A"
+  ],
+  "nhông": [
+    "N"
+  ],
+  "nhõm": [
+    "V",
+    "A"
+  ],
+  "nhùng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nhú": [
+    "V",
+    "A"
+  ],
+  "nhúc": [
+    "V"
+  ],
+  "nhúm": [
+    "V",
+    "N"
+  ],
+  "nhún": [
+    "V"
+  ],
+  "nhúng": [
+    "V"
+  ],
+  "nhút": [
+    "V",
+    "A"
+  ],
+  "nhăn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nhăng": [
+    "V",
+    "A"
+  ],
+  "nhĩ": [
+    "N"
+  ],
+  "nhũ": [
+    "N"
+  ],
+  "nhơ": [
+    "V",
+    "A"
+  ],
+  "nhơi": [
+    "V"
+  ],
+  "nhơn": [
+    "N"
+  ],
+  "như": [
+    "R",
+    "P",
+    "A"
+  ],
+  "nhưng": [
+    "R",
+    "P"
+  ],
+  "nhương": [
+    "V"
+  ],
+  "nhường": [
+    "V",
+    "N"
+  ],
+  "nhưởng": [
+    "V"
+  ],
+  "nhượng": [
+    "V",
+    "N"
+  ],
+  "nhạc": [
+    "N"
+  ],
+  "nhạn": [
+    "N"
+  ],
+  "nhạt": [
+    "V",
+    "A"
+  ],
+  "nhả": [
+    "V"
+  ],
+  "nhảm": [
+    "V",
+    "A"
+  ],
+  "nhản": [
+    "N"
+  ],
+  "nhảnh": [
+    "V",
+    "A"
+  ],
+  "nhảy": [
+    "V",
+    "N"
+  ],
+  "nhấm": [
+    "V"
+  ],
+  "nhấp": [
+    "V"
+  ],
+  "nhất": [
+    "R",
+    "N",
+    "A"
+  ],
+  "nhấy": [
+    "A"
+  ],
+  "nhầm": [
+    "V",
+    "A"
+  ],
+  "nhầu": [
+    "V",
+    "A"
+  ],
+  "nhầy": [
+    "A"
+  ],
+  "nhẩm": [
+    "V",
+    "A"
+  ],
+  "nhẫn": [
+    "V",
+    "N"
+  ],
+  "nhẩy": [
+    "V"
+  ],
+  "nhận": [
+    "V",
+    "N"
+  ],
+  "nhập": [
+    "V",
+    "N"
+  ],
+  "nhật": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nhậu": [
+    "V",
+    "N"
+  ],
+  "nhắc": [
+    "V"
+  ],
+  "nhắm": [
+    "V",
+    "A"
+  ],
+  "nhắn": [
+    "V"
+  ],
+  "nhắp": [
+    "V"
+  ],
+  "nhằm": [
+    "V",
+    "A",
+    "E"
+  ],
+  "nhằn": [
+    "V"
+  ],
+  "nhẵn": [
+    "A"
+  ],
+  "nhặt": [
+    "V"
+  ],
+  "nhẹ": [
+    "V",
+    "A"
+  ],
+  "nhẹn": [
+    "A"
+  ],
+  "nhẹp": [
+    "V",
+    "A"
+  ],
+  "nhẹt": [
+    "A"
+  ],
+  "nhẽ": [
+    "R",
+    "A"
+  ],
+  "nhếch": [
+    "V",
+    "A"
+  ],
+  "nhền": [
+    "A"
+  ],
+  "nhện": [
+    "N"
+  ],
+  "nhỉ": [
+    "R"
+  ],
+  "nhị": [
+    "A",
+    "N"
+  ],
+  "nhịn": [
+    "V"
+  ],
+  "nhịp": [
+    "V",
+    "N"
+  ],
+  "nhọ": [
+    "A",
+    "N"
+  ],
+  "nhọc": [
+    "A"
+  ],
+  "nhọn": [
+    "A"
+  ],
+  "nhỏ": [
+    "V",
+    "A"
+  ],
+  "nhố": [
+    "A"
+  ],
+  "nhối": [
+    "V"
+  ],
+  "nhốn": [
+    "A"
+  ],
+  "nhốt": [
+    "V"
+  ],
+  "nhồi": [
+    "V"
+  ],
+  "nhổ": [
+    "V"
+  ],
+  "nhổm": [
+    "V",
+    "A"
+  ],
+  "nhổn": [
+    "A"
+  ],
+  "nhộn": [
+    "A"
+  ],
+  "nhộng": [
+    "N"
+  ],
+  "nhớ": [
+    "V",
+    "A"
+  ],
+  "nhớn": [
+    "A"
+  ],
+  "nhớt": [
+    "V",
+    "A"
+  ],
+  "nhờ": [
+    "V",
+    "A",
+    "P"
+  ],
+  "nhời": [
+    "V"
+  ],
+  "nhờn": [
+    "V",
+    "A"
+  ],
+  "nhở": [
+    "E"
+  ],
+  "nhởn": [
+    "A"
+  ],
+  "nhỡ": [
+    "V",
+    "R",
+    "A"
+  ],
+  "nhợt": [
+    "A"
+  ],
+  "nhục": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nhụy": [
+    "N"
+  ],
+  "nhủ": [
+    "V"
+  ],
+  "nhức": [
+    "V",
+    "A"
+  ],
+  "nhứt": [
+    "A",
+    "N"
+  ],
+  "nhừ": [
+    "V",
+    "A"
+  ],
+  "những": [
+    "E",
+    "P",
+    "A"
+  ],
+  "nhựa": [
+    "N"
+  ],
+  "nhựt": [
+    "N"
+  ],
+  "ni": [
+    "V",
+    "P"
+  ],
+  "nia": [
+    "V"
+  ],
+  "ninh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "niu": [
+    "V",
+    "N"
+  ],
+  "niêm": [
+    "V",
+    "N"
+  ],
+  "niên": [
+    "N"
+  ],
+  "niêu": [
+    "N"
+  ],
+  "niết": [
+    "V"
+  ],
+  "niềm": [
+    "N"
+  ],
+  "niền": [
+    "V",
+    "N"
+  ],
+  "niệm": [
+    "V",
+    "N"
+  ],
+  "no": [
+    "V",
+    "A"
+  ],
+  "noi": [
+    "V",
+    "N"
+  ],
+  "nom": [
+    "V",
+    "N"
+  ],
+  "non": [
+    "A",
+    "N"
+  ],
+  "nong": [
+    "V",
+    "A"
+  ],
+  "nu": [
+    "N"
+  ],
+  "nua": [
+    "V",
+    "A"
+  ],
+  "nung": [
+    "V",
+    "N"
+  ],
+  "nuoi": [
+    "V"
+  ],
+  "nuông": [
+    "V"
+  ],
+  "nuối": [
+    "V"
+  ],
+  "nuốt": [
+    "V"
+  ],
+  "nuồn": [
+    "V",
+    "N"
+  ],
+  "nuột": [
+    "A"
+  ],
+  "nà": [
+    "P"
+  ],
+  "nài": [
+    "V"
+  ],
+  "nàn": [
+    "A"
+  ],
+  "nàng": [
+    "P",
+    "N"
+  ],
+  "nào": [
+    "A",
+    "P"
+  ],
+  "này": [
+    "A",
+    "P"
+  ],
+  "ná": [
+    "V",
+    "N"
+  ],
+  "nách": [
+    "N"
+  ],
+  "nái": [
+    "V",
+    "N"
+  ],
+  "nám": [
+    "N"
+  ],
+  "nán": [
+    "V"
+  ],
+  "náo": [
+    "V",
+    "A"
+  ],
+  "nát": [
+    "V",
+    "A"
+  ],
+  "náu": [
+    "V"
+  ],
+  "nâng": [
+    "V",
+    "N"
+  ],
+  "nâu": [
+    "A",
+    "N"
+  ],
+  "nây": [
+    "V",
+    "N"
+  ],
+  "não": [
+    "V",
+    "N"
+  ],
+  "nè": [
+    "R",
+    "P"
+  ],
+  "né": [
+    "V",
+    "N"
+  ],
+  "ném": [
+    "V"
+  ],
+  "nén": [
+    "V",
+    "N"
+  ],
+  "nép": [
+    "V"
+  ],
+  "nét": [
+    "A",
+    "N"
+  ],
+  "nê": [
+    "V",
+    "N"
+  ],
+  "nêm": [
+    "V"
+  ],
+  "nên": [
+    "V",
+    "R",
+    "A"
+  ],
+  "nênh": [
+    "V"
+  ],
+  "nêu": [
+    "V"
+  ],
+  "nì": [
+    "P"
+  ],
+  "ních": [
+    "V"
+  ],
+  "nín": [
+    "V"
+  ],
+  "nít": [
+    "A",
+    "N"
+  ],
+  "níu": [
+    "V"
+  ],
+  "nòi": [
+    "A",
+    "N"
+  ],
+  "nó": [
+    "V",
+    "P",
+    "N"
+  ],
+  "nóc": [
+    "N"
+  ],
+  "nói": [
+    "V"
+  ],
+  "nón": [
+    "N"
+  ],
+  "nóng": [
+    "V",
+    "A"
+  ],
+  "nốt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nô": [
+    "N"
+  ],
+  "nôi": [
+    "N"
+  ],
+  "nôm": [
+    "A",
+    "N"
+  ],
+  "nôn": [
+    "V",
+    "A"
+  ],
+  "nông": [
+    "V",
+    "A"
+  ],
+  "nõn": [
+    "A"
+  ],
+  "nùng": [
+    "A",
+    "N"
+  ],
+  "núi": [
+    "N"
+  ],
+  "núm": [
+    "V",
+    "N"
+  ],
+  "núng": [
+    "V"
+  ],
+  "núp": [
+    "V"
+  ],
+  "năm": [
+    "R",
+    "N",
+    "A"
+  ],
+  "năn": [
+    "V"
+  ],
+  "năng": [
+    "V",
+    "A"
+  ],
+  "nũng": [
+    "V",
+    "A"
+  ],
+  "nơ": [
+    "N"
+  ],
+  "nơi": [
+    "P",
+    "N"
+  ],
+  "nơm": [
+    "V"
+  ],
+  "nư": [
+    "A"
+  ],
+  "nương": [
+    "V",
+    "N"
+  ],
+  "nước": [
+    "V",
+    "N"
+  ],
+  "nướng": [
+    "V",
+    "A"
+  ],
+  "nường": [
+    "V"
+  ],
+  "nạ": [
+    "V",
+    "P"
+  ],
+  "nại": [
+    "V",
+    "N"
+  ],
+  "nạm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nạn": [
+    "V",
+    "N"
+  ],
+  "nạng": [
+    "V",
+    "N"
+  ],
+  "nạt": [
+    "V"
+  ],
+  "nạy": [
+    "V"
+  ],
+  "nản": [
+    "V",
+    "A"
+  ],
+  "nảo": [
+    "A"
+  ],
+  "nảy": [
+    "V"
+  ],
+  "nấc": [
+    "V",
+    "N"
+  ],
+  "nấm": [
+    "N"
+  ],
+  "nấn": [
+    "V"
+  ],
+  "nấng": [
+    "V"
+  ],
+  "nấp": [
+    "V"
+  ],
+  "nấu": [
+    "V"
+  ],
+  "nấy": [
+    "A",
+    "P"
+  ],
+  "nần": [
+    "N"
+  ],
+  "nầy": [
+    "P"
+  ],
+  "nẩy": [
+    "V"
+  ],
+  "nẫu": [
+    "A"
+  ],
+  "nập": [
+    "V"
+  ],
+  "nắc": [
+    "V",
+    "N"
+  ],
+  "nắm": [
+    "V",
+    "N"
+  ],
+  "nắn": [
+    "V",
+    "A"
+  ],
+  "nắng": [
+    "A",
+    "N"
+  ],
+  "nắp": [
+    "N"
+  ],
+  "nằm": [
+    "V"
+  ],
+  "nằn": [
+    "V",
+    "A"
+  ],
+  "nằng": [
+    "V",
+    "A"
+  ],
+  "nẵng": [
+    "A"
+  ],
+  "nặc": [
+    "V",
+    "A"
+  ],
+  "nặn": [
+    "V"
+  ],
+  "nặng": [
+    "V",
+    "A"
+  ],
+  "nẹp": [
+    "V",
+    "N"
+  ],
+  "nẻ": [
+    "V",
+    "A"
+  ],
+  "nẻo": [
+    "V",
+    "N"
+  ],
+  "nẽo": [
+    "N"
+  ],
+  "nếm": [
+    "V"
+  ],
+  "nến": [
+    "N"
+  ],
+  "nếp": [
+    "A",
+    "N"
+  ],
+  "nết": [
+    "N"
+  ],
+  "nếu": [
+    "R",
+    "P"
+  ],
+  "nề": [
+    "A"
+  ],
+  "nền": [
+    "V",
+    "A",
+    "N"
+  ],
+  "nể": [
+    "V",
+    "A"
+  ],
+  "nệm": [
+    "N"
+  ],
+  "nện": [
+    "V"
+  ],
+  "nỉ": [
+    "N"
+  ],
+  "nịnh": [
+    "V"
+  ],
+  "nịu": [
+    "V",
+    "A"
+  ],
+  "nọ": [
+    "A",
+    "P"
+  ],
+  "nọc": [
+    "V",
+    "N"
+  ],
+  "nọt": [
+    "N"
+  ],
+  "nỏ": [
+    "N"
+  ],
+  "nối": [
+    "V"
+  ],
+  "nồi": [
+    "N"
+  ],
+  "nồm": [
+    "A",
+    "N"
+  ],
+  "nồng": [
+    "V",
+    "A"
+  ],
+  "nổ": [
+    "V",
+    "N"
+  ],
+  "nổi": [
+    "V",
+    "A"
+  ],
+  "nỗi": [
+    "N"
+  ],
+  "nộ": [
+    "V",
+    "A"
+  ],
+  "nội": [
+    "A",
+    "E",
+    "N"
+  ],
+  "nộm": [
+    "A",
+    "N"
+  ],
+  "nộn": [
+    "A"
+  ],
+  "nộp": [
+    "V"
+  ],
+  "nột": [
+    "N"
+  ],
+  "nớ": [
+    "P"
+  ],
+  "nớp": [
+    "A"
+  ],
+  "nớt": [
+    "N"
+  ],
+  "nờ": [
+    "V",
+    "E"
+  ],
+  "nờm": [
+    "V"
+  ],
+  "nở": [
+    "V",
+    "A"
+  ],
+  "nỡ": [
+    "V",
+    "A"
+  ],
+  "nợ": [
+    "V",
+    "N"
+  ],
+  "nụ": [
+    "N"
+  ],
+  "nủa": [
+    "A",
+    "N"
+  ],
+  "nứa": [
+    "N"
+  ],
+  "nức": [
+    "V",
+    "A"
+  ],
+  "nứt": [
+    "V",
+    "A"
+  ],
+  "nửa": [
+    "R",
+    "N",
+    "A"
+  ],
+  "nữ": [
+    "A",
+    "N"
+  ],
+  "nữa": [
+    "R",
+    "A"
+  ],
+  "nực": [
+    "V",
+    "A"
+  ],
+  "oai": [
+    "V",
+    "A"
+  ],
+  "oan": [
+    "V",
+    "A",
+    "N"
+  ],
+  "oang": [
+    "V",
+    "A"
+  ],
+  "oanh": [
+    "V",
+    "N"
+  ],
+  "oe": [
+    "V",
+    "A"
+  ],
+  "oi": [
+    "E",
+    "I"
+  ],
+  "ong": [
+    "V",
+    "N"
+  ],
+  "oái": [
+    "V",
+    "A"
+  ],
+  "oán": [
+    "V",
+    "A",
+    "N"
+  ],
+  "oăm": [
+    "V"
+  ],
+  "oại": [
+    "V",
+    "N"
+  ],
+  "oải": [
+    "V",
+    "A"
+  ],
+  "oản": [
+    "N"
+  ],
+  "oằn": [
+    "V"
+  ],
+  "pa": [
+    "V",
+    "N"
+  ],
+  "pha": [
+    "V",
+    "N"
+  ],
+  "phai": [
+    "V",
+    "A"
+  ],
+  "phan": [
+    "N"
+  ],
+  "phang": [
+    "V"
+  ],
+  "phanh": [
+    "V",
+    "N"
+  ],
+  "phao": [
+    "V",
+    "N"
+  ],
+  "phau": [
+    "V"
+  ],
+  "phay": [
+    "V",
+    "N"
+  ],
+  "phe": [
+    "V",
+    "N"
+  ],
+  "phen": [
+    "R",
+    "N"
+  ],
+  "phi": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "phim": [
+    "N"
+  ],
+  "phiu": [
+    "A"
+  ],
+  "phiên": [
+    "V",
+    "N"
+  ],
+  "phiêu": [
+    "V",
+    "A"
+  ],
+  "phiếm": [
+    "V",
+    "A"
+  ],
+  "phiến": [
+    "N"
+  ],
+  "phiền": [
+    "V",
+    "A"
+  ],
+  "phiện": [
+    "V",
+    "A"
+  ],
+  "pho": [
+    "N"
+  ],
+  "phone": [
+    "N"
+  ],
+  "phong": [
+    "V",
+    "N"
+  ],
+  "phu": [
+    "A",
+    "N"
+  ],
+  "phun": [
+    "V"
+  ],
+  "phuông": [
+    "N"
+  ],
+  "phuợc": [
+    "N"
+  ],
+  "phà": [
+    "V",
+    "N"
+  ],
+  "phàm": [
+    "V",
+    "A"
+  ],
+  "phàng": [
+    "V",
+    "A"
+  ],
+  "phào": [
+    "V",
+    "N"
+  ],
+  "phá": [
+    "V",
+    "A"
+  ],
+  "phách": [
+    "V",
+    "N"
+  ],
+  "phán": [
+    "V",
+    "N"
+  ],
+  "pháo": [
+    "N"
+  ],
+  "pháp": [
+    "A",
+    "N"
+  ],
+  "phát": [
+    "V",
+    "A",
+    "N"
+  ],
+  "phân": [
+    "V",
+    "N"
+  ],
+  "phây": [
+    "V",
+    "A"
+  ],
+  "phè": [
+    "V",
+    "A"
+  ],
+  "phèng": [
+    "A"
+  ],
+  "phèo": [
+    "N"
+  ],
+  "phéng": [
+    "A"
+  ],
+  "phép": [
+    "N"
+  ],
+  "phê": [
+    "V",
+    "A"
+  ],
+  "phên": [
+    "N"
+  ],
+  "phì": [
+    "V",
+    "A"
+  ],
+  "phình": [
+    "V",
+    "A"
+  ],
+  "phí": [
+    "V",
+    "N"
+  ],
+  "phía": [
+    "R",
+    "N"
+  ],
+  "phím": [
+    "V",
+    "N"
+  ],
+  "phò": [
+    "V"
+  ],
+  "phòng": [
+    "V",
+    "N"
+  ],
+  "phó": [
+    "A",
+    "N"
+  ],
+  "phóng": [
+    "V",
+    "N"
+  ],
+  "phô": [
+    "V",
+    "N"
+  ],
+  "phôi": [
+    "V",
+    "N"
+  ],
+  "phù": [
+    "V",
+    "A",
+    "N"
+  ],
+  "phùn": [
+    "V",
+    "N"
+  ],
+  "phùng": [
+    "V",
+    "N"
+  ],
+  "phú": [
+    "V",
+    "A",
+    "N"
+  ],
+  "phúc": [
+    "N"
+  ],
+  "phút": [
+    "N"
+  ],
+  "phăng": [
+    "V",
+    "A"
+  ],
+  "phũ": [
+    "V",
+    "A"
+  ],
+  "phơ": [
+    "V",
+    "A"
+  ],
+  "phơi": [
+    "V"
+  ],
+  "phơn": [
+    "V"
+  ],
+  "phương": [
+    "R",
+    "N",
+    "A"
+  ],
+  "phước": [
+    "N"
+  ],
+  "phường": [
+    "N"
+  ],
+  "phược": [
+    "V",
+    "N"
+  ],
+  "phượng": [
+    "A",
+    "N"
+  ],
+  "phạc": [
+    "V",
+    "A"
+  ],
+  "phạm": [
+    "V",
+    "N"
+  ],
+  "phạn": [
+    "A",
+    "N"
+  ],
+  "phạt": [
+    "V",
+    "N"
+  ],
+  "phả": [
+    "V"
+  ],
+  "phải": [
+    "V",
+    "R",
+    "A"
+  ],
+  "phản": [
+    "V",
+    "N"
+  ],
+  "phảng": [
+    "A"
+  ],
+  "phấn": [
+    "V",
+    "N"
+  ],
+  "phất": [
+    "V",
+    "A"
+  ],
+  "phần": [
+    "V",
+    "N"
+  ],
+  "phẩy": [
+    "V",
+    "N"
+  ],
+  "phẫn": [
+    "V",
+    "A"
+  ],
+  "phận": [
+    "V",
+    "N"
+  ],
+  "phập": [
+    "V",
+    "R",
+    "A"
+  ],
+  "phật": [
+    "V",
+    "A",
+    "N"
+  ],
+  "phắc": [
+    "V",
+    "R",
+    "A"
+  ],
+  "phẳng": [
+    "V",
+    "A"
+  ],
+  "phẻ": [
+    "A"
+  ],
+  "phế": [
+    "V",
+    "A",
+    "N"
+  ],
+  "phếch": [
+    "A"
+  ],
+  "phết": [
+    "R",
+    "A"
+  ],
+  "phỉ": [
+    "V",
+    "N"
+  ],
+  "phịu": [
+    "A"
+  ],
+  "phố": [
+    "N"
+  ],
+  "phồn": [
+    "A"
+  ],
+  "phồng": [
+    "V",
+    "A"
+  ],
+  "phổ": [
+    "A",
+    "N"
+  ],
+  "phổi": [
+    "N"
+  ],
+  "phớ": [
+    "A"
+  ],
+  "phới": [
+    "V",
+    "A"
+  ],
+  "phớt": [
+    "V",
+    "A"
+  ],
+  "phờ": [
+    "V",
+    "A"
+  ],
+  "phở": [
+    "N"
+  ],
+  "phỡn": [
+    "V",
+    "A"
+  ],
+  "phụ": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "phục": [
+    "V",
+    "A"
+  ],
+  "phụng": [
+    "V",
+    "N"
+  ],
+  "phủ": [
+    "V",
+    "N"
+  ],
+  "phủi": [
+    "V",
+    "A"
+  ],
+  "phức": [
+    "A"
+  ],
+  "phừng": [
+    "N"
+  ],
+  "pin": [
+    "N"
+  ],
+  "qua": [
+    "V",
+    "A",
+    "P"
+  ],
+  "quai": [
+    "N"
+  ],
+  "quan": [
+    "V",
+    "N"
+  ],
+  "quang": [
+    "A",
+    "N"
+  ],
+  "quanh": [
+    "A",
+    "P"
+  ],
+  "quay": [
+    "V",
+    "N"
+  ],
+  "que": [
+    "N"
+  ],
+  "quen": [
+    "V",
+    "A"
+  ],
+  "queo": [
+    "V",
+    "A"
+  ],
+  "quy": [
+    "V",
+    "N"
+  ],
+  "quên": [
+    "V"
+  ],
+  "quến": [
+    "V"
+  ],
+  "quyết": [
+    "V",
+    "A"
+  ],
+  "quyền": [
+    "N"
+  ],
+  "quyển": [
+    "N"
+  ],
+  "quyện": [
+    "V",
+    "A"
+  ],
+  "quyệt": [
+    "V"
+  ],
+  "quà": [
+    "N"
+  ],
+  "quàn": [
+    "V",
+    "N"
+  ],
+  "quàng": [
+    "V",
+    "A"
+  ],
+  "quành": [
+    "V",
+    "N"
+  ],
+  "quày": [
+    "V",
+    "N"
+  ],
+  "quá": [
+    "R",
+    "A"
+  ],
+  "quách": [
+    "N"
+  ],
+  "quái": [
+    "V",
+    "A"
+  ],
+  "quán": [
+    "V",
+    "N"
+  ],
+  "quánh": [
+    "V"
+  ],
+  "quát": [
+    "V",
+    "A"
+  ],
+  "quân": [
+    "N"
+  ],
+  "quây": [
+    "V",
+    "N"
+  ],
+  "quãng": [
+    "N"
+  ],
+  "què": [
+    "V",
+    "A"
+  ],
+  "quén": [
+    "V"
+  ],
+  "quéo": [
+    "V"
+  ],
+  "quét": [
+    "V",
+    "N"
+  ],
+  "quê": [
+    "V",
+    "A",
+    "N"
+  ],
+  "quì": [
+    "V",
+    "N"
+  ],
+  "quí": [
+    "A",
+    "N"
+  ],
+  "quít": [
+    "N"
+  ],
+  "quôm": [
+    "N"
+  ],
+  "quý": [
+    "V",
+    "A",
+    "N"
+  ],
+  "quýt": [
+    "N"
+  ],
+  "quăng": [
+    "V"
+  ],
+  "quơ": [
+    "V"
+  ],
+  "quạ": [
+    "N"
+  ],
+  "quại": [
+    "V",
+    "A"
+  ],
+  "quạnh": [
+    "A"
+  ],
+  "quạt": [
+    "V",
+    "N"
+  ],
+  "quả": [
+    "N"
+  ],
+  "quản": [
+    "V",
+    "N"
+  ],
+  "quảng": [
+    "V",
+    "N"
+  ],
+  "quảy": [
+    "V"
+  ],
+  "quấn": [
+    "V",
+    "A"
+  ],
+  "quất": [
+    "V",
+    "N"
+  ],
+  "quần": [
+    "V",
+    "N"
+  ],
+  "quầng": [
+    "N"
+  ],
+  "quẩn": [
+    "A"
+  ],
+  "quẩy": [
+    "V",
+    "N"
+  ],
+  "quận": [
+    "V",
+    "N"
+  ],
+  "quật": [
+    "V"
+  ],
+  "quậy": [
+    "V",
+    "A"
+  ],
+  "quắt": [
+    "V",
+    "A"
+  ],
+  "quằn": [
+    "V"
+  ],
+  "quẳng": [
+    "V"
+  ],
+  "quặn": [
+    "V",
+    "A"
+  ],
+  "quẹo": [
+    "V"
+  ],
+  "quẹt": [
+    "V"
+  ],
+  "quẻ": [
+    "V",
+    "N"
+  ],
+  "quẽ": [
+    "N"
+  ],
+  "quế": [
+    "A",
+    "N"
+  ],
+  "quệt": [
+    "V"
+  ],
+  "quỉ": [
+    "N"
+  ],
+  "quị": [
+    "A"
+  ],
+  "quốc": [
+    "N"
+  ],
+  "quờ": [
+    "V"
+  ],
+  "quỳ": [
+    "V",
+    "N"
+  ],
+  "quỳnh": [
+    "N"
+  ],
+  "quỵ": [
+    "V"
+  ],
+  "quỷ": [
+    "N"
+  ],
+  "ra": [
+    "V",
+    "R",
+    "E",
+    "A"
+  ],
+  "rai": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ram": [
+    "V",
+    "N"
+  ],
+  "ran": [
+    "V",
+    "A",
+    "N"
+  ],
+  "rang": [
+    "V",
+    "N"
+  ],
+  "ranh": [
+    "A",
+    "N"
+  ],
+  "rao": [
+    "V"
+  ],
+  "rau": [
+    "N"
+  ],
+  "ray": [
+    "V",
+    "N"
+  ],
+  "re": [
+    "V",
+    "A"
+  ],
+  "ren": [
+    "V",
+    "N"
+  ],
+  "reo": [
+    "V"
+  ],
+  "ri": [
+    "V",
+    "A"
+  ],
+  "ria": [
+    "N"
+  ],
+  "rim": [
+    "N"
+  ],
+  "rinh": [
+    "V"
+  ],
+  "riu": [
+    "V",
+    "A"
+  ],
+  "riêng": [
+    "R",
+    "P",
+    "A"
+  ],
+  "riêu": [
+    "N"
+  ],
+  "riết": [
+    "V",
+    "R",
+    "A"
+  ],
+  "riềng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ro": [
+    "V",
+    "N"
+  ],
+  "rock": [
+    "V",
+    "N"
+  ],
+  "roi": [
+    "V",
+    "N"
+  ],
+  "rong": [
+    "V",
+    "A",
+    "N"
+  ],
+  "roàng": [
+    "A"
+  ],
+  "roạc": [
+    "V",
+    "A"
+  ],
+  "ru": [
+    "V",
+    "N"
+  ],
+  "rua": [
+    "V"
+  ],
+  "rue": [
+    "V"
+  ],
+  "rui": [
+    "N"
+  ],
+  "run": [
+    "V",
+    "A"
+  ],
+  "rung": [
+    "V",
+    "A"
+  ],
+  "ruồi": [
+    "N"
+  ],
+  "ruồng": [
+    "V",
+    "N"
+  ],
+  "ruổi": [
+    "V"
+  ],
+  "ruỗi": [
+    "V"
+  ],
+  "ruỗng": [
+    "N"
+  ],
+  "ruộng": [
+    "N"
+  ],
+  "ruột": [
+    "V",
+    "N"
+  ],
+  "ruợu": [
+    "N"
+  ],
+  "rà": [
+    "V",
+    "A"
+  ],
+  "rài": [
+    "V",
+    "A"
+  ],
+  "ràm": [
+    "V",
+    "A"
+  ],
+  "ràn": [
+    "V",
+    "A"
+  ],
+  "ràng": [
+    "V",
+    "A"
+  ],
+  "rành": [
+    "V",
+    "A"
+  ],
+  "rào": [
+    "V",
+    "N"
+  ],
+  "rày": [
+    "R"
+  ],
+  "rác": [
+    "N"
+  ],
+  "rách": [
+    "V",
+    "A"
+  ],
+  "rám": [
+    "V",
+    "A"
+  ],
+  "rán": [
+    "V"
+  ],
+  "ráng": [
+    "V",
+    "N"
+  ],
+  "ráo": [
+    "V",
+    "A"
+  ],
+  "rát": [
+    "V",
+    "A"
+  ],
+  "râm": [
+    "V",
+    "A"
+  ],
+  "rân": [
+    "V",
+    "A"
+  ],
+  "râu": [
+    "N"
+  ],
+  "rây": [
+    "V",
+    "N"
+  ],
+  "rã": [
+    "V",
+    "A"
+  ],
+  "rãi": [
+    "V"
+  ],
+  "rão": [
+    "V",
+    "A"
+  ],
+  "rè": [
+    "V",
+    "A"
+  ],
+  "rèm": [
+    "N"
+  ],
+  "rèn": [
+    "V",
+    "N"
+  ],
+  "ré": [
+    "V",
+    "A"
+  ],
+  "rén": [
+    "V",
+    "A"
+  ],
+  "réo": [
+    "V"
+  ],
+  "rét": [
+    "V",
+    "A"
+  ],
+  "rê": [
+    "V"
+  ],
+  "rêm": [
+    "V",
+    "A"
+  ],
+  "rên": [
+    "V"
+  ],
+  "rênh": [
+    "A"
+  ],
+  "rêu": [
+    "N"
+  ],
+  "rì": [
+    "V",
+    "A"
+  ],
+  "rìa": [
+    "N"
+  ],
+  "rình": [
+    "V"
+  ],
+  "rìu": [
+    "N"
+  ],
+  "rích": [
+    "V",
+    "A"
+  ],
+  "rít": [
+    "V",
+    "A"
+  ],
+  "ríu": [
+    "V"
+  ],
+  "ròng": [
+    "A",
+    "N"
+  ],
+  "róc": [
+    "V",
+    "A"
+  ],
+  "rói": [
+    "V",
+    "A"
+  ],
+  "rón": [
+    "V",
+    "A"
+  ],
+  "rót": [
+    "V",
+    "N"
+  ],
+  "rô": [
+    "V",
+    "N"
+  ],
+  "rông": [
+    "A"
+  ],
+  "rõ": [
+    "R",
+    "A"
+  ],
+  "rù": [
+    "A"
+  ],
+  "rùa": [
+    "N"
+  ],
+  "rùng": [
+    "V",
+    "A"
+  ],
+  "rú": [
+    "V"
+  ],
+  "rúc": [
+    "V"
+  ],
+  "rúng": [
+    "V",
+    "A"
+  ],
+  "rút": [
+    "V",
+    "N"
+  ],
+  "răm": [
+    "V",
+    "A"
+  ],
+  "răn": [
+    "V",
+    "N"
+  ],
+  "răng": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "rĩ": [
+    "V"
+  ],
+  "rũ": [
+    "V",
+    "A"
+  ],
+  "rơ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "rơi": [
+    "V",
+    "A"
+  ],
+  "rơm": [
+    "N"
+  ],
+  "rưng": [
+    "V",
+    "A"
+  ],
+  "rươi": [
+    "N"
+  ],
+  "rương": [
+    "N"
+  ],
+  "rước": [
+    "V"
+  ],
+  "rưới": [
+    "V"
+  ],
+  "rướm": [
+    "V",
+    "A"
+  ],
+  "rười": [
+    "A"
+  ],
+  "rưỡi": [
+    "A",
+    "N"
+  ],
+  "rượi": [
+    "A"
+  ],
+  "rượt": [
+    "V"
+  ],
+  "rượu": [
+    "N"
+  ],
+  "rạ": [
+    "N"
+  ],
+  "rạc": [
+    "A"
+  ],
+  "rạch": [
+    "V",
+    "N"
+  ],
+  "rạn": [
+    "V",
+    "N"
+  ],
+  "rạng": [
+    "V",
+    "A"
+  ],
+  "rạo": [
+    "A"
+  ],
+  "rạp": [
+    "V",
+    "N"
+  ],
+  "rạt": [
+    "A"
+  ],
+  "rả": [
+    "V"
+  ],
+  "rải": [
+    "V"
+  ],
+  "rảng": [
+    "V",
+    "A"
+  ],
+  "rảnh": [
+    "A"
+  ],
+  "rấn": [
+    "V"
+  ],
+  "rất": [
+    "R"
+  ],
+  "rầm": [
+    "V",
+    "A"
+  ],
+  "rần": [
+    "V",
+    "A"
+  ],
+  "rầu": [
+    "A"
+  ],
+  "rầy": [
+    "N"
+  ],
+  "rẩy": [
+    "V",
+    "N"
+  ],
+  "rẫy": [
+    "N"
+  ],
+  "rậm": [
+    "V",
+    "A"
+  ],
+  "rập": [
+    "V",
+    "A",
+    "N"
+  ],
+  "rắc": [
+    "V",
+    "N"
+  ],
+  "rắm": [
+    "V",
+    "N"
+  ],
+  "rắn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "rắp": [
+    "V",
+    "A"
+  ],
+  "rắt": [
+    "V",
+    "A"
+  ],
+  "rằm": [
+    "A",
+    "N"
+  ],
+  "rằn": [
+    "V",
+    "A"
+  ],
+  "rằng": [
+    "C",
+    "R"
+  ],
+  "rặn": [
+    "V"
+  ],
+  "rặng": [
+    "N"
+  ],
+  "rặt": [
+    "V",
+    "A"
+  ],
+  "rẻ": [
+    "V",
+    "A"
+  ],
+  "rẽ": [
+    "V"
+  ],
+  "rề": [
+    "A"
+  ],
+  "rền": [
+    "V",
+    "A"
+  ],
+  "rều": [
+    "A"
+  ],
+  "rể": [
+    "N"
+  ],
+  "rễ": [
+    "N"
+  ],
+  "rệp": [
+    "N"
+  ],
+  "rỉ": [
+    "V",
+    "A"
+  ],
+  "rỉa": [
+    "V"
+  ],
+  "rị": [
+    "V"
+  ],
+  "rịa": [
+    "V",
+    "N"
+  ],
+  "rịch": [
+    "V",
+    "A"
+  ],
+  "rịm": [
+    "A"
+  ],
+  "rịt": [
+    "V",
+    "A"
+  ],
+  "rọc": [
+    "V",
+    "N"
+  ],
+  "rọi": [
+    "V",
+    "N"
+  ],
+  "rọm": [
+    "A",
+    "N"
+  ],
+  "rỏ": [
+    "V",
+    "A"
+  ],
+  "rối": [
+    "V",
+    "A",
+    "N"
+  ],
+  "rốn": [
+    "N"
+  ],
+  "rốt": [
+    "V",
+    "N"
+  ],
+  "rồ": [
+    "V",
+    "A"
+  ],
+  "rồi": [
+    "V",
+    "R",
+    "A"
+  ],
+  "rồng": [
+    "N"
+  ],
+  "rổn": [
+    "A"
+  ],
+  "rỗ": [
+    "V"
+  ],
+  "rỗng": [
+    "A"
+  ],
+  "rộ": [
+    "V",
+    "A"
+  ],
+  "rộn": [
+    "A"
+  ],
+  "rộng": [
+    "A"
+  ],
+  "rớm": [
+    "V",
+    "A"
+  ],
+  "rớt": [
+    "V"
+  ],
+  "rờ": [
+    "V"
+  ],
+  "rời": [
+    "V",
+    "A"
+  ],
+  "rờn": [
+    "V",
+    "A"
+  ],
+  "rỡ": [
+    "A"
+  ],
+  "rỡn": [
+    "A"
+  ],
+  "rợ": [
+    "V",
+    "N"
+  ],
+  "rợi": [
+    "V",
+    "A"
+  ],
+  "rợn": [
+    "V",
+    "A"
+  ],
+  "rợp": [
+    "V",
+    "A"
+  ],
+  "rụa": [
+    "N"
+  ],
+  "rục": [
+    "V",
+    "A"
+  ],
+  "rụng": [
+    "V",
+    "A"
+  ],
+  "rụt": [
+    "V",
+    "A"
+  ],
+  "rủ": [
+    "V"
+  ],
+  "rủi": [
+    "V",
+    "N"
+  ],
+  "rứa": [
+    "R"
+  ],
+  "rức": [
+    "V",
+    "A"
+  ],
+  "rứt": [
+    "V"
+  ],
+  "rừng": [
+    "N"
+  ],
+  "rửa": [
+    "V"
+  ],
+  "rữa": [
+    "V",
+    "A"
+  ],
+  "rực": [
+    "V",
+    "A"
+  ],
+  "rựng": [
+    "V",
+    "A"
+  ],
+  "sa": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sai": [
+    "V",
+    "A"
+  ],
+  "sam": [
+    "N"
+  ],
+  "san": [
+    "V",
+    "N"
+  ],
+  "sang": [
+    "V",
+    "R",
+    "E",
+    "A"
+  ],
+  "sanh": [
+    "V",
+    "N"
+  ],
+  "sao": [
+    "A",
+    "R",
+    "P",
+    "V",
+    "N"
+  ],
+  "sau": [
+    "A",
+    "R",
+    "N"
+  ],
+  "say": [
+    "V",
+    "A"
+  ],
+  "saó": [
+    "V",
+    "A"
+  ],
+  "se": [
+    "V",
+    "A"
+  ],
+  "sen": [
+    "N"
+  ],
+  "si": [
+    "V",
+    "A"
+  ],
+  "sim": [
+    "N"
+  ],
+  "sin": [
+    "N"
+  ],
+  "sinh": [
+    "V",
+    "N"
+  ],
+  "siêng": [
+    "A"
+  ],
+  "siêu": [
+    "V",
+    "A"
+  ],
+  "siết": [
+    "V"
+  ],
+  "slow": [
+    "A"
+  ],
+  "so": [
+    "R",
+    "P",
+    "A"
+  ],
+  "soa": [
+    "V"
+  ],
+  "soi": [
+    "V",
+    "N"
+  ],
+  "son": [
+    "V",
+    "N"
+  ],
+  "song": [
+    "V",
+    "A",
+    "N"
+  ],
+  "soài": [
+    "A"
+  ],
+  "soái": [
+    "A",
+    "N"
+  ],
+  "soát": [
+    "V"
+  ],
+  "soãi": [
+    "V"
+  ],
+  "soạn": [
+    "V",
+    "N"
+  ],
+  "soạng": [
+    "V"
+  ],
+  "soạt": [
+    "V"
+  ],
+  "su": [
+    "V",
+    "N"
+  ],
+  "sui": [
+    "V",
+    "A"
+  ],
+  "sum": [
+    "N"
+  ],
+  "sung": [
+    "V",
+    "A"
+  ],
+  "suy": [
+    "V"
+  ],
+  "suyễn": [
+    "N"
+  ],
+  "suê": [
+    "A"
+  ],
+  "suông": [
+    "V",
+    "A"
+  ],
+  "suýt": [
+    "V",
+    "A"
+  ],
+  "suối": [
+    "N"
+  ],
+  "suốt": [
+    "R",
+    "A"
+  ],
+  "sà": [
+    "V"
+  ],
+  "sài": [
+    "V",
+    "A"
+  ],
+  "sàn": [
+    "V",
+    "N"
+  ],
+  "sàng": [
+    "V",
+    "N"
+  ],
+  "sành": [
+    "A",
+    "N"
+  ],
+  "sào": [
+    "V",
+    "N"
+  ],
+  "sá": [
+    "V",
+    "A"
+  ],
+  "sác": [
+    "A"
+  ],
+  "sách": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sái": [
+    "V",
+    "A"
+  ],
+  "sám": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sáng": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "sánh": [
+    "V",
+    "A"
+  ],
+  "sáo": [
+    "V",
+    "N"
+  ],
+  "sáp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sát": [
+    "V",
+    "R",
+    "A"
+  ],
+  "sáu": [
+    "A",
+    "N"
+  ],
+  "sâm": [
+    "N"
+  ],
+  "sân": [
+    "N"
+  ],
+  "sâu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sã": [
+    "A"
+  ],
+  "sãi": [
+    "V",
+    "N"
+  ],
+  "sèo": [
+    "V",
+    "A"
+  ],
+  "sét": [
+    "V",
+    "N"
+  ],
+  "sên": [
+    "V",
+    "N"
+  ],
+  "sênh": [
+    "V",
+    "N"
+  ],
+  "sêu": [
+    "V",
+    "A"
+  ],
+  "sì": [
+    "V",
+    "A"
+  ],
+  "sình": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sính": [
+    "V",
+    "A"
+  ],
+  "sò": [
+    "V",
+    "N"
+  ],
+  "sòng": [
+    "V",
+    "N"
+  ],
+  "sóc": [
+    "V",
+    "N"
+  ],
+  "sói": [
+    "N"
+  ],
+  "sóng": [
+    "N"
+  ],
+  "sót": [
+    "V",
+    "A"
+  ],
+  "sôi": [
+    "V",
+    "A"
+  ],
+  "sông": [
+    "N"
+  ],
+  "sù": [
+    "A"
+  ],
+  "sùi": [
+    "V"
+  ],
+  "sùm": [
+    "A"
+  ],
+  "sùng": [
+    "V",
+    "A"
+  ],
+  "súc": [
+    "V",
+    "N"
+  ],
+  "súng": [
+    "N"
+  ],
+  "sút": [
+    "V",
+    "N"
+  ],
+  "săm": [
+    "V",
+    "N"
+  ],
+  "săn": [
+    "V",
+    "A"
+  ],
+  "sĩ": [
+    "A",
+    "N"
+  ],
+  "sũng": [
+    "A"
+  ],
+  "sơ": [
+    "V",
+    "R",
+    "A"
+  ],
+  "sơn": [
+    "V",
+    "N"
+  ],
+  "sư": [
+    "N"
+  ],
+  "sưa": [
+    "V",
+    "N"
+  ],
+  "sưng": [
+    "V",
+    "A"
+  ],
+  "sưu": [
+    "V"
+  ],
+  "sương": [
+    "N"
+  ],
+  "sướng": [
+    "V",
+    "A"
+  ],
+  "sườn": [
+    "N"
+  ],
+  "sưởi": [
+    "V",
+    "N"
+  ],
+  "sượng": [
+    "V",
+    "A"
+  ],
+  "sạch": [
+    "V",
+    "A"
+  ],
+  "sạm": [
+    "V",
+    "A"
+  ],
+  "sạn": [
+    "V",
+    "N"
+  ],
+  "sạo": [
+    "V",
+    "A"
+  ],
+  "sải": [
+    "V",
+    "N"
+  ],
+  "sảm": [
+    "V",
+    "N"
+  ],
+  "sản": [
+    "N"
+  ],
+  "sảng": [
+    "V",
+    "A"
+  ],
+  "sảnh": [
+    "N"
+  ],
+  "sấm": [
+    "V",
+    "N"
+  ],
+  "sấp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sấu": [
+    "A",
+    "N"
+  ],
+  "sấy": [
+    "V",
+    "N"
+  ],
+  "sầm": [
+    "V",
+    "A"
+  ],
+  "sần": [
+    "V",
+    "A"
+  ],
+  "sầu": [
+    "A",
+    "N"
+  ],
+  "sẩy": [
+    "V"
+  ],
+  "sẫm": [
+    "A"
+  ],
+  "sậm": [
+    "A"
+  ],
+  "sập": [
+    "V",
+    "N"
+  ],
+  "sậu": [
+    "A"
+  ],
+  "sậy": [
+    "N"
+  ],
+  "sắc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sắm": [
+    "V"
+  ],
+  "sắn": [
+    "V",
+    "N"
+  ],
+  "sắp": [
+    "V",
+    "R",
+    "A"
+  ],
+  "sắt": [
+    "V",
+    "N"
+  ],
+  "sẵn": [
+    "R",
+    "A"
+  ],
+  "sặc": [
+    "V",
+    "A"
+  ],
+  "sặm": [
+    "A"
+  ],
+  "sẹo": [
+    "N"
+  ],
+  "sẻ": [
+    "V",
+    "N"
+  ],
+  "sẽ": [
+    "V",
+    "A"
+  ],
+  "sếp": [
+    "V",
+    "N"
+  ],
+  "sếu": [
+    "N"
+  ],
+  "sểnh": [
+    "V",
+    "A"
+  ],
+  "sỉ": [
+    "V",
+    "N"
+  ],
+  "sọ": [
+    "N"
+  ],
+  "sọc": [
+    "A",
+    "N"
+  ],
+  "sỏi": [
+    "N"
+  ],
+  "số": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "sốc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sống": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sốt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "sồ": [
+    "V",
+    "A"
+  ],
+  "sồi": [
+    "N"
+  ],
+  "sồng": [
+    "V",
+    "N"
+  ],
+  "sổ": [
+    "V",
+    "N"
+  ],
+  "sộ": [
+    "V",
+    "A"
+  ],
+  "sớ": [
+    "N"
+  ],
+  "sớm": [
+    "R",
+    "A"
+  ],
+  "sớn": [
+    "N"
+  ],
+  "sớt": [
+    "V"
+  ],
+  "sờ": [
+    "V"
+  ],
+  "sờn": [
+    "V",
+    "A"
+  ],
+  "sở": [
+    "V",
+    "N"
+  ],
+  "sởn": [
+    "V",
+    "A"
+  ],
+  "sợ": [
+    "V",
+    "A"
+  ],
+  "sợi": [
+    "V",
+    "N"
+  ],
+  "sụ": [
+    "A"
+  ],
+  "sục": [
+    "V",
+    "N"
+  ],
+  "sụn": [
+    "V",
+    "N"
+  ],
+  "sụp": [
+    "V",
+    "A"
+  ],
+  "sụt": [
+    "V",
+    "A"
+  ],
+  "sủa": [
+    "V"
+  ],
+  "sủi": [
+    "V"
+  ],
+  "sứ": [
+    "V",
+    "N"
+  ],
+  "sứa": [
+    "N"
+  ],
+  "sức": [
+    "V",
+    "N"
+  ],
+  "sứt": [
+    "V",
+    "A"
+  ],
+  "sừng": [
+    "N"
+  ],
+  "sử": [
+    "V",
+    "N"
+  ],
+  "sửa": [
+    "V"
+  ],
+  "sữa": [
+    "N"
+  ],
+  "sững": [
+    "V",
+    "A"
+  ],
+  "sự": [
+    "V",
+    "N"
+  ],
+  "sực": [
+    "V",
+    "A"
+  ],
+  "sựng": [
+    "V",
+    "N"
+  ],
+  "sỹ": [
+    "N"
+  ],
+  "ta": [
+    "A",
+    "P",
+    "N"
+  ],
+  "tai": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tam": [
+    "A",
+    "N"
+  ],
+  "tan": [
+    "V",
+    "A"
+  ],
+  "tang": [
+    "V",
+    "N"
+  ],
+  "tanh": [
+    "A"
+  ],
+  "tao": [
+    "V",
+    "P",
+    "N"
+  ],
+  "tay": [
+    "V",
+    "N"
+  ],
+  "te": [
+    "V",
+    "A"
+  ],
+  "tem": [
+    "N"
+  ],
+  "ten": [
+    "V",
+    "N"
+  ],
+  "teo": [
+    "V",
+    "A"
+  ],
+  "tha": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thai": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tham": [
+    "V",
+    "A",
+    "N"
+  ],
+  "than": [
+    "V",
+    "N"
+  ],
+  "thang": [
+    "V",
+    "N"
+  ],
+  "thanh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thao": [
+    "V",
+    "N"
+  ],
+  "thau": [
+    "V",
+    "N"
+  ],
+  "thay": [
+    "V",
+    "A"
+  ],
+  "the": [
+    "V",
+    "A",
+    "N"
+  ],
+  "then": [
+    "R"
+  ],
+  "theo": [
+    "V",
+    "P"
+  ],
+  "thi": [
+    "V",
+    "N"
+  ],
+  "thia": [
+    "N"
+  ],
+  "thinh": [
+    "V",
+    "A"
+  ],
+  "thiu": [
+    "V",
+    "A"
+  ],
+  "thiêm": [
+    "V",
+    "A"
+  ],
+  "thiên": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "thiêng": [
+    "A"
+  ],
+  "thiêu": [
+    "V"
+  ],
+  "thiếp": [
+    "P",
+    "N"
+  ],
+  "thiết": [
+    "V",
+    "A"
+  ],
+  "thiếu": [
+    "V",
+    "A"
+  ],
+  "thiềm": [
+    "N"
+  ],
+  "thiền": [
+    "V",
+    "N"
+  ],
+  "thiển": [
+    "A"
+  ],
+  "thiện": [
+    "A",
+    "N"
+  ],
+  "thiệp": [
+    "V",
+    "N"
+  ],
+  "thiệt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tho": [
+    "A"
+  ],
+  "thoa": [
+    "V",
+    "N"
+  ],
+  "thoai": [
+    "V",
+    "A"
+  ],
+  "thoang": [
+    "V",
+    "A"
+  ],
+  "thoi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thon": [
+    "A"
+  ],
+  "thong": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thoáng": [
+    "V",
+    "A"
+  ],
+  "thoát": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thoăn": [
+    "A"
+  ],
+  "thoại": [
+    "N"
+  ],
+  "thoạt": [
+    "R",
+    "A"
+  ],
+  "thoải": [
+    "A"
+  ],
+  "thoảng": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thoắt": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thu": [
+    "V",
+    "N"
+  ],
+  "thua": [
+    "V",
+    "A"
+  ],
+  "thui": [
+    "V",
+    "R"
+  ],
+  "thun": [
+    "N"
+  ],
+  "thung": [
+    "N"
+  ],
+  "thuyên": [
+    "V",
+    "N"
+  ],
+  "thuyết": [
+    "V",
+    "N"
+  ],
+  "thuyền": [
+    "N"
+  ],
+  "thuê": [
+    "V",
+    "A"
+  ],
+  "thuên": [
+    "V",
+    "N"
+  ],
+  "thuấn": [
+    "N"
+  ],
+  "thuần": [
+    "V",
+    "A"
+  ],
+  "thuẫn": [
+    "N"
+  ],
+  "thuận": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thuật": [
+    "V",
+    "N"
+  ],
+  "thuế": [
+    "N"
+  ],
+  "thuốc": [
+    "V",
+    "N"
+  ],
+  "thuồng": [
+    "A",
+    "N"
+  ],
+  "thuộc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thuở": [
+    "N"
+  ],
+  "thà": [
+    "V",
+    "A"
+  ],
+  "thành": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thào": [
+    "A"
+  ],
+  "thày": [
+    "N"
+  ],
+  "thá": [
+    "V",
+    "A"
+  ],
+  "thác": [
+    "V",
+    "N"
+  ],
+  "thách": [
+    "V",
+    "N"
+  ],
+  "thái": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thám": [
+    "V",
+    "N"
+  ],
+  "thán": [
+    "V",
+    "N"
+  ],
+  "tháng": [
+    "N"
+  ],
+  "thánh": [
+    "A",
+    "N"
+  ],
+  "tháo": [
+    "V"
+  ],
+  "tháp": [
+    "N"
+  ],
+  "tháí": [
+    "A",
+    "N"
+  ],
+  "thâm": [
+    "V",
+    "A"
+  ],
+  "thân": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thâu": [
+    "V"
+  ],
+  "thây": [
+    "A",
+    "N"
+  ],
+  "thãi": [
+    "V"
+  ],
+  "thèm": [
+    "V",
+    "A"
+  ],
+  "thèn": [
+    "N"
+  ],
+  "thép": [
+    "N"
+  ],
+  "thét": [
+    "V"
+  ],
+  "thê": [
+    "A",
+    "N"
+  ],
+  "thêm": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thênh": [
+    "A"
+  ],
+  "thêu": [
+    "V",
+    "N"
+  ],
+  "thì": [
+    "V",
+    "R",
+    "N"
+  ],
+  "thìa": [
+    "N"
+  ],
+  "thìn": [
+    "N"
+  ],
+  "thình": [
+    "A"
+  ],
+  "thí": [
+    "V",
+    "N"
+  ],
+  "thích": [
+    "V",
+    "A"
+  ],
+  "thím": [
+    "N"
+  ],
+  "thít": [
+    "V"
+  ],
+  "thò": [
+    "V"
+  ],
+  "thòi": [
+    "V"
+  ],
+  "thòng": [
+    "V",
+    "A"
+  ],
+  "thóc": [
+    "N"
+  ],
+  "thói": [
+    "N"
+  ],
+  "thóp": [
+    "V",
+    "N"
+  ],
+  "thót": [
+    "V",
+    "A"
+  ],
+  "thô": [
+    "V",
+    "A"
+  ],
+  "thôi": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thôn": [
+    "N"
+  ],
+  "thông": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thỏa": [
+    "V",
+    "A"
+  ],
+  "thõng": [
+    "V",
+    "A"
+  ],
+  "thù": [
+    "V",
+    "N"
+  ],
+  "thùa": [
+    "V"
+  ],
+  "thùng": [
+    "V",
+    "N"
+  ],
+  "thùy": [
+    "A",
+    "N"
+  ],
+  "thú": [
+    "N"
+  ],
+  "thúc": [
+    "V",
+    "N"
+  ],
+  "thúi": [
+    "V",
+    "A"
+  ],
+  "thúng": [
+    "N"
+  ],
+  "thút": [
+    "V"
+  ],
+  "thúy": [
+    "N"
+  ],
+  "thăm": [
+    "V",
+    "N"
+  ],
+  "thăn": [
+    "N"
+  ],
+  "thăng": [
+    "V",
+    "A"
+  ],
+  "thĩ": [
+    "N"
+  ],
+  "thơ": [
+    "V",
+    "N"
+  ],
+  "thơi": [
+    "V",
+    "A"
+  ],
+  "thơm": [
+    "V",
+    "A"
+  ],
+  "thơn": [
+    "N"
+  ],
+  "thư": [
+    "V",
+    "N"
+  ],
+  "thưa": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thương": [
+    "V",
+    "N"
+  ],
+  "thước": [
+    "V",
+    "N"
+  ],
+  "thướt": [
+    "A"
+  ],
+  "thườn": [
+    "A"
+  ],
+  "thường": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thưở": [
+    "N"
+  ],
+  "thưởng": [
+    "V",
+    "N"
+  ],
+  "thượng": [
+    "R",
+    "N",
+    "A"
+  ],
+  "thượt": [
+    "V",
+    "A"
+  ],
+  "thạch": [
+    "N"
+  ],
+  "thạo": [
+    "V",
+    "A"
+  ],
+  "thả": [
+    "V"
+  ],
+  "thải": [
+    "V",
+    "N"
+  ],
+  "thảm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thản": [
+    "A"
+  ],
+  "thảng": [
+    "A"
+  ],
+  "thảnh": [
+    "A"
+  ],
+  "thảo": [
+    "V",
+    "N"
+  ],
+  "thấm": [
+    "V",
+    "A"
+  ],
+  "thấp": [
+    "A"
+  ],
+  "thất": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thấu": [
+    "V",
+    "A"
+  ],
+  "thấy": [
+    "V"
+  ],
+  "thầm": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thần": [
+    "A",
+    "N"
+  ],
+  "thầy": [
+    "N"
+  ],
+  "thẩm": [
+    "V",
+    "A"
+  ],
+  "thẩn": [
+    "A"
+  ],
+  "thẩy": [
+    "V"
+  ],
+  "thẫm": [
+    "A"
+  ],
+  "thẫn": [
+    "A"
+  ],
+  "thậm": [
+    "V",
+    "A"
+  ],
+  "thận": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thập": [
+    "A",
+    "N"
+  ],
+  "thật": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thắc": [
+    "V",
+    "N"
+  ],
+  "thắm": [
+    "V",
+    "A"
+  ],
+  "thắng": [
+    "V",
+    "A"
+  ],
+  "thắp": [
+    "V"
+  ],
+  "thắt": [
+    "V",
+    "N"
+  ],
+  "thằn": [
+    "N"
+  ],
+  "thằng": [
+    "P",
+    "N"
+  ],
+  "thẳm": [
+    "V",
+    "A"
+  ],
+  "thẳng": [
+    "V",
+    "R",
+    "A"
+  ],
+  "thẹn": [
+    "V",
+    "A"
+  ],
+  "thẻ": [
+    "N"
+  ],
+  "thế": [
+    "A",
+    "R",
+    "P",
+    "V",
+    "N"
+  ],
+  "thếch": [
+    "R",
+    "A"
+  ],
+  "thết": [
+    "V",
+    "A"
+  ],
+  "thề": [
+    "V",
+    "N"
+  ],
+  "thềm": [
+    "N"
+  ],
+  "thể": [
+    "V",
+    "N"
+  ],
+  "thểu": [
+    "A"
+  ],
+  "thỉnh": [
+    "V"
+  ],
+  "thỉu": [
+    "A"
+  ],
+  "thị": [
+    "V",
+    "N"
+  ],
+  "thịch": [
+    "V"
+  ],
+  "thịnh": [
+    "V",
+    "A"
+  ],
+  "thịt": [
+    "V",
+    "N"
+  ],
+  "thọ": [
+    "V",
+    "A"
+  ],
+  "thọc": [
+    "V"
+  ],
+  "thỏ": [
+    "N"
+  ],
+  "thỏm": [
+    "V",
+    "A"
+  ],
+  "thỏng": [
+    "V",
+    "A"
+  ],
+  "thối": [
+    "V",
+    "A"
+  ],
+  "thốn": [
+    "V",
+    "A"
+  ],
+  "thống": [
+    "V",
+    "N"
+  ],
+  "thốt": [
+    "V"
+  ],
+  "thồ": [
+    "V",
+    "A"
+  ],
+  "thổ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thổi": [
+    "V"
+  ],
+  "thổn": [
+    "A"
+  ],
+  "thột": [
+    "V"
+  ],
+  "thớ": [
+    "N"
+  ],
+  "thớt": [
+    "N"
+  ],
+  "thờ": [
+    "V",
+    "A"
+  ],
+  "thời": [
+    "A",
+    "N"
+  ],
+  "thở": [
+    "V"
+  ],
+  "thỡn": [
+    "A"
+  ],
+  "thợ": [
+    "N"
+  ],
+  "thụ": [
+    "V",
+    "N"
+  ],
+  "thục": [
+    "A",
+    "N"
+  ],
+  "thụt": [
+    "V"
+  ],
+  "thủ": [
+    "V",
+    "N"
+  ],
+  "thủa": [
+    "N"
+  ],
+  "thủi": [
+    "V",
+    "A"
+  ],
+  "thủy": [
+    "A",
+    "N"
+  ],
+  "thứ": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "thức": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thừ": [
+    "V",
+    "A"
+  ],
+  "thừa": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thừng": [
+    "N"
+  ],
+  "thử": [
+    "V"
+  ],
+  "thửng": [
+    "V"
+  ],
+  "thững": [
+    "A"
+  ],
+  "thự": [
+    "N"
+  ],
+  "thực": [
+    "V",
+    "A",
+    "N"
+  ],
+  "thỷ": [
+    "A",
+    "N"
+  ],
+  "ti": [
+    "V",
+    "N"
+  ],
+  "tia": [
+    "N"
+  ],
+  "tim": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tin": [
+    "V",
+    "N"
+  ],
+  "tinh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiêm": [
+    "V",
+    "N"
+  ],
+  "tiên": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiêng": [
+    "V",
+    "N"
+  ],
+  "tiêu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiếc": [
+    "V",
+    "A"
+  ],
+  "tiến": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiếng": [
+    "N"
+  ],
+  "tiếp": [
+    "V",
+    "R",
+    "A"
+  ],
+  "tiết": [
+    "V",
+    "N"
+  ],
+  "tiếu": [
+    "V",
+    "N"
+  ],
+  "tiềm": [
+    "V",
+    "A"
+  ],
+  "tiền": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiều": [
+    "A",
+    "N"
+  ],
+  "tiểu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiễn": [
+    "V",
+    "N"
+  ],
+  "tiệc": [
+    "N"
+  ],
+  "tiện": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tiệt": [
+    "V",
+    "A"
+  ],
+  "to": [
+    "V",
+    "A"
+  ],
+  "toa": [
+    "V",
+    "N"
+  ],
+  "toan": [
+    "A",
+    "N"
+  ],
+  "toang": [
+    "V",
+    "A",
+    "N"
+  ],
+  "toe": [
+    "N"
+  ],
+  "toi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tom": [
+    "V",
+    "N"
+  ],
+  "torng": [
+    "N"
+  ],
+  "toàn": [
+    "V",
+    "A"
+  ],
+  "toán": [
+    "V",
+    "N"
+  ],
+  "toát": [
+    "V",
+    "A"
+  ],
+  "toòng": [
+    "V",
+    "A"
+  ],
+  "toạc": [
+    "V",
+    "A"
+  ],
+  "toại": [
+    "V",
+    "A"
+  ],
+  "toạt": [
+    "V",
+    "A"
+  ],
+  "toản": [
+    "N"
+  ],
+  "tra": [
+    "V",
+    "N"
+  ],
+  "trai": [
+    "A",
+    "N"
+  ],
+  "trang": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tranh": [
+    "V",
+    "N"
+  ],
+  "trao": [
+    "V"
+  ],
+  "trau": [
+    "V"
+  ],
+  "tre": [
+    "N"
+  ],
+  "treo": [
+    "V"
+  ],
+  "tri": [
+    "V",
+    "N"
+  ],
+  "trinh": [
+    "A",
+    "N"
+  ],
+  "triết": [
+    "V",
+    "A",
+    "N"
+  ],
+  "triền": [
+    "V",
+    "A"
+  ],
+  "triều": [
+    "V",
+    "N"
+  ],
+  "triển": [
+    "V"
+  ],
+  "triệu": [
+    "V",
+    "N"
+  ],
+  "tro": [
+    "N"
+  ],
+  "trong": [
+    "V",
+    "A",
+    "P"
+  ],
+  "tru": [
+    "V",
+    "N"
+  ],
+  "trui": [
+    "V"
+  ],
+  "trung": [
+    "V",
+    "A",
+    "N"
+  ],
+  "truy": [
+    "V"
+  ],
+  "truyền": [
+    "V",
+    "N"
+  ],
+  "truyện": [
+    "N"
+  ],
+  "truân": [
+    "A"
+  ],
+  "truông": [
+    "N"
+  ],
+  "truồng": [
+    "V",
+    "N"
+  ],
+  "trà": [
+    "V",
+    "N"
+  ],
+  "tràm": [
+    "N"
+  ],
+  "tràn": [
+    "V",
+    "A"
+  ],
+  "tràng": [
+    "N"
+  ],
+  "trành": [
+    "V",
+    "N"
+  ],
+  "trào": [
+    "V",
+    "A"
+  ],
+  "trá": [
+    "V",
+    "A"
+  ],
+  "trác": [
+    "A"
+  ],
+  "trách": [
+    "V"
+  ],
+  "trái": [
+    "A",
+    "P",
+    "N"
+  ],
+  "trán": [
+    "N"
+  ],
+  "tráng": [
+    "V",
+    "A"
+  ],
+  "tránh": [
+    "V"
+  ],
+  "tráo": [
+    "V",
+    "A"
+  ],
+  "tráp": [
+    "N"
+  ],
+  "trát": [
+    "V"
+  ],
+  "trâm": [
+    "V",
+    "N"
+  ],
+  "trân": [
+    "V",
+    "N"
+  ],
+  "trâu": [
+    "A",
+    "N"
+  ],
+  "trãi": [
+    "V"
+  ],
+  "trèo": [
+    "V"
+  ],
+  "trên": [
+    "R",
+    "P",
+    "A"
+  ],
+  "trênh": [
+    "A"
+  ],
+  "trêu": [
+    "V",
+    "N"
+  ],
+  "trì": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trình": [
+    "V",
+    "N"
+  ],
+  "trìu": [
+    "A"
+  ],
+  "trí": [
+    "A",
+    "N"
+  ],
+  "tría": [
+    "N"
+  ],
+  "trích": [
+    "V",
+    "N"
+  ],
+  "trò": [
+    "V",
+    "N"
+  ],
+  "tròi": [
+    "V",
+    "A"
+  ],
+  "tròn": [
+    "V",
+    "A"
+  ],
+  "tròng": [
+    "V",
+    "N"
+  ],
+  "tró": [
+    "V"
+  ],
+  "tróc": [
+    "V",
+    "A"
+  ],
+  "trói": [
+    "V"
+  ],
+  "trót": [
+    "V",
+    "R",
+    "A"
+  ],
+  "trôi": [
+    "V",
+    "N"
+  ],
+  "trôn": [
+    "V",
+    "N"
+  ],
+  "trông": [
+    "V",
+    "N"
+  ],
+  "trù": [
+    "V",
+    "N"
+  ],
+  "trùm": [
+    "V",
+    "N"
+  ],
+  "trùn": [
+    "N"
+  ],
+  "trùng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trú": [
+    "V"
+  ],
+  "trúc": [
+    "V",
+    "N"
+  ],
+  "trúng": [
+    "V",
+    "A"
+  ],
+  "trút": [
+    "V"
+  ],
+  "trăm": [
+    "A",
+    "N"
+  ],
+  "trăn": [
+    "N"
+  ],
+  "trăng": [
+    "N"
+  ],
+  "trĩnh": [
+    "A"
+  ],
+  "trĩu": [
+    "V",
+    "A"
+  ],
+  "trũng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trơ": [
+    "V",
+    "A"
+  ],
+  "trơi": [
+    "V"
+  ],
+  "trơn": [
+    "V",
+    "A"
+  ],
+  "trưa": [
+    "V",
+    "N"
+  ],
+  "trưng": [
+    "V"
+  ],
+  "trương": [
+    "V",
+    "N"
+  ],
+  "trước": [
+    "A",
+    "R",
+    "N"
+  ],
+  "trượt": [
+    "V",
+    "A"
+  ],
+  "trại": [
+    "N"
+  ],
+  "trạng": [
+    "N"
+  ],
+  "trả": [
+    "V"
+  ],
+  "trải": [
+    "V"
+  ],
+  "trảy": [
+    "V"
+  ],
+  "trấn": [
+    "V",
+    "N"
+  ],
+  "trấp": [
+    "V",
+    "N"
+  ],
+  "trấu": [
+    "N"
+  ],
+  "trầm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trần": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trầu": [
+    "N"
+  ],
+  "trẩy": [
+    "V"
+  ],
+  "trận": [
+    "V",
+    "N"
+  ],
+  "trập": [
+    "V",
+    "A"
+  ],
+  "trật": [
+    "V",
+    "A"
+  ],
+  "trắc": [
+    "A",
+    "N"
+  ],
+  "trắng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trằm": [
+    "A",
+    "N"
+  ],
+  "trằn": [
+    "V",
+    "N"
+  ],
+  "trặc": [
+    "V",
+    "A"
+  ],
+  "trẻ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trẻo": [
+    "A"
+  ],
+  "trẽn": [
+    "A"
+  ],
+  "trề": [
+    "V",
+    "A"
+  ],
+  "trễ": [
+    "V",
+    "A"
+  ],
+  "trệ": [
+    "V",
+    "A"
+  ],
+  "trị": [
+    "V",
+    "N"
+  ],
+  "trịa": [
+    "V"
+  ],
+  "trịch": [
+    "V",
+    "N"
+  ],
+  "trịnh": [
+    "A",
+    "N"
+  ],
+  "trịt": [
+    "V",
+    "A"
+  ],
+  "trọ": [
+    "V",
+    "N"
+  ],
+  "trọc": [
+    "V",
+    "A"
+  ],
+  "trọi": [
+    "V"
+  ],
+  "trọn": [
+    "V",
+    "A"
+  ],
+  "trọng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trố": [
+    "V",
+    "A"
+  ],
+  "trốc": [
+    "V"
+  ],
+  "trối": [
+    "V",
+    "A"
+  ],
+  "trốn": [
+    "V",
+    "N"
+  ],
+  "trống": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trồ": [
+    "V"
+  ],
+  "trồi": [
+    "V"
+  ],
+  "trồng": [
+    "V",
+    "N"
+  ],
+  "trổ": [
+    "V",
+    "N"
+  ],
+  "trổi": [
+    "V",
+    "A"
+  ],
+  "trỗ": [
+    "V"
+  ],
+  "trỗi": [
+    "V"
+  ],
+  "trộm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "trộn": [
+    "V",
+    "N"
+  ],
+  "trớ": [
+    "V",
+    "A"
+  ],
+  "trớn": [
+    "V",
+    "A"
+  ],
+  "trớt": [
+    "V",
+    "N"
+  ],
+  "trờ": [
+    "V",
+    "N"
+  ],
+  "trời": [
+    "V",
+    "N"
+  ],
+  "trở": [
+    "V",
+    "N"
+  ],
+  "trợn": [
+    "V",
+    "A"
+  ],
+  "trọt": [
+    "V",
+    "A"
+  ],
+  "trụ": [
+    "V",
+    "N"
+  ],
+  "trục": [
+    "V",
+    "N"
+  ],
+  "trụi": [
+    "V",
+    "A"
+  ],
+  "trứng": [
+    "N"
+  ],
+  "trừ": [
+    "V",
+    "P"
+  ],
+  "trừng": [
+    "V"
+  ],
+  "trừu": [
+    "V",
+    "A"
+  ],
+  "trữ": [
+    "V",
+    "N"
+  ],
+  "trực": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tu": [
+    "V",
+    "N"
+  ],
+  "tua": [
+    "V",
+    "N"
+  ],
+  "tui": [
+    "P",
+    "N"
+  ],
+  "tung": [
+    "V",
+    "A"
+  ],
+  "tuy": [
+    "R"
+  ],
+  "tuyên": [
+    "V",
+    "N"
+  ],
+  "tuyến": [
+    "N"
+  ],
+  "tuyết": [
+    "N"
+  ],
+  "tuyền": [
+    "A",
+    "N"
+  ],
+  "tuyệt": [
+    "V",
+    "A"
+  ],
+  "tuôn": [
+    "V"
+  ],
+  "tuông": [
+    "V",
+    "A"
+  ],
+  "tươi": [
+    "V",
+    "A"
+  ],
+  "tuấn": [
+    "A",
+    "N"
+  ],
+  "tuần": [
+    "V",
+    "N"
+  ],
+  "tuế": [
+    "N"
+  ],
+  "tuệ": [
+    "A",
+    "N"
+  ],
+  "tuốt": [
+    "V",
+    "A"
+  ],
+  "tuồng": [
+    "N"
+  ],
+  "tuổi": [
+    "N"
+  ],
+  "tuột": [
+    "V",
+    "A"
+  ],
+  "ty": [
+    "N"
+  ],
+  "type": [
+    "N"
+  ],
+  "tà": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tài": [
+    "A",
+    "N"
+  ],
+  "tàm": [
+    "A"
+  ],
+  "tàn": [
+    "V",
+    "A"
+  ],
+  "tàng": [
+    "V",
+    "N"
+  ],
+  "tành": [
+    "V",
+    "A"
+  ],
+  "tào": [
+    "V",
+    "N"
+  ],
+  "tàu": [
+    "V",
+    "N"
+  ],
+  "tày": [
+    "A",
+    "N"
+  ],
+  "tá": [
+    "V",
+    "N"
+  ],
+  "tác": [
+    "V",
+    "N"
+  ],
+  "tách": [
+    "V",
+    "N"
+  ],
+  "tái": [
+    "V",
+    "A"
+  ],
+  "tám": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tán": [
+    "V",
+    "N"
+  ],
+  "tánh": [
+    "N"
+  ],
+  "táo": [
+    "V",
+    "A",
+    "N"
+  ],
+  "táp": [
+    "V",
+    "A"
+  ],
+  "tát": [
+    "V"
+  ],
+  "tâm": [
+    "N"
+  ],
+  "tân": [
+    "A",
+    "N"
+  ],
+  "tâu": [
+    "V"
+  ],
+  "tây": [
+    "R",
+    "N",
+    "A"
+  ],
+  "tè": [
+    "V",
+    "N"
+  ],
+  "tèm": [
+    "A"
+  ],
+  "té": [
+    "V",
+    "A"
+  ],
+  "tép": [
+    "A",
+    "N"
+  ],
+  "tét": [
+    "V",
+    "A"
+  ],
+  "tê": [
+    "V",
+    "A",
+    "N"
+  ],
+  "têm": [
+    "V"
+  ],
+  "tên": [
+    "V",
+    "N"
+  ],
+  "tênh": [
+    "A"
+  ],
+  "tì": [
+    "V",
+    "N"
+  ],
+  "tìm": [
+    "V"
+  ],
+  "tình": [
+    "V",
+    "N"
+  ],
+  "tí": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tía": [
+    "A",
+    "N"
+  ],
+  "tích": [
+    "V",
+    "N"
+  ],
+  "tím": [
+    "V",
+    "A"
+  ],
+  "tín": [
+    "A",
+    "N"
+  ],
+  "tính": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tít": [
+    "V",
+    "A"
+  ],
+  "tíu": [
+    "V",
+    "A"
+  ],
+  "tò": [
+    "V",
+    "A"
+  ],
+  "tòa": [
+    "V",
+    "N"
+  ],
+  "tòng": [
+    "V",
+    "N"
+  ],
+  "tóc": [
+    "N"
+  ],
+  "tóe": [
+    "V",
+    "A"
+  ],
+  "tóm": [
+    "V"
+  ],
+  "tóp": [
+    "V",
+    "N"
+  ],
+  "tót": [
+    "V",
+    "A"
+  ],
+  "tô": [
+    "V",
+    "N"
+  ],
+  "tôi": [
+    "V",
+    "P",
+    "N"
+  ],
+  "tôm": [
+    "N"
+  ],
+  "tôn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tông": [
+    "V",
+    "N"
+  ],
+  "tù": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tùa": [
+    "V",
+    "A"
+  ],
+  "tùm": [
+    "V",
+    "A"
+  ],
+  "tùng": [
+    "V",
+    "N"
+  ],
+  "tùy": [
+    "V",
+    "R",
+    "A"
+  ],
+  "tú": [
+    "A",
+    "N"
+  ],
+  "túc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "túi": [
+    "N"
+  ],
+  "túng": [
+    "V",
+    "A"
+  ],
+  "túp": [
+    "A"
+  ],
+  "túy": [
+    "A",
+    "N"
+  ],
+  "tý": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tăm": [
+    "V",
+    "N"
+  ],
+  "tăn": [
+    "V"
+  ],
+  "tăng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tĩnh": [
+    "V",
+    "A"
+  ],
+  "tơ": [
+    "V",
+    "N"
+  ],
+  "tơi": [
+    "V",
+    "A"
+  ],
+  "tơm": [
+    "V",
+    "N"
+  ],
+  "tơn": [
+    "V",
+    "N"
+  ],
+  "tư": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "tưa": [
+    "V"
+  ],
+  "tưng": [
+    "V",
+    "A"
+  ],
+  "tươm": [
+    "V",
+    "A"
+  ],
+  "tương": [
+    "V",
+    "N"
+  ],
+  "tước": [
+    "V",
+    "N"
+  ],
+  "tưới": [
+    "V"
+  ],
+  "tướng": [
+    "V",
+    "N"
+  ],
+  "tường": [
+    "V",
+    "N"
+  ],
+  "tưởi": [
+    "V"
+  ],
+  "tưởng": [
+    "V"
+  ],
+  "tượng": [
+    "V",
+    "N"
+  ],
+  "tạ": [
+    "V",
+    "N"
+  ],
+  "tạc": [
+    "V"
+  ],
+  "tại": [
+    "V",
+    "A",
+    "P"
+  ],
+  "tạm": [
+    "R",
+    "A"
+  ],
+  "tạng": [
+    "N"
+  ],
+  "tạnh": [
+    "V",
+    "A"
+  ],
+  "tạo": [
+    "V",
+    "N"
+  ],
+  "tạp": [
+    "A",
+    "N"
+  ],
+  "tạt": [
+    "V"
+  ],
+  "tả": [
+    "V",
+    "A",
+    "E",
+    "N"
+  ],
+  "tải": [
+    "V",
+    "N"
+  ],
+  "tản": [
+    "V",
+    "A"
+  ],
+  "tảng": [
+    "N"
+  ],
+  "tảo": [
+    "N"
+  ],
+  "tấc": [
+    "N"
+  ],
+  "tấm": [
+    "V",
+    "N"
+  ],
+  "tấn": [
+    "V",
+    "N"
+  ],
+  "tấp": [
+    "V",
+    "A"
+  ],
+  "tất": [
+    "V",
+    "N"
+  ],
+  "tấu": [
+    "V",
+    "N"
+  ],
+  "tầm": [
+    "V",
+    "N"
+  ],
+  "tần": [
+    "R",
+    "N",
+    "A"
+  ],
+  "tầng": [
+    "N"
+  ],
+  "tầu": [
+    "N"
+  ],
+  "tầy": [
+    "A"
+  ],
+  "tẩm": [
+    "V"
+  ],
+  "tẩy": [
+    "V"
+  ],
+  "tận": [
+    "V",
+    "R",
+    "A"
+  ],
+  "tập": [
+    "V",
+    "N"
+  ],
+  "tật": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tậu": [
+    "V"
+  ],
+  "tắc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tắm": [
+    "V",
+    "N"
+  ],
+  "tắp": [
+    "V",
+    "A"
+  ],
+  "tắt": [
+    "V",
+    "A"
+  ],
+  "tằm": [
+    "N"
+  ],
+  "tặc": [
+    "V",
+    "N"
+  ],
+  "tặng": [
+    "V"
+  ],
+  "tẹp": [
+    "V",
+    "A"
+  ],
+  "tẻ": [
+    "A",
+    "N"
+  ],
+  "tẻo": [
+    "A"
+  ],
+  "tế": [
+    "V",
+    "A"
+  ],
+  "tếch": [
+    "A"
+  ],
+  "tết": [
+    "V",
+    "N"
+  ],
+  "tề": [
+    "V",
+    "A"
+  ],
+  "tễnh": [
+    "A"
+  ],
+  "tệ": [
+    "A",
+    "N"
+  ],
+  "tỉ": [
+    "A",
+    "N"
+  ],
+  "tỉnh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tị": [
+    "V",
+    "N"
+  ],
+  "tịch": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tịnh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tọa": [
+    "V",
+    "N"
+  ],
+  "tọt": [
+    "V",
+    "A"
+  ],
+  "tỏ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tỏa": [
+    "V"
+  ],
+  "tố": [
+    "V",
+    "N"
+  ],
+  "tốc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tối": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tốn": [
+    "V"
+  ],
+  "tống": [
+    "V",
+    "N"
+  ],
+  "tốt": [
+    "V",
+    "A"
+  ],
+  "tồ": [
+    "A"
+  ],
+  "tồi": [
+    "A"
+  ],
+  "tồn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tổng": [
+    "V",
+    "N"
+  ],
+  "tổ": [
+    "V",
+    "N"
+  ],
+  "tổn": [
+    "V",
+    "A"
+  ],
+  "tộc": [
+    "N"
+  ],
+  "tội": [
+    "V",
+    "N"
+  ],
+  "tột": [
+    "V",
+    "A"
+  ],
+  "tớ": [
+    "P"
+  ],
+  "tới": [
+    "V",
+    "R",
+    "E"
+  ],
+  "tờ": [
+    "N"
+  ],
+  "tởm": [
+    "V",
+    "A"
+  ],
+  "tợ": [
+    "V"
+  ],
+  "tợn": [
+    "V",
+    "A"
+  ],
+  "tụ": [
+    "V",
+    "N"
+  ],
+  "tục": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tụng": [
+    "V",
+    "N"
+  ],
+  "tụt": [
+    "V",
+    "A"
+  ],
+  "tụy": [
+    "N"
+  ],
+  "tủa": [
+    "V"
+  ],
+  "tủi": [
+    "A"
+  ],
+  "tủy": [
+    "N"
+  ],
+  "tứ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "tức": [
+    "V",
+    "R",
+    "A"
+  ],
+  "từ": [
+    "V",
+    "E",
+    "P",
+    "N"
+  ],
+  "tựa": [
+    "V",
+    "A"
+  ],
+  "từng": [
+    "V",
+    "R",
+    "A"
+  ],
+  "tử": [
+    "V",
+    "N"
+  ],
+  "tửng": [
+    "V",
+    "A"
+  ],
+  "tự": [
+    "V",
+    "A",
+    "P",
+    "N"
+  ],
+  "tựu": [
+    "V",
+    "N"
+  ],
+  "tỳ": [
+    "V",
+    "N"
+  ],
+  "tỷ": [
+    "A",
+    "N"
+  ],
+  "ui": [
+    "E",
+    "P"
+  ],
+  "um": [
+    "E",
+    "P"
+  ],
+  "ung": [
+    "V",
+    "N"
+  ],
+  "uyên": [
+    "V",
+    "N"
+  ],
+  "uy": [
+    "N"
+  ],
+  "uyển": [
+    "A"
+  ],
+  "uôm": [
+    "V"
+  ],
+  "uất": [
+    "V",
+    "A"
+  ],
+  "uẩn": [
+    "A",
+    "N"
+  ],
+  "uế": [
+    "A"
+  ],
+  "uể": [
+    "A"
+  ],
+  "uốn": [
+    "V"
+  ],
+  "uống": [
+    "V"
+  ],
+  "uổng": [
+    "V",
+    "A"
+  ],
+  "va": [
+    "V"
+  ],
+  "vai": [
+    "N"
+  ],
+  "van": [
+    "V",
+    "N"
+  ],
+  "vang": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vanh": [
+    "N"
+  ],
+  "vay": [
+    "V",
+    "N"
+  ],
+  "ve": [
+    "V",
+    "N"
+  ],
+  "ven": [
+    "V",
+    "A"
+  ],
+  "veo": [
+    "A"
+  ],
+  "vi": [
+    "P",
+    "N"
+  ],
+  "vin": [
+    "N"
+  ],
+  "vinh": [
+    "N"
+  ],
+  "viêm": [
+    "V",
+    "N"
+  ],
+  "viên": [
+    "V",
+    "N"
+  ],
+  "viếng": [
+    "V"
+  ],
+  "viết": [
+    "V"
+  ],
+  "viền": [
+    "V",
+    "N"
+  ],
+  "viển": [
+    "A"
+  ],
+  "viễn": [
+    "A",
+    "N"
+  ],
+  "việc": [
+    "V",
+    "N"
+  ],
+  "viện": [
+    "V",
+    "N"
+  ],
+  "việt": [
+    "A",
+    "N"
+  ],
+  "vo": [
+    "V",
+    "N"
+  ],
+  "voi": [
+    "N"
+  ],
+  "von": [
+    "V",
+    "N"
+  ],
+  "vong": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vu": [
+    "V",
+    "N"
+  ],
+  "vua": [
+    "N"
+  ],
+  "vui": [
+    "V",
+    "A"
+  ],
+  "vun": [
+    "V"
+  ],
+  "vung": [
+    "V",
+    "N"
+  ],
+  "vuông": [
+    "A",
+    "N"
+  ],
+  "vuốt": [
+    "V"
+  ],
+  "vuột": [
+    "V",
+    "N"
+  ],
+  "và": [
+    "V",
+    "C"
+  ],
+  "vài": [
+    "R",
+    "A"
+  ],
+  "vàm": [
+    "N"
+  ],
+  "vàn": [
+    "A",
+    "N"
+  ],
+  "vàng": [
+    "A",
+    "N"
+  ],
+  "vành": [
+    "N"
+  ],
+  "vào": [
+    "V",
+    "P"
+  ],
+  "vá": [
+    "V"
+  ],
+  "vác": [
+    "V"
+  ],
+  "vách": [
+    "N"
+  ],
+  "vái": [
+    "V"
+  ],
+  "ván": [
+    "N"
+  ],
+  "vánh": [
+    "N"
+  ],
+  "váo": [
+    "V"
+  ],
+  "váy": [
+    "N"
+  ],
+  "vân": [
+    "V",
+    "N"
+  ],
+  "vâng": [
+    "V",
+    "P"
+  ],
+  "vây": [
+    "V",
+    "N"
+  ],
+  "vã": [
+    "V",
+    "A"
+  ],
+  "vãi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vãn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vãng": [
+    "V",
+    "N"
+  ],
+  "vãnh": [
+    "N"
+  ],
+  "vè": [
+    "V",
+    "N"
+  ],
+  "vèo": [
+    "R",
+    "A"
+  ],
+  "vé": [
+    "N"
+  ],
+  "vén": [
+    "V"
+  ],
+  "véo": [
+    "V"
+  ],
+  "vê": [
+    "V"
+  ],
+  "vênh": [
+    "V",
+    "A"
+  ],
+  "vêu": [
+    "A"
+  ],
+  "vì": [
+    "V",
+    "C",
+    "P"
+  ],
+  "ví": [
+    "V",
+    "N"
+  ],
+  "vía": [
+    "N"
+  ],
+  "vít": [
+    "V",
+    "N"
+  ],
+  "víu": [
+    "V"
+  ],
+  "vò": [
+    "V",
+    "N"
+  ],
+  "vòi": [
+    "N"
+  ],
+  "vòm": [
+    "A",
+    "N"
+  ],
+  "vòng": [
+    "V",
+    "N"
+  ],
+  "vó": [
+    "N"
+  ],
+  "vóc": [
+    "N"
+  ],
+  "vót": [
+    "V",
+    "A"
+  ],
+  "vô": [
+    "V",
+    "A",
+    "P",
+    "E"
+  ],
+  "vôi": [
+    "N"
+  ],
+  "vông": [
+    "N"
+  ],
+  "võ": [
+    "V",
+    "N"
+  ],
+  "võng": [
+    "N"
+  ],
+  "vù": [
+    "V",
+    "R",
+    "A"
+  ],
+  "vùa": [
+    "V",
+    "R",
+    "A"
+  ],
+  "vùi": [
+    "V"
+  ],
+  "vùng": [
+    "V",
+    "N"
+  ],
+  "vú": [
+    "N"
+  ],
+  "vút": [
+    "V",
+    "A"
+  ],
+  "văn": [
+    "V",
+    "N"
+  ],
+  "văng": [
+    "V",
+    "N"
+  ],
+  "vĩ": [
+    "A",
+    "N"
+  ],
+  "vĩnh": [
+    "A",
+    "N"
+  ],
+  "vũ": [
+    "V",
+    "N"
+  ],
+  "vũng": [
+    "N"
+  ],
+  "vơ": [
+    "V"
+  ],
+  "vơi": [
+    "V",
+    "A"
+  ],
+  "vưng": [
+    "V",
+    "A"
+  ],
+  "vươn": [
+    "V"
+  ],
+  "vương": [
+    "V",
+    "N"
+  ],
+  "vướng": [
+    "V",
+    "A"
+  ],
+  "vườn": [
+    "N"
+  ],
+  "vưởng": [
+    "V",
+    "A"
+  ],
+  "vượn": [
+    "N"
+  ],
+  "vượt": [
+    "V"
+  ],
+  "vạc": [
+    "N"
+  ],
+  "vạch": [
+    "V",
+    "N"
+  ],
+  "vại": [
+    "N"
+  ],
+  "vạn": [
+    "A",
+    "N"
+  ],
+  "vạng": [
+    "V",
+    "N"
+  ],
+  "vạt": [
+    "V",
+    "N"
+  ],
+  "vạy": [
+    "V"
+  ],
+  "vả": [
+    "V",
+    "N"
+  ],
+  "vải": [
+    "N"
+  ],
+  "vảy": [
+    "N"
+  ],
+  "vấn": [
+    "V"
+  ],
+  "vấp": [
+    "V"
+  ],
+  "vất": [
+    "V",
+    "A"
+  ],
+  "vấy": [
+    "V",
+    "N"
+  ],
+  "vần": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vầng": [
+    "N"
+  ],
+  "vầu": [
+    "N"
+  ],
+  "vầy": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vẩn": [
+    "V",
+    "A"
+  ],
+  "vẩy": [
+    "V",
+    "N"
+  ],
+  "vẫn": [
+    "V",
+    "R"
+  ],
+  "vẫy": [
+    "V"
+  ],
+  "vận": [
+    "V",
+    "N"
+  ],
+  "vật": [
+    "V",
+    "N"
+  ],
+  "vậy": [
+    "R",
+    "P",
+    "A"
+  ],
+  "vắn": [
+    "A"
+  ],
+  "vắng": [
+    "V",
+    "A"
+  ],
+  "vắt": [
+    "V",
+    "N"
+  ],
+  "vằm": [
+    "A"
+  ],
+  "vằng": [
+    "A"
+  ],
+  "vẳng": [
+    "V",
+    "A"
+  ],
+  "vặc": [
+    "A"
+  ],
+  "vặn": [
+    "V"
+  ],
+  "vặt": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vẹn": [
+    "A"
+  ],
+  "vẹo": [
+    "V",
+    "A"
+  ],
+  "vẹt": [
+    "V",
+    "N"
+  ],
+  "vẻ": [
+    "A",
+    "N"
+  ],
+  "vẻo": [
+    "V",
+    "A"
+  ],
+  "vẽ": [
+    "V",
+    "N"
+  ],
+  "vết": [
+    "N"
+  ],
+  "về": [
+    "V",
+    "A",
+    "P"
+  ],
+  "vểnh": [
+    "V",
+    "A"
+  ],
+  "vệ": [
+    "V",
+    "N"
+  ],
+  "vện": [
+    "V",
+    "A"
+  ],
+  "vệt": [
+    "V",
+    "N"
+  ],
+  "vỉa": [
+    "N"
+  ],
+  "vị": [
+    "A",
+    "P",
+    "N"
+  ],
+  "vịn": [
+    "V"
+  ],
+  "vịnh": [
+    "N"
+  ],
+  "vịt": [
+    "N"
+  ],
+  "vọi": [
+    "N"
+  ],
+  "vọng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vọt": [
+    "V"
+  ],
+  "vỏ": [
+    "N"
+  ],
+  "vốc": [
+    "V",
+    "N"
+  ],
+  "vối": [
+    "N"
+  ],
+  "vốn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "vồi": [
+    "V",
+    "A"
+  ],
+  "vồn": [
+    "A"
+  ],
+  "vồng": [
+    "V",
+    "N"
+  ],
+  "vỗ": [
+    "V"
+  ],
+  "vội": [
+    "V",
+    "R",
+    "A"
+  ],
+  "vớ": [
+    "V",
+    "N"
+  ],
+  "với": [
+    "V",
+    "A",
+    "P"
+  ],
+  "vớt": [
+    "V"
+  ],
+  "vờ": [
+    "V",
+    "A"
+  ],
+  "vời": [
+    "V",
+    "A"
+  ],
+  "vờn": [
+    "V"
+  ],
+  "vở": [
+    "N"
+  ],
+  "vởn": [
+    "V"
+  ],
+  "vỡ": [
+    "V",
+    "A"
+  ],
+  "vợ": [
+    "N"
+  ],
+  "vợi": [
+    "A"
+  ],
+  "vụ": [
+    "N"
+  ],
+  "vục": [
+    "V"
+  ],
+  "vụn": [
+    "A",
+    "N"
+  ],
+  "vụng": [
+    "A"
+  ],
+  "vụt": [
+    "V",
+    "A"
+  ],
+  "vứt": [
+    "V"
+  ],
+  "vừa": [
+    "V",
+    "R",
+    "A"
+  ],
+  "vừng": [
+    "N"
+  ],
+  "vững": [
+    "V",
+    "A"
+  ],
+  "vực": [
+    "V",
+    "N"
+  ],
+  "vỹ": [
+    "A",
+    "N"
+  ],
+  "xa": [
+    "R",
+    "A"
+  ],
+  "xang": [
+    "A",
+    "N"
+  ],
+  "xanh": [
+    "A",
+    "N"
+  ],
+  "xao": [
+    "V",
+    "A"
+  ],
+  "xay": [
+    "V"
+  ],
+  "xe": [
+    "V",
+    "N"
+  ],
+  "xem": [
+    "V"
+  ],
+  "xen": [
+    "V"
+  ],
+  "xin": [
+    "V",
+    "A"
+  ],
+  "xinh": [
+    "A"
+  ],
+  "xiêm": [
+    "N"
+  ],
+  "xiên": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xiêng": [
+    "V",
+    "A"
+  ],
+  "xiêu": [
+    "V",
+    "A"
+  ],
+  "xiếc": [
+    "N"
+  ],
+  "xiết": [
+    "V",
+    "R",
+    "A"
+  ],
+  "xiềng": [
+    "V",
+    "N"
+  ],
+  "xiểng": [
+    "N"
+  ],
+  "xo": [
+    "V"
+  ],
+  "xoa": [
+    "V"
+  ],
+  "xoan": [
+    "A",
+    "N"
+  ],
+  "xoay": [
+    "V"
+  ],
+  "xoe": [
+    "V",
+    "N"
+  ],
+  "xoi": [
+    "N"
+  ],
+  "xong": [
+    "V",
+    "A"
+  ],
+  "xoong": [
+    "N"
+  ],
+  "xoài": [
+    "N"
+  ],
+  "xoàng": [
+    "V",
+    "A"
+  ],
+  "xoáy": [
+    "V",
+    "N"
+  ],
+  "xu": [
+    "N"
+  ],
+  "xua": [
+    "V"
+  ],
+  "xui": [
+    "V",
+    "A"
+  ],
+  "xum": [
+    "V"
+  ],
+  "xung": [
+    "V",
+    "N"
+  ],
+  "xuyên": [
+    "V",
+    "A"
+  ],
+  "xuyến": [
+    "N"
+  ],
+  "xuyềnh": [
+    "A"
+  ],
+  "xuân": [
+    "A",
+    "N"
+  ],
+  "xuê": [
+    "V",
+    "A"
+  ],
+  "xuôi": [
+    "V",
+    "R",
+    "A"
+  ],
+  "xuông": [
+    "V",
+    "A"
+  ],
+  "xuất": [
+    "V",
+    "N"
+  ],
+  "xuể": [
+    "V",
+    "A"
+  ],
+  "xuống": [
+    "V",
+    "R",
+    "A"
+  ],
+  "xuồng": [
+    "N"
+  ],
+  "xà": [
+    "V",
+    "N"
+  ],
+  "xài": [
+    "V"
+  ],
+  "xào": [
+    "V"
+  ],
+  "xàu": [
+    "V"
+  ],
+  "xá": [
+    "V",
+    "N"
+  ],
+  "xác": [
+    "V",
+    "N"
+  ],
+  "xách": [
+    "V"
+  ],
+  "xám": [
+    "A"
+  ],
+  "xáng": [
+    "V",
+    "N"
+  ],
+  "xáo": [
+    "V",
+    "N"
+  ],
+  "xát": [
+    "V",
+    "N"
+  ],
+  "xâm": [
+    "V"
+  ],
+  "xâu": [
+    "V",
+    "N"
+  ],
+  "xây": [
+    "V"
+  ],
+  "xã": [
+    "V",
+    "N"
+  ],
+  "xè": [
+    "V",
+    "A"
+  ],
+  "xèo": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xé": [
+    "V"
+  ],
+  "xém": [
+    "V",
+    "A"
+  ],
+  "xén": [
+    "V",
+    "N"
+  ],
+  "xéo": [
+    "V",
+    "A"
+  ],
+  "xép": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xét": [
+    "V"
+  ],
+  "xên": [
+    "V"
+  ],
+  "xênh": [
+    "V",
+    "A"
+  ],
+  "xì": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xình": [
+    "V",
+    "A"
+  ],
+  "xìu": [
+    "V",
+    "A"
+  ],
+  "xí": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xích": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xính": [
+    "A"
+  ],
+  "xít": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xíu": [
+    "R",
+    "N",
+    "A"
+  ],
+  "xòa": [
+    "V"
+  ],
+  "xòe": [
+    "V",
+    "A"
+  ],
+  "xó": [
+    "N"
+  ],
+  "xóa": [
+    "V"
+  ],
+  "xói": [
+    "V"
+  ],
+  "xóm": [
+    "N"
+  ],
+  "xót": [
+    "V",
+    "A"
+  ],
+  "xô": [
+    "V",
+    "N"
+  ],
+  "xôi": [
+    "N"
+  ],
+  "xôn": [
+    "A"
+  ],
+  "xông": [
+    "V"
+  ],
+  "xõa": [
+    "V",
+    "A"
+  ],
+  "xù": [
+    "V",
+    "A"
+  ],
+  "xúc": [
+    "V"
+  ],
+  "xúm": [
+    "V"
+  ],
+  "xúp": [
+    "N"
+  ],
+  "xăm": [
+    "V",
+    "N"
+  ],
+  "xăng": [
+    "N"
+  ],
+  "xơ": [
+    "V",
+    "N"
+  ],
+  "xơi": [
+    "V"
+  ],
+  "xưa": [
+    "R",
+    "N",
+    "A"
+  ],
+  "xưng": [
+    "V"
+  ],
+  "xương": [
+    "N"
+  ],
+  "xước": [
+    "V",
+    "A"
+  ],
+  "xướng": [
+    "V"
+  ],
+  "xược": [
+    "A"
+  ],
+  "xạ": [
+    "V",
+    "N"
+  ],
+  "xạc": [
+    "V"
+  ],
+  "xại": [
+    "V",
+    "A"
+  ],
+  "xả": [
+    "V",
+    "N"
+  ],
+  "xảo": [
+    "A"
+  ],
+  "xảy": [
+    "V"
+  ],
+  "xấp": [
+    "V",
+    "N"
+  ],
+  "xấu": [
+    "V",
+    "A"
+  ],
+  "xẩm": [
+    "A",
+    "N"
+  ],
+  "xẩu": [
+    "A"
+  ],
+  "xập": [
+    "V",
+    "N"
+  ],
+  "xắn": [
+    "V"
+  ],
+  "xẹp": [
+    "V",
+    "A"
+  ],
+  "xẹt": [
+    "V",
+    "N"
+  ],
+  "xẻ": [
+    "V"
+  ],
+  "xẻo": [
+    "V",
+    "A"
+  ],
+  "xế": [
+    "V",
+    "A"
+  ],
+  "xếp": [
+    "V",
+    "N"
+  ],
+  "xệch": [
+    "V",
+    "A"
+  ],
+  "xỉ": [
+    "V",
+    "A"
+  ],
+  "xỉa": [
+    "V"
+  ],
+  "xỉn": [
+    "V",
+    "A"
+  ],
+  "xịn": [
+    "A"
+  ],
+  "xịu": [
+    "V",
+    "A"
+  ],
+  "xỏ": [
+    "V"
+  ],
+  "xối": [
+    "V",
+    "N"
+  ],
+  "xốn": [
+    "V"
+  ],
+  "xồng": [
+    "N"
+  ],
+  "xổ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "xổm": [
+    "V",
+    "N"
+  ],
+  "xổng": [
+    "V",
+    "A"
+  ],
+  "xộc": [
+    "V"
+  ],
+  "xới": [
+    "V"
+  ],
+  "xớt": [
+    "V",
+    "A"
+  ],
+  "xời": [
+    "R"
+  ],
+  "xụi": [
+    "V",
+    "A"
+  ],
+  "xứ": [
+    "V",
+    "N"
+  ],
+  "xứng": [
+    "V",
+    "A"
+  ],
+  "xử": [
+    "V",
+    "N"
+  ],
+  "xửa": [
+    "V"
+  ],
+  "xửng": [
+    "N"
+  ],
+  "york": [
+    "N"
+  ],
+  "you": [
+    "P"
+  ],
+  "yên": [
+    "V",
+    "A",
+    "E",
+    "N"
+  ],
+  "yêng": [
+    "N"
+  ],
+  "yêu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "yếm": [
+    "V",
+    "N"
+  ],
+  "yến": [
+    "V",
+    "N"
+  ],
+  "yếu": [
+    "V",
+    "A"
+  ],
+  "yểu": [
+    "A"
+  ],
+  "zậy": [
+    "V",
+    "R",
+    "A"
+  ],
+  "ào": [
+    "V",
+    "R",
+    "A"
+  ],
+  "ác": [
+    "V",
+    "A"
+  ],
+  "ách": [
+    "V",
+    "N"
+  ],
+  "ái": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ám": [
+    "V",
+    "A"
+  ],
+  "án": [
+    "N"
+  ],
+  "áng": [
+    "N"
+  ],
+  "ánh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "áo": [
+    "N"
+  ],
+  "áp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "át": [
+    "V",
+    "A",
+    "N"
+  ],
+  "âm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ân": [
+    "N"
+  ],
+  "âu": [
+    "A",
+    "N"
+  ],
+  "ây": [
+    "V",
+    "P"
+  ],
+  "én": [
+    "N"
+  ],
+  "éo": [
+    "V",
+    "A"
+  ],
+  "ép": [
+    "V",
+    "N"
+  ],
+  "éăc": [],
+  "êm": [
+    "V",
+    "A"
+  ],
+  "ên": [
+    "V",
+    "N"
+  ],
+  "ình": [],
+  "ích": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ít": [
+    "V",
+    "R",
+    "A"
+  ],
+  "òa": [
+    "V",
+    "A"
+  ],
+  "ói": [
+    "V",
+    "N"
+  ],
+  "óng": [
+    "V",
+    "A"
+  ],
+  "ôi": [
+    "V",
+    "E",
+    "P",
+    "A"
+  ],
+  "ôm": [
+    "V",
+    "N"
+  ],
+  "ôn": [
+    "V",
+    "A"
+  ],
+  "ông": [
+    "P",
+    "N"
+  ],
+  "ùa": [
+    "V"
+  ],
+  "ùn": [
+    "V",
+    "N"
+  ],
+  "úa": [
+    "V",
+    "A"
+  ],
+  "úi": [
+    "E",
+    "I"
+  ],
+  "úm": [
+    "V",
+    "A"
+  ],
+  "úng": [
+    "V",
+    "A"
+  ],
+  "úp": [
+    "V"
+  ],
+  "út": [
+    "A",
+    "N"
+  ],
+  "ăm": [
+    "V"
+  ],
+  "ăn": [
+    "V",
+    "N"
+  ],
+  "đa": [
+    "A",
+    "N"
+  ],
+  "đai": [
+    "V",
+    "N"
+  ],
+  "đam": [
+    "V",
+    "A"
+  ],
+  "đan": [
+    "V",
+    "N"
+  ],
+  "đang": [
+    "R"
+  ],
+  "đao": [
+    "N"
+  ],
+  "đau": [
+    "V",
+    "A"
+  ],
+  "đay": [
+    "N"
+  ],
+  "đe": [
+    "V"
+  ],
+  "đem": [
+    "V"
+  ],
+  "đen": [
+    "A",
+    "N"
+  ],
+  "đeo": [
+    "V"
+  ],
+  "đeò": [
+    "V"
+  ],
+  "đi": [
+    "V",
+    "R",
+    "A"
+  ],
+  "đinh": [
+    "V",
+    "N"
+  ],
+  "điên": [
+    "V",
+    "A"
+  ],
+  "điêu": [
+    "V",
+    "A"
+  ],
+  "điếc": [
+    "V",
+    "A"
+  ],
+  "điếm": [
+    "V",
+    "N"
+  ],
+  "điếng": [
+    "V",
+    "A"
+  ],
+  "điếu": [
+    "V",
+    "N"
+  ],
+  "điềm": [
+    "V",
+    "A",
+    "N"
+  ],
+  "điền": [
+    "V",
+    "N"
+  ],
+  "điều": [
+    "V",
+    "N"
+  ],
+  "điểm": [
+    "V",
+    "N"
+  ],
+  "điển": [
+    "N"
+  ],
+  "điểu": [
+    "N"
+  ],
+  "điện": [
+    "V",
+    "N"
+  ],
+  "điệp": [
+    "V",
+    "A",
+    "N"
+  ],
+  "điệu": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đo": [
+    "V"
+  ],
+  "đoan": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đom": [
+    "N"
+  ],
+  "đong": [
+    "V",
+    "N"
+  ],
+  "đoài": [
+    "R",
+    "A"
+  ],
+  "đoàn": [
+    "N"
+  ],
+  "đoái": [
+    "V"
+  ],
+  "đoán": [
+    "V"
+  ],
+  "đoạn": [
+    "V",
+    "N"
+  ],
+  "đoạt": [
+    "V"
+  ],
+  "đu": [
+    "V"
+  ],
+  "đua": [
+    "V",
+    "N"
+  ],
+  "đui": [
+    "N"
+  ],
+  "đum": [
+    "N"
+  ],
+  "đun": [
+    "V"
+  ],
+  "đung": [
+    "V",
+    "A"
+  ],
+  "đuôi": [
+    "A",
+    "N"
+  ],
+  "đuấn": [
+    "V"
+  ],
+  "đuốc": [
+    "N"
+  ],
+  "đuối": [
+    "V",
+    "A"
+  ],
+  "đuống": [
+    "N"
+  ],
+  "đuổi": [
+    "V"
+  ],
+  "đà": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đài": [
+    "N"
+  ],
+  "đàn": [
+    "V",
+    "N"
+  ],
+  "đàng": [
+    "A",
+    "N"
+  ],
+  "đành": [
+    "V",
+    "A"
+  ],
+  "đào": [
+    "V",
+    "N"
+  ],
+  "đày": [
+    "V",
+    "A"
+  ],
+  "đá": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đác": [
+    "V",
+    "N"
+  ],
+  "đái": [
+    "V",
+    "N"
+  ],
+  "đám": [
+    "V",
+    "N"
+  ],
+  "đán": [
+    "V",
+    "N"
+  ],
+  "đáng": [
+    "V",
+    "A"
+  ],
+  "đáo": [
+    "V",
+    "A"
+  ],
+  "đáp": [
+    "V",
+    "N"
+  ],
+  "đát": [
+    "N"
+  ],
+  "đáu": [
+    "V"
+  ],
+  "đáy": [
+    "A",
+    "N"
+  ],
+  "đâm": [
+    "V"
+  ],
+  "đâu": [
+    "R",
+    "P",
+    "E",
+    "A"
+  ],
+  "đây": [
+    "E",
+    "P"
+  ],
+  "đã": [
+    "V",
+    "R"
+  ],
+  "đãi": [
+    "V"
+  ],
+  "đãng": [
+    "A"
+  ],
+  "đè": [
+    "V"
+  ],
+  "đèn": [
+    "N"
+  ],
+  "đèo": [
+    "N"
+  ],
+  "đê": [
+    "N"
+  ],
+  "đêm": [
+    "A",
+    "N"
+  ],
+  "đênh": [
+    "A"
+  ],
+  "đẹp": [
+    "A"
+  ],
+  "đì": [
+    "V"
+  ],
+  "đìa": [
+    "N"
+  ],
+  "đình": [
+    "V",
+    "N"
+  ],
+  "đìu": [
+    "N"
+  ],
+  "đích": [
+    "A",
+    "N"
+  ],
+  "đính": [
+    "V"
+  ],
+  "đít": [
+    "N"
+  ],
+  "đò": [
+    "N"
+  ],
+  "đòi": [
+    "V"
+  ],
+  "đòn": [
+    "V",
+    "N"
+  ],
+  "đòng": [
+    "N"
+  ],
+  "đó": [
+    "A",
+    "P",
+    "E"
+  ],
+  "đóa": [
+    "A",
+    "N"
+  ],
+  "đói": [
+    "A"
+  ],
+  "đóm": [
+    "N"
+  ],
+  "đón": [
+    "V"
+  ],
+  "đóng": [
+    "V",
+    "A"
+  ],
+  "đô": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đôi": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đôm": [
+    "V"
+  ],
+  "đông": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đôông": [
+    "N"
+  ],
+  "đùa": [
+    "V",
+    "N"
+  ],
+  "đùi": [
+    "N"
+  ],
+  "đùm": [
+    "V",
+    "N"
+  ],
+  "đùn": [
+    "V"
+  ],
+  "đùng": [
+    "V",
+    "R",
+    "A"
+  ],
+  "đúa": [
+    "V",
+    "N"
+  ],
+  "đúc": [
+    "V",
+    "N"
+  ],
+  "đúng": [
+    "V",
+    "A"
+  ],
+  "đút": [
+    "V"
+  ],
+  "đăm": [
+    "V",
+    "A"
+  ],
+  "đăng": [
+    "V",
+    "N"
+  ],
+  "đĩ": [
+    "N"
+  ],
+  "đĩa": [
+    "N"
+  ],
+  "đũa": [
+    "N"
+  ],
+  "đũi": [
+    "N"
+  ],
+  "đơ": [
+    "V",
+    "A"
+  ],
+  "đơm": [
+    "V"
+  ],
+  "đơn": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đưa": [
+    "V",
+    "N"
+  ],
+  "đưôi": [
+    "N"
+  ],
+  "đương": [
+    "V",
+    "R",
+    "A"
+  ],
+  "đước": [
+    "N"
+  ],
+  "đười": [
+    "N"
+  ],
+  "đường": [
+    "V",
+    "N"
+  ],
+  "đưởng": [
+    "N"
+  ],
+  "được": [
+    "V",
+    "A",
+    "P"
+  ],
+  "đượm": [
+    "V",
+    "A"
+  ],
+  "đạc": [
+    "V",
+    "N"
+  ],
+  "đại": [
+    "A",
+    "P",
+    "N"
+  ],
+  "đạm": [
+    "A",
+    "N"
+  ],
+  "đạn": [
+    "N"
+  ],
+  "đạo": [
+    "V",
+    "N"
+  ],
+  "đạp": [
+    "V"
+  ],
+  "đạt": [
+    "V",
+    "A"
+  ],
+  "đảm": [
+    "A",
+    "N"
+  ],
+  "đản": [
+    "N"
+  ],
+  "đảng": [
+    "N"
+  ],
+  "đảo": [
+    "V",
+    "N"
+  ],
+  "đấm": [
+    "V",
+    "N"
+  ],
+  "đấng": [
+    "N"
+  ],
+  "đất": [
+    "V",
+    "N"
+  ],
+  "đấu": [
+    "V",
+    "N"
+  ],
+  "đấy": [
+    "R",
+    "P",
+    "A"
+  ],
+  "đầm": [
+    "V",
+    "N"
+  ],
+  "đần": [
+    "V",
+    "A"
+  ],
+  "đầu": [
+    "V",
+    "R",
+    "N",
+    "A"
+  ],
+  "đầy": [
+    "V",
+    "A"
+  ],
+  "đẩu": [
+    "N"
+  ],
+  "đẩy": [
+    "V"
+  ],
+  "đẫ": [
+    "V"
+  ],
+  "đẫm": [
+    "V",
+    "A"
+  ],
+  "đẫn": [
+    "V"
+  ],
+  "đậm": [
+    "V",
+    "A"
+  ],
+  "đận": [
+    "A"
+  ],
+  "đập": [
+    "V",
+    "N"
+  ],
+  "đật": [
+    "V",
+    "A"
+  ],
+  "đậu": [
+    "V",
+    "N"
+  ],
+  "đậy": [
+    "V"
+  ],
+  "đắm": [
+    "V",
+    "A"
+  ],
+  "đắn": [
+    "V"
+  ],
+  "đắng": [
+    "V",
+    "A"
+  ],
+  "đắp": [
+    "V"
+  ],
+  "đắt": [
+    "V",
+    "A"
+  ],
+  "đằm": [
+    "V",
+    "A"
+  ],
+  "đằng": [
+    "R",
+    "N"
+  ],
+  "đẳng": [
+    "A",
+    "N"
+  ],
+  "đẵn": [
+    "V"
+  ],
+  "đẵng": [
+    "A"
+  ],
+  "đặc": [
+    "V",
+    "A"
+  ],
+  "đặn": [
+    "A"
+  ],
+  "đặng": [
+    "V",
+    "A"
+  ],
+  "đặt": [
+    "V",
+    "N"
+  ],
+  "đẻ": [
+    "V",
+    "N"
+  ],
+  "đẽ": [
+    "A"
+  ],
+  "đẽo": [
+    "V"
+  ],
+  "đế": [
+    "V",
+    "N"
+  ],
+  "đếch": [
+    "V",
+    "A"
+  ],
+  "đếm": [
+    "V"
+  ],
+  "đến": [
+    "V",
+    "R",
+    "A"
+  ],
+  "đề": [
+    "V",
+    "N"
+  ],
+  "đềm": [
+    "A"
+  ],
+  "đền": [
+    "V",
+    "N"
+  ],
+  "đều": [
+    "R",
+    "A"
+  ],
+  "để": [
+    "V",
+    "R",
+    "P"
+  ],
+  "đễ": [
+    "A"
+  ],
+  "đệ": [
+    "V",
+    "N"
+  ],
+  "đệm": [
+    "V",
+    "N"
+  ],
+  "đỉa": [
+    "N"
+  ],
+  "đỉnh": [
+    "V",
+    "A",
+    "N"
+  ],
+  "địa": [
+    "A",
+    "N"
+  ],
+  "địch": [
+    "V",
+    "N"
+  ],
+  "định": [
+    "V",
+    "A",
+    "N"
+  ],
+  "địu": [
+    "V",
+    "N"
+  ],
+  "đọ": [
+    "V"
+  ],
+  "đọa": [
+    "V",
+    "A"
+  ],
+  "đọc": [
+    "V"
+  ],
+  "đọng": [
+    "V",
+    "A"
+  ],
+  "đọt": [
+    "N"
+  ],
+  "đỏ": [
+    "A",
+    "N"
+  ],
+  "đỏi": [
+    "V"
+  ],
+  "đố": [
+    "V",
+    "N"
+  ],
+  "đối": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đốm": [
+    "V",
+    "N"
+  ],
+  "đốn": [
+    "V"
+  ],
+  "đống": [
+    "V",
+    "N"
+  ],
+  "đốt": [
+    "V",
+    "N"
+  ],
+  "đồ": [
+    "V",
+    "N"
+  ],
+  "đồi": [
+    "N"
+  ],
+  "đồn": [
+    "V",
+    "N"
+  ],
+  "đồng": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đổ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đổi": [
+    "V"
+  ],
+  "đổng": [
+    "N"
+  ],
+  "đỗ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đỗi": [
+    "V",
+    "A"
+  ],
+  "độ": [
+    "V",
+    "A",
+    "N"
+  ],
+  "độc": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đội": [
+    "V",
+    "N"
+  ],
+  "độn": [
+    "V",
+    "A"
+  ],
+  "động": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đột": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đớ": [
+    "V",
+    "A"
+  ],
+  "đớn": [
+    "A"
+  ],
+  "đớp": [
+    "V"
+  ],
+  "đờ": [
+    "V",
+    "A"
+  ],
+  "đời": [
+    "A",
+    "N"
+  ],
+  "đờm": [
+    "N"
+  ],
+  "đờn": [
+    "V"
+  ],
+  "đỡ": [
+    "V",
+    "A"
+  ],
+  "đợ": [
+    "N"
+  ],
+  "đợi": [
+    "V"
+  ],
+  "đợt": [
+    "V",
+    "N"
+  ],
+  "đục": [
+    "V",
+    "A",
+    "N"
+  ],
+  "đụn": [
+    "V",
+    "N"
+  ],
+  "đụng": [
+    "V"
+  ],
+  "đụp": [
+    "V"
+  ],
+  "đụt": [
+    "V",
+    "A"
+  ],
+  "đủ": [
+    "V",
+    "R",
+    "A"
+  ],
+  "đủi": [
+    "N"
+  ],
+  "đủng": [
+    "N"
+  ],
+  "đứa": [
+    "N"
+  ],
+  "đức": [
+    "A",
+    "N"
+  ],
+  "đứng": [
+    "V",
+    "A"
+  ],
+  "đứt": [
+    "V",
+    "A"
+  ],
+  "đừ": [
+    "A"
+  ],
+  "đừng": [
+    "V",
+    "A"
+  ],
+  "đực": [
+    "A",
+    "N"
+  ],
+  "đựng": [
+    "V"
+  ],
+  "ơi": [
+    "E",
+    "P"
+  ],
+  "ơn": [
+    "V",
+    "N"
+  ],
+  "ưa": [
+    "V",
+    "A"
+  ],
+  "ưng": [
+    "V",
+    "A"
+  ],
+  "ưu": [
+    "A",
+    "N"
+  ],
+  "ươi": [
+    "N"
+  ],
+  "ươm": [
+    "V"
+  ],
+  "ươn": [
+    "A"
+  ],
+  "ương": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ước": [
+    "V",
+    "N"
+  ],
+  "ướm": [
+    "V"
+  ],
+  "ướp": [
+    "V"
+  ],
+  "ướt": [
+    "V",
+    "A"
+  ],
+  "ưỡn": [
+    "V"
+  ],
+  "ạch": [
+    "V",
+    "R",
+    "A"
+  ],
+  "ại": [
+    "V",
+    "A"
+  ],
+  "ải": [
+    "V",
+    "N"
+  ],
+  "ảm": [
+    "A"
+  ],
+  "ảng": [
+    "V",
+    "A"
+  ],
+  "ảnh": [
+    "V",
+    "N"
+  ],
+  "ảo": [
+    "A"
+  ],
+  "ấm": [
+    "V",
+    "A"
+  ],
+  "ấn": [
+    "V",
+    "N"
+  ],
+  "ấp": [
+    "V",
+    "N"
+  ],
+  "ấu": [
+    "A",
+    "N"
+  ],
+  "ấy": [
+    "A",
+    "P"
+  ],
+  "ầm": [
+    "V",
+    "A"
+  ],
+  "ầu": [
+    "V",
+    "A"
+  ],
+  "ẩm": [
+    "V",
+    "A"
+  ],
+  "ẩn": [
+    "V",
+    "A"
+  ],
+  "ẩu": [
+    "A"
+  ],
+  "ập": [
+    "V"
+  ],
+  "ắng": [
+    "A"
+  ],
+  "ắp": [
+    "V",
+    "A"
+  ],
+  "ắt": [
+    "V",
+    "R",
+    "A"
+  ],
+  "ằm": [
+    "V"
+  ],
+  "ẵm": [
+    "V"
+  ],
+  "ếch": [
+    "N"
+  ],
+  "ếm": [
+    "V",
+    "N"
+  ],
+  "ễnh": [
+    "A"
+  ],
+  "ỉa": [
+    "V"
+  ],
+  "ịn": [
+    "A"
+  ],
+  "ịt": [
+    "V"
+  ],
+  "ốc": [
+    "N"
+  ],
+  "ối": [
+    "P",
+    "I"
+  ],
+  "ốm": [
+    "V",
+    "A"
+  ],
+  "ống": [
+    "V",
+    "N"
+  ],
+  "ồn": [
+    "V",
+    "A"
+  ],
+  "ổi": [
+    "N"
+  ],
+  "ổn": [
+    "V",
+    "A"
+  ],
+  "ột": [
+    "A"
+  ],
+  "ới": [
+    "V",
+    "I"
+  ],
+  "ớn": [
+    "V",
+    "A"
+  ],
+  "ớt": [
+    "N"
+  ],
+  "ời": [
+    "V",
+    "E",
+    "A"
+  ],
+  "ỡm": [
+    "A"
+  ],
+  "ụt": [
+    "V",
+    "A"
+  ],
+  "ủi": [
+    "V"
+  ],
+  "ủng": [
+    "V",
+    "N"
+  ],
+  "ủy": [
+    "V",
+    "N"
+  ],
+  "ứa": [
+    "V",
+    "A"
+  ],
+  "ức": [
+    "V",
+    "A",
+    "N"
+  ],
+  "ứng": [
+    "V",
+    "A"
+  ],
+  "ửa": [
+    "V"
+  ],
+  "ửng": [
+    "V",
+    "A"
   ]
 }
