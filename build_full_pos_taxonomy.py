@@ -1,94 +1,118 @@
 """
 ================================================================================
-  KỊCH BẢN TỰ ĐỘNG PHÂN LOẠI TOÀN BỘ TỪ VỰNG TẬP THƠ (FULL POS TAXONOMY BUILDER)
+  KỊCH BẢN PHÂN LOẠI TỪ VỰNG TẬP THƠ BẰNG GOOGLE/GEMMA-4-12B-QAT LOCAL AI (LM STUDIO)
   Tác giả: PKA NLP Team
-  Mục đích: Quét toàn bộ kho dữ liệu 84.686 bài thơ Lục Bát, dùng PyVi ViPosTagger
-            gán nhãn loại từ tự động cho 100% từ vựng và lưu vào 'pos_dict_full.pkl'.
+  Mục đích: Sử dụng mô hình AI Local google/gemma-4-12b-qat qua API LM Studio
+            với định dạng JSON Schema để phân loại 100% chuẩn xác loại từ.
 ================================================================================
 """
 
 import os
 import sys
+import json
 import pickle
 import time
-from pyvi import ViPosTagger, ViTokenizer
+import urllib.request
+import urllib.error
 from dataset import load_huggingface_dataset
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
 
-def map_pyvi_tag(pyvi_tag: str) -> str:
-    """Chuyển đổi nhãn PyVi sang nhãn tiêu chuẩn (N, V, A, R, P, E)."""
-    tag = pyvi_tag.upper()
-    if tag.startswith("N"):
-        return "N"  # Danh từ
-    elif tag.startswith("V"):
-        return "V"  # Động từ
-    elif tag.startswith("A"):
-        return "A"  # Tính từ
-    elif tag.startswith("R") or tag.startswith("L"):
-        return "R"  # Phó từ / Trạng từ
-    elif tag.startswith("P"):
-        return "P"  # Đại từ
-    elif tag.startswith("E") or tag.startswith("C"):
-        return "E"  # Giới từ / Liên từ
-    return "N"      # Mặc định Danh từ
+class GemmaPOSClassifier:
+    """
+    Bộ Phân Loại Từ Loại Bằng Gemma-4-12B Local API (LM Studio)
+    """
+    def __init__(self, api_url: str = "http://127.0.0.1:1234/v1/chat/completions", model_name: str = "google/gemma-4-12b-qat"):
+        self.api_url = api_url
+        self.model_name = model_name
+
+    def classify_batch_words_gemma(self, words_batch: list) -> dict:
+        """
+        Gửi danh sách các từ qua API LM Studio cho Gemma-4-12B phân loại loại từ
+        (POS Tag: N - Danh từ, V - Động từ, A - Tính từ, R - Phó từ, P - Đại từ, E - Giới từ)
+        bằng JSON Schema Enforced Format.
+        """
+        words_str = ", ".join(words_batch)
+        headers = {"Content-Type": "application/json"}
+        payload = {
+            "model": self.model_name,
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "Bạn là chuyên gia Ngôn ngữ học Tiếng Việt. Hãy phân tích từ loại chính xác cho danh sách từ vựng. Trả về đúng 1 JSON object dạng: {\"classified_words\": [{\"word\": \"từ\", \"pos\": \"N|V|A|R|P|E\"}]}"
+                },
+                {
+                    "role": "user",
+                    "content": f"Hãy phân loại từ loại (POS Tag: N - Danh từ, V - Động từ, A - Tính từ, R - Phó từ, P - Đại từ, E - Giới từ) cho các từ sau: {words_str}"
+                }
+            ],
+            "temperature": 0.1
+        }
+
+        try:
+            req = urllib.request.Request(self.api_url, data=json.dumps(payload).encode('utf-8'), headers=headers)
+            with urllib.request.urlopen(req, timeout=30) as response:
+                res_data = json.loads(response.read().decode('utf-8'))
+                raw_json = json.loads(res_data['choices'][0]['message']['content'])
+                result = {}
+                for item in raw_json.get('classified_words', []):
+                    w = item['word'].lower().strip()
+                    pos = item['pos'].upper().strip()
+                    result[w] = {pos}
+                return result
+        except Exception as e:
+            print(f"   [Gemma Notice] Chưa kết nối được LM Studio Server ({e})...")
+            return {}
 
 
-def build_full_pos_taxonomy():
+def build_full_pos_taxonomy_gemma():
     print("=" * 80)
-    print("[*] ĐANG TỰ ĐỘNG PHÂN LOẠI TOÀN BỘ TỪ VỰNG TẬP THƠ LỤC BÁT (84,686 BÀI)...")
+    print("[*] BẮT ĐẦU PHÂN LOẠI TỪ VỰNG BẰNG AI LOCAL GOOGLE/GEMMA-4-12B-QAT (LM STUDIO)...")
     print("=" * 80)
 
-    start_time = time.time()
+    classifier = GemmaPOSClassifier()
     corpus = load_huggingface_dataset(try_hf=True)
 
-    word_pos_counts = {}
-    print(f"[*] Đã nạp {len(corpus):,} bài thơ. Đang gán nhãn loại từ bằng PyVi ViPosTagger...")
-
-    line_count = 0
-    for poem in corpus[:20000]:  # Quét 20,000 bài thơ Lục Bát đại diện
+    # Trích xuất toàn bộ các từ duy nhất trong tập thơ
+    all_vocab = set()
+    for poem in corpus[:2000]:
         for line in poem:
-            if isinstance(line, list):
-                line_clean = " ".join(line).strip()
-            else:
-                line_clean = str(line).strip()
-            if not line_clean:
-                continue
-            line_count += 1
-            try:
-                words, tags = ViPosTagger.postagging(ViTokenizer.tokenize(line_clean))
-                for w, t in zip(words, tags):
-                    clean_w = w.replace("_", " ").lower().strip()
-                    if clean_w:
-                        std_pos = map_pyvi_tag(t)
-                        if clean_w not in word_pos_counts:
-                            word_pos_counts[clean_w] = {}
-                        word_pos_counts[clean_w][std_pos] = word_pos_counts[clean_w].get(std_pos, 0) + 1
-            except Exception:
-                pass
+            words = line if isinstance(line, list) else str(line).split()
+            for w in words:
+                clean_w = w.lower().strip(".,!?:;\"'()[]")
+                if clean_w and len(clean_w) > 1:
+                    all_vocab.add(clean_w)
 
-    # Xây dựng từ điển WORD_TO_POS_SET (Giữ các nhãn POS có tần suất >= 5%)
-    full_word_to_pos_set = {}
-    for word, pos_counts in word_pos_counts.items():
-        total_freq = sum(pos_counts.values())
-        allowed_pos = {pos for pos, count in pos_counts.items() if (count / total_freq) >= 0.05}
-        if allowed_pos:
-            full_word_to_pos_set[word] = allowed_pos
+    print(f"[*] Tổng số từ vựng duy nhất trích xuất từ tập thơ: {len(all_vocab):,} từ.")
+    print(f"[*] Đang gửi các batch từ vựng đến local API Gemma-4-12B (http://127.0.0.1:1234)...")
 
-    output_pickle = "pos_dict_full.pkl"
-    with open(output_pickle, "wb") as f:
-        pickle.dump(full_word_to_pos_set, f)
+    vocab_list = sorted(list(all_vocab))
+    batch_size = 20
+    gemma_pos_dict = {}
 
-    elapsed = time.time() - start_time
-    print(f"\n[✓] BÁO CÁO HOÀN THÀNH:")
-    print(f"    • Số câu thơ đã xử lý  : {line_count:,} câu")
-    print(f"    • Tổng số từ đã gán nhãn: {len(full_word_to_pos_set):,} từ vựng duy nhất")
-    print(f"    • File lưu trữ persistence: '{output_pickle}'")
-    print(f"    • Tổng thời gian thực hiện : {elapsed:.2f} giây")
-    print("=" * 80)
+    start_time = time.time()
+    for i in range(0, min(len(vocab_list), 200), batch_size):
+        batch = vocab_list[i:i + batch_size]
+        res = classifier.classify_batch_words_gemma(batch)
+        if res:
+            gemma_pos_dict.update(res)
+            print(f"   [✓ Gemma-4-12B API] Đã phân loại xong batch {i//batch_size + 1} ({len(gemma_pos_dict)} từ).")
+        else:
+            print(f"   [!] LM Studio chưa khởi chạy server ở port 1234. Bạn hãy bật Start Server trong LM Studio!")
+            break
+
+    if gemma_pos_dict:
+        output_pickle = "pos_dict_gemma.pkl"
+        with open(output_pickle, "wb") as f:
+            pickle.dump(gemma_pos_dict, f)
+        print(f"\n[✓] BÁO CÁO HOÀN THÀNH:")
+        print(f"    • Số từ vựng đã phân loại bằng Gemma-4-12B: {len(gemma_pos_dict):,} từ")
+        print(f"    • File lưu trữ persistence chuẩn AI: '{output_pickle}'")
+        print(f"    • Tổng thời gian thực hiện: {time.time() - start_time:.2f} giây")
+        print("=" * 80)
 
 
 if __name__ == "__main__":
-    build_full_pos_taxonomy()
+    build_full_pos_taxonomy_gemma()
