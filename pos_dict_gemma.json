@@ -1,21 +1,26 @@
 {
   "ac": [
-    "A (Tính từ (Adjective))"
+    "V (Động từ (Verb))"
   ],
   "ai": [
-    "P (Đại từ (Pronoun))"
+    "P (Đại từ (Pronoun))",
+    "N (Danh từ (Noun))"
   ],
   "am": [
-    "A (Tính từ (Adjective))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "an": [
-    "A (Tính từ (Adjective))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "anh": [
-    "P (Đại từ (Pronoun))"
+    "P (Đại từ (Pronoun))",
+    "N (Danh từ (Noun))"
   ],
   "ao": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "are": [
     "N (Danh từ (Noun))"
@@ -24,34 +29,43 @@
     "N (Danh từ (Noun))"
   ],
   "ba": [
+    "P (Đại từ (Pronoun))",
     "N (Danh từ (Noun))"
   ],
   "ban": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bang": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bao": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bay": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "be": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bi": [
-    "A (Tính từ (Adjective))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bia": [
     "N (Danh từ (Noun))"
   ],
   "binh": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "biên": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "biêng": [
     "A (Tính từ (Adjective))"
@@ -60,9 +74,11 @@
     "A (Tính từ (Adjective))"
   ],
   "biếm": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "biến": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "biếng": [
@@ -78,31 +94,37 @@
     "A (Tính từ (Adjective))"
   ],
   "biều": [
-    "N (Danh từ (Noun))"
+    "V (Động từ (Verb))"
   ],
   "biển": [
     "N (Danh từ (Noun))"
   ],
   "biểu": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "biệt": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bo": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bodh": [
     "N (Danh từ (Noun))"
   ],
   "bom": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bon": [
     "V (Động từ (Verb))"
   ],
   "bong": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bu": [
     "V (Động từ (Verb))"
@@ -111,6 +133,7 @@
     "V (Động từ (Verb))"
   ],
   "buôn": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "buông": [
@@ -123,7 +146,8 @@
     "N (Danh từ (Noun))"
   ],
   "buồn": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "buồng": [
     "N (Danh từ (Noun))"
@@ -132,27 +156,33 @@
     "N (Danh từ (Noun))"
   ],
   "buộc": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "buột": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bà": [
+    "P (Đại từ (Pronoun))",
     "N (Danh từ (Noun))"
   ],
   "bài": [
     "N (Danh từ (Noun))"
   ],
   "bàn": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bàng": [
     "N (Danh từ (Noun))"
   ],
   "bành": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bào": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bàu": [
@@ -162,13 +192,15 @@
     "V (Động từ (Verb))"
   ],
   "bá": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "A (Tính từ (Adjective))"
   ],
   "bác": [
     "N (Danh từ (Noun))"
   ],
   "bách": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "A (Tính từ (Adjective))"
   ],
   "bái": [
     "V (Động từ (Verb))"
@@ -177,6 +209,7 @@
     "V (Động từ (Verb))"
   ],
   "bán": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "báng": [
@@ -186,25 +219,29 @@
     "N (Danh từ (Noun))"
   ],
   "báo": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bát": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "báu": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bân": [
     "A (Tính từ (Adjective))"
   ],
   "bâng": [
-    "A (Tính từ (Adjective))"
+    "V (Động từ (Verb))"
   ],
   "bâu": [
     "V (Động từ (Verb))"
   ],
   "bây": [
-    "P (Đại từ (Pronoun))"
+    "P (Đại từ (Pronoun))",
+    "R (Phó từ/Trạng từ (Adverb))"
   ],
   "bã": [
     "N (Danh từ (Noun))"
@@ -216,7 +253,8 @@
     "N (Danh từ (Noun))"
   ],
   "bè": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bèn": [
     "R (Phó từ/Trạng từ (Adverb))"
@@ -225,21 +263,27 @@
     "N (Danh từ (Noun))"
   ],
   "bé": [
+    "N (Danh từ (Noun))",
     "A (Tính từ (Adjective))"
   ],
   "bén": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "béo": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bét": [
+    "N (Danh từ (Noun))",
     "A (Tính từ (Adjective))"
   ],
   "bê": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bên": [
+    "P (Đại từ (Pronoun))",
     "N (Danh từ (Noun))"
   ],
   "bênh": [
@@ -249,16 +293,21 @@
     "V (Động từ (Verb))"
   ],
   "bì": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bìm": [
     "N (Danh từ (Noun))"
   ],
   "bình": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bí": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bích": [
     "N (Danh từ (Noun))"
@@ -267,6 +316,7 @@
     "N (Danh từ (Noun))"
   ],
   "bò": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bòn": [
@@ -276,6 +326,7 @@
     "N (Danh từ (Noun))"
   ],
   "bó": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bóc": [
@@ -288,9 +339,12 @@
     "V (Động từ (Verb))"
   ],
   "bóng": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bóp": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bót": [
@@ -303,15 +357,18 @@
     "V (Động từ (Verb))"
   ],
   "bôn": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bông": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bõ": [
     "A (Tính từ (Adjective))"
   ],
   "bù": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "bùa": [
@@ -324,25 +381,30 @@
     "N (Danh từ (Noun))"
   ],
   "bùng": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bú": [
     "V (Động từ (Verb))"
   ],
   "búa": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "búi": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bún": [
     "N (Danh từ (Noun))"
   ],
   "búng": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "búp": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bút": [
     "N (Danh từ (Noun))"
@@ -351,22 +413,27 @@
     "V (Động từ (Verb))"
   ],
   "băn": [
-    "A (Tính từ (Adjective))"
+    "V (Động từ (Verb))"
   ],
   "băng": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bĩu": [
     "V (Động từ (Verb))"
   ],
   "bơ": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bơi": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bưa": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bưng": [
     "V (Động từ (Verb))"
@@ -381,6 +448,7 @@
     "N (Danh từ (Noun))"
   ],
   "bước": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bướm": [
@@ -393,70 +461,92 @@
     "N (Danh từ (Noun))"
   ],
   "bạ": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bạc": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bạch": [
+    "N (Danh từ (Noun))",
     "A (Tính từ (Adjective))"
   ],
   "bại": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bạn": [
+    "P (Đại từ (Pronoun))",
     "N (Danh từ (Noun))"
   ],
   "bạo": [
     "A (Tính từ (Adjective))"
   ],
   "bạt": [
-    "A (Tính từ (Adjective))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bản": [
     "N (Danh từ (Noun))"
   ],
   "bảng": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bảo": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bảy": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bấc": [
     "N (Danh từ (Noun))"
   ],
   "bấm": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bấn": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bấp": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bất": [
-    "R (Phó từ/Trạng từ (Adverb))"
+    "E (Giới từ (Preposition))",
+    "A (Tính từ (Adjective))"
   ],
   "bấu": [
     "V (Động từ (Verb))"
   ],
   "bấy": [
-    "R (Phó từ/Trạng từ (Adverb))"
-  ],
-  "bầm": [
+    "P (Đại từ (Pronoun))",
+    "R (Phó từ/Trạng từ (Adverb))",
     "A (Tính từ (Adjective))"
   ],
+  "bầm": [
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
+  ],
   "bần": [
+    "N (Danh từ (Noun))",
     "A (Tính từ (Adjective))"
   ],
   "bầu": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bầy": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bẩm": [
     "V (Động từ (Verb))"
@@ -468,27 +558,37 @@
     "V (Động từ (Verb))"
   ],
   "bẫy": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bậc": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "A (Tính từ (Adjective))"
   ],
   "bậm": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bận": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bập": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "bật": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "bậu": [
     "N (Danh từ (Noun))"
   ],
   "bắc": [
+    "E (Giới từ (Preposition))",
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bắn": [
@@ -507,15 +607,20 @@
     "A (Tính từ (Adjective))"
   ],
   "bằng": [
-    "A (Tính từ (Adjective))"
+    "P (Đại từ (Pronoun))",
+    "E (Giới từ (Preposition))",
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bẵng": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "bặm": [
     "A (Tính từ (Adjective))"
   ],
   "bặt": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "bẹ": [
@@ -525,7 +630,8 @@
     "V (Động từ (Verb))"
   ],
   "bẹp": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bẻ": [
     "V (Động từ (Verb))"
@@ -537,6 +643,7 @@
     "V (Động từ (Verb))"
   ],
   "bế": [
+    "A (Tính từ (Adjective))",
     "V (Động từ (Verb))"
   ],
   "bến": [
@@ -546,16 +653,19 @@
     "N (Danh từ (Noun))"
   ],
   "bề": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "A (Tính từ (Adjective))"
   ],
   "bền": [
     "A (Tính từ (Adjective))"
   ],
   "bềnh": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bể": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bệ": [
     "N (Danh từ (Noun))"
@@ -567,27 +677,35 @@
     "V (Động từ (Verb))"
   ],
   "bệnh": [
-    "N (Danh từ (Noun))"
+    "A (Tính từ (Adjective))",
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bỉ": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "A (Tính từ (Adjective))"
   ],
   "bỉnh": [
     "N (Danh từ (Noun))"
   ],
   "bị": [
+    "E (Giới từ (Preposition))",
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bịp": [
-    "A (Tính từ (Adjective))"
+    "A (Tính từ (Adjective))",
+    "V (Động từ (Verb))"
   ],
   "bịt": [
     "V (Động từ (Verb))"
   ],
   "bọ": [
-    "N (Danh từ (Noun))"
+    "N (Danh từ (Noun))",
+    "V (Động từ (Verb))"
   ],
   "bọc": [
+    "N (Danh từ (Noun))",
     "V (Động từ (Verb))"
   ],
   "bọn": [

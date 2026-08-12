@@ -41,11 +41,11 @@ class GemmaPOSClassifier:
             "messages": [
                 {
                     "role": "system",
-                    "content": "Bạn là chuyên gia Ngôn ngữ học Tiếng Việt. Hãy phân tích từ loại chính xác cho danh sách từ vựng. Trả về đúng 1 JSON object dạng: {\"classified_words\": [{\"word\": \"từ\", \"pos\": \"N|V|A|R|P|E\"}]}"
+                    "content": "Bạn là chuyên gia Ngôn ngữ học Tiếng Việt. Mỗi từ Tiếng Việt có thể có NHIỀU loại từ (Polysemy). Hãy phân tích TẤT CẢ các loại từ khả dĩ cho từng từ dưới dạng mảng (list). Trả về 1 JSON object dạng: {\"classified_words\": [{\"word\": \"bọc\", \"pos\": [\"V\", \"N\"]}]}"
                 },
                 {
                     "role": "user",
-                    "content": f"Hãy phân loại từ loại (POS Tag: N - Danh từ, V - Động từ, A - Tính từ, R - Phó từ, P - Đại từ, E - Giới từ) cho các từ sau: {words_str}"
+                    "content": f"Hãy phân loại TẤT CẢ loại từ khả dĩ (POS Tags: N - Danh từ, V - Động từ, A - Tính từ, R - Phó từ, P - Đại từ, E - Giới từ) cho các từ sau: {words_str}"
                 }
             ],
             "temperature": 0.1
@@ -59,8 +59,9 @@ class GemmaPOSClassifier:
                 result = {}
                 for item in raw_json.get('classified_words', []):
                     w = item['word'].lower().strip()
-                    pos = item['pos'].upper().strip()
-                    result[w] = {pos}
+                    raw_pos = item.get('pos', ["N"])
+                    pos_set = set(raw_pos) if isinstance(raw_pos, list) else {str(raw_pos)}
+                    result[w] = {p.upper().strip() for p in pos_set}
                 return result
         except Exception as e:
             print(f"   [Gemma Notice] Chưa kết nối được LM Studio Server ({e})...")
