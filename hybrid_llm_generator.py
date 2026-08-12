@@ -42,21 +42,28 @@ class LLMDraftGenerator:
             "model": self.model_name,
             "messages": [
                 {
+                    "role": "system",
+                    "content": "Bạn là nhà thơ Việt Nam. Hãy sáng tác bài thơ Lục Bát 4 câu về chủ đề yêu cầu và trả về duy nhất định dạng JSON có thuộc tính 'poem_lines' chứa đúng 4 câu thơ Tiếng Việt. Không giải thích, không viết ghi chú."
+                },
+                {
                     "role": "user",
-                    "content": f"Hãy làm một bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề: {prompt}."
+                    "content": f"Chủ đề thơ: {prompt}"
                 }
             ],
             "response_format": {
                 "type": "json_schema",
                 "json_schema": {
-                    "name": "poem_schema",
+                    "name": "poem_response",
                     "strict": True,
                     "schema": {
                         "type": "object",
                         "properties": {
                             "poem_lines": {
                                 "type": "array",
-                                "items": {"type": "string"}
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Mảng gồm đúng 4 câu thơ Lục Bát Tiếng Việt"
                             }
                         },
                         "required": ["poem_lines"]
@@ -64,11 +71,11 @@ class LLMDraftGenerator:
                 }
             },
             "temperature": 0.7,
-            "max_tokens": 350
+            "max_tokens": 250
         }
 
         try:
-            safe_print(f"  [*] Đang kết nối LM Studio API (chờ model sinh thơ chủ đề '{prompt}')...")
+            safe_print(f"  [*] Đang gửi Yêu cầu JSON Schema đến LM Studio API cho chủ đề '{prompt}'...")
             res = requests.post(self.api_url, json=payload, timeout=180)
             if res.status_code != 200 and "response_format" in payload:
                 payload.pop("response_format")
@@ -77,30 +84,34 @@ class LLMDraftGenerator:
             if res.status_code == 200:
                 res_data = res.json()
                 msg_obj = res_data['choices'][0]['message']
+                
+                # UƯ TIÊN LẤY CONTENT CHÍNH THỨC (Nơi chứa kết quả JSON Schema)
                 raw_text = msg_obj.get('content', '') or ''
-                if not raw_text.strip() and 'reasoning_content' in msg_obj:
+                
+                # Nếu content bị rỗng do model reasoning, mới đọc từ reasoning_content
+                if not raw_text.strip():
                     raw_text = msg_obj.get('reasoning_content', '') or ''
                 raw_text = raw_text.strip()
 
-                safe_print(f"  [LM Studio RAW Output]:\n{raw_text}\n")
+                safe_print(f"  [LM Studio API Output]:\n{raw_text}\n")
 
-                # Ưu tiên Parse JSON Schema nếu model trả về JSON chuẩn
+                # Parse JSON Schema trực tiếp từ content
                 try:
                     match_json = re.search(r'\{.*\}', raw_text, re.DOTALL)
                     if match_json:
                         json_obj = json.loads(match_json.group(0))
-                        if "poem_lines" in json_obj and isinstance(json_obj["poem_lines"], list):
-                            poem_words = []
-                            for l in json_obj["poem_lines"]:
-                                words = [w.strip(".,!?:;\"'()[]") for w in l.split() if w.strip()]
-                                words = [w for w in words if w]
-                                if words:
-                                    poem_words.append(words)
-                            if len(poem_words) >= 4:
-                                safe_print(f"  [LM Studio JSON Schema API] ✓ Đã sinh mảng JSON 4 câu thơ chuẩn 100% cho chủ đề '{prompt}'!")
-                                return poem_words[:4]
-                except Exception:
-                    pass
+                        lines = json_obj.get("poem_lines", [])
+                        poem_words = []
+                        for l in lines:
+                            words = [w.strip(".,!?:;\"'()[]*") for w in l.split() if w.strip()]
+                            words = [w for w in words if w]
+                            if words:
+                                poem_words.append(words)
+                        if len(poem_words) >= 4:
+                            safe_print(f"  [LM Studio JSON Schema API] ✓ Đã nhận mảng 4 câu thơ chuẩn 100% từ JSON Schema cho chủ đề '{prompt}'!")
+                            return poem_words[:4]
+                except Exception as json_err:
+                    safe_print(f"  [Notice] Thử nghiệm JSON parse rỗng/lỗi ({json_err}). Đang bóc tách dòng...")
 
                 lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
                 poem_words = []
