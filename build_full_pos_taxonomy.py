@@ -8,12 +8,12 @@
 """
 
 import os
+import re
 import sys
 import json
 import pickle
 import time
-import urllib.request
-import urllib.error
+import requests
 from dataset import load_huggingface_dataset
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -52,25 +52,40 @@ class GemmaPOSClassifier:
         }
 
         try:
-            req = urllib.request.Request(self.api_url, data=json.dumps(payload).encode('utf-8'), headers=headers)
-            with urllib.request.urlopen(req, timeout=30) as response:
-                res_data = json.loads(response.read().decode('utf-8'))
-                raw_json = json.loads(res_data['choices'][0]['message']['content'])
-                result = {}
-                for item in raw_json.get('classified_words', []):
-                    w = item['word'].lower().strip()
-                    raw_pos = item.get('pos', ["N"])
-                    pos_set = set(raw_pos) if isinstance(raw_pos, list) else {str(raw_pos)}
-                    result[w] = {p.upper().strip() for p in pos_set}
-                return result
+            res = requests.post(self.api_url, json=payload, timeout=300)
+            if res.status_code != 200:
+                print(f"   [LM Studio HTTP {res.status_code}] {res.text[:200]}")
+                return {}
+            res_data = res.json()
+            content = res_data['choices'][0]['message']['content'].strip()
+            if not content:
+                print(f"   [Gemma Notice] Phản hồi rỗng từ LM Studio cho batch này.")
+                return {}
+            if content.startswith("```"):
+                content = re.sub(r"^```[a-zA-Z]*\n?", "", content)
+                content = re.sub(r"\n?```$", "", content).strip()
+            
+            # Tìm chuỗi JSON trong content
+            json_match = re.search(r'\{.*\}', content, re.DOTALL)
+            if json_match:
+                content = json_match.group(0)
+
+            raw_json = json.loads(content)
+            result = {}
+            for item in raw_json.get('classified_words', []):
+                w = item['word'].lower().strip()
+                raw_pos = item.get('pos', ["N"])
+                pos_set = set(raw_pos) if isinstance(raw_pos, list) else {str(raw_pos)}
+                result[w] = {p.upper().strip() for p in pos_set}
+            return result
         except Exception as e:
-            print(f"   [Gemma Notice] Chưa kết nối được LM Studio Server ({e})...")
+            print(f"   [Gemma Notice] Thông báo API ({e})...")
             return {}
 
 
 def build_full_pos_taxonomy_gemma():
     print("=" * 80)
-    print("[*] BẮT ĐẦU PHÂN LOẠI TỪ VỰNG BẰNG AI LOCAL GOOGLE/GEMMA-4-12B-QAT (LM STUDIO)...")
+    print("[*] BẮT ĐẦU PHÂN LOẠI 100% TỪ VỰNG BẰNG GOOGLE/GEMMA-4-12B-QAT (LM STUDIO)...")
     print("=" * 80)
 
     classifier = GemmaPOSClassifier()
@@ -90,27 +105,57 @@ def build_full_pos_taxonomy_gemma():
     print(f"[*] Đang gửi các batch từ vựng đến local API Gemma-4-12B (http://127.0.0.1:1234)...")
 
     vocab_list = sorted(list(all_vocab))
-    batch_size = 20
+    batch_size = 5
+    output_pickle = "pos_dict_gemma.pkl"
+
+    # Nạp lại checkpoint đã có nếu có sẵn
     gemma_pos_dict = {}
+    if os.path.exists(output_pickle):
+        try:
+            with open(output_pickle, "rb") as f:
+                gemma_pos_dict = pickle.load(f)
+            print(f"[*] Đã nạp checkpoint trước đó: {len(gemma_pos_dict):,} từ đã phân loại.")
+        except Exception:
+            pass
 
     start_time = time.time()
+    batch_idx = 0
     for i in range(0, len(vocab_list), batch_size):
         batch = vocab_list[i:i + batch_size]
-        res = classifier.classify_batch_words_gemma(batch)
+        # Bỏ qua những từ đã được phân loại trong checkpoint
+        unprocessed_batch = [w for w in batch if w not in gemma_pos_dict]
+        if not unprocessed_batch:
+            continue
+
+        batch_idx += 1
+        res = classifier.classify_batch_words_gemma(unprocessed_batch)
         if res:
             gemma_pos_dict.update(res)
-            print(f"   [✓ Gemma-4-12B API] Đã phân loại xong batch {i//batch_size + 1} ({len(gemma_pos_dict)} từ).")
+            print(f"   [✓ Gemma-4-12B API] Đã phân loại xong batch {batch_idx} ({len(gemma_pos_dict)}/{len(vocab_list)} từ).")
+
+            # Lưu checkpoint cứ sau mỗi 10 batch
+            if batch_idx % 10 == 0:
+                with open(output_pickle, "wb") as f:
+                    pickle.dump(gemma_pos_dict, f)
         else:
-            print(f"   [!] LM Studio chưa khởi chạy server ở port 1234. Bạn hãy bật Start Server trong LM Studio!")
+            print(f"   [!] Tạm dừng tại batch {batch_idx}. Bạn có thể tiếp tục chạy lại bất cứ lúc nào!")
             break
 
     if gemma_pos_dict:
-        output_pickle = "pos_dict_gemma.pkl"
         with open(output_pickle, "wb") as f:
             pickle.dump(gemma_pos_dict, f)
+
+        # Xuất ra JSON readable
+        json_export = {}
+        for word, pos_set in gemma_pos_dict.items():
+            json_export[word] = list(pos_set)
+        with open("pos_dict_gemma.json", "w", encoding="utf-8") as f:
+            json.dump(json_export, f, ensure_ascii=False, indent=2)
+
         print(f"\n[✓] BÁO CÁO HOÀN THÀNH:")
         print(f"    • Số từ vựng đã phân loại bằng Gemma-4-12B: {len(gemma_pos_dict):,} từ")
         print(f"    • File lưu trữ persistence chuẩn AI: '{output_pickle}'")
+        print(f"    • File JSON readable: 'pos_dict_gemma.json'")
         print(f"    • Tổng thời gian thực hiện: {time.time() - start_time:.2f} giây")
         print("=" * 80)
 
