@@ -42,8 +42,12 @@ class LLMDraftGenerator:
             "model": self.model_name,
             "messages": [
                 {
+                    "role": "system",
+                    "content": "Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát 4 câu (6-8-6-8 từ) mượt mà, liền mạch, câu chữ giàu cảm xúc. KHÔNG dùng nhiều dấu phẩy ngắt đoạn vụn vặt (không liệt kê dạng 'Lông mướt, mướt mát,'). Trả về duy nhất mảng JSON poem_lines gồm đúng 4 câu thơ Tiếng Việt."
+                },
+                {
                     "role": "user",
-                    "content": f"Hãy làm một bài thơ Lục Bát 4 câu (6-8-6-8 từ) về chủ đề: {prompt}."
+                    "content": f"Sáng tác bài thơ Lục Bát 4 câu về chủ đề: {prompt}."
                 }
             ],
             "temperature": 0.7
