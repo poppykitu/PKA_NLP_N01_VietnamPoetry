@@ -20,7 +20,7 @@ import urllib.error
 class LLMDraftGenerator:
     """
     Tầng 1: LLM Generative Draft Engine (Neuro Stage)
-    - Tích hợp kết nối trực tiếp LM Studio Local AI Server (http://localhost:1234/v1) cho model Gemma-4-e2b.
+    - Tích hợp kết nối trực tiếp LM Studio Local AI Server (http://localhost:1234/v1) cho google/gemma-4-12b-qat.
     - Tự động fallback về bản thảo thử nghiệm nếu chưa mở LM Studio.
     """
     def __init__(self, api_url: str = "http://127.0.0.1:1234/v1/chat/completions", model_name: str = "google/gemma-4-12b-qat"):
@@ -174,7 +174,9 @@ class RuleRepairEngine:
     """
 
     def __init__(self):
-        self.b_words = ["trời", "mây", "sông", "núi", "đời", "người", "quê", "làng", "đường", "sương", "yêu", "thương", "vương", "về", "xa"]
+        from pos_grammar_rules import WORD_TO_POS_SET
+        b_cands = [w for w in WORD_TO_POS_SET.keys() if get_tone(w) == "B" and len(w) >= 2]
+        self.b_words = b_cands if len(b_cands) > 10 else ["trời", "mây", "sông", "núi", "đời", "người", "quê", "làng", "đường", "sương", "yêu", "thương", "vương", "về", "xa"]
 
     def repair_line_length(self, line: list, expected_length: int) -> list:
         """
