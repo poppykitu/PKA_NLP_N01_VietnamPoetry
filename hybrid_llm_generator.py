@@ -13,6 +13,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 
 import json
+import requests
 import urllib.request
 import urllib.error
 
@@ -46,9 +47,9 @@ class LLMDraftGenerator:
         }
 
         try:
-            req = urllib.request.Request(self.api_url, data=json.dumps(payload).encode('utf-8'), headers=headers)
-            with urllib.request.urlopen(req, timeout=4) as response:
-                res_data = json.loads(response.read().decode('utf-8'))
+            res = requests.post(self.api_url, json=payload, timeout=30)
+            if res.status_code == 200:
+                res_data = res.json()
                 raw_text = res_data['choices'][0]['message']['content'].strip()
                 lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
                 poem_words = []
@@ -58,10 +59,11 @@ class LLMDraftGenerator:
                     if words:
                         poem_words.append(words)
                 if len(poem_words) == 4:
-                    print(f"  [LM Studio API] Đã kết nối & sinh bản thảo trực tiếp từ local model '{self.model_name}'!")
+                    print(f"  [LM Studio API] Đã kết nối & sinh bản thảo trực tiếp cho chủ đề '{prompt}' từ local model '{self.model_name}'!")
                     return poem_words
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"  [Notice] Chưa kết nối được LM Studio API ({e}). Đang dùng bản thảo mẫu...")
+
         return None
 
     def analyze_line_pos_json_schema(self, line_text: str) -> dict:
