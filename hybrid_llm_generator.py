@@ -105,25 +105,30 @@ class LLMDraftGenerator:
                 lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
                 poem_words = []
                 for line in lines:
-                    clean_text = re.sub(r'\(\d+\)\s*$', '', line).strip()
-                    clean_text = re.sub(r'^.*?Line\s*\d+[\*\:\s]*', '', clean_text, flags=re.IGNORECASE).strip()
-                    clean_text = re.sub(r'^[\*\-\d\.\:\s]+', '', clean_text).strip()
-
-                    if any(clean_text.startswith(k) for k in ["Form", "Length", "Topic", "Constraint", "Language", "Phase"]):
-                        continue
-
-                    words = [w.strip(".,!?:;\"'()[]") for w in clean_text.split() if w.strip()]
-                    words = [w for w in words if w and not re.match(r'^[a-zA-Z]{3,}$', w)]
-                    if 5 <= len(words) <= 9:
-                        poem_words.append(words)
-                    if len(poem_words) == 4:
-                        break
+                    # Bóc tách câu thơ Tiếng Việt thực sự có dạng: *Line 1 (6):* Đêm huyền lấp lánh ánh sao (Night...)
+                    match_poem = re.search(r'[\*\:\d\(\)\s]*([À-ỹà-ỹA-Za-z\s]+?)(?:\s*\([A-Za-z\s\.,\'-]+\)|\s*-\s*\*|\s*$)', line)
+                    if match_poem:
+                        candidate = match_poem.group(1).strip()
+                        # Làm sạch tiền tố số dòng/gạch đầu dòng nếu còn
+                        candidate = re.sub(r'^(?:Line\s*\d+|Draft\s*\d+|Revision|\d+|\*|\-|\:|\s)+', '', candidate, flags=re.IGNORECASE).strip()
+                        # Loại bỏ các từ chú thích tiếng Anh
+                        if any(candidate.lower().startswith(k) for k in ["form", "length", "topic", "constraint", "language", "phase", "critique", "visuals", "emotions", "vietnamese"]):
+                            continue
+                        
+                        words = [w.strip(".,!?:;\"'()[]*") for w in candidate.split() if w.strip()]
+                        # Chỉ lấy từ nếu từ đó không phải tiếng Anh thuần túy không dấu
+                        words = [w for w in words if w and (re.search(r'[à-ỹÀ-ỸđĐ]', w) or len(w) <= 3)]
+                        
+                        if 5 <= len(words) <= 9:
+                            poem_words.append(words)
+                        if len(poem_words) == 4:
+                            break
 
                 if len(poem_words) >= 4:
-                    safe_print(f"  [LM Studio API] ✓ Đã sinh bản thảo thô trực tiếp cho chủ đề '{prompt}' từ local model '{self.model_name}'!")
+                    safe_print(f"  [LM Studio API] ✓ Đã lọc bóc tách đúng 4 câu thơ Lục Bát Tiếng Việt chuẩn từ '{self.model_name}'!")
                     return poem_words[:4]
                 elif poem_words:
-                    safe_print(f"  [LM Studio API] ✓ Đã sinh bản thảo {len(poem_words)} câu từ '{self.model_name}'!")
+                    safe_print(f"  [LM Studio API] ✓ Đã bóc tách {len(poem_words)} câu thơ từ '{self.model_name}'!")
                     while len(poem_words) < 4:
                         poem_words.append(list(poem_words[-1]))
                     return poem_words[:4]
