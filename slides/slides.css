@@ -1,7 +1,7 @@
 /* ==========================================================================
    AUDITORIUM KINETIC EDITORIAL PRESENTATION STYLESHEET
    100% Full Diacritics Be Vietnam Pro | Ultra Large Font Sizes for Projectors
-   Cinematic Slide 5 Choreographed Sequence (Center Fly-In -> 1s Growth -> Callouts -> 0.5s Push Right)
+   Cinematic Slide 5 SVG Callout Lines & Exact Slice Positions
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fira+Code:wght@500;700&display=swap');
@@ -277,11 +277,7 @@ h2.section-headline {
 }
 
 /* ==========================================================================
-   CINEMATIC CHOREOGRAPHED SLIDE 5 SEQUENCE
-   1. Fly in Chart to Center
-   2. Chart numbers grow over 1s
-   3. Callout lines appear
-   4. 0.5s later Content pushes in from right & balances into 2 columns
+   CINEMATIC CHOREOGRAPHED SLIDE 5 SEQUENCE WITH EXACT CALLOUT LINES
    ========================================================================== */
 
 .slide5-stage-wrapper {
@@ -313,14 +309,11 @@ h2.section-headline {
     transition-delay: 0.1s;
 }
 
-/* Stage Step 3: Callout Lines Reveal at t=1.4s */
+/* Stage Step 3: Callout Lines Overlay & Exact Slice Positions at t=1.4s */
 .chart-callout-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     opacity: 0;
     transform: scale(0.85);
     filter: blur(8px);
@@ -340,20 +333,22 @@ h2.section-headline {
     position: absolute;
     background: #FFFFFF;
     border: 2px solid #E2E8F0;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     border-radius: 9999px;
-    padding: 8px 18px;
+    padding: 10px 22px;
     font-family: var(--font-vietnam);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 900;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    z-index: 10;
 }
 
-.callout-top-left { top: 10px; left: -10px; border-color: var(--g-blue); color: var(--g-blue); }
-.callout-bottom-right { bottom: 10px; right: -10px; border-color: var(--g-green); color: var(--g-green); }
-.callout-top-right { top: 10px; right: -10px; border-color: #B06000; color: #B06000; }
+/* Callout Badge Positions matching actual slice segments */
+.callout-top-left { top: 25px; left: 10px; border-color: var(--g-yellow); color: #B06000; }
+.callout-bottom-left { bottom: 30px; left: 10px; border-color: var(--g-green); color: var(--g-green); }
+.callout-right-middle { top: 145px; right: 10px; border-color: var(--g-blue); color: var(--g-blue); }
 
 /* Stage Step 4: Content Panel Slides in from Right at t=1.9s & pushes layout */
 #slide-datasets .content-panel-right {
