@@ -1,6 +1,6 @@
 /* ==========================================================================
    AUDITORIUM KINETIC EDITORIAL ENGINE JAVASCRIPT
-   Cinematic Slide 5 Choreography Engine & Multi-Input Controls
+   100% Official Chart.js Native Animations & Controls
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // -------------------------------------------------------------------------
-    // PROGRESSIVE GROWING CHART ANIMATIONS & CINEMATIC CHOREOGRAPHY
+    // OFFICIAL CHART.JS NATIVE ANIMATIONS ENGINE
     // -------------------------------------------------------------------------
     function triggerSlideCharts(slideId) {
         // SLIDE 4: Progressive Bar Chart Animation
@@ -141,41 +141,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // SLIDE 5: CINEMATIC CHOREOGRAPHED DOUGHNUT CHART (Native Chart.js Animation + No Bottom Legend)
+        // SLIDE 5: 100% OFFICIAL CHART.JS DOUGHNUT NATIVE ANIMATION (chartjs.org sample pattern)
         if (slideId === 'slide-datasets') {
             if (chartDatasetsInstance) chartDatasetsInstance.destroy();
             const canvas = document.getElementById('chart-datasets');
             if (canvas) {
                 const ctx = canvas.getContext('2d');
                 
-                // Delay numeric growing by 350ms so it starts after fly-in
-                setTimeout(() => {
-                    chartDatasetsInstance = new Chart(ctx, {
-                        type: 'doughnut',
-                        data: {
-                            labels: ['HF National Dictionary POS (24.608)', 'Gemma Polysemic Lexicon (4.659)', 'Âm Tiết Thơ Khác (9.366)'],
-                            datasets: [{
-                                data: [24608, 4659, 9366],
-                                backgroundColor: ['#4285F4', '#34A853', '#FBBC05'],
-                                borderWidth: 4,
-                                borderColor: '#FFFFFF'
-                            }]
+                chartDatasetsInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['HF National Dictionary POS (24.608)', 'Gemma Polysemic Lexicon (4.659)', 'Âm Tiết Thơ Khác (9.366)'],
+                        datasets: [{
+                            data: [24608, 4659, 9366],
+                            backgroundColor: ['#4285F4', '#34A853', '#FBBC05'],
+                            borderWidth: 4,
+                            borderColor: '#FFFFFF'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true,
+                            duration: 1400,
+                            easing: 'easeOutQuart'
                         },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            animation: {
-                                animateScale: true,
-                                animateRotate: true,
-                                duration: 1000, // Exactly 1.0 second Chart.js native growth
-                                easing: 'easeOutQuart'
-                            },
-                            plugins: {
-                                legend: { display: false } // REMOVED BOTTOM LEGEND PER USER REQUEST!
-                            }
+                        plugins: {
+                            legend: { display: false }
                         }
-                    });
-                }, 350);
+                    }
+                });
             }
         }
 

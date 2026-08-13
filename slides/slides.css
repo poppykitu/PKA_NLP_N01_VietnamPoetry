@@ -1,7 +1,6 @@
 /* ==========================================================================
    AUDITORIUM KINETIC EDITORIAL PRESENTATION STYLESHEET
-   100% Full Diacritics Be Vietnam Pro | Ultra Large Font Sizes for Projectors
-   Cinematic Slide 5 SVG Callout Lines & Exact Slice Positions
+   100% Native Chart.js Official Doughnut Animation Support
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fira+Code:wght@500;700&display=swap');
@@ -126,18 +125,18 @@ html, body {
     opacity: 0;
     visibility: hidden;
     transform: scale(0.96);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.5s step-end;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.4s step-end;
 }
 
 .kinetic-slide.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.5s step-start;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.4s step-start;
 }
 
 .content-max {
@@ -277,7 +276,7 @@ h2.section-headline {
 }
 
 /* ==========================================================================
-   CINEMATIC CHOREOGRAPHED SLIDE 5 SEQUENCE WITH EXACT CALLOUT LINES
+   SLIDE 5 LAYOUT WITH NATIVE CHART.JS ANIMATIONS
    ========================================================================== */
 
 .slide5-stage-wrapper {
@@ -286,47 +285,28 @@ h2.section-headline {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Stage Step 1: Chart Hero Fly in to Center Stage */
 #slide-datasets .chart-hero-wrapper {
     width: 650px;
     margin: 0 auto;
-    transform: scale(0.6) translateY(30px);
-    opacity: 0;
-    filter: blur(14px);
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
 }
 
-#slide-datasets.active .chart-hero-wrapper {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-    filter: blur(0px);
-    transition-delay: 0.1s;
-}
-
-/* Stage Step 3: Callout Lines Overlay & Exact Slice Positions at t=1.4s */
+/* Callout Lines Overlay */
 .chart-callout-overlay {
     position: absolute;
     inset: 0;
     pointer-events: none;
     opacity: 0;
-    transform: scale(0.85);
-    filter: blur(8px);
-    transition: opacity 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
-                filter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform: scale(0.95);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 #slide-datasets.active .chart-callout-overlay {
     opacity: 1;
     transform: scale(1);
-    filter: blur(0px);
-    transition-delay: 1.4s;
+    transition-delay: 0.6s;
 }
 
 .callout-badge {
@@ -350,28 +330,20 @@ h2.section-headline {
 .callout-bottom-left { bottom: 30px; left: 10px; border-color: var(--g-green); color: var(--g-green); }
 .callout-right-middle { top: 145px; right: 10px; border-color: var(--g-blue); color: var(--g-blue); }
 
-/* Stage Step 4: Content Panel Slides in from Right at t=1.9s & pushes layout */
+/* Right Content Panel Layout */
 #slide-datasets .content-panel-right {
-    width: 0px;
+    width: 650px;
     opacity: 0;
-    overflow: hidden;
-    transform: translateX(100px);
-    filter: blur(12px);
-    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(40px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 #slide-datasets.active .content-panel-right {
-    width: 650px;
     opacity: 1;
     transform: translateX(0);
-    filter: blur(0px);
-    transition-delay: 1.9s;
+    transition-delay: 0.8s;
 }
 
-/* Adjust Chart Wrapper width when active pushed */
 #slide-datasets.active .slide5-stage-wrapper {
     justify-content: space-between;
 }
