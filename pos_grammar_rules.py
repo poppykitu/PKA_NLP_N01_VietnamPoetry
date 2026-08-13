@@ -67,7 +67,20 @@ for pos_tag, words in POS_TAXONOMY.items():
             WORD_TO_POS_SET[w_clean] = set()
         WORD_TO_POS_SET[w_clean].add(pos_tag)
 
-# Nạp từ điển 4,659 từ vựng chuẩn Gemma-4-12B AI (pos_dict_gemma.pkl) làm NGUỒN CHÍNH
+# Nạp từ điển 24,608 từ vựng Tiếng Việt chuẩn từ Hugging Face (tsdocode/vietnamese-dictionary)
+HF_POS_FILE = "hf_pos_dictionary.pkl"
+if os.path.exists(HF_POS_FILE):
+    try:
+        with open(HF_POS_FILE, "rb") as f:
+            hf_pos_dict = pickle.load(f)
+            for w, tags in hf_pos_dict.items():
+                if w not in WORD_TO_POS_SET:
+                    WORD_TO_POS_SET[w] = set()
+                WORD_TO_POS_SET[w].update(tags)
+    except Exception:
+        pass
+
+# Nạp từ điển 4,659 từ vựng chuẩn Gemma-4-12B AI (pos_dict_gemma.pkl)
 POS_GEMMA_FILE = "pos_dict_gemma.pkl"
 if os.path.exists(POS_GEMMA_FILE):
     try:
