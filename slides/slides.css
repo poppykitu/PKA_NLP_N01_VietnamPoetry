@@ -1,7 +1,7 @@
 /* ==========================================================================
    AUDITORIUM KINETIC EDITORIAL PRESENTATION STYLESHEET
    100% Full Diacritics Be Vietnam Pro | Ultra Large Font Sizes for Projectors
-   Fixed Script Paths | Click/Keyboard/Touch Slide Transitions
+   Staggered Blur Fade In Component & Text Reveal Engine (blur(12px) -> blur(0))
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fira+Code:wght@500;700&display=swap');
@@ -125,19 +125,19 @@ html, body {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.95) translateY(30px);
-    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.45s step-end;
+    transform: scale(0.96);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s step-end;
 }
 
 .kinetic-slide.active {
     opacity: 1;
     visibility: visible;
-    transform: scale(1) translateY(0);
-    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.45s step-start;
+    transform: scale(1);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s step-start;
 }
 
 .content-max {
@@ -182,7 +182,7 @@ h2.section-headline {
     position: relative;
     padding-left: 42px;
     margin-bottom: 22px;
-    font-size: 1.65rem; /* HUGE CONTENT TEXT FOR PROJECTOR READABILITY */
+    font-size: 1.65rem;
     font-weight: 700;
     line-height: 1.55;
     color: var(--text-secondary);
@@ -266,7 +266,7 @@ h2.section-headline {
     margin: 10px auto;
 }
 
-/* ANIMATIONS */
+/* Floating Sine Wave Animation */
 .floating-y {
     animation: floatingY 3.5s ease-in-out infinite alternate;
 }
@@ -276,33 +276,34 @@ h2.section-headline {
     100% { transform: translateY(-10px); }
 }
 
-.active .stagger-fade-up { animation: staggerFadeUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.active .stagger-slide-left { animation: staggerSlideLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.active .stagger-slide-right { animation: staggerSlideRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-.active .stagger-scale-pop { animation: staggerScalePop 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+/* ==========================================================================
+   STAGGERED BLUR FADE IN REVEAL ENGINE (TEXT & COMPONENTS)
+   Initial State: opacity: 0, filter: blur(12px), transform: translateY(12px)
+   Active State:  opacity: 1, filter: blur(0px),  transform: translateY(0)
+   ========================================================================== */
 
-@keyframes staggerFadeUp {
-    from { opacity: 0; transform: translateY(32px); }
-    to { opacity: 1; transform: translateY(0); }
+.blur-reveal {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(12px);
+    will-change: opacity, filter, transform;
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes staggerSlideLeft {
-    from { opacity: 0; transform: translateX(-40px); }
-    to { opacity: 1; transform: translateX(0); }
+.active .blur-reveal {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
 }
 
-@keyframes staggerSlideRight {
-    from { opacity: 0; transform: translateX(40px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes staggerScalePop {
-    from { opacity: 0; transform: scale(0.85); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.delay-100 { animation-delay: 0.08s !important; }
-.delay-200 { animation-delay: 0.16s !important; }
-.delay-300 { animation-delay: 0.24s !important; }
-.delay-400 { animation-delay: 0.32s !important; }
-.delay-500 { animation-delay: 0.4s !important; }
+/* Stagger Delays (Step 0.05s - 0.1s) */
+.active .delay-1 { transition-delay: 0.05s !important; }
+.active .delay-2 { transition-delay: 0.10s !important; }
+.active .delay-3 { transition-delay: 0.15s !important; }
+.active .delay-4 { transition-delay: 0.20s !important; }
+.active .delay-5 { transition-delay: 0.25s !important; }
+.active .delay-6 { transition-delay: 0.30s !important; }
+.active .delay-7 { transition-delay: 0.35s !important; }
+.active .delay-8 { transition-delay: 0.40s !important; }
