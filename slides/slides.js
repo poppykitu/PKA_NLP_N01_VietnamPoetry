@@ -1,6 +1,6 @@
 /* ==========================================================================
    AUDITORIUM KINETIC EDITORIAL ENGINE JAVASCRIPT
-   100% Official Chart.js Native Animations & Controls
+   100% Visible Official Chart.js Native Animations & Controls
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,7 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSlideNumEl) currentSlideNumEl.textContent = currentSlideIndex + 1;
 
         if (slides[currentSlideIndex]) {
-            triggerSlideCharts(slides[currentSlideIndex].id);
+            // Wait 250ms for slide fade-in transition to complete before triggering Chart.js canvas animation
+            setTimeout(() => {
+                triggerSlideCharts(slides[currentSlideIndex].id);
+            }, 250);
         }
     }
 
@@ -165,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: {
                             animateScale: true,
                             animateRotate: true,
-                            duration: 1400,
+                            duration: 1500,
                             easing: 'easeOutQuart'
                         },
                         plugins: {
