@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // SLIDE 5: CINEMATIC CHOREOGRAPHED DOUGHNUT CHART (Center Fly-In -> 1s Growth -> Callouts -> 0.5s Push Right)
+        // SLIDE 5: CINEMATIC CHOREOGRAPHED DOUGHNUT CHART (Native Chart.js Animation + No Bottom Legend)
         if (slideId === 'slide-datasets') {
             if (chartDatasetsInstance) chartDatasetsInstance.destroy();
             const canvas = document.getElementById('chart-datasets');
@@ -167,10 +167,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             animation: {
                                 animateScale: true,
                                 animateRotate: true,
-                                duration: 1000, // Exactly 1.0 second growth!
+                                duration: 1000, // Exactly 1.0 second Chart.js native growth
                                 easing: 'easeOutQuart'
                             },
-                            plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } } } }
+                            plugins: {
+                                legend: { display: false } // REMOVED BOTTOM LEGEND PER USER REQUEST!
+                            }
                         }
                     });
                 }, 350);
