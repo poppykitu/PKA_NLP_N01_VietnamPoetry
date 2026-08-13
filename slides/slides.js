@@ -8,12 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalSlides = slides.length;
     let currentSlideIndex = 0;
 
-    const currentSlideNumEl = document.getElementById('current-slide-num');
-    const totalSlidesNumEl = document.getElementById('total-slides-num');
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-
-    if (totalSlidesNumEl) totalSlidesNumEl.textContent = totalSlides;
+    const progressBarDock = document.getElementById('progress-bar-dock');
+    if (progressBarDock && totalSlides > 0) {
+        progressBarDock.innerHTML = '';
+        for (let i = 0; i < totalSlides; i++) {
+            const seg = document.createElement('div');
+            seg.className = 'progress-segment';
+            seg.title = `Slide ${i + 1} / ${totalSlides}`;
+            seg.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showSlide(i);
+            });
+            progressBarDock.appendChild(seg);
+        }
+    }
 
     let chartApproachesInstance = null;
     let chartDatasetsInstance = null;
@@ -33,7 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         currentSlideIndex = index;
-        if (currentSlideNumEl) currentSlideNumEl.textContent = currentSlideIndex + 1;
+
+        const segments = document.querySelectorAll('.progress-segment');
+        segments.forEach((seg, idx) => {
+            if (idx === index) {
+                seg.className = 'progress-segment active';
+            } else if (idx < index) {
+                seg.className = 'progress-segment passed';
+            } else {
+                seg.className = 'progress-segment';
+            }
+        });
 
         if (slides[currentSlideIndex]) {
             // Wait 250ms for slide fade-in transition to complete before triggering Chart.js canvas animation
@@ -50,9 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function prevSlide() {
         if (currentSlideIndex > 0) showSlide(currentSlideIndex - 1);
     }
-
-    if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
-    if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
 
     // Keyboard controls
     window.addEventListener('keydown', (e) => {
