@@ -492,10 +492,49 @@ class RuleRepairEngine:
 
         return candidates[0] if candidates else (curr_word if curr_word else "trời")
 
+    def repair_phrase_chunk(self, line: list, pos1: int, pos2: int, target_tone1: str, target_tone2: str) -> list:
+        """
+        [SỬA THEO CẤP CỤM 2-3 TỪ - PHRASE-LEVEL CHUNK REPAIR]:
+        Nếu thay 1 từ đơn lẻ làm phá vỡ ngữ nghĩa cụm (VD: 'Đôi mắt' -> 'Đôi mang', 'lim dim' -> 'lim hãy'),
+        hệ thống sẽ tra cứu N-gram Corpus để THAY THẾ NGUYÊN CẢ CỤM 2 TỪ (w1, w2) bằng cụm từ thơ chuẩn (c1, c2)
+        thỏa mãn đồng thời nhịp thanh Lục Bát: Tone(c1) == target_tone1 và Tone(c2) == target_tone2.
+        """
+        w1_orig = line[pos1].lower() if len(line) > pos1 else ""
+        w2_orig = line[pos2].lower() if len(line) > pos2 else ""
+
+        # Kiểm tra nếu cụm hiện tại đã thỏa mãn thanh điệu -> Giữ nguyên 100%!
+        if get_tone(w1_orig) == target_tone1 and get_tone(w2_orig) == target_tone2:
+            return line
+
+        repaired_line = list(line)
+        w0_prev = line[pos1 - 1].lower() if pos1 > 0 else ""
+
+        # 1. Thử tra cứu nguyên cụm 2 từ (c1, c2) từ N-gram Poetry Corpus đi sau w0_prev
+        if w0_prev and w0_prev in self.corpus_bigrams:
+            for c1, count1 in self.corpus_bigrams[w0_prev].most_common(60):
+                if get_tone(c1) == target_tone1 and c1 in self.corpus_bigrams:
+                    for c2, count2 in self.corpus_bigrams[c1].most_common(60):
+                        if get_tone(c2) == target_tone2 and len(c2) >= 1:
+                            repaired_line[pos1] = c1
+                            repaired_line[pos2] = c2
+                            return repaired_line
+
+        # 2. Thử tra cứu từ c2 đi sau w1_orig nếu w1_orig đã đúng target_tone1
+        if get_tone(w1_orig) == target_tone1 and w1_orig in self.corpus_bigrams:
+            for c2, count2 in self.corpus_bigrams[w1_orig].most_common(60):
+                if get_tone(c2) == target_tone2:
+                    repaired_line[pos2] = c2
+                    return repaired_line
+
+        # 3. Fallback sửa từng từ ngữ cảnh
+        repaired_line[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w2_orig, target_tone1)
+        repaired_line[pos2] = self.pick_contextual_tone_repair_word(repaired_line[pos1], w2_orig, "", target_tone2)
+        return repaired_line
+
     def repair_poem(self, raw_poem: list) -> list:
         """
-        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Context-Aware Pipeline:
-        Raw Draft -> Fix Length -> Fix Pos 2/4 Tones (Context POS) -> POS-Aware Rhymes & Pitch Alternation
+        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Phrase-Level Chunk Repair Pipeline:
+        Raw Draft -> Fix Length -> Phrase-Level Chunk Repair (Pos 2/4 Tones) -> POS-Aware Rhymes & Pitch Alternation
         """
         # Step 1: Sửa độ dài 6-8 chữ
         length_fixed = []
@@ -503,20 +542,10 @@ class RuleRepairEngine:
             expected_len = 6 if i % 2 == 0 else 8
             length_fixed.append(self.repair_line_length(line, expected_len))
 
-        # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc) giữ ngữ cảnh POS 100%
+        # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc) THEO NGUYÊN CỤM 2 TỪ (PHRASE-LEVEL REPAIR)
         tone_fixed = []
         for i, line in enumerate(length_fixed):
-            repaired = list(line)
-            prev_w2 = repaired[0] if len(repaired) > 0 else ""
-            curr_w2 = repaired[1] if len(repaired) > 1 else ""
-            next_w2 = repaired[2] if len(repaired) > 2 else ""
-            repaired[1] = self.pick_contextual_tone_repair_word(prev_w2, curr_w2, next_w2, target_tone="B")
-
-            prev_w4 = repaired[2] if len(repaired) > 2 else ""
-            curr_w4 = repaired[3] if len(repaired) > 3 else ""
-            next_w4 = repaired[4] if len(repaired) > 4 else ""
-            repaired[3] = self.pick_contextual_tone_repair_word(prev_w4, curr_w4, next_w4, target_tone="T")
-
+            repaired = self.repair_phrase_chunk(line, pos1=1, pos2=3, target_tone1="B", target_tone2="T")
             tone_fixed.append(repaired)
 
         # Step 3 & 4: Sửa gieo vần POS-Aware & ép tiểu đối Bằng-Thanh & Chống lặp từ gieo vần
