@@ -515,11 +515,23 @@ class RuleRepairEngine:
 
         return candidates[0] if candidates else (curr_word if curr_word else "trời")
 
+    def score_segment_corpus_frequency(self, segment: list) -> int:
+        """
+        Tính tổng điểm tần suất N-gram Bigram thực tế trong 3.4 triệu tập thơ Tiếng Việt cho cụm từ segment.
+        """
+        score = 0
+        for i in range(len(segment) - 1):
+            w1, w2 = segment[i].lower(), segment[i+1].lower()
+            score += self.corpus_bigrams.get(w1, {}).get(w2, 0)
+        return score
+
     def repair_phrase_chunk(self, line: list, pos1: int, pos2: int, target_tone1: str, target_tone2: str) -> list:
         """
-        [SỬA THEO NGUYÊN TẮC BẢO TỒN NGỮ NGHĨA LIÊN KẾT CỤM TỜ (COLLOCATION PRESERVATION)]:
-        Sửa chính xác tiếng thứ 2 (pos1) và tiếng thứ 4 (pos2) dựa theo ngữ cảnh từ đứng trước và từ đứng sau,
-        tuyệt đối giữ nguyên tính liên kết ngữ nghĩa của từ trung gian (như 'Đôi mi tròn biếc' thay vì 'Đôi ta tròn lại').
+        [SO SÁNH TẦN SUẤT N-GRAM CORPUS CÁC PHƯƠNG ÁN (CORPUS FREQUENCY RANKING ENGINE)]:
+        Hệ thống tự động sinh 2 phương án:
+          - Phương án A (Giữ từ trung gian w_mid 'tròn', sửa tiếng 2 'mắt' -> 'mi' & tiếng 4 'xoe' -> 'biếc')
+          - Phương án B (Thử bỏ/thay cả cụm bằng Cụm Thơ Phổ Biến Hơn trong 3.4M N-gram như 'đôi mi khép nhẹ')
+        Tự động chọn Phương Án có Điểm Tần Suất Thơ Cao Nhất!
         """
         w1_orig = line[pos1].lower() if len(line) > pos1 else ""
         w2_orig = line[pos2].lower() if len(line) > pos2 else ""
@@ -531,21 +543,45 @@ class RuleRepairEngine:
         if w1_valid and w2_valid:
             return line
 
-        repaired_line = list(line)
+        repaired_line_a = list(line)
         w0_prev = line[pos1 - 1].lower() if pos1 > 0 else ""
         w_mid = line[pos1 + 1].lower() if len(line) > pos1 + 1 else ""
 
-        # 1. Sửa tiếng thứ 2 (pos1) nếu bị sai thanh (VD: 'mắt' -> 'mi' để ghép với 'Đôi' và 'tròn')
+        # --- PHƯƠNG ÁN A: GIỮ TỪ TRUNG GIAN w_mid ('tròn') ---
         if not w1_valid:
-            repaired_line[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w_mid, target_tone1)
-
-        # 2. Sửa tiếng thứ 4 (pos2) nếu bị sai thanh (VD: 'xoe' -> 'biếc' để ghép với 'tròn')
+            repaired_line_a[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w_mid, target_tone1)
         if not w2_valid:
-            prev_for_pos2 = repaired_line[pos2 - 1].lower() if pos2 > 0 else ""
-            next_for_pos2 = repaired_line[pos2 + 1].lower() if len(repaired_line) > pos2 + 1 else ""
-            repaired_line[pos2] = self.pick_contextual_tone_repair_word(prev_for_pos2, w2_orig, next_for_pos2, target_tone2)
+            prev_for_pos2 = repaired_line_a[pos2 - 1].lower() if pos2 > 0 else ""
+            next_for_pos2 = repaired_line_a[pos2 + 1].lower() if len(repaired_line_a) > pos2 + 1 else ""
+            repaired_line_a[pos2] = self.pick_contextual_tone_repair_word(prev_for_pos2, w2_orig, next_for_pos2, target_tone2)
 
-        return repaired_line
+        score_a = self.score_segment_corpus_frequency(repaired_line_a[max(0, pos1-1):min(len(line), pos2+2)])
+
+        # --- PHƯƠNG ÁN B: KHAI PHÁ CỤM THƠ THAY THẾ TOÀN BỘ CỤM 3 TỪ TỪ N-GRAM CORPUS ---
+        best_line_b = None
+        best_score_b = -1
+
+        if w0_prev and w0_prev in self.corpus_bigrams:
+            for c1, count1 in self.corpus_bigrams[w0_prev].most_common(50):
+                if get_tone(c1) == target_tone1 and c1 in self.corpus_bigrams:
+                    for c2, count2 in self.corpus_bigrams[c1].most_common(50):
+                        if c2 in self.corpus_bigrams:
+                            for c3, count3 in self.corpus_bigrams[c2].most_common(50):
+                                if get_tone(c3) == target_tone2 and len(c3) >= 1:
+                                    cand_b = list(line)
+                                    cand_b[pos1] = c1
+                                    cand_b[pos1 + 1] = c2
+                                    cand_b[pos2] = c3
+                                    sc_b = self.score_segment_corpus_frequency(cand_b[max(0, pos1-1):min(len(line), pos2+2)])
+                                    if sc_b > best_score_b:
+                                        best_score_b = sc_b
+                                        best_line_b = cand_b
+
+        # SO SÁNH: Nếu Phương Án B (thay nguyên cụm bỏ 'tròn') phổ biến hơn hẳn trong tập thơ -> Chọn B!
+        if best_line_b and best_score_b > score_a + 5:
+            return best_line_b
+
+        return repaired_line_a
 
     def repair_poem(self, raw_poem: list) -> list:
         """
