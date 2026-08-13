@@ -6,36 +6,43 @@
 * **Học phần**: Xử Lý Ngôn Ngữ Tự Nhiên và Học Máy (Natural Language Processing & Machine Learning)
 * **Mã Học Phần**: NLP_N01_PKA_2
 * **Nhóm thực hiện**: PKA NLP Team
-* **Mã nguồn GitHub**: [poppykitu/PKA_NLP_N01_VietnamPoetry](https://github.com/poppykitu/PKA_NLP_N01_VietnamPoetry)
+* **Mã nguồn GitHub Repository**: [poppykitu/PKA_NLP_N01_VietnamPoetry](https://github.com/poppykitu/PKA_NLP_N01_VietnamPoetry)
 
 ---
 
 ## MỤC LỤC BÁO CÁO
 
-1. [GIỚI THIỆU & MỤC TIÊU DỰ ÁN](#1-giới-thiệu--mục-tiêu-dự-án)
+1. [GIỚI THIỆU TỔNG QUAN & MỤC TIÊU DỰ ÁN](#1-giới-thiệu-tổng-quan--mục-tiêu-dự-án)
 2. [CÔNG NGHỆ, THƯ VIỆN VÀ TẬP DỮ LIỆU SỬ DỤNG](#2-công-nghệ-thư-viện-và-tập-dữ-liệu-sử-dụng)
 3. [BÁO CÁO KỸ THUẬT PHƯƠNG ÁN 1: STATISTICAL NLP (KNESER-NEY N-GRAM & PMI)](#3-báo-cáo-kỹ-thuật-phương-án-1-statistical-nlp-kneser-ney-n-gram--pmi)
 4. [BÁO CÁO KỸ THUẬT PHƯƠNG ÁN 2: NEURO-SYMBOLIC HYBRID (GEMMA-4-12B + 3-TIER POS ENGINE)](#4-báo-cáo-kỹ-thuật-phương-án-2-neuro-symbolic-hybrid-gemma-4-12b--3-tier-pos-engine)
-5. [CÁC VẤN ĐỀ PHÁT SINH, NGUYÊN NHÂN VÀ BIỆN PHÁP KHẮC PHỤC CHUYÊN SÂU](#5-các-vấn-đề-phát-sinh-nguyên-nhân-và-biện-pháp-khắc-phục-chuyên-sâu)
+5. [PHÂN TÍCH CHUYÊN SÂU 5 VẤN ĐỀ PHÁT SINH, NGUYÊN NHÂN VÀ BIỆN PHÁP KHẮC PHỤC](#5-phân-tích-chuyên-sâu-5-vấn-đề-phát-sinh-nguyên-nhân-và-biện-pháp-khắc-phục)
 6. [CÁC THUẬT TOÁN CỐT LÕI (CORE ALGORITHMS & MATHEMATICAL FORMULAS)](#6-các-thuật-toán-cốt-lõi-core-algorithms--mathematical-formulas)
-7. [KẾT QUẢ THỰC NGHIỆM VÀ ĐÁNH GIÁ ĐA TIÊU CHÍ](#7-kết-quả-thực-nghiệm-và-đánh-giá-đa-tiêu-chí)
-8. [TỔNG KẾT & ĐỐI CHIẾU CHUẨN ĐẦU RA (LEARNING OUTCOMES)](#8-tổng-kết--đối-chiếu-chuẩn-đầu-ra-learning-outcomes)
+7. [KẾT QUẢ THỰC NGHIỆM, NHẬT KÝ RUN LOG VÀ ĐÁNH GIÁ ĐA TIÊU CHÍ](#7-kết-quả-thực-nghiệm-nhật-ký-run-log-và-đánh-giá-đa-tiêu-chí)
+8. [TỔNG KẾT & ĐỐI CHIẾU CHUẨN ĐẦU RA HỌC PHẦN (LEARNING OUTCOMES)](#8-tổng-kết--đối-chiếu-chuẩn-đầu-ra-học-phần-learning-outcomes)
 
 ---
 
-## 1. GIỚI THIỆU & MỤC TIÊU DỰ ÁN
+## 1. GIỚI THIỆU TỔNG QUAN & MỤC TIÊU DỰ ÁN
 
 ### 1.1. Bối Cảnh Ngôn Ngữ Học Thơ Lục Bát Tiếng Việt
 Thơ Lục Bát là thể thơ truyền thống độc đáo của Việt Nam, chứa đựng các ràng buộc cú pháp, thanh điệu và luật thơ cực kỳ khắt khe:
-* **Cấu trúc số từ**: Luân phiên giữa câu Lục (6 từ) và câu Bát (8 từ).
-* **Luật Bằng - Trắc (Tone Rules)**: Tiếng thứ 2-6-8 mang thanh Bằng ($B$), tiếng thứ 4 mang thanh Trắc ($T$).
-* **Luật Gieo Vần (Rhyme Rules)**: Vần chân ($w_6$ câu Lục vần với $w_6$ câu Bát) và Vần lưng ($w_8$ câu Bát vần với $w_6$ câu Lục tiếp theo).
-* **Luật Tiểu Đối Bằng - Thanh (Pitch Alternation)**: Tiếng thứ 6 và tiếng thứ 8 của câu Bát cùng mang thanh Bằng nhưng phải đối lập sắc thái giọng: Một tiếng mang **Thanh Ngang** (không dấu) và một tiếng mang **Thanh Huyền** ($\setminus$).
-* **Luật Cú Pháp Ngữ Pháp Loại Từ (POS Transition & Phrase Rules)**: Các cặp từ nối phải tự nhiên, chuẩn ngữ pháp Tiếng Việt (Ví dụ: Phó từ *vẫn* phải đi với Động/Tính từ như *vẫn vương*, *vẫn nhớ*; không được tạo cụm phi ngữ pháp như *vẫn trời*, *bay trời*).
+* **Cấu trúc số từ**: Cặp câu luân phiên gồm một câu Lục (6 từ) và một câu Bát (8 từ).
+* **Luật Bằng - Trắc (Tone Patterns)**:
+  * Câu Lục (6 tiếng): Tiếng thứ 2 (Bằng - $B$), tiếng thứ 4 (Trắc - $T$), tiếng thứ 6 (Bằng - $B$).
+  * Câu Bát (8 tiếng): Tiếng thứ 2 (Bằng - $B$), tiếng thứ 4 (Trắc - $T$), tiếng thứ 6 (Bằng - $B$), tiếng thứ 8 (Bằng - $B$).
+* **Luật Gieo Vần (Rhyme Rules)**:
+  * Vần chân (End Rhyme): Tiếng thứ 6 của câu Lục gieo vần với tiếng thứ 6 của câu Bát.
+  * Vần lưng (Internal Rhyme): Tiếng thứ 8 của câu Bát gieo vần với tiếng thứ 6 của câu Lục tiếp theo.
+* **Luật Tiểu Đối Bằng - Thanh (Pitch Alternation Rule)**:
+  * Tiếng thứ 6 và tiếng thứ 8 của câu Bát đều mang thanh Bằng, nhưng bắt buộc phải đối lập nhau về sắc thái giọng: Một tiếng mang **Thanh Ngang** (không dấu) và một tiếng mang **Thanh Huyền** ($\setminus$).
+* **Luật Cú Pháp Ngữ Pháp Loại Từ (POS Transition & Phrase Rules)**:
+  * Các từ liên kết phải tự nhiên và chuẩn ngữ pháp Tiếng Việt (Ví dụ: Phó từ *vẫn* phải đi với Động/Tính từ như *vẫn vương*, *vẫn nhớ*; không được tạo cụm phi ngữ pháp như *vẫn trời*, *bay trời*).
+  * Bảo tồn liên kết Danh từ - Tính từ trong cụm từ (Ví dụ: *"Đôi mi tròn biếc"* tả đôi mắt tròn; tuyệt đối không ghép sai thành *"Đôi ta tròn lại"*).
 
 ### 1.2. Mục Tiêu Dự Án
 Xây dựng một hệ thống NLP đa phương án toàn diện, giải quyết trọn vẹn bài toán sinh thơ Lục Bát tự động:
-1. **Phương án 1 (Traditional Statistical NLP)**: Mô hình N-gram kết hợp mịn hóa Interpolated Kneser-Ney Smoothing, ma trận PMI (Pointwise Mutual Information) và bộ tự đánh giá Best-of-N Evaluator.
+1. **Phương án 1 (Traditional Statistical NLP)**: Mô hình N-gram kết hợp mịn hóa Interpolated Kneser-Ney Smoothing, ma trận tương đồng ngữ nghĩa PMI (Pointwise Mutual Information) và bộ tự đánh giá Best-of-N Evaluator.
 2. **Phương án 2 (SOTA Neuro-Symbolic Hybrid AI)**: Tích hợp Large Language Model local (**Google Gemma-4-12B-QAT**) để sinh bản thảo thô sáng tạo qua JSON Schema API, kết hợp **Rule Repair Engine 3 Tầng** tự động sửa lỗi cấu trúc, thanh điệu, miền ngữ nghĩa và ngữ pháp loại từ.
 
 ---
@@ -49,11 +56,11 @@ Xây dựng một hệ thống NLP đa phương án toàn diện, giải quyết
 * **Lưu trữ & Tối ưu hóa Cache**: `pickle` (Nạp cache nhị phân < 0.1 giây)
 
 ### 2.2. Các Tập Dữ Liệu Thi Ca & Từ Điển Quốc Gia
-1. **`phamson02/vietnamese-poetry-corpus` (Hugging Face)**:
+1. **`phamson02/vietnamese-poetry-corpus` (Hugging Face Dataset)**:
    * **Quy mô**: **84.686 bài thơ Lục Bát** (tương đương **286.206 câu thơ** và **~3,4 triệu từ vựng/tokens**).
    * **Mục đích**: Huấn luyện ma trận Kneser-Ney 3-Gram, ma trận Bigram Co-occurrence Probability và tính toán PMI.
 2. **`tsdocode/vietnamese-dictionary` (Hugging Face - Từ Điển Tiếng Việt Quốc Gia)**:
-   * **Quy mô**: **36.764 mục từ điển** kèm nhãn loại từ (Danh từ, Động từ, Tính từ, Phó từ, Đại từ...).
+   * **Quy mô**: **36.764 mục từ điển** kèm nhãn loại từ (Danh từ, Động từ, Tính từ, Phó từ, Đại từ, Giới từ, Liên từ...).
    * **Mục đích**: Chiết xuất **24.608 từ vựng Tiếng Việt** có nhãn POS chuẩn xác để tích hợp vào bộ kiểm tra ngữ pháp.
 3. **`pos_dict_gemma.pkl` (Gemma-4-12B Polysemic Lexicon)**:
    * **Quy mô**: **4.659 từ vựng thi ca** được Gemma LLM dán nhãn Đa loại từ (Polysemic Multi-POS Set).
@@ -67,18 +74,26 @@ Xây dựng một hệ thống NLP đa phương án toàn diện, giải quyết
 ```text
   Raw Poem Data ──> NFC Normalization ──> Regex Cleaning ──> Syllable Tokenization ──> Model Caching (.pkl)
 ```
-* Chuẩn hóa Unicode NFC để xử lý đồng nhất dấu thanh Tiếng Việt.
-* Loại bỏ dấu câu phi thi ca, đưa tất cả về chữ thường.
-* Lưu Cache đĩa nhị phân giúp tốc độ khởi chạy mô hình tăng hơn 100 lần (<0.1 giây).
+* **Chuẩn hóa Unicode NFC**: Đảm bảo toàn bộ câu thơ Tiếng Việt được lưu trữ dưới dạng NFC (Unicode Normalization Form C), tránh xung đột dấu thanh.
+* **Tách Từ & Chuẩn Hóa**: Xóa dấu câu thừa, chuyển chuỗi về chữ thường, phân tách câu thơ thành mảng âm tiết.
+* **Lưu Cache Nhị Phân (`.pkl`)**: Lưu trạng thái mô hình giúp thời gian nạp ở những lần chạy sau đạt tốc độ tức thì (<0.1 giây).
 
-### 3.2. Mô Hình Interpolated Kneser-Ney Smoothing
-Để khắc phục bài toán thưa thớt dữ liệu (Data Sparsity):
+### 3.2. Mô Hình Interpolated Kneser-Ney Smoothing (3-Gram)
+Để giải quyết vấn đề thưa thớt dữ liệu (Data Sparsity) và xác suất bằng 0 khi gặp từ chưa từng xuất hiện trong tập huấn luyện:
 $$P_{KN}(w_i | w_{i-2}, w_{i-1}) = \frac{\max(c(w_{i-2} w_{i-1} w_i) - d, 0)}{c(w_{i-2} w_{i-1})} + \lambda(w_{i-2} w_{i-1}) \cdot P_{KN}(w_i | w_{i-1})$$
-Với $d = 0.75$ là Discount Factor và $\lambda$ là trọng số làm mịn nội suy.
+Với $d = 0.75$ là Discount Factor và $\lambda$ là trọng số nội suy Kneser-Ney.
 
 ### 3.3. Ma Trận Tương Đồng Ngữ Nghĩa PMI (Pointwise Mutual Information)
-Được sử dụng để gắn kết chủ đề gợi ý (Seed Prompt) với từ ngữ trong bài thơ:
+Ứng dụng PMI để tính toán độ tương quan ngữ nghĩa giữa từ gợi ý chủ đề (Seed Word) và các câu thơ được tạo ra:
 $$\text{PMI}(w_1, w_2) = \log_2 \frac{P(w_1, w_2)}{P(w_1) P(w_2)}$$
+
+### 3.4. Hệ Thống Tự Đánh Giá 5 Tiêu Chí (Best-of-N Evaluator)
+Mô hình sinh $N=50$ bản thử nghiệm và chấm điểm định lượng 5 tiêu chí:
+1. **Điểm Luật & Âm Điệu (25 điểm)**: Kiểm tra thanh Bằng/Trắc vị trí 2-4-6-8 và quy tắc gieo vần.
+2. **Điểm Nhịp Đôi PMI (25 điểm)**: Đánh giá độ liên kết ngữ nghĩa giữa từ chủ đề và nội dung bài thơ.
+3. **Điểm Từ Vựng Thi Ca (20 điểm)**: Thưởng điểm khi câu thơ xuất hiện từ ngữ giàu chất thơ.
+4. **Điểm Anti-Repetition (15 điểm)**: Phạt điểm nặng nếu câu thơ bị lặp từ.
+5. **Điểm Mượt Mà Toàn Bài (15 điểm)**: Đánh giá tính liên kết tổng thể của bài thơ 4 câu.
 
 ---
 
@@ -98,8 +113,8 @@ graph TD
 ```
 
 ### 4.2. Tầng 1: Generative LLM Stage (Gemma-4-12B JSON Schema API)
-* Kết nối trực tiếp tới LM Studio Local Endpoint: `http://127.0.0.1:1234/v1/chat/completions`.
-* Truyền cấu trúc JSON Schema bắt buộc Gemma LLM phải trả về định dạng mảng 4 câu thơ Lục Bát:
+* Kết nối trực tiếp tới LM Studio Local API Endpoint: `http://127.0.0.1:1234/v1/chat/completions`.
+* Ép Gemma LLM xuất kết quả dưới dạng mảng JSON 4 câu thơ Lục Bát:
   ```json
   {
     "type": "object",
@@ -116,7 +131,7 @@ graph TD
 
 ---
 
-## 5. CÁC VẤN ĐỀ PHÁT SINH, NGUYÊN NHÂN VÀ BIỆN PHÁP KHẮC PHỤC CHUYÊN SÂU
+## 5. PHÂN TÍCH CHUYÊN SÂU 5 VẤN ĐỀ PHÁT SINH, NGUYÊN NHÂN VÀ BIỆN PHÁP KHẮC PHỤC
 
 Trong quá trình phát triển dự án, hệ thống đã gặp phải 5 vấn đề lớn. Dưới đây là phân tích nguyên nhân cốt lõi và giải pháp kỹ thuật đã triển khai:
 
@@ -153,7 +168,7 @@ $$\Big( \text{POS}(w_i) \Big) \cap \Big( \text{ValidFollowers}(\text{POS}(w_{i-1
 
 ---
 
-## 7. KẾT QUẢ THỰC NGHIỆM VÀ ĐÁNH GIÁ ĐA TIÊU CHÍ
+## 7. KẾT QUẢ THỰC NGHIỆM, NHẬT KÝ RUN LOG VÀ ĐÁNH GIÁ ĐA TIÊU CHÍ
 
 ### 7.1. Bảng So Sánh Chi Tiết Giữa 2 Phương Án
 
@@ -166,7 +181,7 @@ $$\Big( \text{POS}(w_i) \Big) \cap \Big( \text{ValidFollowers}(\text{POS}(w_{i-1
 | **Quy Mô Từ Điển POS** | Từ điển tĩnh nhỏ | **38.633 Từ vựng chuẩn Quốc gia** |
 | **Khả Năng Chống Overfitting**| Thấp (Dễ bị lặp lại câu thơ có sẵn) | Cực cao (Sinh câu thơ hoàn toàn mới) |
 
-### 7.2. Kết Quả Chạy Thực Tế Phương Án 2 (Neuro-Symbolic Hybrid)
+### 7.2. Kết Quả Chạy Thực Tế Terminal Log (Phương Án 2)
 ```text
 ================================================================================
   PHƯƠNG ÁN 2: HỆ THỐNG HYBRID LLM + RULE REPAIR ENGINE (NEURO-SYMBOLIC)
@@ -211,7 +226,7 @@ $$\Big( \text{POS}(w_i) \Big) \cap \Big( \text{ValidFollowers}(\text{POS}(w_{i-1
 
 ---
 
-## 8. TỔNG KẾT & ĐỐI CHIẾU CHUẨN ĐẦU RA (LEARNING OUTCOMES)
+## 8. TỔNG KẾT & ĐỐI CHIẾU CHUẨN ĐẦU RA HỌC PHẦN (LEARNING OUTCOMES)
 
 ### 8.1. Đánh Giá Mức Độ Hoàn Thành Chuẩn Đầu Ra (LOs)
 * **LO1 (Hiểu biết chuyên sâu NLP Thống kê & LLM)**: Đã triển khai thành công mô hình N-gram Kneser-Ney 3-Gram và kết nối Gemma-4-12B Local LLM qua JSON Schema API.
