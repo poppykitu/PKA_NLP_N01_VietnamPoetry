@@ -124,19 +124,19 @@ Cấu trúc tổ chức mã nguồn trên GitHub Repository `poppykitu/PKA_NLP_N
 
 ```text
 NLP_N01_PKA_2/
-├── main.py                        # Entrypoint Phương án 1 (N-gram Kneser-Ney + PMI + Seed CLI)
-├── main_llm.py                    # Entrypoint Phương án 2 (Hybrid Neuro-Symbolic LLM CLI)
-├── hybrid_llm_generator.py        # Core Engine Phương án 2 (LM Studio API + RuleRepairEngine)
-├── generator.py                   # LucBatPoemGenerator (N-gram Beam Search & Best-of-N Evaluator)
-├── ngram_model.py                 # NGramLanguageModel (Interpolated Kneser-Ney 3-Gram)
-├── luc_bat_rules.py               # Module kiểm tra 5 Luật thơ Lục Bát & Trích xuất âm tiết
-├── pos_grammar_rules.py           # Ma trận Ngữ pháp POS 38.633 từ vựng & 3-Tier POS Validator
-├── dataset.py                     # Module nạp, làm sạch & cache 84.686 bài thơ Lục Bát
-├── build_and_save_hf_pos.py       # Script tự động trích xuất 24.608 từ loại từ Từ điển Quốc Gia
-├── evaluate_overfitting.py        # Script đánh giá định lượng độ trùng lặp (Overfitting Check)
-├── BAO_CAO_DO_AN_NLP_PHENIKAA.md  # Báo cáo kỹ thuật chi tiết toàn diện của đồ án
-├── requirements.txt               # Danh sách thư viện phụ thuộc Python
-└── .gitignore                     # Cấu hình bỏ qua các file cache lớn
+ main.py                        # Entrypoint Phương án 1 (N-gram Kneser-Ney + PMI + Seed CLI)
+ main_llm.py                    # Entrypoint Phương án 2 (Hybrid Neuro-Symbolic LLM CLI)
+ hybrid_llm_generator.py        # Core Engine Phương án 2 (LM Studio API + RuleRepairEngine)
+ generator.py                   # LucBatPoemGenerator (N-gram Beam Search & Best-of-N Evaluator)
+ ngram_model.py                 # NGramLanguageModel (Interpolated Kneser-Ney 3-Gram)
+ luc_bat_rules.py               # Module kiểm tra 5 Luật thơ Lục Bát & Trích xuất âm tiết
+ pos_grammar_rules.py           # Ma trận Ngữ pháp POS 38.633 từ vựng & 3-Tier POS Validator
+ dataset.py                     # Module nạp, làm sạch & cache 84.686 bài thơ Lục Bát
+ build_and_save_hf_pos.py       # Script tự động trích xuất 24.608 từ loại từ Từ điển Quốc Gia
+ evaluate_overfitting.py        # Script đánh giá định lượng độ trùng lặp (Overfitting Check)
+ BAO_CAO_DO_AN_NLP_PHENIKAA.md  # Báo cáo kỹ thuật chi tiết toàn diện của đồ án
+ requirements.txt               # Danh sách thư viện phụ thuộc Python
+ .gitignore                     # Cấu hình bỏ qua các file cache lớn
 ```
 
 ---
