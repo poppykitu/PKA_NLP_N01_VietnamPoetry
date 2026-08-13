@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ATOTIME CAPSULE CUSTOM PRESENTATION ENGINE JAVASCRIPT
-   Pure Responsive Engine | Full Keyboard & Chart Control
+   GOOGLE FLAT GEOMETRIC PROJECTOR LIGHT THEME ENGINE JAVASCRIPT
+   Optimized for Classroom & Hall Projectors | Large Fonts | High Contrast
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // -------------------------------------------------------------------------
-    // CHART.JS ANIMATIONS FOR CUSTOM ENGINE
+    // CHART.JS ANIMATIONS FOR PROJECTOR LIGHT THEME (HIGH CONTRAST)
     // -------------------------------------------------------------------------
     function triggerSlideCharts(slideId) {
         // Slide 4 Chart: 3 Approaches
@@ -116,10 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         datasets: [{
                             label: 'Điểm Đánh Giá Tổng Thể (Thang 100)',
                             data: [0, 60, 95],
-                            backgroundColor: ['rgba(239, 68, 68, 0.85)', 'rgba(156, 163, 175, 0.85)', 'rgba(255, 255, 255, 0.95)'],
-                            borderColor: ['#EF4444', '#9CA3AF', '#FFFFFF'],
-                            borderWidth: 1,
-                            borderRadius: 4
+                            backgroundColor: ['#EA4335', '#FBBC04', '#1A73E8'],
+                            borderColor: ['#C5221F', '#B06000', '#1557B0'],
+                            borderWidth: 2,
+                            borderRadius: 6
                         }]
                     },
                     options: {
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: { duration: 1200, easing: 'easeOutQuart' },
                         plugins: { legend: { display: false } },
                         scales: {
-                            y: { beginAtZero: true, max: 100, ticks: { color: '#9CA3AF' }, grid: { color: '#374151' } },
-                            x: { ticks: { color: '#9CA3AF' }, grid: { display: false } }
+                            y: { beginAtZero: true, max: 100, ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            x: { ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -148,16 +148,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         labels: ['HF National Dictionary POS (24.608)', 'Gemma Polysemic Lexicon (4.659)', 'Các Âm Tiết Thơ Khác (9.366)'],
                         datasets: [{
                             data: [24608, 4659, 9366],
-                            backgroundColor: ['#FFFFFF', '#D1D5DB', '#6B7280'],
-                            borderWidth: 2,
-                            borderColor: '#1A1A1A'
+                            backgroundColor: ['#1A73E8', '#34A853', '#FBBC04'],
+                            borderWidth: 3,
+                            borderColor: '#FFFFFF'
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: { duration: 1500, easing: 'easeOutBounce' },
-                        plugins: { legend: { position: 'bottom', labels: { color: '#D1D5DB', font: { size: 12 } } } }
+                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { size: 13, weight: 'bold' } } } }
                     }
                 });
             }
@@ -176,8 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         datasets: [{
                             label: 'Điểm Tần Suất 3.4M N-Gram',
                             data: [28, 30, 69, 217],
-                            backgroundColor: ['rgba(156, 163, 175, 0.7)', 'rgba(209, 213, 219, 0.8)', 'rgba(243, 244, 246, 0.9)', '#FFFFFF'],
-                            borderRadius: 4
+                            backgroundColor: ['#CBD5E1', '#94A3B8', '#64748B', '#1A73E8'],
+                            borderRadius: 6
                         }]
                     },
                     options: {
@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: { duration: 1400, easing: 'easeOutCubic' },
                         plugins: { legend: { display: false } },
                         scales: {
-                            x: { beginAtZero: true, ticks: { color: '#9CA3AF' }, grid: { color: '#374151' } },
-                            y: { ticks: { color: '#9CA3AF' }, grid: { display: false } }
+                            x: { beginAtZero: true, ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            y: { ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -206,18 +206,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     data: {
                         labels: ['Trùng Nguyên Câu (%)', 'Chỉ Số Jaccard Similarity (x100)'],
                         datasets: [
-                            { label: 'PA 2: Statistical N-Gram', data: [14.2, 42], backgroundColor: '#9CA3AF', borderRadius: 4 },
-                            { label: 'PA 3: Neuro-Symbolic Hybrid', data: [0.0, 18], backgroundColor: '#FFFFFF', borderRadius: 4 }
+                            { label: 'PA 2: Statistical N-Gram', data: [14.2, 42], backgroundColor: '#EA4335', borderRadius: 6 },
+                            { label: 'PA 3: Neuro-Symbolic Hybrid', data: [0.0, 18], backgroundColor: '#34A853', borderRadius: 6 }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: { duration: 1400, easing: 'easeOutQuart' },
-                        plugins: { legend: { position: 'bottom', labels: { color: '#D1D5DB' } } },
+                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { size: 13, weight: 'bold' } } } },
                         scales: {
-                            y: { beginAtZero: true, max: 50, ticks: { color: '#9CA3AF' }, grid: { color: '#374151' } },
-                            x: { ticks: { color: '#9CA3AF' }, grid: { display: false } }
+                            y: { beginAtZero: true, max: 50, ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            x: { ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
 
     // -------------------------------------------------------------------------
-    // ATOTIME ATMOSPHERIC THREE.JS SHADER BACKGROUND
+    // GOOGLE FLAT GEOMETRIC LIGHT THREE.JS SHADER BACKGROUND
     // -------------------------------------------------------------------------
     const atotimeCanvas = document.getElementById('atotime-canvas');
     if (atotimeCanvas && typeof THREE !== 'undefined') {
@@ -287,24 +287,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     st.x *= u_resolution.x / u_resolution.y;
 
                     float mouseDist = distance(vUv, u_mouse);
-                    float mouseEffect = smoothstep(0.4, 0.0, mouseDist) * 0.1;
+                    float mouseEffect = smoothstep(0.4, 0.0, mouseDist) * 0.08;
 
-                    float t = u_time * 0.15;
-                    float n1 = snoise(st * 1.8 + vec2(t * 0.2, t * 0.1) + mouseEffect);
-                    float n2 = snoise(st * 3.5 - vec2(t * 0.2, -t * 0.15) + n1);
+                    float t = u_time * 0.12;
+                    float n1 = snoise(st * 1.5 + vec2(t * 0.15, t * 0.1) + mouseEffect);
+                    float n2 = snoise(st * 3.0 - vec2(t * 0.15, -t * 0.1) + n1);
 
-                    vec3 colorBg = vec3(0.07, 0.07, 0.07);
-                    vec3 colorSurface = vec3(0.12, 0.12, 0.12);
-                    vec3 colorHighlight = vec3(0.22, 0.22, 0.24);
+                    // Google Light Palette (#FFFFFF base with soft pastel floating geometric aura)
+                    vec3 colorBg = vec3(0.99, 0.99, 0.98);      // Soft Pearl White
+                    vec3 colorSky = vec3(0.81, 0.92, 1.00);     // ColorHunt Sky Blue (#CFEBFF)
+                    vec3 colorPeach = vec3(1.00, 0.75, 0.57);   // ColorHunt Peach (#FFBE91)
 
                     float mix1 = smoothstep(-0.5, 0.5, n1);
                     float mix2 = smoothstep(-0.4, 0.6, n2);
 
-                    vec3 finalColor = mix(colorBg, colorSurface, mix1 * 0.5);
-                    finalColor = mix(finalColor, colorHighlight, mix2 * 0.25);
-
-                    float vignette = smoothstep(1.2, 0.2, distance(vUv, vec2(0.5)));
-                    finalColor *= vignette;
+                    vec3 finalColor = mix(colorBg, colorSky, mix1 * 0.12);
+                    finalColor = mix(finalColor, colorPeach, mix2 * 0.08);
 
                     gl_FragColor = vec4(finalColor, 1.0);
                 }

@@ -1,18 +1,31 @@
 /* ==========================================================================
-   ATOTIME CAPSULE CUSTOM PRESENTATION ENGINE STYLESHEET
-   Stark Immersive Dark System | High-Contrast White UI | Zero Scale Limits
+   GOOGLE FLAT GEOMETRIC PROJECTOR LIGHT THEME STYLESHEET
+   Clean White Background | Extra Large Readability Fonts | Primary Accents
+   Palette: #FFBE91 | #FFDDB0 | #FFFCE1 | #CFEBFF | Google Primary Colors
    ========================================================================== */
 
 :root {
-    --color-bg: #121212;
-    --color-surface: #1A1A1A;
-    --color-surface-hover: #242424;
-    --color-border: #374151;
-    --color-primary: #FFFFFF;
-    --color-secondary: #D1D5DB;
-    --color-tertiary: #9CA3AF;
-    --color-error: #EF4444;
-    --font-heading: 'Arial', 'Outfit', sans-serif;
+    --color-bg: #FFFFFF;
+    --color-bg-subtle: #FAF9F6;
+    --color-surface: #FFFFFF;
+    --color-surface-card: #F8FAFC;
+    --color-border: #E2E8F0;
+    --color-text-dark: #0F172A;
+    --color-text-body: #1E293B;
+    --color-text-sub: #475569;
+    
+    /* ColorHunt & Google Primary Palette */
+    --color-peach: #FFBE91;
+    --color-cream: #FFDDB0;
+    --color-warm-yellow: #FFFCE1;
+    --color-sky-blue: #CFEBFF;
+    
+    --color-google-blue: #1A73E8;
+    --color-google-green: #34A853;
+    --color-google-yellow: #FBBC04;
+    --color-google-red: #EA4335;
+
+    --font-heading: 'Outfit', 'Arial', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'Fira Code', monospace;
 }
@@ -28,13 +41,13 @@ html, body {
     width: 100vw;
     height: 100vh;
     background-color: var(--color-bg);
-    color: var(--color-primary);
+    color: var(--color-text-dark);
     font-family: var(--font-body);
     overflow: hidden;
     letter-spacing: 0px;
 }
 
-/* Atmospheric WebGL Background Canvas */
+/* Geometric Abstract Background Canvas */
 #atotime-canvas {
     position: fixed;
     top: 0;
@@ -45,7 +58,7 @@ html, body {
     z-index: 1;
 }
 
-/* Main Presentation App Wrapper */
+/* Main Viewport Container */
 .presentation-viewport {
     position: relative;
     width: 100vw;
@@ -59,39 +72,43 @@ html, body {
 /* Header Bar */
 .presentation-header {
     width: 100%;
-    padding: 20px 40px;
+    padding: 24px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 20;
-    background: linear-gradient(to bottom, rgba(18,18,18,0.9), transparent);
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), transparent);
 }
 
 .brand-badge {
     font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: var(--color-secondary);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #1E293B;
+    background: var(--color-sky-blue);
+    border: 2px solid #BEE3F8;
+    padding: 8px 18px;
     border-radius: 9999px;
     text-transform: uppercase;
 }
 
 .slide-counter-badge {
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--color-primary);
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--color-google-blue);
+    background: #E8F0FE;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    border: 1px solid #AECBFA;
 }
 
-/* Slides Container */
+/* Slides Stage */
 .slides-stage {
     position: relative;
     width: 100%;
-    height: calc(100vh - 140px);
+    height: calc(100vh - 150px);
     overflow: hidden;
 }
 
@@ -101,140 +118,147 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 20px 60px 40px 60px;
+    padding: 10px 80px 30px 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.96) translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.6s step-end;
+    transform: scale(0.97) translateY(20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s step-end;
 }
 
 .slide-item.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1) translateY(0);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.6s step-start;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s step-start;
 }
 
-/* Slide Content Wrappers */
 .slide-content-max {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
     text-align: center;
 }
 
-/* Typography Scale */
+/* Projector Extra-Large Typography */
 h1.slide-title-hero {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
-    font-weight: 800;
+    font-size: 3.8rem;
+    font-weight: 900;
     line-height: 1.15;
-    color: var(--color-primary);
-    margin-bottom: 1rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1.2rem;
 }
 
 h2.slide-title-section {
     font-family: var(--font-heading);
-    font-size: 2.25rem;
-    font-weight: 700;
+    font-size: 2.75rem;
+    font-weight: 800;
     line-height: 1.2;
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
+    color: var(--color-text-dark);
+    margin-bottom: 1.75rem;
 }
 
-/* Atotime Card Component */
-.atotime-card {
+/* Flat Geometric Cards for High Projector Contrast */
+.projector-card {
     background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 24px;
-    transition: border-color 0.3s ease;
+    border: 2px solid var(--color-border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
 }
 
-.atotime-card:hover {
-    border-color: var(--color-primary);
+.projector-card:hover {
+    border-color: var(--color-google-blue);
+    transform: translateY(-2px);
 }
 
 .chamfer-card {
     background-color: var(--color-surface);
-    border: 1px solid var(--color-border);
-    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-    padding: 24px;
-    transition: all 0.4s ease;
-}
-
-.chamfer-card:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-4px);
+    border: 2px solid var(--color-border);
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+    padding: 26px 30px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.04);
 }
 
 .chamfer-card-red {
-    background-color: var(--color-surface);
-    border: 1px solid var(--color-error);
-    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
-    padding: 24px;
+    background-color: #FEF2F2;
+    border: 2px solid var(--color-google-red);
+    clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+    padding: 26px 30px;
 }
 
-/* Atotime Chips */
-.atotime-chip {
+/* Playful Google Geometric Chips */
+.projector-chip {
     font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 6px 16px;
     border-radius: 9999px;
     display: inline-block;
     text-transform: uppercase;
 }
 
-.chip-white { background-color: var(--color-primary); color: var(--color-bg); border: 1px solid var(--color-primary); }
-.chip-gray { background-color: var(--color-border); color: var(--color-primary); border: 1px solid #4B5563; }
-.chip-red { background-color: rgba(239, 68, 68, 0.15); color: var(--color-error); border: 1px solid var(--color-error); }
+.chip-blue { background-color: #E8F0FE; color: var(--color-google-blue); border: 2px solid #AECBFA; }
+.chip-peach { background-color: var(--color-peach); color: #7C2D12; border: 2px solid #FDBA74; }
+.chip-green { background-color: #E6F4EA; color: var(--color-google-green); border: 2px solid #A8DAB5; }
+.chip-red { background-color: #FCE8E6; color: var(--color-google-red); border: 2px solid #FAD2CF; }
+.chip-yellow { background-color: var(--color-cream); color: #92400E; border: 2px solid #FDE68A; }
 
-/* Custom Bullet Lists */
+/* Large High-Contrast Bullet Lists for Auditorium Readability */
 .slide-item ul { list-style: none; padding: 0; margin: 0; }
 .slide-item ul li {
     position: relative;
-    padding-left: 24px;
-    margin-bottom: 12px;
-    font-size: 0.95rem;
+    padding-left: 32px;
+    margin-bottom: 14px;
+    font-size: 1.15rem;
+    font-weight: 600;
     line-height: 1.6;
-    color: var(--color-secondary);
+    color: var(--color-text-body);
 }
 .slide-item ul li::before {
     content: "";
     position: absolute;
     left: 4px;
-    top: 11px;
-    width: 6px;
-    height: 6px;
+    top: 13px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: var(--color-primary);
+    background-color: var(--color-google-blue);
 }
 
-/* Footer Navigation Controls */
+/* Chart Canvas Container */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 330px;
+    margin: 10px auto;
+}
+
+/* Footer Controls */
 .presentation-footer {
     width: 100%;
-    padding: 20px 40px;
+    padding: 20px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 20;
-    background: linear-gradient(to top, rgba(18,18,18,0.95), transparent);
+    background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
 }
 
 .progress-bar-container {
     flex: 1;
-    height: 3px;
-    background: var(--color-border);
-    margin: 0 30px;
+    height: 6px;
+    background: #E2E8F0;
+    margin: 0 40px;
     border-radius: 9999px;
     overflow: hidden;
 }
@@ -242,35 +266,30 @@ h2.slide-title-section {
 .progress-bar-fill {
     height: 100%;
     width: 5%;
-    background: var(--color-primary);
+    background: var(--color-google-blue);
     transition: width 0.4s ease;
 }
 
-.nav-buttons {
-    display: flex;
-    gap: 12px;
-}
-
 .btn-nav {
-    background: var(--color-surface);
-    color: var(--color-primary);
-    border: 1px solid var(--color-border);
-    padding: 10px 18px;
+    background: #F1F5F9;
+    color: #0F172A;
+    border: 2px solid #CBD5E1;
+    padding: 12px 24px;
     font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 600;
-    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 800;
+    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .btn-nav:hover {
-    background: var(--color-primary);
-    color: var(--color-bg);
-    border-color: var(--color-primary);
+    background: var(--color-google-blue);
+    color: #FFFFFF;
+    border-color: var(--color-google-blue);
 }
 
-/* Keyframe Pulsing Animations for Connectors */
+/* Flow Line Animation */
 .flow-line-pulse {
     stroke-dasharray: 8;
     animation: dashPulse 1.5s linear infinite;
@@ -286,16 +305,6 @@ h2.slide-title-section {
 }
 
 @keyframes nodePulse {
-    0% { box-shadow: 0 0 0px rgba(255,255,255,0); }
-    100% { box-shadow: 0 0 20px rgba(255,255,255,0.25); }
-}
-
-/* Stagger Animation Utility */
-.active .stagger-up {
-    animation: staggerUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes staggerUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
+    0% { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    100% { box-shadow: 0 8px 24px rgba(26,115,232,0.2); }
 }
