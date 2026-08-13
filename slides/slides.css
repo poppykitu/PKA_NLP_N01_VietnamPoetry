@@ -1,32 +1,26 @@
 /* ==========================================================================
-   GOOGLE FLAT GEOMETRIC PROJECTOR LIGHT THEME STYLESHEET
-   Clean White Background | Extra Large Readability Fonts | Primary Accents
-   Palette: #FFBE91 | #FFDDB0 | #FFFCE1 | #CFEBFF | Google Primary Colors
+   GOOGLE I/O & LILIAN LEE BENTO BOX DESIGN SYSTEM
+   Pure Off-White Canvas | Google Primary Colors | Organic Bento Cards
    ========================================================================== */
 
-:root {
-    --color-bg: #FFFFFF;
-    --color-bg-subtle: #FAF9F6;
-    --color-surface: #FFFFFF;
-    --color-surface-card: #F8FAFC;
-    --color-border: #E2E8F0;
-    --color-text-dark: #0F172A;
-    --color-text-body: #1E293B;
-    --color-text-sub: #475569;
-    
-    /* ColorHunt & Google Primary Palette */
-    --color-peach: #FFBE91;
-    --color-cream: #FFDDB0;
-    --color-warm-yellow: #FFFCE1;
-    --color-sky-blue: #CFEBFF;
-    
-    --color-google-blue: #1A73E8;
-    --color-google-green: #34A853;
-    --color-google-yellow: #FBBC04;
-    --color-google-red: #EA4335;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap');
 
-    --font-heading: 'Outfit', 'Arial', sans-serif;
-    --font-body: 'Inter', sans-serif;
+:root {
+    --bg-main: #F8F9FA;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --border-card: rgba(226, 232, 240, 0.9);
+    
+    --g-blue: #4285F4;
+    --g-red: #EA4335;
+    --g-yellow: #FBBC05;
+    --g-green: #34A853;
+    
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    
+    --font-head: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-mono: 'Fira Code', monospace;
 }
 
@@ -40,15 +34,14 @@
 html, body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--color-bg);
-    color: var(--color-text-dark);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
     font-family: var(--font-body);
     overflow: hidden;
-    letter-spacing: 0px;
 }
 
-/* Geometric Abstract Background Canvas */
-#atotime-canvas {
+/* Ambient Motion Canvas */
+#ambient-canvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -58,8 +51,8 @@ html, body {
     z-index: 1;
 }
 
-/* Main Viewport Container */
-.presentation-viewport {
+/* Presentation App Viewport */
+.app-container {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -69,69 +62,64 @@ html, body {
     justify-content: space-between;
 }
 
-/* Header Bar */
-.presentation-header {
+/* Google I/O Top Header */
+.top-header {
     width: 100%;
     padding: 24px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 20;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.95), transparent);
 }
 
-.brand-badge {
-    font-family: var(--font-mono);
+.brand-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-card);
+    padding: 8px 20px;
+    border-radius: 9999px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    font-family: var(--font-head);
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #1E293B;
-    background: var(--color-sky-blue);
-    border: 2px solid #BEE3F8;
-    padding: 8px 18px;
-    border-radius: 9999px;
-    text-transform: uppercase;
+    color: var(--text-primary);
 }
 
-.slide-counter-badge {
-    font-family: var(--font-mono);
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--color-google-blue);
-    background: #E8F0FE;
-    padding: 6px 16px;
-    border-radius: 9999px;
-    border: 1px solid #AECBFA;
-}
+.g-dot-blue { width: 10px; height: 10px; border-radius: 50%; background: var(--g-blue); }
+.g-dot-red { width: 10px; height: 10px; border-radius: 50%; background: var(--g-red); }
+.g-dot-yellow { width: 10px; height: 10px; border-radius: 50%; background: var(--g-yellow); }
+.g-dot-green { width: 10px; height: 10px; border-radius: 50%; background: var(--g-green); }
 
-/* Slides Stage */
-.slides-stage {
+/* Slides Container Stage */
+.slide-stage {
     position: relative;
     width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 160px);
     overflow: hidden;
 }
 
-.slide-item {
+.slide-view {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 10px 80px 30px 80px;
+    padding: 10px 64px 30px 64px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.97) translateY(20px);
+    transform: scale(0.96) translateY(24px);
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                 visibility 0.5s step-end;
 }
 
-.slide-item.active {
+.slide-view.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1) translateY(0);
@@ -140,171 +128,156 @@ html, body {
                 visibility 0.5s step-start;
 }
 
-.slide-content-max {
+.content-max {
     width: 100%;
-    max-width: 1300px;
+    max-width: 1280px;
     margin: 0 auto;
-    text-align: center;
 }
 
-/* Projector Extra-Large Typography */
-h1.slide-title-hero {
-    font-family: var(--font-heading);
-    font-size: 3.8rem;
+/* Typography Hierarchy */
+.hero-title {
+    font-family: var(--font-head);
+    font-size: 3.6rem;
     font-weight: 900;
-    line-height: 1.15;
-    color: var(--color-text-dark);
-    margin-bottom: 1.2rem;
+    line-height: 1.12;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
 }
 
-h2.slide-title-section {
-    font-family: var(--font-heading);
-    font-size: 2.75rem;
+.section-title {
+    font-family: var(--font-head);
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1.2;
-    color: var(--color-text-dark);
-    margin-bottom: 1.75rem;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
 }
 
-/* Flat Geometric Cards for High Projector Contrast */
-.projector-card {
-    background-color: var(--color-surface);
-    border: 2px solid var(--color-border);
-    border-radius: 16px;
+/* Google I/O Bento Cards */
+.bento-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-card);
+    border-radius: 24px;
     padding: 28px 32px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.projector-card:hover {
-    border-color: var(--color-google-blue);
-    transform: translateY(-2px);
+.bento-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 16px 36px rgba(66, 133, 244, 0.08);
+    border-color: rgba(66, 133, 244, 0.4);
 }
 
-.chamfer-card {
-    background-color: var(--color-surface);
-    border: 2px solid var(--color-border);
-    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
-    padding: 26px 30px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.04);
-}
+.bento-card-blue { border-top: 5px solid var(--g-blue); }
+.bento-card-green { border-top: 5px solid var(--g-green); }
+.bento-card-red { border-top: 5px solid var(--g-red); }
+.bento-card-yellow { border-top: 5px solid var(--g-yellow); }
 
-.chamfer-card-red {
-    background-color: #FEF2F2;
-    border: 2px solid var(--color-google-red);
-    clip-path: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
-    padding: 26px 30px;
-}
-
-/* Playful Google Geometric Chips */
-.projector-chip {
-    font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 800;
-    padding: 6px 16px;
+/* Google Pill Badges */
+.google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 14px;
     border-radius: 9999px;
-    display: inline-block;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
-.chip-blue { background-color: #E8F0FE; color: var(--color-google-blue); border: 2px solid #AECBFA; }
-.chip-peach { background-color: var(--color-peach); color: #7C2D12; border: 2px solid #FDBA74; }
-.chip-green { background-color: #E6F4EA; color: var(--color-google-green); border: 2px solid #A8DAB5; }
-.chip-red { background-color: #FCE8E6; color: var(--color-google-red); border: 2px solid #FAD2CF; }
-.chip-yellow { background-color: var(--color-cream); color: #92400E; border: 2px solid #FDE68A; }
+.badge-blue { background: #E8F0FE; color: var(--g-blue); }
+.badge-green { background: #E6F4EA; color: var(--g-green); }
+.badge-red { background: #FCE8E6; color: var(--g-red); }
+.badge-yellow { background: #FEF7E0; color: #B06000; }
 
-/* Large High-Contrast Bullet Lists for Auditorium Readability */
-.slide-item ul { list-style: none; padding: 0; margin: 0; }
-.slide-item ul li {
+/* Custom Bullet List */
+.bento-list { list-style: none; padding: 0; margin: 0; }
+.bento-list li {
     position: relative;
-    padding-left: 32px;
+    padding-left: 28px;
     margin-bottom: 14px;
-    font-size: 1.15rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 500;
     line-height: 1.6;
-    color: var(--color-text-body);
+    color: var(--text-secondary);
 }
-.slide-item ul li::before {
+.bento-list li::before {
     content: "";
     position: absolute;
     left: 4px;
-    top: 13px;
-    width: 10px;
-    height: 10px;
+    top: 11px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    background-color: var(--color-google-blue);
+    background-color: var(--g-blue);
+}
+
+/* Floating Pagination Dock */
+.floating-dock {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 9999px;
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    z-index: 50;
+}
+
+.dock-btn {
+    background: #F1F5F9;
+    color: var(--text-primary);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dock-btn:hover {
+    background: var(--g-blue);
+    color: #FFFFFF;
+    transform: scale(1.1);
+}
+
+.dock-counter {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 /* Chart Canvas Container */
 .chart-container {
     position: relative;
     width: 100%;
-    height: 330px;
+    height: 320px;
     margin: 10px auto;
 }
 
-/* Footer Controls */
-.presentation-footer {
-    width: 100%;
-    padding: 20px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 20;
-    background: linear-gradient(to top, rgba(255,255,255,0.95), transparent);
+/* Stagger Animation Utility */
+.slide-view.active .stagger-el {
+    animation: staggerIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.progress-bar-container {
-    flex: 1;
-    height: 6px;
-    background: #E2E8F0;
-    margin: 0 40px;
-    border-radius: 9999px;
-    overflow: hidden;
-}
-
-.progress-bar-fill {
-    height: 100%;
-    width: 5%;
-    background: var(--color-google-blue);
-    transition: width 0.4s ease;
-}
-
-.btn-nav {
-    background: #F1F5F9;
-    color: #0F172A;
-    border: 2px solid #CBD5E1;
-    padding: 12px 24px;
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 800;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.btn-nav:hover {
-    background: var(--color-google-blue);
-    color: #FFFFFF;
-    border-color: var(--color-google-blue);
-}
-
-/* Flow Line Animation */
-.flow-line-pulse {
-    stroke-dasharray: 8;
-    animation: dashPulse 1.5s linear infinite;
-}
-
-@keyframes dashPulse {
-    from { stroke-dashoffset: 32; }
-    to { stroke-dashoffset: 0; }
-}
-
-.flow-node-glow {
-    animation: nodePulse 2s ease-in-out infinite alternate;
-}
-
-@keyframes nodePulse {
-    0% { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    100% { box-shadow: 0 8px 24px rgba(26,115,232,0.2); }
+@keyframes staggerIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
