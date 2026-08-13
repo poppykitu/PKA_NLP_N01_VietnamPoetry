@@ -10,38 +10,13 @@
 
 ---
 
-## 🌟 GIỚI THIỆU TỔNG QUAN DỰ ÁN (PROJECT EXECUTIVE INTRODUCTION)
+## TÓM TẮT DỰ ÁN (ABSTRACT)
 
-### 📌 Lời Mở Đầu & Sứ Mệnh Dự Án
-Dự án **"Hệ Thống Sinh Thơ Lục Bát Tiếng Việt Đa Phương Án"** được nghiên cứu và phát triển bởi Nhóm sinh viên PKA NLP Team thuộc Khoa Công nghệ Thông tin – Trường Đại học Phenikaa (Phenikaa University) trong khuôn khổ học phần *Xử Lý Ngôn Ngữ Tự Nhiên & Học Máy (NLP_N01_PKA_2)*. 
+Đồ án này trình bày quy trình nghiên cứu, thiết kế giải pháp và triển khai thực tế hệ thống Xử Lý Ngôn Ngữ Tự Nhiên (NLP) sinh thơ Lục Bát Tiếng Việt tự động đa phương án. Mục tiêu của dự án là giải quyết hai bài toán cốt lõi trong sáng tạo nghệ thuật thi ca: (1) Đảm bảo tính sáng tạo ngữ nghĩa, hình tượng nghệ thuật và sự phong phú ý tưởng theo chủ đề gợi ý (Seed Prompt); và (2) Tuân thủ tuyệt đối các ràng buộc toán học thi ca khắt khe bao gồm cấu trúc số âm tiết Lục (6) - Bát (8), quy luật thanh điệu Bằng - Trắc (vị trí 2-4-6-8), vần chân, vần lưng, đối thanh âm vực Ngang - Huyền và cấu trúc ngữ pháp loại từ (POS constraints & Collocation Preservation).
 
-Sứ mệnh cốt lõi của dự án là **xây dựng một hệ thống Trí Tuệ Nhân Tạo (AI) có khả năng tự động sáng tác thơ Lục Bát Tiếng Việt chuẩn mực**, vừa kế thừa chiều sâu hình tượng nghệ thuật thi ca dân tộc, vừa tuân thủ chính xác 100% các luật lệ toán học khắt khe về âm luật, thanh điệu và ngữ pháp Tiếng Việt.
+Chúng tôi đã thiết lập và tiền xử lý tập dữ liệu thi ca quy mô lớn gồm **84.686 bài thơ Lục Bát** (tương đương 286.206 câu thơ và 3.401.833 N-gram tokens) cùng **36.764 mục từ điển Tiếng Việt Quốc Gia** (trích xuất 24.608 từ có nhãn loại từ POS chuẩn mực) để huấn luyện và xây dựng tri thức ngôn ngữ. Dự án khảo sát hai phương án tiếp cận từ mô hình NLP thống kê truyền thống làm mốc so sánh (Baseline: Interpolated Kneser-Ney 3-Gram + Pointwise Mutual Information PMI + Best-of-N Self-Evaluator) cho đến kiến trúc Neuro-Symbolic Hybrid AI hiện đại (kết hợp Large Language Model local **Google Gemma-4-12B-QAT** qua API JSON Schema với **Symbolic Rule Repair Engine 3 Tầng**).
 
----
-
-### 🚀 Hai Phương Án Kiến Trúc Đổi Mới Sáng Tạo
-
-Dự án nghiên cứu và triển khai thành công 2 phương án công nghệ mang tính bước ngoặt:
-
-1. **Phương Án 1 – Traditional Statistical NLP (Interpolated Kneser-Ney 3-Gram & PMI)**:
-   - Khai thác mô hình ngôn ngữ thống kê N-gram kết hợp kỹ thuật làm mịn **Interpolated Kneser-Ney Smoothing** ($d=0.75$) trên tập dữ liệu 84.686 bài thơ Lục Bát.
-   - Ứng dụng ma trận tương quan ngữ nghĩa **PMI (Pointwise Mutual Information)** để đảm bảo bài thơ bám sát chủ đề gợi ý (Seed Prompt).
-   - Tích hợp bộ tự đánh giá đa tiêu chí **Best-of-N Evaluator (100 điểm)** tự động chấm điểm và chọn bài thơ tối ưu nhất.
-
-2. **Phương Án 2 – State-of-the-Art Neuro-Symbolic Hybrid AI (Gemma-4-12B + 3-Tier POS Engine)**:
-   - **Tầng 1 (Generative LLM Stage)**: Kết nối trực tiếp với Large Language Model local **Google Gemma-4-12B-QAT** qua LM Studio REST API với cấu trúc **Structured JSON Schema Constraint** ép đầu ra mảng 4 câu thơ Lục Bát.
-   - **Tầng 2 (Symbolic Rule Repair Engine)**: Hệ thống sửa lỗi tự động 3 tầng kết hợp ma trận N-gram Bigram Corpus, bảng ánh xạ miền ngữ nghĩa **`POETIC_SYNONYM_MAP`** và **Bộ So Sánh Tần Suất Xếp Hạng Ứng Viên (`score_segment_corpus_frequency`)**.
-
----
-
-### 🏆 Các Thành Tựu & Đóng Góp Kỹ Thuật Nổi Bật
-
-* **Xử Lý Dữ Liệu Thi Ca Quy Mô Lớn**: Làm sạch và huấn luyện trên **84.686 bài thơ Lục Bát** (tương đương **286.206 câu thơ** và **3.401.833 âm tiết/tokens**).
-* **Ma Trận Từ LoạiPOS Khổng Lồ (38.633 Từ Vựng)**: Chiết xuất **24.608 từ vựng** kèm nhãn loại từ chuẩn Quốc gia từ `tsdocode/vietnamese-dictionary` kết hợp **4.659 từ thi ca** được dán nhãn Đa loại từ (Polysemic POS) bởi Gemma AI.
-* **Tự Động Hóa 100% Khai Phá N-Gram Corpus**: Loại bỏ hoàn toàn các từ điển ghép cứng thủ công, tự động tra cứu ma trận Bigram Followers từ 3.4 triệu N-gram tập thơ (`ngram_model_hf.pkl`).
-* **Bảo Tồn Miền Ngữ Nghĩa & Liên Kết Cụm Từ**: Giải quyết triệt để bài toán vỡ ngữ nghĩa khi sửa từ lệch thanh (`mắt` $\rightarrow$ `mi` thay vì `mắt` $\rightarrow$ `ta`), giữ nguyên cụm thi vị *"Đôi mi tròn biếc"*.
-* **Bộ So Sánh Tần Suất Xếp Hạng Candidate Ranking**: Tự động đo đạc tần suất xuất hiện thực tế của các cụm từ trong kho thơ Việt Nam và lựa chọn phương án tự nhiên nhất (`"Đôi mi khép nhẹ"` với điểm tần suất 69 vs 28).
-* **Kiểm Thử Chống Overfitting Tuyệt Đối**: Kết quả kiểm chứng trên 100 bài thơ đạt **0.0% tỷ lệ trùng câu gốc**, khẳng định mô hình có khả năng sáng tác mới 100% hoàn toàn độc lập.
+Kết quả thực nghiệm cho thấy kiến trúc Neuro-Symbolic Hybrid đạt độ chính xác **100% về luật thơ Lục Bát**, khả năng chống lặp câu (Overfitting Check) đạt **0.0% tỷ lệ trùng câu**, chỉ số Jaccard Similarity ở mức **0.18** (chứng minh độ sáng tạo vượt trội so với baseline thống kê 14.2% trùng câu). Hệ thống tích hợp thuật toán **Corpus Frequency Ranking Engine** tự động xếp hạng candidate dựa trên 3.4M N-grams và ma trận bảo tồn miền ngữ nghĩa **POETIC_SYNONYM_MAP**. Mã nguồn hệ thống đã được đóng gói hoàn chỉnh, hỗ trợ giao diện dòng lệnh CLI tương tác linh hoạt với seed prompt và công bố minh bạch trên GitHub Repository.
 
 ---
 
