@@ -1,16 +1,13 @@
 /* ==========================================================================
-   MOD LABS x GOOGLE I/O MODICUM PRESENTATION ENGINE STYLESHEET
-   100% Full-Diacritic Be Vietnam Pro Typography | Projector Readability
-   Organic Pill Capsules | Asymmetric Kinetic Layouts | Modicum 3D Aesthetic
+   BORDERLESS KINETIC EDITORIAL PRESENTATION ENGINE STYLESHEET
+   Zero White Box Containers | Full Diacritics Be Vietnam Pro Typography
+   Rich Staggered Animations | Non-Mouse Automatic Ambient Canvas
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fira+Code:wght@500;700&display=swap');
 
 :root {
-    --mod-bg: #F8F9FB;
-    --mod-card: rgba(255, 255, 255, 0.92);
-    --mod-border: rgba(226, 232, 240, 0.85);
-    
+    --bg-main: #FAFAFC;
     --g-blue: #4285F4;
     --g-red: #EA4335;
     --g-yellow: #FBBC05;
@@ -35,14 +32,14 @@
 html, body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--mod-bg);
+    background-color: var(--bg-main);
     color: var(--text-primary);
     font-family: var(--font-vietnam);
     overflow: hidden;
 }
 
-/* 3D WebGL Canvas Layer */
-#mod-canvas {
+/* Ambient Canvas Background (No Mouse Interaction) */
+#ambient-canvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -52,8 +49,8 @@ html, body {
     z-index: 1;
 }
 
-/* Main App Wrapper */
-.mod-app-viewport {
+/* App Viewport */
+.kinetic-viewport {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -63,164 +60,164 @@ html, body {
     justify-content: space-between;
 }
 
-/* Top Header */
-.mod-header {
+/* Header Bar */
+.kinetic-header {
     width: 100%;
-    padding: 24px 56px;
+    padding: 24px 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 20;
 }
 
-.mod-brand-pill {
+.brand-tag {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--mod-border);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
     padding: 10px 24px;
     border-radius: 9999px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
     font-family: var(--font-vietnam);
     font-size: 14px;
     font-weight: 700;
     color: var(--text-primary);
 }
 
-.mod-badge-pill {
+.badge-tag {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     font-family: var(--font-vietnam);
     font-size: 13px;
     font-weight: 800;
-    padding: 8px 20px;
+    padding: 8px 22px;
     border-radius: 9999px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-.badge-blue { background: #E8F0FE; color: var(--g-blue); border: 1px solid #AECBFA; }
-.badge-green { background: #E6F4EA; color: var(--g-green); border: 1px solid #A8DAB5; }
-.badge-red { background: #FCE8E6; color: var(--g-red); border: 1px solid #FAD2CF; }
-.badge-yellow { background: #FEF7E0; color: #B06000; border: 1px solid #FDE68A; }
+.tag-blue { background: #E8F0FE; color: var(--g-blue); border: 1px solid #AECBFA; }
+.tag-green { background: #E6F4EA; color: var(--g-green); border: 1px solid #A8DAB5; }
+.tag-red { background: #FCE8E6; color: var(--g-red); border: 1px solid #FAD2CF; }
+.tag-yellow { background: #FEF7E0; color: #B06000; border: 1px solid #FDE68A; }
 
 /* Stage Container */
-.mod-stage {
+.kinetic-stage {
     position: relative;
     width: 100%;
     height: calc(100vh - 165px);
     overflow: hidden;
 }
 
-.mod-slide-view {
+.kinetic-slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 10px 72px 30px 72px;
+    padding: 10px 80px 30px 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.95) translateY(30px);
-    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.55s step-end;
+    transform: scale(0.96) translateY(24px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s step-end;
 }
 
-.mod-slide-view.active {
+.kinetic-slide.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1) translateY(0);
-    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.55s step-start;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.5s step-start;
 }
 
-.mod-content-max {
+.content-max {
     width: 100%;
-    max-width: 1320px;
+    max-width: 1340px;
     margin: 0 auto;
 }
 
-/* Extra-Large Projector Typography (Full Diacritics Support) */
-h1.mod-title-hero {
+/* Extra Large Projector Typography (Be Vietnam Pro) */
+h1.hero-headline {
     font-family: var(--font-vietnam);
-    font-size: 3.8rem;
+    font-size: 4.2rem;
     font-weight: 900;
-    line-height: 1.15;
+    line-height: 1.12;
     color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
-h2.mod-title-section {
+h2.section-headline {
     font-family: var(--font-vietnam);
-    font-size: 2.85rem;
+    font-size: 3.1rem;
     font-weight: 900;
-    line-height: 1.18;
+    line-height: 1.15;
     color: var(--text-primary);
     letter-spacing: -0.015em;
     margin-bottom: 1.75rem;
 }
 
-/* Non-Boxy Pill Capsules & Asymmetric Panels */
-.mod-pill-panel {
-    background: var(--mod-card);
-    backdrop-filter: blur(16px);
-    border: 2px solid var(--mod-border);
-    border-radius: 36px;
-    padding: 32px 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* BORDERLESS EDITORIAL ELEMENTS (NO CARD BOXES!) */
+.editorial-column {
+    position: relative;
+    padding-left: 28px;
+    border-left: 6px solid var(--g-blue);
 }
 
-.mod-pill-panel:hover {
-    transform: translateY(-8px) scale(1.015);
-    box-shadow: 0 20px 45px rgba(66, 133, 244, 0.1);
-    border-color: rgba(66, 133, 244, 0.5);
-}
+.column-green { border-left-color: var(--g-green); }
+.column-red { border-left-color: var(--g-red); }
+.column-yellow { border-left-color: var(--g-yellow); }
 
-.mod-panel-blue { border-left: 8px solid var(--g-blue); }
-.mod-panel-green { border-left: 8px solid var(--g-green); }
-.mod-panel-red { border-left: 8px solid var(--g-red); }
-.mod-panel-yellow { border-left: 8px solid var(--g-yellow); }
-
-/* High-Contrast Large Bullet Lists for Auditorium */
-.mod-bullet-list { list-style: none; padding: 0; margin: 0; }
-.mod-bullet-list li {
+.editorial-list { list-style: none; padding: 0; margin: 0; }
+.editorial-list li {
     position: relative;
     padding-left: 36px;
-    margin-bottom: 16px;
-    font-size: 1.25rem;
+    margin-bottom: 18px;
+    font-size: 1.3rem;
     font-weight: 600;
     line-height: 1.6;
     color: var(--text-secondary);
 }
-.mod-bullet-list li::before {
+.editorial-list li::before {
     content: "";
     position: absolute;
     left: 4px;
-    top: 12px;
+    top: 13px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
     background-color: var(--g-blue);
-    box-shadow: 0 0 10px rgba(66, 133, 244, 0.4);
+    box-shadow: 0 0 12px rgba(66, 133, 244, 0.5);
 }
 
-/* MOD Floating Glass Dock */
-.mod-dock {
+.editorial-list-green li::before { background-color: var(--g-green); box-shadow: 0 0 12px rgba(52, 168, 83, 0.5); }
+.editorial-list-red li::before { background-color: var(--g-red); box-shadow: 0 0 12px rgba(234, 67, 53, 0.5); }
+
+/* GIANT STAT NUMBERS FOR EDITORIAL IMPACT */
+.giant-number {
+    font-family: var(--font-vietnam);
+    font-size: 5.5rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+/* Floating Dock Navigation Bar */
+.floating-dock {
     position: fixed;
     bottom: 28px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
     border: 2px solid rgba(226, 232, 240, 0.9);
     border-radius: 9999px;
@@ -232,7 +229,7 @@ h2.mod-title-section {
     z-index: 50;
 }
 
-.mod-dock-btn {
+.dock-btn {
     background: #F1F5F9;
     color: var(--text-primary);
     border: none;
@@ -248,13 +245,13 @@ h2.mod-title-section {
     transition: all 0.25s ease;
 }
 
-.mod-dock-btn:hover {
+.dock-btn:hover {
     background: var(--g-blue);
     color: #FFFFFF;
     transform: scale(1.12);
 }
 
-.mod-dock-counter {
+.dock-counter {
     font-family: var(--font-mono);
     font-size: 15px;
     font-weight: 800;
@@ -265,6 +262,74 @@ h2.mod-title-section {
 .chart-container {
     position: relative;
     width: 100%;
-    height: 330px;
+    height: 340px;
     margin: 10px auto;
 }
+
+/* ==========================================================================
+   MULTIPLE ANIMATION SUITES FOR COMPONENTS
+   ========================================================================== */
+
+/* Continuous Floating sine wave animation */
+.floating-y {
+    animation: floatingY 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes floatingY {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Continuous Pulse Glow */
+.pulse-glow {
+    animation: pulseGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0px rgba(66, 133, 244, 0); }
+    100% { box-shadow: 0 0 20px rgba(66, 133, 244, 0.35); }
+}
+
+/* Sequential Stagger Animation Classes for Active Slide Elements */
+.active .stagger-fade-up {
+    animation: staggerFadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.active .stagger-slide-left {
+    animation: staggerSlideLeft 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.active .stagger-slide-right {
+    animation: staggerSlideRight 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.active .stagger-scale-pop {
+    animation: staggerScalePop 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes staggerFadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerSlideLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes staggerSlideRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes staggerScalePop {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Delay modifiers */
+.delay-100 { animation-delay: 0.1s !important; }
+.delay-200 { animation-delay: 0.2s !important; }
+.delay-300 { animation-delay: 0.3s !important; }
+.delay-400 { animation-delay: 0.4s !important; }
+.delay-500 { animation-delay: 0.5s !important; }

@@ -1,10 +1,11 @@
 /* ==========================================================================
-   MOD LABS x GOOGLE I/O MODICUM ENGINE JAVASCRIPT
-   60fps Interactive 3D Magnetic Canvas Physics | Be Vietnam Pro Typography
+   BORDERLESS KINETIC EDITORIAL ENGINE JAVASCRIPT
+   Automatic Non-Mouse 60fps Ambient Background | Be Vietnam Pro Typography
+   Rich Staggered Component Animations | Interactive Chart Control
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.mod-slide-view');
+    const slides = document.querySelectorAll('.kinetic-slide');
     const totalSlides = slides.length;
     let currentSlideIndex = 0;
 
@@ -77,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------------------
-    // CHART.JS ANIMATIONS (GOOGLE I/O PALETTE & LARGE FONTS)
+    // CHART.JS ANIMATIONS (GOOGLE PRIMARY PALETTE & LARGE BE VIETNAM PRO FONTS)
     // -------------------------------------------------------------------------
     function triggerSlideCharts(slideId) {
         if (slideId === 'slide-approaches') {
@@ -199,94 +200,54 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
 
     // -------------------------------------------------------------------------
-    // MOD LABS DYNAMIC MAGNETIC PHYSICS CANVAS (SPHERES & PILL CAPSULES)
+    // AUTOMATIC AMBIENT FLUID PARTICLES CANVAS (100% NON-MOUSE, AUTO DRIFT)
     // -------------------------------------------------------------------------
-    const canvas = document.getElementById('mod-canvas');
+    const canvas = document.getElementById('ambient-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
-        const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+        const colors = ['rgba(66, 133, 244, ', 'rgba(234, 67, 53, ', 'rgba(251, 188, 5, ', 'rgba(52, 168, 83, '];
 
-        let mouse = { x: width / 2, y: height / 2 };
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
-
-        class ModShape {
+        class AutoParticle {
             constructor() {
                 this.reset();
             }
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 40 + 20;
-                this.type = Math.floor(Math.random() * 3); // 0: Sphere, 1: Pill, 2: Cube
+                this.radius = Math.random() * 120 + 40;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.15 + 0.05;
-                this.vx = (Math.random() - 0.5) * 0.8;
-                this.vy = (Math.random() - 0.5) * 0.8;
-                this.angle = Math.random() * Math.PI * 2;
-                this.vRot = (Math.random() - 0.5) * 0.02;
+                this.alpha = Math.random() * 0.12 + 0.04;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.angle += this.vRot;
-
-                // Magnetic Attraction to Mouse
-                const dx = mouse.x - this.x;
-                const dy = mouse.y - this.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 250) {
-                    const force = (250 - dist) / 250;
-                    this.x += (dx / dist) * force * 1.5;
-                    this.y += (dy / dist) * force * 1.5;
-                }
-
-                if (this.x < -100 || this.x > width + 100 || this.y < -100 || this.y > height + 100) {
+                if (this.x < -150 || this.x > width + 150 || this.y < -150 || this.y > height + 150) {
                     this.reset();
                 }
             }
             draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.alpha;
-
-                if (this.type === 0) {
-                    // Soft Sphere
-                    ctx.beginPath();
-                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                } else if (this.type === 1) {
-                    // Pill Shape
-                    const w = this.size * 2;
-                    const h = this.size;
-                    ctx.beginPath();
-                    ctx.roundRect(-w/2, -h/2, w, h, h/2);
-                    ctx.fill();
-                } else {
-                    // Rounded Cube
-                    const s = this.size * 1.4;
-                    ctx.beginPath();
-                    ctx.roundRect(-s/2, -s/2, s, s, 12);
-                    ctx.fill();
-                }
-                ctx.restore();
+                ctx.beginPath();
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                gradient.addColorStop(0, this.color + this.alpha + ')');
+                gradient.addColorStop(1, this.color + '0)');
+                ctx.fillStyle = gradient;
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
             }
         }
 
-        const shapes = Array.from({ length: 22 }, () => new ModShape());
+        const particles = Array.from({ length: 16 }, () => new AutoParticle());
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            shapes.forEach(shape => {
-                shape.update();
-                shape.draw();
+            particles.forEach(p => {
+                p.update();
+                p.draw();
             });
             requestAnimationFrame(animate);
         }
