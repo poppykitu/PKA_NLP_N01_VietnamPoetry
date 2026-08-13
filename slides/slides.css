@@ -1,14 +1,15 @@
 /* ==========================================================================
-   GOOGLE I/O & LILIAN LEE BENTO BOX DESIGN SYSTEM
-   Pure Off-White Canvas | Google Primary Colors | Organic Bento Cards
+   MOD LABS x GOOGLE I/O MODICUM PRESENTATION ENGINE STYLESHEET
+   100% Full-Diacritic Be Vietnam Pro Typography | Projector Readability
+   Organic Pill Capsules | Asymmetric Kinetic Layouts | Modicum 3D Aesthetic
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fira+Code:wght@500;700&display=swap');
 
 :root {
-    --bg-main: #F8F9FA;
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --border-card: rgba(226, 232, 240, 0.9);
+    --mod-bg: #F8F9FB;
+    --mod-card: rgba(255, 255, 255, 0.92);
+    --mod-border: rgba(226, 232, 240, 0.85);
     
     --g-blue: #4285F4;
     --g-red: #EA4335;
@@ -19,8 +20,7 @@
     --text-secondary: #334155;
     --text-muted: #64748B;
     
-    --font-head: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-vietnam: 'Be Vietnam Pro', sans-serif;
     --font-mono: 'Fira Code', monospace;
 }
 
@@ -29,19 +29,20 @@
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html, body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-main);
+    background-color: var(--mod-bg);
     color: var(--text-primary);
-    font-family: var(--font-body);
+    font-family: var(--font-vietnam);
     overflow: hidden;
 }
 
-/* Ambient Motion Canvas */
-#ambient-canvas {
+/* 3D WebGL Canvas Layer */
+#mod-canvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -51,8 +52,8 @@ html, body {
     z-index: 1;
 }
 
-/* Presentation App Viewport */
-.app-container {
+/* Main App Wrapper */
+.mod-app-viewport {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -62,205 +63,201 @@ html, body {
     justify-content: space-between;
 }
 
-/* Google I/O Top Header */
-.top-header {
+/* Top Header */
+.mod-header {
     width: 100%;
-    padding: 24px 48px;
+    padding: 24px 56px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 20;
 }
 
-.brand-pill {
+.mod-brand-pill {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: #FFFFFF;
-    border: 1px solid var(--border-card);
-    padding: 8px 20px;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--mod-border);
+    padding: 10px 24px;
     border-radius: 9999px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-    font-family: var(--font-head);
-    font-size: 13px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    font-family: var(--font-vietnam);
+    font-size: 14px;
     font-weight: 700;
     color: var(--text-primary);
 }
 
-.g-dot-blue { width: 10px; height: 10px; border-radius: 50%; background: var(--g-blue); }
-.g-dot-red { width: 10px; height: 10px; border-radius: 50%; background: var(--g-red); }
-.g-dot-yellow { width: 10px; height: 10px; border-radius: 50%; background: var(--g-yellow); }
-.g-dot-green { width: 10px; height: 10px; border-radius: 50%; background: var(--g-green); }
+.mod-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-vietnam);
+    font-size: 13px;
+    font-weight: 800;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
 
-/* Slides Container Stage */
-.slide-stage {
+.badge-blue { background: #E8F0FE; color: var(--g-blue); border: 1px solid #AECBFA; }
+.badge-green { background: #E6F4EA; color: var(--g-green); border: 1px solid #A8DAB5; }
+.badge-red { background: #FCE8E6; color: var(--g-red); border: 1px solid #FAD2CF; }
+.badge-yellow { background: #FEF7E0; color: #B06000; border: 1px solid #FDE68A; }
+
+/* Stage Container */
+.mod-stage {
     position: relative;
     width: 100%;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 165px);
     overflow: hidden;
 }
 
-.slide-view {
+.mod-slide-view {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 10px 64px 30px 64px;
+    padding: 10px 72px 30px 72px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.96) translateY(24px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.5s step-end;
+    transform: scale(0.95) translateY(30px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.55s step-end;
 }
 
-.slide-view.active {
+.mod-slide-view.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1) translateY(0);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 0.5s step-start;
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.55s step-start;
 }
 
-.content-max {
+.mod-content-max {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1320px;
     margin: 0 auto;
 }
 
-/* Typography Hierarchy */
-.hero-title {
-    font-family: var(--font-head);
-    font-size: 3.6rem;
+/* Extra-Large Projector Typography (Full Diacritics Support) */
+h1.mod-title-hero {
+    font-family: var(--font-vietnam);
+    font-size: 3.8rem;
     font-weight: 900;
-    line-height: 1.12;
+    line-height: 1.15;
     color: var(--text-primary);
     letter-spacing: -0.02em;
 }
 
-.section-title {
-    font-family: var(--font-head);
-    font-size: 2.5rem;
-    font-weight: 800;
-    line-height: 1.2;
+h2.mod-title-section {
+    font-family: var(--font-vietnam);
+    font-size: 2.85rem;
+    font-weight: 900;
+    line-height: 1.18;
     color: var(--text-primary);
-    letter-spacing: -0.01em;
-    margin-bottom: 1.5rem;
+    letter-spacing: -0.015em;
+    margin-bottom: 1.75rem;
 }
 
-/* Google I/O Bento Cards */
-.bento-card {
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    border: 1px solid var(--border-card);
-    border-radius: 24px;
-    padding: 28px 32px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+/* Non-Boxy Pill Capsules & Asymmetric Panels */
+.mod-pill-panel {
+    background: var(--mod-card);
+    backdrop-filter: blur(16px);
+    border: 2px solid var(--mod-border);
+    border-radius: 36px;
+    padding: 32px 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.bento-card:hover {
-    transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 16px 36px rgba(66, 133, 244, 0.08);
-    border-color: rgba(66, 133, 244, 0.4);
+.mod-pill-panel:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 20px 45px rgba(66, 133, 244, 0.1);
+    border-color: rgba(66, 133, 244, 0.5);
 }
 
-.bento-card-blue { border-top: 5px solid var(--g-blue); }
-.bento-card-green { border-top: 5px solid var(--g-green); }
-.bento-card-red { border-top: 5px solid var(--g-red); }
-.bento-card-yellow { border-top: 5px solid var(--g-yellow); }
+.mod-panel-blue { border-left: 8px solid var(--g-blue); }
+.mod-panel-green { border-left: 8px solid var(--g-green); }
+.mod-panel-red { border-left: 8px solid var(--g-red); }
+.mod-panel-yellow { border-left: 8px solid var(--g-yellow); }
 
-/* Google Pill Badges */
-.google-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-head);
-    font-size: 12px;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 9999px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
-.badge-blue { background: #E8F0FE; color: var(--g-blue); }
-.badge-green { background: #E6F4EA; color: var(--g-green); }
-.badge-red { background: #FCE8E6; color: var(--g-red); }
-.badge-yellow { background: #FEF7E0; color: #B06000; }
-
-/* Custom Bullet List */
-.bento-list { list-style: none; padding: 0; margin: 0; }
-.bento-list li {
+/* High-Contrast Large Bullet Lists for Auditorium */
+.mod-bullet-list { list-style: none; padding: 0; margin: 0; }
+.mod-bullet-list li {
     position: relative;
-    padding-left: 28px;
-    margin-bottom: 14px;
-    font-size: 1.05rem;
-    font-weight: 500;
+    padding-left: 36px;
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+    font-weight: 600;
     line-height: 1.6;
     color: var(--text-secondary);
 }
-.bento-list li::before {
+.mod-bullet-list li::before {
     content: "";
     position: absolute;
     left: 4px;
-    top: 11px;
-    width: 8px;
-    height: 8px;
+    top: 12px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background-color: var(--g-blue);
+    box-shadow: 0 0 10px rgba(66, 133, 244, 0.4);
 }
 
-/* Floating Pagination Dock */
-.floating-dock {
+/* MOD Floating Glass Dock */
+.mod-dock {
     position: fixed;
-    bottom: 24px;
+    bottom: 28px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(226, 232, 240, 0.9);
     border-radius: 9999px;
-    padding: 8px 24px;
+    padding: 10px 28px;
     display: flex;
     align-items: center;
-    gap: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    gap: 24px;
+    box-shadow: 0 12px 36px rgba(0,0,0,0.08);
     z-index: 50;
 }
 
-.dock-btn {
+.mod-dock-btn {
     background: #F1F5F9;
     color: var(--text-primary);
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 18px;
+    font-weight: 800;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s ease;
 }
 
-.dock-btn:hover {
+.mod-dock-btn:hover {
     background: var(--g-blue);
     color: #FFFFFF;
-    transform: scale(1.1);
+    transform: scale(1.12);
 }
 
-.dock-counter {
+.mod-dock-counter {
     font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 800;
     color: var(--text-primary);
 }
 
@@ -268,16 +265,6 @@ html, body {
 .chart-container {
     position: relative;
     width: 100%;
-    height: 320px;
+    height: 330px;
     margin: 10px auto;
-}
-
-/* Stagger Animation Utility */
-.slide-view.active .stagger-el {
-    animation: staggerIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes staggerIn {
-    from { opacity: 0; transform: translateY(20px) scale(0.98); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
 }

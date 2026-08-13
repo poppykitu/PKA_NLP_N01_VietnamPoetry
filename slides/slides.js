@@ -1,10 +1,10 @@
 /* ==========================================================================
-   GOOGLE I/O & LILIAN LEE BENTO BOX ENGINE JAVASCRIPT
-   60fps Ambient Particle Physics Canvas | Keyboard & Floating Dock Nav
+   MOD LABS x GOOGLE I/O MODICUM ENGINE JAVASCRIPT
+   60fps Interactive 3D Magnetic Canvas Physics | Be Vietnam Pro Typography
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.slide-view');
+    const slides = document.querySelectorAll('.mod-slide-view');
     const totalSlides = slides.length;
     let currentSlideIndex = 0;
 
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (totalSlidesNumEl) totalSlidesNumEl.textContent = totalSlides;
 
-    // Chart instances
+    // Chart Instances
     let chartApproachesInstance = null;
     let chartDatasetsInstance = null;
     let chartRankingInstance = null;
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // -------------------------------------------------------------------------
-    // CHART.JS ANIMATIONS (GOOGLE I/O COLOR PALETTE)
+    // CHART.JS ANIMATIONS (GOOGLE I/O PALETTE & LARGE FONTS)
     // -------------------------------------------------------------------------
     function triggerSlideCharts(slideId) {
         if (slideId === 'slide-approaches') {
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             label: 'Điểm Đánh Giá (Thang 100)',
                             data: [0, 60, 95],
                             backgroundColor: ['#EA4335', '#FBBC05', '#4285F4'],
-                            borderRadius: 12
+                            borderRadius: 14
                         }]
                     },
                     options: {
@@ -102,8 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: { duration: 1200, easing: 'easeOutQuart' },
                         plugins: { legend: { display: false } },
                         scales: {
-                            y: { beginAtZero: true, max: 100, ticks: { color: '#475569', font: { size: 12, weight: 'bold' } }, grid: { color: '#F1F5F9' } },
-                            x: { ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { display: false } }
+                            y: { beginAtZero: true, max: 100, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            x: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: { duration: 1400, easing: 'easeOutBounce' },
-                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { size: 12, weight: 'bold' } } } }
+                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } } } }
                     }
                 });
             }
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             label: 'Điểm Tần Suất Bigram',
                             data: [28, 30, 69, 217],
                             backgroundColor: ['#CBD5E1', '#94A3B8', '#64748B', '#4285F4'],
-                            borderRadius: 8
+                            borderRadius: 10
                         }]
                     },
                     options: {
@@ -159,8 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: { duration: 1200, easing: 'easeOutCubic' },
                         plugins: { legend: { display: false } },
                         scales: {
-                            x: { beginAtZero: true, ticks: { color: '#475569', font: { size: 12, weight: 'bold' } }, grid: { color: '#F1F5F9' } },
-                            y: { ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { display: false } }
+                            x: { beginAtZero: true, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            y: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -177,18 +177,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     data: {
                         labels: ['Trùng Nguyên Câu (%)', 'Chỉ Số Jaccard Similarity (x100)'],
                         datasets: [
-                            { label: 'PA 2: Statistical N-Gram', data: [14.2, 42], backgroundColor: '#EA4335', borderRadius: 8 },
-                            { label: 'PA 3: Neuro-Symbolic Hybrid', data: [0.0, 18], backgroundColor: '#34A853', borderRadius: 8 }
+                            { label: 'PA 2: Statistical N-Gram', data: [14.2, 42], backgroundColor: '#EA4335', borderRadius: 10 },
+                            { label: 'PA 3: Neuro-Symbolic Hybrid', data: [0.0, 18], backgroundColor: '#34A853', borderRadius: 10 }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: { duration: 1400, easing: 'easeOutQuart' },
-                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { size: 12, weight: 'bold' } } } },
+                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } } } },
                         scales: {
-                            y: { beginAtZero: true, max: 50, ticks: { color: '#475569', font: { size: 12, weight: 'bold' } }, grid: { color: '#F1F5F9' } },
-                            x: { ticks: { color: '#0F172A', font: { size: 13, weight: 'bold' } }, grid: { display: false } }
+                            y: { beginAtZero: true, max: 50, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            x: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -199,54 +199,94 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
 
     // -------------------------------------------------------------------------
-    // GOOGLE I/O AMBIENT MOTION FLUID PARTICLES CANVAS
+    // MOD LABS DYNAMIC MAGNETIC PHYSICS CANVAS (SPHERES & PILL CAPSULES)
     // -------------------------------------------------------------------------
-    const canvas = document.getElementById('ambient-canvas');
+    const canvas = document.getElementById('mod-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
-        const colors = ['rgba(66, 133, 244, ', 'rgba(234, 67, 53, ', 'rgba(251, 188, 5, ', 'rgba(52, 168, 83, '];
+        const colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
 
-        class Particle {
+        let mouse = { x: width / 2, y: height / 2 };
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        class ModShape {
             constructor() {
                 this.reset();
             }
             reset() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.radius = Math.random() * 80 + 30;
+                this.size = Math.random() * 40 + 20;
+                this.type = Math.floor(Math.random() * 3); // 0: Sphere, 1: Pill, 2: Cube
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.12 + 0.04;
-                this.vx = (Math.random() - 0.5) * 0.6;
-                this.vy = (Math.random() - 0.5) * 0.6;
+                this.alpha = Math.random() * 0.15 + 0.05;
+                this.vx = (Math.random() - 0.5) * 0.8;
+                this.vy = (Math.random() - 0.5) * 0.8;
+                this.angle = Math.random() * Math.PI * 2;
+                this.vRot = (Math.random() - 0.5) * 0.02;
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
+                this.angle += this.vRot;
+
+                // Magnetic Attraction to Mouse
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 250) {
+                    const force = (250 - dist) / 250;
+                    this.x += (dx / dist) * force * 1.5;
+                    this.y += (dy / dist) * force * 1.5;
+                }
+
                 if (this.x < -100 || this.x > width + 100 || this.y < -100 || this.y > height + 100) {
                     this.reset();
                 }
             }
             draw() {
-                ctx.beginPath();
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-                gradient.addColorStop(0, this.color + this.alpha + ')');
-                gradient.addColorStop(1, this.color + '0)');
-                ctx.fillStyle = gradient;
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.alpha;
+
+                if (this.type === 0) {
+                    // Soft Sphere
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (this.type === 1) {
+                    // Pill Shape
+                    const w = this.size * 2;
+                    const h = this.size;
+                    ctx.beginPath();
+                    ctx.roundRect(-w/2, -h/2, w, h, h/2);
+                    ctx.fill();
+                } else {
+                    // Rounded Cube
+                    const s = this.size * 1.4;
+                    ctx.beginPath();
+                    ctx.roundRect(-s/2, -s/2, s, s, 12);
+                    ctx.fill();
+                }
+                ctx.restore();
             }
         }
 
-        const particles = Array.from({ length: 18 }, () => new Particle());
+        const shapes = Array.from({ length: 22 }, () => new ModShape());
 
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+            shapes.forEach(shape => {
+                shape.update();
+                shape.draw();
             });
             requestAnimationFrame(animate);
         }
