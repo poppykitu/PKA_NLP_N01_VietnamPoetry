@@ -1,6 +1,7 @@
 /* ==========================================================================
    AUDITORIUM KINETIC EDITORIAL ENGINE JAVASCRIPT
-   Fixed Slide Transitioning | Multi-Input Controls | Large Chart Fonts
+   Progressive Growing Chart Animations (Re-triggered on Active Slide)
+   Multi-Directional Component Animations | Keyboard, Touch, Click Controls
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -80,11 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // Stage Click Navigation (Click right half = Next, Click left half = Prev)
+    // Stage Click Navigation
     const stage = document.querySelector('.kinetic-stage');
     if (stage) {
         stage.addEventListener('click', (e) => {
-            // Ignore click if clicking interactive buttons or links
             if (e.target.closest('button, a, code, pre, canvas')) return;
             const width = window.innerWidth;
             if (e.clientX > width / 2) nextSlide();
@@ -103,9 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // -------------------------------------------------------------------------
-    // CHART.JS ANIMATIONS (GOOGLE PRIMARY PALETTE & LARGE FONTS)
+    // PROGRESSIVE GROWING CHART ANIMATIONS (SLIDES 4, 5, 16, 18)
     // -------------------------------------------------------------------------
     function triggerSlideCharts(slideId) {
+        // SLIDE 4: Progressive Bar Chart Animation
         if (slideId === 'slide-approaches') {
             if (chartApproachesInstance) chartApproachesInstance.destroy();
             const canvas = document.getElementById('chart-approaches');
@@ -119,13 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             label: 'Điểm Đánh Giá (Thang 100)',
                             data: [0, 60, 95],
                             backgroundColor: ['#EA4335', '#FBBC05', '#4285F4'],
-                            borderRadius: 14
+                            borderRadius: 14,
+                            borderWidth: 2,
+                            borderColor: '#FFFFFF'
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        animation: { duration: 1200, easing: 'easeOutQuart' },
+                        animation: {
+                            duration: 1800,
+                            easing: 'easeOutQuart'
+                        },
                         plugins: { legend: { display: false } },
                         scales: {
                             y: { beginAtZero: true, max: 100, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
@@ -136,6 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // SLIDE 5: Progressive Growing Doughnut Chart Animation
         if (slideId === 'slide-datasets') {
             if (chartDatasetsInstance) chartDatasetsInstance.destroy();
             const canvas = document.getElementById('chart-datasets');
@@ -155,13 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        animation: { duration: 1400, easing: 'easeOutBounce' },
+                        animation: {
+                            animateScale: true,
+                            animateRotate: true,
+                            duration: 1800,
+                            easing: 'easeOutQuart'
+                        },
                         plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } } } }
                     }
                 });
             }
         }
 
+        // SLIDE 16: Ranking Bar Chart
         if (slideId === 'slide-ranking') {
             if (chartRankingInstance) chartRankingInstance.destroy();
             const canvas = document.getElementById('chart-ranking');
@@ -182,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         indexAxis: 'y',
                         responsive: true,
                         maintainAspectRatio: false,
-                        animation: { duration: 1200, easing: 'easeOutCubic' },
+                        animation: { duration: 1600, easing: 'easeOutQuart' },
                         plugins: { legend: { display: false } },
                         scales: {
                             x: { beginAtZero: true, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
@@ -193,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // SLIDE 18: Overfitting Grouped Bar Chart
         if (slideId === 'slide-overfitting') {
             if (chartOverfittingInstance) chartOverfittingInstance.destroy();
             const canvas = document.getElementById('chart-overfitting');
@@ -210,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        animation: { duration: 1400, easing: 'easeOutQuart' },
+                        animation: { duration: 1800, easing: 'easeOutQuart' },
                         plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } } } },
                         scales: {
                             y: { beginAtZero: true, max: 50, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
