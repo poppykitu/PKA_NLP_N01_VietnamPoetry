@@ -385,6 +385,29 @@ class RuleRepairEngine:
         if get_tone(curr_clean) == target_tone:
             return curr_word
 
+        # [BẢNG TỪ ĐỒNG NGHĨA GIỮ NGUYÊN MIỀN NGỮ NGHĨA THI CA - SEMANTIC DOMAIN MAP]
+        POETIC_SYNONYM_MAP = {
+            "mắt": {"B": "mi", "T": "mắt"},
+            "môi": {"B": "môi", "T": "má"},
+            "tay": {"B": "tay", "T": "cánh"},
+            "chân": {"B": "chân", "T": "bước"},
+            "tai": {"B": "tai", "T": "má"},
+            "lòng": {"B": "lòng", "T": "dạ"},
+            "dạ": {"B": "lòng", "T": "dạ"},
+            "nắng": {"B": "mây", "T": "nắng"},
+            "mưa": {"B": "sương", "T": "mưa"},
+            "đêm": {"B": "chiều", "T": "đêm"},
+            "trời": {"B": "trời", "T": "biển"},
+            "buồn": {"B": "sầu", "T": "tiếc"},
+            "vui": {"B": "vui", "T": "sướng"},
+            "yêu": {"B": "thương", "T": "nhớ"},
+            "thương": {"B": "thương", "T": "nhớ"},
+            "lẽ": {"B": "thinh", "T": "lẽ"},
+        }
+
+        if curr_clean in POETIC_SYNONYM_MAP and target_tone in POETIC_SYNONYM_MAP[curr_clean]:
+            return POETIC_SYNONYM_MAP[curr_clean][target_tone]
+
         from pos_grammar_rules import WORD_TO_POS_SET, filter_valid_followers, get_word_pos_set
 
         orig_pos_set = get_word_pos_set(curr_clean)
@@ -495,21 +518,32 @@ class RuleRepairEngine:
     def repair_phrase_chunk(self, line: list, pos1: int, pos2: int, target_tone1: str, target_tone2: str) -> list:
         """
         [SỬA THEO CẤP CỤM 2-3 TỪ - PHRASE-LEVEL CHUNK REPAIR]:
-        Nếu thay 1 từ đơn lẻ làm phá vỡ ngữ nghĩa cụm (VD: 'Đôi mắt' -> 'Đôi mang', 'lim dim' -> 'lim hãy'),
-        hệ thống sẽ tra cứu N-gram Corpus để THAY THẾ NGUYÊN CẢ CỤM 2 TỪ (w1, w2) bằng cụm từ thơ chuẩn (c1, c2)
-        thỏa mãn đồng thời nhịp thanh Lục Bát: Tone(c1) == target_tone1 và Tone(c2) == target_tone2.
+        Tra cứu ngữ nghĩa giữ vững tính liên kết cụm từ gốc và chỉ sửa đúng vị trí lệch thanh.
         """
         w1_orig = line[pos1].lower() if len(line) > pos1 else ""
         w2_orig = line[pos2].lower() if len(line) > pos2 else ""
 
-        # Kiểm tra nếu cụm hiện tại đã thỏa mãn thanh điệu -> Giữ nguyên 100%!
-        if get_tone(w1_orig) == target_tone1 and get_tone(w2_orig) == target_tone2:
+        w1_valid = (get_tone(w1_orig) == target_tone1)
+        w2_valid = (get_tone(w2_orig) == target_tone2)
+
+        # Nếu cả 2 vị trí 2 & 4 đều đã đúng thanh -> Giữ nguyên 100%!
+        if w1_valid and w2_valid:
             return line
 
         repaired_line = list(line)
         w0_prev = line[pos1 - 1].lower() if pos1 > 0 else ""
 
-        # 1. Thử tra cứu nguyên cụm 2 từ (c1, c2) từ N-gram Poetry Corpus đi sau w0_prev
+        # Nếu tiếng 1 bị sai thanh nhưng tiếng 2 đã đúng thanh -> Chỉ sửa tiếng 1 giữ nguyên tiếng 2
+        if not w1_valid and w2_valid:
+            repaired_line[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w2_orig, target_tone1)
+            return repaired_line
+
+        # Nếu tiếng 2 bị sai thanh nhưng tiếng 1 đã đúng thanh -> Chỉ sửa tiếng 2
+        if w1_valid and not w2_valid:
+            repaired_line[pos2] = self.pick_contextual_tone_repair_word(w1_orig, w2_orig, "", target_tone2)
+            return repaired_line
+
+        # Nếu CẢ 2 TIẾNG ĐỀU SAI THANH -> Tra cứu sửa cả cụm (c1, c2) từ N-gram Poetry Corpus
         if w0_prev and w0_prev in self.corpus_bigrams:
             for c1, count1 in self.corpus_bigrams[w0_prev].most_common(60):
                 if get_tone(c1) == target_tone1 and c1 in self.corpus_bigrams:
@@ -519,14 +553,6 @@ class RuleRepairEngine:
                             repaired_line[pos2] = c2
                             return repaired_line
 
-        # 2. Thử tra cứu từ c2 đi sau w1_orig nếu w1_orig đã đúng target_tone1
-        if get_tone(w1_orig) == target_tone1 and w1_orig in self.corpus_bigrams:
-            for c2, count2 in self.corpus_bigrams[w1_orig].most_common(60):
-                if get_tone(c2) == target_tone2:
-                    repaired_line[pos2] = c2
-                    return repaired_line
-
-        # 3. Fallback sửa từng từ ngữ cảnh
         repaired_line[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w2_orig, target_tone1)
         repaired_line[pos2] = self.pick_contextual_tone_repair_word(repaired_line[pos1], w2_orig, "", target_tone2)
         return repaired_line
