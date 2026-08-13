@@ -1,7 +1,6 @@
 /* ==========================================================================
-   BORDERLESS KINETIC EDITORIAL ENGINE JAVASCRIPT
-   Automatic Non-Mouse 60fps Ambient Background | Be Vietnam Pro Typography
-   Rich Staggered Component Animations | Interactive Chart Control
+   AUDITORIUM KINETIC EDITORIAL ENGINE JAVASCRIPT
+   Fixed Slide Transitioning | Multi-Input Controls | Large Chart Fonts
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (totalSlidesNumEl) totalSlidesNumEl.textContent = totalSlides;
 
-    // Chart Instances
     let chartApproachesInstance = null;
     let chartDatasetsInstance = null;
     let chartRankingInstance = null;
@@ -37,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlideIndex = index;
         if (currentSlideNumEl) currentSlideNumEl.textContent = currentSlideIndex + 1;
 
-        triggerSlideCharts(slides[currentSlideIndex].id);
+        if (slides[currentSlideIndex]) {
+            triggerSlideCharts(slides[currentSlideIndex].id);
+        }
     }
 
     function nextSlide() {
@@ -48,11 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSlideIndex > 0) showSlide(currentSlideIndex - 1);
     }
 
-    if (btnNext) btnNext.addEventListener('click', nextSlide);
-    if (btnPrev) btnPrev.addEventListener('click', prevSlide);
+    if (btnNext) btnNext.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+    if (btnPrev) btnPrev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
 
+    // Keyboard controls
     window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
             e.preventDefault();
             nextSlide();
         } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
@@ -67,18 +68,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Mouse Wheel Navigation (Debounced)
+    let isWheeling = false;
+    window.addEventListener('wheel', (e) => {
+        if (isWheeling) return;
+        if (Math.abs(e.deltaY) > 30) {
+            isWheeling = true;
+            if (e.deltaY > 0) nextSlide();
+            else prevSlide();
+            setTimeout(() => { isWheeling = false; }, 600);
+        }
+    }, { passive: true });
+
+    // Stage Click Navigation (Click right half = Next, Click left half = Prev)
+    const stage = document.querySelector('.kinetic-stage');
+    if (stage) {
+        stage.addEventListener('click', (e) => {
+            // Ignore click if clicking interactive buttons or links
+            if (e.target.closest('button, a, code, pre, canvas')) return;
+            const width = window.innerWidth;
+            if (e.clientX > width / 2) nextSlide();
+            else prevSlide();
+        });
+    }
+
     // Touch Swipe Support
     let touchStartX = 0;
     let touchEndX = 0;
-    window.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+    window.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
     window.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         if (touchEndX < touchStartX - 50) nextSlide();
         if (touchEndX > touchStartX + 50) prevSlide();
-    });
+    }, { passive: true });
 
     // -------------------------------------------------------------------------
-    // CHART.JS ANIMATIONS (GOOGLE PRIMARY PALETTE & LARGE BE VIETNAM PRO FONTS)
+    // CHART.JS ANIMATIONS (GOOGLE PRIMARY PALETTE & LARGE FONTS)
     // -------------------------------------------------------------------------
     function triggerSlideCharts(slideId) {
         if (slideId === 'slide-approaches') {
@@ -103,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: { duration: 1200, easing: 'easeOutQuart' },
                         plugins: { legend: { display: false } },
                         scales: {
-                            y: { beginAtZero: true, max: 100, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
-                            x: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { display: false } }
+                            y: { beginAtZero: true, max: 100, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            x: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -131,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: { duration: 1400, easing: 'easeOutBounce' },
-                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } } } }
+                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } } } }
                     }
                 });
             }
@@ -160,8 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         animation: { duration: 1200, easing: 'easeOutCubic' },
                         plugins: { legend: { display: false } },
                         scales: {
-                            x: { beginAtZero: true, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
-                            y: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { display: false } }
+                            x: { beginAtZero: true, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            y: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -186,10 +211,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         responsive: true,
                         maintainAspectRatio: false,
                         animation: { duration: 1400, easing: 'easeOutQuart' },
-                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } } } },
+                        plugins: { legend: { position: 'bottom', labels: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } } } },
                         scales: {
-                            y: { beginAtZero: true, max: 50, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
-                            x: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 14, weight: 'bold' } }, grid: { display: false } }
+                            y: { beginAtZero: true, max: 50, ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { color: '#E2E8F0' } },
+                            x: { ticks: { color: '#0F172A', font: { family: 'Be Vietnam Pro', size: 16, weight: 'bold' } }, grid: { display: false } }
                         }
                     }
                 });
@@ -200,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
 
     // -------------------------------------------------------------------------
-    // AUTOMATIC AMBIENT FLUID PARTICLES CANVAS (100% NON-MOUSE, AUTO DRIFT)
+    // AUTOMATIC AMBIENT FLUID PARTICLES CANVAS (60FPS AUTO DRIFT)
     // -------------------------------------------------------------------------
     const canvas = document.getElementById('ambient-canvas');
     if (canvas) {
