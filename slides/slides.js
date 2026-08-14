@@ -159,61 +159,87 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         } else {
             // PA 3: LIVE REAL CONNECTION TO LM STUDIO (google/gemma-4-e2b)
-            appendCliLine(`[LM STUDIO] Kết nối tới Local AI Server (http://127.0.0.1:1234)...`, 'info');
+            appendCliLine(`[LM STUDIO] Kết nối tới Local AI Server (google/gemma-4-e2b)...`, 'info');
             appendCliLine(`[MODEL] google/gemma-4-e2b | Prompt: "${prompt}"`, 'info');
+            appendCliLine(`[HTTP POST] Đang gửi prompt & đợi Gemma-4-e2b suy luận thời gian thực...`, 'info');
 
             const startTime = performance.now();
             try {
-                appendCliLine(`[HTTP POST] /v1/chat/completions -> Đang đợi Gemma-4-e2b suy luận...`, 'info');
-
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 60000);
 
-                const res = await fetch('http://127.0.0.1:1234/v1/chat/completions', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-                    signal: controller.signal,
-                    body: JSON.stringify({
-                        model: 'google/gemma-4-e2b',
-                        messages: [
-                            {
-                                role: 'system',
-                                content: 'Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát 4 câu (6-8-6-8 từ) mượt mà, giàu cảm xúc về chủ đề được yêu cầu. Trả về đúng 4 câu thơ Tiếng Việt, mỗi câu trên một dòng.'
-                            },
-                            {
-                                role: 'user',
-                                content: `Sáng tác bài thơ Lục Bát 4 câu về chủ đề: ${prompt}.`
-                            }
-                        ],
-                        temperature: 0.7
-                    })
-                });
+                let rawLines = [];
+                let latency = 0;
+
+                // Attempt 1: Call Local Python Bridge Proxy at /api/generate (Zero CORS issues)
+                let connected = false;
+                try {
+                    const proxyRes = await fetch('/api/generate', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        signal: controller.signal,
+                        body: JSON.stringify({ prompt: prompt })
+                    });
+                    if (proxyRes.ok) {
+                        const proxyData = await proxyRes.json();
+                        if (proxyData.status === 'success' && proxyData.raw_lines && proxyData.raw_lines.length > 0) {
+                            rawLines = proxyData.raw_lines;
+                            latency = proxyData.latency || ((performance.now() - startTime) / 1000).toFixed(2);
+                            connected = true;
+                            appendCliLine(`[PROXY BRIDGE] ✓ Kết nối thành công LM Studio qua Python Bridge!`, 'success');
+                        }
+                    }
+                } catch (proxyErr) {
+                    // Proxy not available, proceed to direct fetch
+                }
+
+                // Attempt 2: Direct Fetch to LM Studio at http://127.0.0.1:1234
+                if (!connected) {
+                    const res = await fetch('http://127.0.0.1:1234/v1/chat/completions', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+                        signal: controller.signal,
+                        body: JSON.stringify({
+                            model: 'google/gemma-4-e2b',
+                            messages: [
+                                {
+                                    role: 'system',
+                                    content: 'Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát 4 câu (6-8-6-8 từ) mượt mà, giàu cảm xúc về chủ đề được yêu cầu. Trả về đúng 4 câu thơ Tiếng Việt, mỗi câu trên một dòng.'
+                                },
+                                {
+                                    role: 'user',
+                                    content: `Sáng tác bài thơ Lục Bát 4 câu về chủ đề: ${prompt}.`
+                                }
+                            ],
+                            temperature: 0.7
+                        })
+                    });
+
+                    if (!res.ok) {
+                        throw new Error(`HTTP Error ${res.status}: ${res.statusText}`);
+                    }
+
+                    const data = await res.json();
+                    latency = ((performance.now() - startTime) / 1000).toFixed(2);
+                    const msgObj = (data.choices && data.choices[0] && data.choices[0].message) || {};
+                    const rawContent = (msgObj.content || msgObj.reasoning_content || '').trim();
+
+                    rawLines = rawContent.split('\n')
+                        .map(l => l.replace(/^(?:Line\s*\d+|Draft\s*\d+|\d+|\*|\-|\:|\s)+/i, '').trim())
+                        .filter(l => l.length > 5 && /[a-zA-Zà-ỹÀ-Ỹ]/.test(l));
+
+                    if (rawLines.length < 4) {
+                        rawLines = rawContent.split('\n').filter(l => l.trim().length > 0);
+                    }
+                }
 
                 clearTimeout(timeoutId);
-
-                if (!res.ok) {
-                    throw new Error(`HTTP Error ${res.status}: ${res.statusText}`);
-                }
-
-                const data = await res.json();
-                const latency = ((performance.now() - startTime) / 1000).toFixed(2);
-                appendCliLine(`[HTTP 200 OK] Nhận phản hồi thực tế từ Gemma-4-e2b trong ${latency}s!`, 'success');
-
-                const msgObj = (data.choices && data.choices[0] && data.choices[0].message) || {};
-                const rawContent = (msgObj.content || msgObj.reasoning_content || '').trim();
-
-                let rawLines = rawContent.split('\n')
-                    .map(l => l.replace(/^(?:Line\s*\d+|Draft\s*\d+|\d+|\*|\-|\:|\s)+/i, '').trim())
-                    .filter(l => l.length > 5 && /[a-zA-Zà-ỹÀ-Ỹ]/.test(l));
-
-                if (rawLines.length < 4) {
-                    rawLines = rawContent.split('\n').filter(l => l.trim().length > 0);
-                }
 
                 if (rawLines.length === 0) {
                     throw new Error('LM Studio trả về nội dung rỗng');
                 }
 
+                appendCliLine(`[HTTP 200 OK] Nhận phản hồi thực tế từ Gemma-4-e2b trong ${latency}s!`, 'success');
                 appendCliLine(`[NEURO DRAFT] TẦNG 1 (Bản thảo RAW thật từ Gemma-4-e2b):\n${rawLines.slice(0, 4).join('\n')}`, 'info');
                 appendCliLine(`[SYMBOLIC] TẦNG 2: Rule Repair Engine đang sửa lỗi trên bản thảo thật...`, 'info');
                 await new Promise(r => setTimeout(r, 250));
