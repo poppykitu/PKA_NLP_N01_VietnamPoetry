@@ -195,9 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mouse Wheel Navigation (Debounced)
+    // Mouse Wheel Navigation (Debounced, disabled on Slide 23 to allow CLI log scrolling)
     let isWheeling = false;
     window.addEventListener('wheel', (e) => {
+        if (slides[currentSlideIndex] && slides[currentSlideIndex].id === 'slide-23') return;
         if (isWheeling) return;
         if (Math.abs(e.deltaY) > 30) {
             isWheeling = true;
