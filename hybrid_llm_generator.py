@@ -3,7 +3,7 @@ import random
 import sys
 from luc_bat_rules import (
     get_tone, is_rhyme, check_bang_trac, check_luc_bat_poem_rules,
-    is_huyen_tone, is_ngang_tone
+    is_huyen_tone, is_ngang_tone, extract_rime
 )
 from generator import RHYME_DICTIONARY_B
 from pos_grammar_rules import is_pos_sequence_valid, filter_valid_followers, get_word_pos_set
@@ -304,26 +304,43 @@ class RuleRepairEngine:
 
     def repair_line_length(self, line: list, expected_length: int) -> list:
         """
-        Sửa lỗi độ dài câu: Cắt bớt hư từ nếu thừa chữ, chèn từ đệm hài hòa nếu thiếu chữ.
+        Sửa lỗi độ dài câu theo đúng cấu trúc nhịp 2:2:2 (Lục) và 2:2:2:2 (Bát):
+        - Nếu thừa chữ: cắt bỏ hư từ ở vị trí an toàn.
+        - Nếu thiếu chữ: bù cả cụm từ 2 chữ hài hòa có nghĩa, tuyệt đối không bù từ đơn lẻ 'xinh' / 'dịu'.
         """
         repaired = list(line)
 
-        # Nếu thừa từ: Cắt bỏ hư từ không cần thiết
+        # Cắt bớt nếu thừa
         while len(repaired) > expected_length:
             removed = False
-            for i in range(1, len(repaired) - 1):
+            for i in range(1, len(repaired) - 2):
                 if repaired[i].lower() in ["đâu", "đã", "thì", "mà", "là", "rằng", "hay", "đi", "nhà", "này", "qua"]:
                     repaired.pop(i)
                     removed = True
                     break
             if not removed:
-                repaired.pop(-2)
+                repaired.pop(-3)
 
-        # Nếu thiếu từ: Chèn thêm từ đệm/tính từ hài hòa vào trước từ cuối
-        while len(repaired) < expected_length:
-            insert_idx = max(1, len(repaired) - 1)
-            fill_word = "xinh" if expected_length == 6 else "dịu"
-            repaired.insert(insert_idx, fill_word)
+        # Bù từ theo cấu trúc nhịp 2:2:2 hoặc 2:2:2:2 nếu thiếu
+        if len(repaired) < expected_length:
+            if expected_length == 6:
+                if len(repaired) <= 4:
+                    repaired = repaired[:4] + ["lặng", "im"]
+                elif len(repaired) == 5:
+                    last_w = repaired.pop()
+                    if get_tone(last_w) == "B":
+                        repaired.extend(["lặng", last_w])
+                    else:
+                        repaired.extend(["lặng", "im"])
+            elif expected_length == 8:
+                if len(repaired) <= 6:
+                    repaired = repaired[:6] + ["yêu", "thương"]
+                elif len(repaired) == 7:
+                    last_w = repaired.pop()
+                    if get_tone(last_w) == "B":
+                        repaired.extend(["dịu", last_w])
+                    else:
+                        repaired.extend(["dịu", "dàng"])
 
         return repaired
 
@@ -521,17 +538,182 @@ class RuleRepairEngine:
         if unused:
             return unused[0]
 
-        return candidates[0] if candidates else (curr_word if curr_word else "trời")
+    # ==========================================================================
+    # BẢNG TỪ ĐIỂN CÁC CẶP 2 TỪ THI CA CHUẨN NHỊP (COUPLET-BASED 2:2:2 / 2:2:2:2)
+    # ==========================================================================
+    POETIC_COUPLET_2_CHUNKS = {
+        "ang": {
+            "H": [["dịu", "dàng"], ["nhẹ", "nhàng"], ["ngút", "ngàn"], ["sắc", "vàng"], ["đàng", "hoàng"], ["rộn", "ràng"], ["mênh", "mang"]],
+            "N": [["chứa", "chan"], ["chói", "chang"], ["thênh", "thang"], ["ngập", "tràn"], ["bát", "ngát"], ["không", "gian"], ["lang", "thang"]]
+        },
+        "an": {
+            "H": [["gian", "nan"], ["nồng", "nàn"], ["bình", "an"], ["dịu", "dàng"], ["nhẹ", "nhàng"], ["ngút", "ngàn"]],
+            "N": [["thênh", "thang"], ["hân", "hoan"], ["bình", "an"], ["ngập", "tràn"], ["chứa", "chan"], ["không", "gian"]]
+        },
+        "am": {
+            "H": [["hờn", "căm"], ["lặng", "câm"], ["trầm", "ngâm"], ["tình", "thâm"], ["thầm", "thì"]],
+            "N": [["nồng", "say"], ["trong", "tâm"], ["quan", "tâm"], ["trăng", "rằm"]]
+        },
+        "ăm": {
+            "H": [["thì", "thầm"], ["lặng", "thầm"], ["trầm", "ngâm"], ["hờn", "căm"], ["tình", "thâm"]],
+            "N": [["trăng", "rằm"], ["năm", "trăm"], ["trong", "tâm"]]
+        },
+        "âm": {
+            "H": [["thì", "thầm"], ["lặng", "thầm"], ["trầm", "ngâm"], ["hờn", "căm"], ["tình", "thâm"]],
+            "N": [["tháng", "năm"], ["trong", "tâm"], ["lặng", "câm"]]
+        },
+        "em": {
+            "H": [["dịu", "êm"], ["bên", "thềm"], ["càng", "thêm"], ["về", "đêm"], ["nhẹ", "êm"]],
+            "N": [["ấm", "êm"], ["êm", "đềm"], ["trăng", "lên"], ["vang", "lên"]]
+        },
+        "êm": {
+            "H": [["dịu", "êm"], ["bên", "thềm"], ["càng", "thêm"], ["về", "đêm"], ["nhẹ", "êm"]],
+            "N": [["ấm", "êm"], ["êm", "đềm"], ["trăng", "lên"], ["vang", "lên"]]
+        },
+        "im": {
+            "H": [["im", "lìm"], ["lặng", "im"], ["trái", "tim"], ["đắm", "chìm"], ["kiếm", "tìm"], ["ngắm", "nhìn"]],
+            "N": [["trái", "tim"], ["đắm", "chìm"], ["kiếm", "tìm"], ["lặng", "im"], ["con", "tim"]]
+        },
+        "inh": {
+            "H": [["chân", "tình"], ["nghĩa", "tình"], ["chúng", "mình"], ["lung", "linh"], ["yên", "bình"], ["thanh", "bình"]],
+            "N": [["lung", "linh"], ["xinh", "tươi"], ["thanh", "minh"], ["bình", "minh"], ["ngắm", "nhìn"]]
+        },
+        "anh": {
+            "H": [["trong", "lành"], ["mát", "lành"], ["tươi", "lành"], ["bức", "tranh"], ["trời", "thanh"]],
+            "N": [["ngát", "xanh"], ["tươi", "xanh"], ["màu", "xanh"], ["trong", "lành"], ["lượn", "quanh"]]
+        },
+        "ơi": {
+            "H": [["cuộc", "đời"], ["lời", "người"], ["trời", "ơi"], ["tươi", "cười"], ["cho", "đời"], ["người", "ơi"]],
+            "N": [["muôn", "nơi"], ["khắp", "nơi"], ["bầu", "trời"], ["tuyệt", "vời"], ["chơi", "vơi"], ["ngời", "ngời"]]
+        },
+        "ươi": {
+            "H": [["tươi", "cười"], ["nụ", "cười"], ["cho", "đời"], ["lòng", "người"], ["bên", "người"], ["đẹp", "tươi"]],
+            "N": [["xinh", "tươi"], ["rạng", "ngời"], ["tươi", "cười"], ["muôn", "nơi"], ["sáng", "tươi"]]
+        },
+        "ương": {
+            "H": [["yêu", "thương"], ["con", "đường"], ["vấn", "vương"], ["màn", "sương"], ["tình", "thương"], ["quê", "hương"]],
+            "N": [["ngát", "hương"], ["muôn", "phương"], ["tỏa", "hương"], ["sắc", "hương"], ["ánh", "dương"]]
+        },
+        "ay": {
+            "H": [["tháng", "ngày"], ["đêm", "ngày"], ["mê", "say"], ["chiều", "nay"], ["ngất", "ngây"], ["đắm", "say"]],
+            "N": [["gió", "bay"], ["mây", "bay"], ["ngất", "ngây"], ["mê", "say"], ["đôi", "tay"], ["mai", "này"]]
+        },
+        "ây": {
+            "H": [["bóng", "cây"], ["cỏ", "cây"], ["nơi", "đây"], ["tháng", "ngày"], ["ngất", "ngây"], ["đắp", "xây"]],
+            "N": [["ngất", "ngây"], ["trắng", "bay"], ["gió", "bay"], ["hây", "hây"], ["thơ", "ngây"]]
+        },
+        "iên": {
+            "H": [["dịu", "hiền"], ["bến", "thuyền"], ["ngoan", "hiền"], ["đoàn", "viên"], ["triền", "miên"], ["bình", "yên"]],
+            "N": [["bình", "yên"], ["thiên", "nhiên"], ["tự", "nhiên"], ["an", "nhiên"], ["đoàn", "viên"]]
+        },
+        "yên": {
+            "H": [["dịu", "hiền"], ["bến", "thuyền"], ["ngoan", "hiền"], ["đoàn", "viên"], ["triền", "miên"], ["bình", "yên"]],
+            "N": [["bình", "yên"], ["thiên", "nhiên"], ["tự", "nhiên"], ["an", "nhiên"], ["đoàn", "viên"]]
+        },
+        "ong": {
+            "H": [["tấm", "lòng"], ["con", "rồng"], ["dòng", "sông"], ["bóng", "hồng"], ["mênh", "mông"]],
+            "N": [["mênh", "mông"], ["ngóng", "trông"], ["sắc", "hồng"], ["chờ", "mong"], ["mùa", "đông"]]
+        },
+        "ông": {
+            "H": [["dòng", "sông"], ["con", "rồng"], ["tấm", "lòng"], ["bóng", "hồng"], ["mênh", "mông"]],
+            "N": [["mênh", "mông"], ["ngóng", "trông"], ["sắc", "hồng"], ["chờ", "mong"], ["mùa", "đông"]]
+        },
+        "âu": {
+            "H": [["bể", "dâu"], ["sắc", "màu"], ["cầu", "kiều"], ["ngày", "sau"], ["mai", "sau"]],
+            "N": [["mai", "sau"], ["ngày", "sau"], ["thâm", "sâu"], ["khắc", "sâu"], ["bền", "lâu"]]
+        },
+        "ao": {
+            "H": [["ngọt", "ngào"], ["dạt", "dào"], ["năm", "nào"], ["lòng", "nao"], ["chiều", "nao"]],
+            "N": [["vì", "sao"], ["trăng", "sao"], ["ngân", "nga"], ["thanh", "tao"], ["xôn", "xao"]]
+        },
+        "iêu": {
+            "H": [["cánh", "diều"], ["dập", "dìu"], ["buổi", "chiều"], ["bóng", "chiều"], ["yêu", "kiều"]],
+            "N": [["yêu", "kiều"], ["cô", "liêu"], ["hắt", "hiu"], ["bao", "điều"], ["dập", "dìu"]]
+        },
+        "êu": {
+            "H": [["cánh", "diều"], ["dập", "dìu"], ["buổi", "chiều"], ["bóng", "chiều"], ["yêu", "kiều"]],
+            "N": [["yêu", "kiều"], ["cô", "liêu"], ["hắt", "hiu"], ["bao", "điều"], ["dập", "dìu"]]
+        },
+        "ơ": {
+            "H": [["giấc", "mơ"], ["vần", "thơ"], ["hồn", "thơ"], ["đợi", "chờ"], ["ngẩn", "ngơ"], ["ước", "mơ"]],
+            "N": [["ngẩn", "ngơ"], ["mộng", "mơ"], ["ước", "mơ"], ["câu", "thơ"], ["hồn", "thơ"], ["ngây", "thơ"]]
+        }
+    }
 
-    def score_segment_corpus_frequency(self, segment: list) -> int:
+    def pick_couplet_chunk(self, prev_word: str, curr_chunk: list, target_rhyme: str = None, need_huyen: bool = None, used_words: set = None) -> list:
         """
-        Tính tổng điểm tần suất N-gram Bigram thực tế trong 3.4 triệu tập thơ Tiếng Việt cho cụm từ segment.
+        [Cơ Chế Khóa Nhịp 2:2:2 & 2:2:2:2]:
+        Chọn nguyên CẶP 2 TỪ (w1, w2) hoàn chỉnh có ý nghĩa thi ca tự nhiên trong Tiếng Việt.
+        - w2 bắt buộc mang Thanh Bằng (B), khớp vần target_rhyme và thỏa mãn đối thanh (Ngang/Huyền).
+        - (w1, w2) phải là một từ ghép hoặc cụm từ tự nhiên (ví dụ: 'lặng im', 'dịu dàng', 'ngát hương', 'yêu thương', 'bình yên', 'trong lành'...).
+        - Tuyệt đối không bao giờ sinh ra các cặp chắp vá vô nghĩa như 'xinh im', 'xinh càng', 'dịu màng'.
         """
-        score = 0
-        for i in range(len(segment) - 1):
-            w1, w2 = segment[i].lower(), segment[i+1].lower()
-            score += self.corpus_bigrams.get(w1, {}).get(w2, 0)
-        return score
+        if used_words is None:
+            used_words = set()
+
+        w1_curr = curr_chunk[0].lower() if len(curr_chunk) > 0 else ""
+        w2_curr = curr_chunk[1].lower() if len(curr_chunk) > 1 else ""
+
+        LINE_END_BLACKLIST = {"và", "với", "nhưng", "mà", "cũng", "đều", "sẽ", "đã", "đang", "rằng", "thì", "càng", "rất", "quá", "lại", "vẫn", "được", "bị", "do", "tại", "vì", "nếu", "hãy", "chớ", "đừng", "màng"}
+
+        # Kiểm tra xem cặp 2 từ hiện tại của LLM có tự nhiên và đúng luật không
+        if w1_curr and w2_curr:
+            w2_is_b = (get_tone(w2_curr) == "B")
+            w2_rhyme_ok = (not target_rhyme) or is_rhyme(target_rhyme, w2_curr)
+            w2_pitch_ok = (need_huyen is None) or (is_huyen_tone(w2_curr) if need_huyen else is_ngang_tone(w2_curr))
+            w2_unused = (w2_curr not in used_words)
+            w2_not_blacklisted = (w2_curr not in LINE_END_BLACKLIST)
+            # Cụm 2 từ có tần suất thực sự trong corpus (>=5) và không chứa từ đệm chắp vá
+            has_freq = (self.corpus_bigrams.get(w1_curr, {}).get(w2_curr, 0) >= 5) and (w1_curr not in ["xinh", "dịu", "lặng"])
+
+            if w2_is_b and w2_rhyme_ok and w2_pitch_ok and w2_unused and w2_not_blacklisted and has_freq:
+                return [curr_chunk[0], curr_chunk[1]]
+
+        # Tìm kiếm cặp 2 từ từ POETIC_COUPLET_2_CHUNKS theo khuôn vần
+        target_rime = extract_rime(target_rhyme) if target_rhyme else ""
+        tone_key = "H" if need_huyen is True else ("N" if need_huyen is False else None)
+
+        cands = []
+        if target_rime and target_rime in self.POETIC_COUPLET_2_CHUNKS:
+            group = self.POETIC_COUPLET_2_CHUNKS[target_rime]
+            if tone_key and tone_key in group:
+                cands.extend(group[tone_key])
+            else:
+                cands.extend(group.get("H", []) + group.get("N", []))
+
+        # Nếu không có từ điển khuôn vần trực tiếp, duyệt qua các khuôn vần có vần thông
+        if not cands and target_rhyme:
+            for rime_k, group in self.POETIC_COUPLET_2_CHUNKS.items():
+                test_cand = group["H"][0][1] if group.get("H") else group["N"][0][1]
+                if is_rhyme(target_rhyme, test_cand):
+                    if tone_key and tone_key in group:
+                        cands.extend(group[tone_key])
+                    else:
+                        cands.extend(group.get("H", []) + group.get("N", []))
+                    if cands:
+                        break
+
+        # Nếu target_rhyme is None:
+        if not cands and not target_rhyme:
+            for g in self.POETIC_COUPLET_2_CHUNKS.values():
+                if tone_key and tone_key in g:
+                    cands.extend(g[tone_key])
+                else:
+                    cands.extend(g.get("H", []) + g.get("N", []))
+
+        # Lọc các cặp mà từ thứ 2 chưa bị dùng
+        valid_cands = [c for c in cands if c[1].lower() not in used_words]
+        if valid_cands:
+            return list(valid_cands[0])
+
+        if cands:
+            return list(cands[0])
+
+        # Fallback cặp chuẩn nhịp
+        if need_huyen is True:
+            return ["dịu", "dàng"] if "dàng" not in used_words else ["yêu", "thương"]
+        else:
+            return ["ngát", "hương"] if "hương" not in used_words else ["ấm", "êm"]
 
     def repair_phrase_chunk(self, line: list, pos1: int, pos2: int, target_tone1: str, target_tone2: str) -> list:
         """
@@ -567,15 +749,15 @@ class RuleRepairEngine:
 
     def repair_poem(self, raw_poem: list) -> list:
         """
-        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Vòng Lặp Soát Lỗi Tự Động (Iterative Self-Correction Loop):
-        Raw Draft -> Fix Length -> Phrase-Level Chunk Repair -> Rhymes & Pitches -> Tự Động Soát Lại (check_luc_bat_poem_rules) Đến Khi Hết Sạch Lỗi
+        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Vòng Lặp Soát Lỗi Tự Động theo cấu trúc nhịp 2:2:2 và 2:2:2:2:
+        Raw Draft -> Fix Length (2:2:2/2:2:2:2) -> Fix Pos 2/4 Tones -> Couplet Chunk Rhymes (5-6 & 7-8) -> Verifier Loop
         """
         p = [list(line) for line in raw_poem]
         
         # Vòng lặp tự động soát lỗi và sửa lặp lại đến khi 100% sạch lỗi
         max_passes = 5
         for pass_idx in range(max_passes):
-            # Step 1: Sửa độ dài chuẩn 6-8 chữ
+            # Step 1: Sửa độ dài chuẩn 6-8 chữ theo cấu trúc nhịp đôi
             for i in range(len(p)):
                 expected_len = 6 if i % 2 == 0 else 8
                 p[i] = self.repair_line_length(p[i], expected_len)
@@ -584,39 +766,45 @@ class RuleRepairEngine:
             for i in range(len(p)):
                 p[i] = self.repair_phrase_chunk(p[i], pos1=1, pos2=3, target_tone1="B", target_tone2="T")
 
-            # Step 3: Sửa gieo vần & ép tiểu đối Bằng-Thanh Ngang/Huyền
+            # Step 3: Sửa gieo vần & đối thanh THEO CẢ CẶP 2 TỪ (Couplet Chunks 5-6 & 7-8)
             used_rhymes = set()
 
-            # Câu Lục 1 (pos 6):
-            w6_l1 = self.pick_pos_valid_rhyme(p[0][4], curr_word=p[0][5], target_rhyme=None, used_words=used_rhymes)
-            p[0][5] = w6_l1
+            # Câu Lục 1 (2:2:2 -> Cặp 5-6):
+            c56_l1 = self.pick_couplet_chunk(p[0][3], p[0][4:6], target_rhyme=None, need_huyen=None, used_words=used_rhymes)
+            p[0][4], p[0][5] = c56_l1[0], c56_l1[1]
+            w6_l1 = p[0][5]
             used_rhymes.add(w6_l1.lower())
 
-            # Câu Bát 1 (pos 6): Gieo vần với w6_l1 (khác w6_l1)
-            w6_b1 = self.pick_pos_valid_rhyme(p[1][4], curr_word=p[1][5], target_rhyme=w6_l1, used_words=used_rhymes)
-            p[1][5] = w6_b1
+            # Câu Bát 1 (2:2:2:2 -> Cặp 5-6 gieo vần với w6_l1):
+            c56_b1 = self.pick_couplet_chunk(p[1][3], p[1][4:6], target_rhyme=w6_l1, need_huyen=None, used_words=used_rhymes)
+            p[1][4], p[1][5] = c56_b1[0], c56_b1[1]
+            w6_b1 = p[1][5]
             used_rhymes.add(w6_b1.lower())
 
-            # Câu Bát 1 (pos 8): Đối thanh với w6_b1 (1 Ngang, 1 Huyền)
+            # Câu Bát 1 (2:2:2:2 -> Cặp 7-8 đối thanh với w6_b1):
             w6_b1_huyen = is_huyen_tone(w6_b1)
-            w8_b1 = self.pick_pos_valid_rhyme(p[1][6], curr_word=p[1][7], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
-            p[1][7] = w8_b1
+            c78_b1 = self.pick_couplet_chunk(p[1][5], p[1][6:8], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
+            p[1][6], p[1][7] = c78_b1[0], c78_b1[1]
+            w8_b1 = p[1][7]
             used_rhymes.add(w8_b1.lower())
 
-            # Câu Lục 2 (pos 6): Gieo vần với w8_b1
-            w6_l2 = self.pick_pos_valid_rhyme(p[2][4], curr_word=p[2][5], target_rhyme=w8_b1, used_words=used_rhymes)
-            p[2][5] = w6_l2
+            # Câu Lục 2 (2:2:2 -> Cặp 5-6 gieo vần với w8_b1):
+            c56_l2 = self.pick_couplet_chunk(p[2][3], p[2][4:6], target_rhyme=w8_b1, need_huyen=None, used_words=used_rhymes)
+            p[2][4], p[2][5] = c56_l2[0], c56_l2[1]
+            w6_l2 = p[2][5]
             used_rhymes.add(w6_l2.lower())
 
-            # Câu Bát 2 (pos 6): Gieo vần với w6_l2 (khác w6_l2)
-            w6_b2 = self.pick_pos_valid_rhyme(p[3][4], curr_word=p[3][5], target_rhyme=w6_l2, used_words=used_rhymes)
-            p[3][5] = w6_b2
+            # Câu Bát 2 (2:2:2:2 -> Cặp 5-6 gieo vần với w6_l2):
+            c56_b2 = self.pick_couplet_chunk(p[3][3], p[3][4:6], target_rhyme=w6_l2, need_huyen=None, used_words=used_rhymes)
+            p[3][4], p[3][5] = c56_b2[0], c56_b2[1]
+            w6_b2 = p[3][5]
             used_rhymes.add(w6_b2.lower())
 
-            # Câu Bát 2 (pos 8): Đối thanh với w6_b2
+            # Câu Bát 2 (2:2:2:2 -> Cặp 7-8 đối thanh với w6_b2):
             w6_b2_huyen = is_huyen_tone(w6_b2)
-            w8_b2 = self.pick_pos_valid_rhyme(p[3][6], curr_word=p[3][7], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
-            p[3][7] = w8_b2
+            c78_b2 = self.pick_couplet_chunk(p[3][5], p[3][6:8], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
+            p[3][6], p[3][7] = c78_b2[0], c78_b2[1]
+            w8_b2 = p[3][7]
             used_rhymes.add(w8_b2.lower())
 
             # Step 4: Thực sự soát lại luật thơ (check_luc_bat_poem_rules)
@@ -624,7 +812,5 @@ class RuleRepairEngine:
             eval_res = check_luc_bat_poem_rules(p)
             if eval_res["valid"]:
                 break
-
-        return p
 
         return p
