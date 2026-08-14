@@ -702,13 +702,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Palette presets (Luminous Pastel Gradients tailored for Light Background)
         const bubblePalettes = [
-            { name: 'Google Blue', c1: [66, 133, 244], c2: [56, 189, 248], alpha: 0.20 },
-            { name: 'Mint Emerald', c1: [52, 168, 83], c2: [74, 222, 128], alpha: 0.18 },
-            { name: 'Radiant Amber', c1: [251, 188, 5], c2: [253, 224, 71], alpha: 0.22 },
-            { name: 'Coral Rose', c1: [234, 67, 53], c2: [251, 113, 133], alpha: 0.16 },
-            { name: 'Lavender Purple', c1: [168, 85, 247], c2: [192, 132, 252], alpha: 0.18 },
-            { name: 'Ocean Turquoise', c1: [14, 165, 233], c2: [45, 212, 191], alpha: 0.18 },
-            { name: 'Sunset Peach', c1: [249, 115, 22], c2: [254, 215, 170], alpha: 0.16 }
+            { name: 'Google Blue', c1: [66, 133, 244], c2: [56, 189, 248], alpha: 0.26 },
+            { name: 'Mint Emerald', c1: [52, 168, 83], c2: [74, 222, 128], alpha: 0.24 },
+            { name: 'Radiant Amber', c1: [251, 188, 5], c2: [253, 224, 71], alpha: 0.28 },
+            { name: 'Coral Rose', c1: [234, 67, 53], c2: [251, 113, 133], alpha: 0.22 },
+            { name: 'Lavender Purple', c1: [168, 85, 247], c2: [192, 132, 252], alpha: 0.25 },
+            { name: 'Ocean Turquoise', c1: [14, 165, 233], c2: [45, 212, 191], alpha: 0.24 },
+            { name: 'Sunset Peach', c1: [249, 115, 22], c2: [254, 215, 170], alpha: 0.22 }
         ];
 
         class GradientBubble {
@@ -721,17 +721,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.palette = bubblePalettes[Math.floor(Math.random() * bubblePalettes.length)];
                 
                 if (this.type === 'hero') {
-                    this.baseRadius = Math.random() * 120 + 200; // 200 - 320px
-                    this.speed = Math.random() * 0.3 + 0.2;
+                    this.baseRadius = Math.random() * 200 + 380; // 380 - 580px (Ultra-large soft clouds)
+                    this.speed = Math.random() * 0.25 + 0.15;
                     this.alphaMult = 1.0;
                 } else if (this.type === 'medium') {
-                    this.baseRadius = Math.random() * 70 + 90;   // 90 - 160px
-                    this.speed = Math.random() * 0.5 + 0.35;
+                    this.baseRadius = Math.random() * 120 + 240; // 240 - 360px
+                    this.speed = Math.random() * 0.35 + 0.25;
                     this.alphaMult = 0.85;
                 } else {
-                    // Small / playful floaters
-                    this.baseRadius = Math.random() * 35 + 25;   // 25 - 60px
-                    this.speed = Math.random() * 0.8 + 0.5;
+                    // Accent flow bubbles
+                    this.baseRadius = Math.random() * 80 + 130;  // 130 - 210px
+                    this.speed = Math.random() * 0.5 + 0.35;
                     this.alphaMult = 0.75;
                 }
 
@@ -749,11 +749,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.phaseX = Math.random() * Math.PI * 2;
                 this.phaseY = Math.random() * Math.PI * 2;
                 this.phaseR = Math.random() * Math.PI * 2;
-                this.freqX = Math.random() * 0.0015 + 0.0008;
-                this.freqY = Math.random() * 0.0015 + 0.0008;
-                this.freqR = Math.random() * 0.002 + 0.001;
-                this.ampX = Math.random() * 40 + 20;
-                this.ampY = Math.random() * 40 + 20;
+                this.freqX = Math.random() * 0.0012 + 0.0006;
+                this.freqY = Math.random() * 0.0012 + 0.0006;
+                this.freqR = Math.random() * 0.0015 + 0.0008;
+                this.ampX = Math.random() * 60 + 30;
+                this.ampY = Math.random() * 60 + 30;
 
                 // Interactive displacement
                 this.dispX = 0;
@@ -768,32 +768,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Sine wave breathing and floating
                 const waveX = Math.sin(time * this.freqX + this.phaseX) * this.ampX;
                 const waveY = Math.cos(time * this.freqY + this.phaseY) * this.ampY;
-                const scalePulse = 1 + Math.sin(time * this.freqR + this.phaseR) * 0.12;
+                const scalePulse = 1 + Math.sin(time * this.freqR + this.phaseR) * 0.15;
                 this.radius = this.baseRadius * scalePulse;
 
                 const currX = this.baseX + waveX + this.dispX;
                 const currY = this.baseY + waveY + this.dispY;
 
-                // Interactive Mouse Reaction (Fluid Bubble Repulsion & Elastic Recovery)
+                // Interactive Mouse Reaction (Fluid Soft Repulsion & Elastic Recovery)
                 const dx = currX - mouse.x;
                 const dy = currY - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                const interactRadius = this.radius + 180;
+                const interactRadius = this.radius + 220;
 
                 if (dist < interactRadius && dist > 1) {
                     const force = (interactRadius - dist) / interactRadius;
-                    const pushX = (dx / dist) * force * 45;
-                    const pushY = (dy / dist) * force * 45;
-                    this.dispX += (pushX - this.dispX) * 0.08;
-                    this.dispY += (pushY - this.dispY) * 0.08;
+                    const pushX = (dx / dist) * force * 55;
+                    const pushY = (dy / dist) * force * 55;
+                    this.dispX += (pushX - this.dispX) * 0.06;
+                    this.dispY += (pushY - this.dispY) * 0.06;
                 } else {
                     // Smooth elastic return
-                    this.dispX *= 0.94;
-                    this.dispY *= 0.94;
+                    this.dispX *= 0.95;
+                    this.dispY *= 0.95;
                 }
 
-                // Wrap around edges smoothly
-                const margin = this.radius + 100;
+                // Wrap around edges smoothly with wide margin
+                const margin = this.radius + 150;
                 if (this.baseX < -margin) this.baseX = width + margin;
                 if (this.baseX > width + margin) this.baseX = -margin;
                 if (this.baseY < -margin) this.baseY = height + margin;
@@ -811,51 +811,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.save();
                 ctx.beginPath();
                 const radGrad = ctx.createRadialGradient(
-                    this.drawX - this.radius * 0.25,
-                    this.drawY - this.radius * 0.25,
-                    this.radius * 0.05,
+                    this.drawX,
+                    this.drawY,
+                    0,
                     this.drawX,
                     this.drawY,
                     this.radius
                 );
 
-                // Multi-Stop Vibrant Soft Gradient
-                radGrad.addColorStop(0, `rgba(${c2[0]}, ${c2[1]}, ${c2[2]}, ${alpha * 1.35})`);
-                radGrad.addColorStop(0.45, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.9})`);
-                radGrad.addColorStop(0.80, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.3})`);
+                // Multi-Stop Ultra-Soft Silk Gaussian Diffusion
+                radGrad.addColorStop(0, `rgba(${c2[0]}, ${c2[1]}, ${c2[2]}, ${alpha * 1.25})`);
+                radGrad.addColorStop(0.25, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.95})`);
+                radGrad.addColorStop(0.55, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.55})`);
+                radGrad.addColorStop(0.80, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.20})`);
                 radGrad.addColorStop(1, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, 0)`);
 
                 ctx.fillStyle = radGrad;
                 ctx.arc(this.drawX, this.drawY, this.radius, 0, Math.PI * 2);
                 ctx.fill();
-
-                // Playful Inner Specular Light Glint
-                if (this.type !== 'small') {
-                    ctx.beginPath();
-                    const highlightGrad = ctx.createRadialGradient(
-                        this.drawX - this.radius * 0.35,
-                        this.drawY - this.radius * 0.35,
-                        0,
-                        this.drawX - this.radius * 0.35,
-                        this.drawY - this.radius * 0.35,
-                        this.radius * 0.4
-                    );
-                    highlightGrad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.95})`);
-                    highlightGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                    ctx.fillStyle = highlightGrad;
-                    ctx.arc(this.drawX - this.radius * 0.35, this.drawY - this.radius * 0.35, this.radius * 0.4, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-
                 ctx.restore();
             }
         }
 
         // Initialize Bubble Group
         const bubbles = [
-            ...Array.from({ length: 6 }, () => new GradientBubble('hero')),
-            ...Array.from({ length: 9 }, () => new GradientBubble('medium')),
-            ...Array.from({ length: 12 }, () => new GradientBubble('small'))
+            ...Array.from({ length: 5 }, () => new GradientBubble('hero')),
+            ...Array.from({ length: 7 }, () => new GradientBubble('medium')),
+            ...Array.from({ length: 8 }, () => new GradientBubble('small'))
         ];
 
         let animationFrameId;

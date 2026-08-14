@@ -37,15 +37,20 @@ html, body {
     overflow: hidden;
 }
 
-/* Interactive Ambient Gradient Canvas Background (Light Theme) */
+/* Interactive Ambient Gradient Canvas Background (Ultra-Soft Glowing Silk Aurora Mesh) */
 #ambient-canvas {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: -100px;
+    left: -100px;
+    width: calc(100vw + 200px);
+    height: calc(100vh + 200px);
     pointer-events: none;
     z-index: 0;
+    filter: blur(90px) saturate(160%);
+    -webkit-filter: blur(90px) saturate(160%);
+    transform: translate3d(0, 0, 0);
+    will-change: filter, transform;
+    opacity: 0.88;
 }
 
 /* App Viewport */
