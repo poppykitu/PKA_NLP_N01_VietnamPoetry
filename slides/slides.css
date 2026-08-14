@@ -401,21 +401,31 @@ h2.section-headline {
     justify-content: space-between;
 }
 
-/* GENERAL DIRECTIONAL REVEAL CLASSES */
-.blur-reveal { opacity: 0; filter: blur(12px); transform: translateY(12px); will-change: opacity, filter, transform; transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+/* GENERAL DIRECTIONAL REVEAL CLASSES WITH BLUR-TO-SHARP & STAGGERED RIPPLE WAVES */
+.blur-reveal { opacity: 0; filter: blur(16px); transform: translateY(16px); will-change: opacity, filter, transform; transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1); }
 .active .blur-reveal { opacity: 1; filter: blur(0px); transform: translateY(0); }
 
-.stagger-from-top { opacity: 0; filter: blur(12px); transform: translateY(-30px); will-change: opacity, filter, transform; transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
-.stagger-from-left { opacity: 0; filter: blur(12px); transform: translateX(-45px); will-change: opacity, filter, transform; transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
-.stagger-from-right { opacity: 0; filter: blur(12px); transform: translateX(45px); will-change: opacity, filter, transform; transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
-.stagger-from-bottom { opacity: 0; filter: blur(12px); transform: translateY(45px); will-change: opacity, filter, transform; transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
-.stagger-zoom-pop { opacity: 0; filter: blur(12px); transform: scale(0.8); will-change: opacity, filter, transform; transition: all 0.65s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.stagger-from-top { opacity: 0; filter: blur(16px); transform: translateY(-38px); will-change: opacity, filter, transform; transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-from-left { opacity: 0; filter: blur(16px); transform: translateX(-55px); will-change: opacity, filter, transform; transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-from-right { opacity: 0; filter: blur(16px); transform: translateX(55px); will-change: opacity, filter, transform; transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-from-bottom { opacity: 0; filter: blur(16px); transform: translateY(55px); will-change: opacity, filter, transform; transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.stagger-zoom-pop { opacity: 0; filter: blur(16px); transform: scale(0.8); will-change: opacity, filter, transform; transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
 
 .active .stagger-from-top,
 .active .stagger-from-left,
 .active .stagger-from-right,
 .active .stagger-from-bottom { opacity: 1; filter: blur(0px); transform: translate(0, 0); }
 .active .stagger-zoom-pop { opacity: 1; filter: blur(0px); transform: scale(1); }
+
+/* Sequential Stagger Delays (Wave Ripple Easing) */
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.18s; }
+.delay-3 { transition-delay: 0.28s; }
+.delay-4 { transition-delay: 0.38s; }
+.delay-5 { transition-delay: 0.48s; }
+.delay-6 { transition-delay: 0.58s; }
+.delay-7 { transition-delay: 0.68s; }
+.delay-8 { transition-delay: 0.78s; }
 
 /* Interactive Web UI & CLI Terminal Playground Styles (Slide 23) - Fixed Pre-Reserved Dimensions */
 .demo-window {
@@ -582,4 +592,52 @@ h2.section-headline {
     border-radius: 50%;
     background-color: var(--g-blue);
     animation: ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* STAGGERED BLUR-TO-SHARP RIPPLE WAVE SYSTEM (POEM & CARDS) */
+@keyframes stagger-wave-blur-in {
+    0% {
+        opacity: 0;
+        filter: blur(14px);
+        transform: translateY(20px) scale(0.96);
+    }
+    60% {
+        filter: blur(3px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0px) scale(1);
+    }
+}
+
+.stagger-poem-row {
+    opacity: 0;
+    will-change: opacity, filter, transform;
+    animation: stagger-wave-blur-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.stagger-wave-1 { animation-delay: 0.08s; }
+.stagger-wave-2 { animation-delay: 0.22s; }
+.stagger-wave-3 { animation-delay: 0.36s; }
+.stagger-wave-4 { animation-delay: 0.50s; }
+.stagger-wave-5 { animation-delay: 0.64s; }
+
+/* CLI Terminal Line Blur Stagger Stream */
+@keyframes cli-stream-blur {
+    0% {
+        opacity: 0;
+        filter: blur(8px);
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0);
+    }
+}
+
+.cli-stream-line {
+    will-change: opacity, filter, transform;
+    animation: cli-stream-blur 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

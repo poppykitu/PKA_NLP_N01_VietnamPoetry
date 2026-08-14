@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function appendCliLine(text, type = 'info') {
             const div = document.createElement('div');
-            div.className = `cli-line-${type} mb-1.5`;
+            div.className = `cli-line-${type} cli-stream-line mb-1.5`;
             const timestamp = new Date().toLocaleTimeString();
             div.innerHTML = `<span class="text-slate-500">[${timestamp}]</span> ${text.replace(/\n/g, '<br>')}`;
             cliBody.appendChild(div);
@@ -184,10 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-gred pl-3">
                             ${rawLines.map((l, idx) => {
                                 const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '';
-                                return `${indent}${l}`;
-                            }).join('<br>')}
+                                return `<div class="stagger-poem-row stagger-wave-${idx + 1}">${indent}${l}</div>`;
+                            }).join('')}
                         </div>
-                        <div class="text-gred text-xs font-black mt-2 uppercase tracking-wide">
+                        <div class="stagger-badge-pop text-gred text-xs font-black mt-2 uppercase tracking-wide">
                             [PA 1: PURE FINE-TUNING] VI PHẠM LUẬT THƠ (${rawEval.errors.length} LỖI) • THIẾU RULE ENGINE
                         </div>
                     `;
@@ -197,10 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-amber-500 pl-3">
                             ${rawLines.map((l, idx) => {
                                 const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '';
-                                return `${indent}${l}`;
-                            }).join('<br>')}
+                                return `<div class="stagger-poem-row stagger-wave-${idx + 1}">${indent}${l}</div>`;
+                            }).join('')}
                         </div>
-                        <div class="text-amber-700 text-xs font-black mt-2 uppercase tracking-wide">
+                        <div class="stagger-badge-pop text-amber-700 text-xs font-black mt-2 uppercase tracking-wide">
                             [PA 1: DEEPSEEK-R1-7B] PURE LLM GENERATION (${latency}S)
                         </div>
                     `;
@@ -259,10 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-amber-500 pl-3">
                         ${poemLines.map((l, idx) => {
                             const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '';
-                            return `${indent}${l}`;
-                        }).join('<br>')}
+                            return `<div class="stagger-poem-row stagger-wave-${idx + 1}">${indent}${l}</div>`;
+                        }).join('')}
                     </div>
-                    <div class="text-amber-700 text-xs font-black mt-2 uppercase tracking-wide">
+                    <div class="stagger-badge-pop text-amber-700 text-xs font-black mt-2 uppercase tracking-wide">
                         [PA 2: STATISTICAL N-GRAM] 100% ĐÚNG LUẬT • 14.2% TRÙNG N-GRAM CŨ (JACCARD = 0.42)
                     </div>
                 `;
@@ -406,10 +406,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-ggreen pl-3">
                         ${repairedLines.map((l, idx) => {
                             const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '';
-                            return `${indent}${l}`;
-                        }).join('<br>')}
+                            return `<div class="stagger-poem-row stagger-wave-${idx + 1}">${indent}${l}</div>`;
+                        }).join('')}
                     </div>
-                    <div class="text-ggreen text-xs font-black mt-2 uppercase tracking-wide">
+                    <div class="stagger-badge-pop text-ggreen text-xs font-black mt-2 uppercase tracking-wide">
                         [SOTA NEURO-SYMBOLIC] 100% CHUẨN LUẬT LỤC BÁT • 0.0% OVERFITTING
                     </div>
                 `;
