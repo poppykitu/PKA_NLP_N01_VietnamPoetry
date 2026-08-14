@@ -32,7 +32,7 @@
     </script>
 
     <!-- Borderless Editorial Stylesheet -->
-    <link rel="stylesheet" href="slides.css?v=4.8">
+    <link rel="stylesheet" href="slides.css?v=4.9">
 
     <!-- Highlight.js GitHub Light Theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
@@ -82,8 +82,8 @@
                     <div class="mb-4 stagger-from-top delay-1">
                         <span class="badge-tag tag-blue text-base px-6 py-2.5">BÁO CÁO ĐỒ ÁN MÔN HỌC NLP</span>
                     </div>
-                    <h1 class="hero-headline mb-6 text-slate-900 stagger-zoom-pop delay-2">HỆ THỐNG SINH THƠ LỤC BÁT
-                        TIẾNG VIỆT ĐA PHƯƠNG ÁN</h1>
+                    <h1 class="hero-headline mb-6 text-slate-900 stagger-zoom-pop delay-2">HỆ THỐNG MÔ HÌNH SINH THƠ LỤC
+                        BÁT TIẾNG VIỆT</h1>
                     <p
                         class="text-slate-800 text-3xl font-extrabold max-w-5xl mx-auto mb-10 stagger-from-bottom delay-3">
                         Từ Fine-Tuning/Chưng Cất Mô Hình, Thống Kê Rule Engine Đến Neuro-Symbolic Hybrid AI
@@ -273,7 +273,8 @@
                             <h3 class="text-gblue text-3.5xl font-black mb-4">Thống Kê Dữ Liệu Quy Mô Lớn</h3>
                             <ul class="editorial-list">
                                 <li><span class="text-slate-900 font-black">84.686 bài thơ Lục Bát:</span> Dataset
-                                    <code>phamson02/vietnamese-poetry-corpus</code>.</li>
+                                    <code>phamson02/vietnamese-poetry-corpus</code>.
+                                </li>
                                 <li><span class="text-slate-900 font-black">286.206 câu thơ:</span> Phân tách câu Lục
                                     (6) và câu Bát (8).</li>
                                 <li><span class="text-slate-900 font-black">3.401.833 âm tiết:</span> Huấn luyện ma trận
@@ -290,31 +291,38 @@
             <!-- SLIDE 6: N-Gram Core Theory (NEW CORE KNOWLEDGE) -->
             <section class="kinetic-slide" id="slide-6">
                 <div class="content-max text-left">
-                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">N-GRAM LANGUAGE MODEL: CỐT LÕI MÔ HÌNH THỐNG KÊ</h2>
-                    
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">N-GRAM LANGUAGE MODEL: CỐT LÕI
+                        MÔ HÌNH THỐNG KÊ</h2>
+
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-2">
-                        
+
                         <!-- Cột Trái: Lý Thuyết & Công Thức Chuỗi -->
                         <div class="editorial-column stagger-from-left delay-2 space-y-4">
                             <span class="badge-tag tag-blue mb-1">MÔ HÌNH XÁC SUẤT N-GRAM</span>
                             <h3 class="text-gblue text-3xl font-black mb-3">Nền Tảng Thống Kê Thi Ca</h3>
 
                             <!-- Card 1: Giả Thuyết Markov -->
-                            <div class="p-4 bg-white/90 backdrop-blur-md rounded-2xl border-2 border-slate-200 shadow-sm">
+                            <div
+                                class="p-4 bg-white/90 backdrop-blur-md rounded-2xl border-2 border-slate-200 shadow-sm">
                                 <div class="flex items-center gap-2 mb-1.5">
                                     <span class="w-3 h-3 rounded-full bg-gblue"></span>
-                                    <span class="font-black text-slate-900 text-lg uppercase tracking-wide">Giả Thiết Markov (Markov Assumption)</span>
+                                    <span class="font-black text-slate-900 text-lg uppercase tracking-wide">Giả Thiết
+                                        Markov (Markov Assumption)</span>
                                 </div>
                                 <p class="text-slate-700 font-bold text-base leading-relaxed pl-5">
-                                    Xác suất một âm tiết $w_i$ xuất hiện trong câu thơ chỉ phụ thuộc vào <strong class="text-gblue">$n-1$</strong> từ đứng ngay trước nó, thay vì toàn bộ lịch sử câu.
+                                    Xác suất một âm tiết $w_i$ xuất hiện trong câu thơ chỉ phụ thuộc vào <strong
+                                        class="text-gblue">$n-1$</strong> từ đứng ngay trước nó, thay vì toàn bộ lịch sử
+                                    câu.
                                 </p>
                             </div>
 
                             <!-- Card 2: Công Thức Chuỗi -->
-                            <div class="p-4 bg-blue-50/80 backdrop-blur-md rounded-2xl border-2 border-blue-200 shadow-sm">
+                            <div
+                                class="p-4 bg-blue-50/80 backdrop-blur-md rounded-2xl border-2 border-blue-200 shadow-sm">
                                 <div class="flex items-center gap-2 mb-1">
                                     <span class="w-3 h-3 rounded-full bg-blue-600"></span>
-                                    <span class="font-black text-blue-950 text-lg uppercase tracking-wide">Xác Suất Chuỗi Câu Thơ Lục Bát</span>
+                                    <span class="font-black text-blue-950 text-lg uppercase tracking-wide">Xác Suất
+                                        Chuỗi Câu Thơ Lục Bát</span>
                                 </div>
                                 <div class="text-center py-2 text-xl font-bold text-slate-900 overflow-x-auto">
                                     $$P(w_1, w_2, \dots, w_N) = \prod_{i=1}^N P(w_i \mid w_{i-n+1}^{i-1})$$
@@ -322,14 +330,18 @@
                             </div>
 
                             <!-- Card 3: Ứng Dụng Kép -->
-                            <div class="p-4 bg-emerald-50/80 backdrop-blur-md rounded-2xl border-2 border-emerald-200 shadow-sm">
+                            <div
+                                class="p-4 bg-emerald-50/80 backdrop-blur-md rounded-2xl border-2 border-emerald-200 shadow-sm">
                                 <div class="flex items-center gap-2 mb-1.5">
                                     <span class="w-3 h-3 rounded-full bg-ggreen"></span>
-                                    <span class="font-black text-emerald-950 text-lg uppercase tracking-wide">Ứng Dụng Thực Tiễn Trong Đồ Án</span>
+                                    <span class="font-black text-emerald-950 text-lg uppercase tracking-wide">Ứng Dụng
+                                        Thực Tiễn Trong Đồ Án</span>
                                 </div>
                                 <ul class="list-disc list-inside text-slate-700 font-bold text-base space-y-1 pl-2">
-                                    <li><strong class="text-emerald-900">Phương Án 2:</strong> Dẫn đường cho thuật toán Beam Search sinh câu mới.</li>
-                                    <li><strong class="text-emerald-900">Phương Án 3:</strong> Cung cấp kho 3.4M Bigram cho Symbolic Rule Repair Engine.</li>
+                                    <li><strong class="text-emerald-900">Phương Án 2:</strong> Dẫn đường cho thuật toán
+                                        Beam Search sinh câu mới.</li>
+                                    <li><strong class="text-emerald-900">Phương Án 3:</strong> Cung cấp kho 3.4M Bigram
+                                        cho Symbolic Rule Repair Engine.</li>
                                 </ul>
                             </div>
                         </div>
@@ -340,10 +352,14 @@
                             <h3 class="text-amber-800 text-3xl font-black mb-3">Minh Họa 1-Gram, 2-Gram & 3-Gram</h3>
 
                             <!-- Unigram Card -->
-                            <div class="p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border-2 border-amber-200 shadow-sm">
+                            <div
+                                class="p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border-2 border-amber-200 shadow-sm">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="font-black text-amber-900 text-base uppercase">1. Unigram (1-Gram) • Tần Suất Từ Đơn</span>
-                                    <span class="text-xs font-black px-2.5 py-0.5 bg-amber-100 text-amber-800 rounded-full">Ví dụ: "nắng"</span>
+                                    <span class="font-black text-amber-900 text-base uppercase">1. Unigram (1-Gram) •
+                                        Tần Suất Từ Đơn</span>
+                                    <span
+                                        class="text-xs font-black px-2.5 py-0.5 bg-amber-100 text-amber-800 rounded-full">Ví
+                                        dụ: "nắng"</span>
                                 </div>
                                 <div class="text-slate-900 font-bold text-base text-center py-1">
                                     $$P(\text{"nắng"}) = \frac{\text{Count}(\text{"nắng"})}{N_{\text{tổng}}}$$
@@ -351,24 +367,34 @@
                             </div>
 
                             <!-- Bigram Card -->
-                            <div class="p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border-2 border-amber-300 shadow-sm">
+                            <div
+                                class="p-3.5 bg-white/95 backdrop-blur-md rounded-2xl border-2 border-amber-300 shadow-sm">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="font-black text-amber-900 text-base uppercase">2. Bigram (2-Gram) • Cặp Từ Liền Kề</span>
-                                    <span class="text-xs font-black px-2.5 py-0.5 bg-amber-200 text-amber-900 rounded-full">Ví dụ: "nắng vàng"</span>
+                                    <span class="font-black text-amber-900 text-base uppercase">2. Bigram (2-Gram) • Cặp
+                                        Từ Liền Kề</span>
+                                    <span
+                                        class="text-xs font-black px-2.5 py-0.5 bg-amber-200 text-amber-900 rounded-full">Ví
+                                        dụ: "nắng vàng"</span>
                                 </div>
                                 <div class="text-slate-900 font-bold text-base text-center py-1">
-                                    $$P(\text{"vàng"} \mid \text{"nắng"}) = \frac{\text{Count}(\text{"nắng vàng"})}{\text{Count}(\text{"nắng"})}$$
+                                    $$P(\text{"vàng"} \mid \text{"nắng"}) = \frac{\text{Count}(\text{"nắng
+                                    vàng"})}{\text{Count}(\text{"nắng"})}$$
                                 </div>
                             </div>
 
                             <!-- Trigram Card -->
-                            <div class="p-3.5 bg-amber-50/90 backdrop-blur-md rounded-2xl border-2 border-amber-400 shadow-md">
+                            <div
+                                class="p-3.5 bg-amber-50/90 backdrop-blur-md rounded-2xl border-2 border-amber-400 shadow-md">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="font-black text-amber-950 text-base uppercase">3. Trigram (3-Gram) • Ngữ Cảnh 3 Từ (PA 2 Core)</span>
-                                    <span class="text-xs font-black px-2.5 py-0.5 bg-amber-500 text-white rounded-full">Ví dụ: "nắng vàng rơi"</span>
+                                    <span class="font-black text-amber-950 text-base uppercase">3. Trigram (3-Gram) •
+                                        Ngữ Cảnh 3 Từ (PA 2 Core)</span>
+                                    <span
+                                        class="text-xs font-black px-2.5 py-0.5 bg-amber-500 text-white rounded-full">Ví
+                                        dụ: "nắng vàng rơi"</span>
                                 </div>
                                 <div class="text-slate-900 font-bold text-base text-center py-1">
-                                    $$P(\text{"rơi"} \mid \text{"nắng"}, \text{"vàng"}) = \frac{\text{Count}(\text{"nắng vàng rơi"})}{\text{Count}(\text{"nắng vàng"})}$$
+                                    $$P(\text{"rơi"} \mid \text{"nắng"}, \text{"vàng"}) = \frac{\text{Count}(\text{"nắng
+                                    vàng rơi"})}{\text{Count}(\text{"nắng vàng"})}$$
                                 </div>
                             </div>
                         </div>
@@ -619,7 +645,8 @@ for candidate, count in followers:
                                 <li class="stagger-from-left delay-4">Host mô hình <code>google/gemma-4-12b-qat</code>
                                     trên <strong>LM Studio Server</strong>.</li>
                                 <li class="stagger-from-left delay-5">Endpoint:
-                                    <code>http://127.0.0.1:1234/v1/chat/completions</code>.</li>
+                                    <code>http://127.0.0.1:1234/v1/chat/completions</code>.
+                                </li>
                                 <li class="stagger-from-left delay-6">Giao tiếp qua HTTP REST API.</li>
                             </ul>
                         </div>
@@ -681,18 +708,21 @@ for candidate, count in followers:
                             </h3>
                             <p class="text-2xl text-slate-900 font-extrabold stagger-from-left delay-4">Đặt
                                 <code>max_tokens: 300</code> làm LM Studio API trả về chuỗi JSON rỗng hoặc lỗi parse
-                                JSON.</p>
+                                JSON.
+                            </p>
                             <p class="text-xl text-slate-700 mt-3 font-bold stagger-from-left delay-5"><strong>Nguyên
                                     nhân:</strong> Gemma-4-12B sinh các reasoning tokens vào
                                 <code>reasoning_content</code> trước khi xuất kết quả. Ngân sách 300 tokens bị tiêu tốn
-                                hết trước khi kịp xuất JSON.</p>
+                                hết trước khi kịp xuất JSON.
+                            </p>
                         </div>
                         <div class="editorial-column column-green stagger-from-right delay-3">
                             <h3 class="text-ggreen text-3.5xl font-black mb-3 stagger-from-right delay-4">Biện Pháp Khắc
                                 Phục</h3>
                             <p class="text-2xl text-slate-900 font-extrabold stagger-from-right delay-5">Loại bỏ hoàn
                                 toàn tham số <code>max_tokens</code> khỏi HTTP Payload trong
-                                <code>hybrid_llm_generator.py</code>.</p>
+                                <code>hybrid_llm_generator.py</code>.
+                            </p>
                             <p class="text-xl text-ggreen font-black mt-3 stagger-from-right delay-6"><strong>Kết
                                     quả:</strong> LLM tự do suy luận và xuất mảng JSON 4 câu thơ trọn vẹn 100% thành
                                 công!</p>
@@ -741,7 +771,8 @@ for candidate, count in followers:
                             </p>
                             <p class="text-xl text-gblue font-black mt-4 stagger-from-left delay-5">✓ Giải pháp:
                                 <code>POETIC_SYNONYM_MAP</code> đổi <em>mắt</em> $\rightarrow$ <strong>mi</strong>
-                                (<em>"Đôi mi"</em>).</p>
+                                (<em>"Đôi mi"</em>).
+                            </p>
                         </div>
                         <div class="editorial-column column-red stagger-from-right delay-3">
                             <h4 class="text-gred font-black text-3xl mb-3 stagger-from-right delay-4">Vấn Đề 4: Phá Vỡ
@@ -750,7 +781,8 @@ for candidate, count in followers:
                                 trí làm vỡ từ ở giữa (<em>"tròn"</em>) thành <em>"Đôi ta tròn lại"</em>.</p>
                             <p class="text-xl text-gblue font-black mt-4 stagger-from-right delay-6">✓ Giải pháp:
                                 <code>repair_phrase_chunk</code> bảo tồn từ <em>tròn</em> thành <strong>"Đôi mi tròn
-                                    biếc"</strong>.</p>
+                                    biếc"</strong>.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -774,7 +806,8 @@ for candidate, count in followers:
                                 Candidate</h3>
                             <p class="text-xl text-slate-800 font-bold stagger-from-right delay-5">Băn khoăn: Giữ từ
                                 <em>"tròn"</em> (<em>"Đôi mi tròn biếc"</em> - Điểm 28) hay Bỏ <em>"tròn"</em> thay cụm
-                                mới?</p>
+                                mới?
+                            </p>
                             <p class="text-2xl text-ggreen font-black mt-4 stagger-from-right delay-6"><strong>Tự động
                                     quyết định:</strong> Cụm <code>"Đôi hàng mi nhỏ"</code> đạt điểm tần suất
                                 <strong>217</strong> (Phổ biến gấp 7.7 lần!). Thuật toán
@@ -917,24 +950,31 @@ for candidate, count in followers:
             <!-- SLIDE 23: Live Interactive Demo Playground -->
             <section class="kinetic-slide" id="slide-23">
                 <div class="content-max text-left">
-                    <h2 class="section-headline text-slate-900 mb-3 stagger-from-top delay-1">DEMO TRỰC TIẾP: WEB UI & CLI TERMINAL SIMULATOR</h2>
+                    <h2 class="section-headline text-slate-900 mb-3 stagger-from-top delay-1">DEMO TRỰC TIẾP: WEB UI &
+                        CLI TERMINAL SIMULATOR</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mt-1">
 
                         <!-- Left: Interactive Web UI Generator -->
                         <div class="demo-window stagger-from-left delay-2">
                             <div>
                                 <div class="mb-3">
-                                    <label class="block text-slate-800 font-extrabold text-base mb-1">Chủ Đề / Prompt Hạt Nhân:</label>
+                                    <label class="block text-slate-800 font-extrabold text-base mb-1">Chủ Đề / Prompt
+                                        Hạt Nhân:</label>
                                     <input type="text" id="demo-prompt-input" value="con mèo"
                                         class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-300 font-bold text-slate-900 text-lg focus:border-gblue focus:outline-none bg-white shadow-sm">
                                 </div>
 
                                 <div class="mb-4">
-                                    <label class="block text-slate-800 font-extrabold text-base mb-1">Chọn Phương Án Mô Hình:</label>
-                                    <select id="demo-approach-select" class="w-full px-4 py-2.5 custom-select text-base">
-                                        <option value="pa3">Phương Án 3: Neuro-Symbolic Hybrid (Gemma 4 e2b + Repair Engine)</option>
-                                        <option value="pa2">Phương Án 2: Statistical N-Gram (Kneser-Ney + Beam Search)</option>
-                                        <option value="pa1">Phương Án 1: Fine-Tuning DeepSeek R1 7B (poem-deepseek-r1-7b)</option>
+                                    <label class="block text-slate-800 font-extrabold text-base mb-1">Chọn Phương Án Mô
+                                        Hình:</label>
+                                    <select id="demo-approach-select"
+                                        class="w-full px-4 py-2.5 custom-select text-base">
+                                        <option value="pa3">Phương Án 3: Neuro-Symbolic Hybrid (Gemma 4 e2b + Repair
+                                            Engine)</option>
+                                        <option value="pa2">Phương Án 2: Statistical N-Gram (Kneser-Ney + Beam Search)
+                                        </option>
+                                        <option value="pa1">Phương Án 1: Fine-Tuning DeepSeek R1 7B
+                                            (poem-deepseek-r1-7b)</option>
                                     </select>
                                 </div>
 
@@ -945,7 +985,8 @@ for candidate, count in followers:
                             </div>
 
                             <!-- Web UI Result Box (Pre-reserved Fixed Height 180px) -->
-                            <div class="mt-4 p-4 bg-slate-50 rounded-xl border-2 border-slate-200 demo-output-box" id="webui-output">
+                            <div class="mt-4 p-4 bg-slate-50 rounded-xl border-2 border-slate-200 demo-output-box"
+                                id="webui-output">
                                 <div class="text-slate-500 font-bold text-base italic text-center">
                                     Nhấn "SINH THƠ LỤC BÁT NGAY" để chạy thử nghiệm trực tiếp
                                 </div>
@@ -960,7 +1001,8 @@ for candidate, count in followers:
                                     <span class="cli-dot dot-yellow"></span>
                                     <span class="cli-dot dot-green"></span>
                                 </div>
-                                <span class="text-slate-400 font-mono text-xs font-bold">pka_nlp_engine_cli_v3.4.py</span>
+                                <span
+                                    class="text-slate-400 font-mono text-xs font-bold">pka_nlp_engine_cli_v3.4.py</span>
                             </div>
                             <div class="cli-body" id="cli-body">
                                 <div class="cli-line-info">[SYSTEM READY] PKA NLP Engine v3.4 Loaded successfully.</div>
@@ -1021,7 +1063,7 @@ for candidate, count in followers:
     </div>
 
     <!-- Engine JS -->
-    <script src="slides.js?v=4.8"></script>
+    <script src="slides.js?v=4.9"></script>
 
 </body>
 

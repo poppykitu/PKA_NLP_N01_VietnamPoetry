@@ -733,16 +733,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (this.type === 'hero') {
                     this.baseRadius = Math.random() * 200 + 380; // 380 - 580px (Ultra-large soft clouds)
-                    this.speed = Math.random() * 0.25 + 0.15;
+                    this.speed = Math.random() * 0.7 + 0.5;      // 2.5x Faster organic drift
                     this.alphaMult = 1.0;
                 } else if (this.type === 'medium') {
                     this.baseRadius = Math.random() * 120 + 240; // 240 - 360px
-                    this.speed = Math.random() * 0.35 + 0.25;
+                    this.speed = Math.random() * 1.0 + 0.8;      // 2.8x Faster drift
                     this.alphaMult = 0.85;
                 } else {
                     // Accent flow bubbles
                     this.baseRadius = Math.random() * 80 + 130;  // 130 - 210px
-                    this.speed = Math.random() * 0.5 + 0.35;
+                    this.speed = Math.random() * 1.4 + 1.1;      // 3.0x Faster drift
                     this.alphaMult = 0.75;
                 }
 
@@ -752,19 +752,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseX = this.x;
                 this.baseY = this.y;
 
-                // Organic float velocities
-                this.vx = (Math.random() - 0.5) * this.speed;
-                this.vy = (Math.random() - 0.5) * this.speed;
+                // Organic float velocities (Snappier & More Dynamic)
+                this.vx = (Math.random() - 0.5) * this.speed * 1.4;
+                this.vy = (Math.random() - 0.5) * this.speed * 1.4;
 
-                // Sine wave harmonic offsets
+                // Sine wave harmonic offsets (2.5x Faster Oscillation)
                 this.phaseX = Math.random() * Math.PI * 2;
                 this.phaseY = Math.random() * Math.PI * 2;
                 this.phaseR = Math.random() * Math.PI * 2;
-                this.freqX = Math.random() * 0.0012 + 0.0006;
-                this.freqY = Math.random() * 0.0012 + 0.0006;
-                this.freqR = Math.random() * 0.0015 + 0.0008;
-                this.ampX = Math.random() * 60 + 30;
-                this.ampY = Math.random() * 60 + 30;
+                this.freqX = Math.random() * 0.0032 + 0.0020;
+                this.freqY = Math.random() * 0.0032 + 0.0020;
+                this.freqR = Math.random() * 0.0038 + 0.0024;
+                this.ampX = Math.random() * 85 + 45;
+                this.ampY = Math.random() * 85 + 45;
 
                 // Interactive displacement
                 this.dispX = 0;
@@ -776,31 +776,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.baseX += this.vx;
                 this.baseY += this.vy;
 
-                // Sine wave breathing and floating
+                // Sine wave breathing and floating (Fast dynamic wave)
                 const waveX = Math.sin(time * this.freqX + this.phaseX) * this.ampX;
                 const waveY = Math.cos(time * this.freqY + this.phaseY) * this.ampY;
-                const scalePulse = 1 + Math.sin(time * this.freqR + this.phaseR) * 0.15;
+                const scalePulse = 1 + Math.sin(time * this.freqR + this.phaseR) * 0.18;
                 this.radius = this.baseRadius * scalePulse;
 
                 const currX = this.baseX + waveX + this.dispX;
                 const currY = this.baseY + waveY + this.dispY;
 
-                // Interactive Mouse Reaction (Fluid Soft Repulsion & Elastic Recovery)
+                // Interactive Mouse Reaction (Snappier fluid repulsion & fast recovery)
                 const dx = currX - mouse.x;
                 const dy = currY - mouse.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
-                const interactRadius = this.radius + 220;
+                const interactRadius = this.radius + 240;
 
                 if (dist < interactRadius && dist > 1) {
                     const force = (interactRadius - dist) / interactRadius;
-                    const pushX = (dx / dist) * force * 55;
-                    const pushY = (dy / dist) * force * 55;
-                    this.dispX += (pushX - this.dispX) * 0.06;
-                    this.dispY += (pushY - this.dispY) * 0.06;
+                    const pushX = (dx / dist) * force * 70;
+                    const pushY = (dy / dist) * force * 70;
+                    this.dispX += (pushX - this.dispX) * 0.14;
+                    this.dispY += (pushY - this.dispY) * 0.14;
                 } else {
                     // Smooth elastic return
-                    this.dispX *= 0.95;
-                    this.dispY *= 0.95;
+                    this.dispX *= 0.92;
+                    this.dispY *= 0.92;
                 }
 
                 // Wrap around edges smoothly with wide margin
@@ -853,9 +853,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let animationFrameId;
         function renderGradientBubbles(time) {
-            // Smooth mouse low-pass interpolation
-            mouse.x += (mouse.targetX - mouse.x) * 0.06;
-            mouse.y += (mouse.targetY - mouse.y) * 0.06;
+            // Smooth mouse low-pass interpolation (Snappier reaction)
+            mouse.x += (mouse.targetX - mouse.x) * 0.12;
+            mouse.y += (mouse.targetY - mouse.y) * 0.12;
 
             // Clear with luminous light backdrop
             ctx.clearRect(0, 0, width, height);
