@@ -32,10 +32,10 @@ def safe_print(msg: str):
 class LLMDraftGenerator:
     """
     Tầng 1: LLM Generative Draft Engine (Neuro Stage)
-    - Tích hợp kết nối trực tiếp LM Studio Local AI Server (http://localhost:1234/v1) cho google/gemma-4-12b-qat.
+    - Tích hợp kết nối trực tiếp LM Studio Local AI Server (http://localhost:1234/v1) cho google/gemma-4-e2b.
     - Tự động fallback về bản thảo thử nghiệm nếu chưa mở LM Studio.
     """
-    def __init__(self, api_url: str = "http://127.0.0.1:1234/v1/chat/completions", model_name: str = "google/gemma-4-12b-qat"):
+    def __init__(self, api_url: str = "http://127.0.0.1:1234/v1/chat/completions", model_name: str = "google/gemma-4-e2b"):
         self.api_url = api_url
         self.model_name = model_name
 
