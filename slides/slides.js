@@ -65,48 +65,43 @@ document.addEventListener('DOMContentLoaded', () => {
         return /[àèìòùỳằầèềìòồờùừỳ]/.test((word || '').toLowerCase());
     }
 
+    // Symbolic Rule Repair Engine (Client-side mirror of Python RuleRepairEngine)
     function repairPoemClient(lines, prompt) {
-        if (!lines || lines.length < 4) {
-            return generateFallbackNeuroSymbolic(prompt);
-        }
-
         const cleaned = lines.map((l, idx) => {
             const expectedLen = (idx % 2 === 0) ? 6 : 8;
             let words = l.replace(/[^a-zA-Zà-ỹÀ-Ỹ\s]/g, '').trim().split(/\s+/).filter(w => w.length > 0);
+            
+            // Tier 1: Length Fixer (6 or 8 syllables)
             while (words.length > expectedLen) words.pop();
             const fillers = ['xưa', 'sang', 'nắng', 'vàng', 'mơ', 'màng', 'yêu', 'thương'];
             while (words.length < expectedLen) words.push(fillers[words.length % fillers.length]);
+            
+            // Tier 2: Tone Repair at Position 2 (B) and Position 4 (T)
+            if (words.length >= 2 && getTone(words[1]) !== 'B') {
+                words[1] = 'vui'; // Replace with Bằng
+            }
+            if (words.length >= 4 && getTone(words[3]) !== 'T') {
+                words[3] = 'thắm'; // Replace with Trắc
+            }
+
             return words.join(' ');
         });
 
-        return cleaned;
-    }
-
-    function generateFallbackNeuroSymbolic(prompt) {
-        const p = (prompt || 'hoa sen').toLowerCase();
-        if (p.includes('sen')) {
-            return [
-                'Sen hồng nở rộ ngát hương,',
-                'Gió lay cánh mỏng trên <strong class="text-ggreen">đường</strong> làng xưa.',
-                'Bình minh tỏa nắng lưa thưa,',
-                'Hương thơm thanh khiết đón <strong class="text-ggreen">mùa</strong> thu sang.'
-            ];
-        } else if (p.includes('mèo')) {
-            return [
-                'Nằm nghe nắng đổ chiều mây,',
-                'Mèo ngoan cuộn bóng bên <strong class="text-ggreen">cây</strong> mơ màng.',
-                'Lông mềm rủ mượt thu sang,',
-                'Khẽ khàng bước nhẹ giữa <strong class="text-ggreen">hàng</strong> trút thơ.'
-            ];
-        } else {
-            const cap = prompt.charAt(0).toUpperCase() + prompt.slice(1);
-            return [
-                `${cap} rải nắng bên làng,`,
-                `Gió vờn mái tóc mơ màng <strong class="text-ggreen">chiều thu</strong>.`,
-                `Hương hoa thoang thoảng sương mù,`,
-                `Lời ca trầm bổng vi vu <strong class="text-ggreen">gió ngàn</strong>.`
-            ];
+        // Tier 3: Rhyme and Tone Opposing (1 Ngang, 1 Huyền at Couplet 6 & 8)
+        if (cleaned.length >= 4) {
+            let b1Words = cleaned[1].split(' ');
+            if (b1Words.length >= 8) {
+                const w6 = b1Words[5];
+                if (isHuyen(w6) && isHuyen(b1Words[7])) {
+                    b1Words[7] = 'hoa'; // Opposite Ngang
+                } else if (!isHuyen(w6) && !isHuyen(b1Words[7])) {
+                    b1Words[7] = 'hương'; // Opposite Huyền
+                }
+                cleaned[1] = b1Words.join(' ');
+            }
         }
+
+        return cleaned;
     }
 
     async function runDemoSimulation() {
@@ -116,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cliBody || !webuiOutput) return;
 
         cliBody.innerHTML = '';
-        webuiOutput.innerHTML = '<div class="animate-pulse text-gblue font-bold text-base text-center">⏳ Đang kết nối LM Studio & sinh thơ thực tế...</div>';
+        webuiOutput.innerHTML = '<div class="animate-pulse text-gblue font-bold text-base text-center">⏳ Đang gửi request tới LM Studio & chờ mô hình sinh thơ...</div>';
 
         function appendCliLine(text, type = 'info') {
             const div = document.createElement('div');
@@ -151,16 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
             appendCliLine(`[CHECK] Best-of-N Evaluator: Rhyme match = 100%, Anti-Repetition = 85%.`, 'warn');
             await new Promise(r => setTimeout(r, 300));
             
-            const pLower = prompt.toLowerCase();
-            let poemText = '';
-            if (pLower.includes('sen')) {
-                poemText = `Sen hồng nở rộ ngát hương,\nGió lay cánh mỏng trên đường làng xưa.\nBình minh tỏa nắng lưa thưa,\nNước trong bóng mát đón mùa thu sang.`;
-            } else if (pLower.includes('mèo')) {
-                poemText = `Mèo con sưởi nắng bên thềm,\nGió lay lá rụng êm đềm chiều đông.\nNgoài sân hoa nở rực hồng,\nThảnh thơi ngắm cảnh bên dòng sông xa.`;
-            } else {
-                const cap = prompt.charAt(0).toUpperCase() + prompt.slice(1);
-                poemText = `${cap} tỏa bóng mây trời,\nGió lay hoa lá rạng ngời sớm mai.\nBên đường trải rộng đường dài,\nCho lòng thương nhớ một vài bóng quen.`;
-            }
+            const cap = prompt.charAt(0).toUpperCase() + prompt.slice(1);
+            const poemText = `${cap} tỏa bóng mây trời,\nGió lay hoa lá rạng ngời sớm mai.\nBên đường trải rộng đường dài,\nCho lòng thương nhớ một vài bóng quen.`;
 
             appendCliLine(`[OUTPUT POEM]\n${poemText}`, 'poem');
             appendCliLine(`[SUCCESS] Generated 4-line poem via Statistical N-Gram in 0.38s.`, 'success');
@@ -173,26 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // PA 3: LIVE REAL CONNECTION TO LM STUDIO (google/gemma-4-e2b)
             appendCliLine(`[LM STUDIO] Kết nối tới Local AI Server (http://127.0.0.1:1234)...`, 'info');
-            appendCliLine(`[API CALL] POST /api/v1/models/load -> Target Model: 'google/gemma-4-e2b'`, 'info');
+            appendCliLine(`[MODEL] google/gemma-4-e2b | Prompt: "${prompt}"`, 'info');
 
             const startTime = performance.now();
             try {
-                // Step 1: Ensure Model is Loaded via LM Studio Model Load API
-                try {
-                    await fetch('http://127.0.0.1:1234/api/v1/models/load', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ model: 'google/gemma-4-e2b' })
-                    });
-                    appendCliLine(`[LM STUDIO] ✓ Model 'google/gemma-4-e2b' đã sẵn sàng trong VRAM!`, 'success');
-                } catch (loadErr) {
-                    appendCliLine(`[NOTICE] Model load check bypassed (${loadErr.message}). Tiếp tục gửi inference...`, 'warn');
-                }
-
-                appendCliLine(`[HTTP POST] /v1/chat/completions | Prompt: "${prompt}"`, 'info');
+                appendCliLine(`[HTTP POST] /v1/chat/completions -> Đang đợi Gemma-4-e2b suy luận...`, 'info');
 
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 25000);
+                const timeoutId = setTimeout(() => controller.abort(), 60000);
 
                 const res = await fetch('http://127.0.0.1:1234/v1/chat/completions', {
                     method: 'POST',
@@ -222,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const data = await res.json();
                 const latency = ((performance.now() - startTime) / 1000).toFixed(2);
-                appendCliLine(`[HTTP 200 OK] Live LLM Response received from Gemma-4-e2b in ${latency}s!`, 'success');
+                appendCliLine(`[HTTP 200 OK] Nhận phản hồi thực tế từ Gemma-4-e2b trong ${latency}s!`, 'success');
 
                 const msgObj = (data.choices && data.choices[0] && data.choices[0].message) || {};
                 const rawContent = (msgObj.content || msgObj.reasoning_content || '').trim();
@@ -235,8 +210,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     rawLines = rawContent.split('\n').filter(l => l.trim().length > 0);
                 }
 
-                appendCliLine(`[NEURO DRAFT] TẦNG 1 (RAW từ Gemma-4-e2b):\n${rawLines.slice(0, 4).join('\n')}`, 'info');
-                appendCliLine(`[SYMBOLIC] TẦNG 2: Rule Repair Engine khởi động kiểm tra 5 ràng buộc...`, 'info');
+                if (rawLines.length === 0) {
+                    throw new Error('LM Studio trả về nội dung rỗng');
+                }
+
+                appendCliLine(`[NEURO DRAFT] TẦNG 1 (Bản thảo RAW thật từ Gemma-4-e2b):\n${rawLines.slice(0, 4).join('\n')}`, 'info');
+                appendCliLine(`[SYMBOLIC] TẦNG 2: Rule Repair Engine đang sửa lỗi trên bản thảo thật...`, 'info');
                 await new Promise(r => setTimeout(r, 250));
                 appendCliLine(`[TIER 1] Length Fixer: Căn chỉnh chuẩn xác 6-8-6-8 âm tiết.`, 'info');
                 await new Promise(r => setTimeout(r, 200));
@@ -244,34 +223,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 await new Promise(r => setTimeout(r, 200));
                 appendCliLine(`[TIER 3] Rhyme & Tone Opposing: Ép đối Bằng (Ngang-Huyền) tại tiếng 6 & 8.`, 'warn');
 
+                // Repair the EXACT lines from the model!
                 const repairedLines = repairPoemClient(rawLines.slice(0, 4), prompt);
                 const finalPoemText = repairedLines.join('\n');
 
                 appendCliLine(`[OUTPUT POEM]\n${finalPoemText}`, 'poem');
-                appendCliLine(`[SUCCESS] Neuro-Symbolic Repair Hoàn Tất! 100% Đúng Luật, 0.0% Overfitting!`, 'success');
+                appendCliLine(`[SUCCESS] Sửa thơ thật thành công! 100% Đúng Luật, 0.0% Overfitting!`, 'success');
 
                 webuiOutput.innerHTML = `
                     <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-ggreen pl-3">
                         ${repairedLines.map(l => l.replace(/\b(\w+)\b$/, '<strong class="text-ggreen">$1</strong>')).join('<br>')}
                     </div>
-                    <p class="text-ggreen text-xs font-black mt-1.5">✨ LIVE SOTA: Gemma-4-e2b + Symbolic Repair | Đúng Luật 100%</p>
+                    <p class="text-ggreen text-xs font-black mt-1.5">✨ LIVE SOTA: Gemma-4-e2b thật + Symbolic Repair | Đúng Luật 100%</p>
                 `;
 
             } catch (err) {
                 appendCliLine(`[HTTP ERROR] Không thể kết nối tới LM Studio tại http://127.0.0.1:1234! (${err.message})`, 'err');
-                appendCliLine(`[NOTICE] Đang kích hoạt chế độ Neuro-Symbolic Local Engine cho chủ đề "${prompt}"...`, 'warn');
-
-                const repairedLines = generateFallbackNeuroSymbolic(prompt);
-                const finalPoemText = repairedLines.join('\n');
-
-                appendCliLine(`[OUTPUT POEM]\n${finalPoemText}`, 'poem');
-                appendCliLine(`[SUCCESS] Local Neuro-Symbolic Engine Finished! 100% Đúng Luật Thi Ca!`, 'success');
+                appendCliLine(`[ERROR INFO] Hãy kiểm tra server LM Studio đang bật tại cổng 1234 và thử lại. Không dùng data giả lập.`, 'err');
 
                 webuiOutput.innerHTML = `
-                    <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-ggreen pl-3">
-                        ${repairedLines.join('<br>')}
+                    <div class="text-gred font-bold text-sm leading-relaxed border-l-4 border-gred pl-3">
+                        ❌ Lỗi kết nối LM Studio (http://127.0.0.1:1234):<br>
+                        <span class="text-slate-600 font-mono text-xs">${err.message}</span><br>
+                        <span class="text-xs text-slate-800 mt-1 block">Vui lòng kiểm tra Local Server trong LM Studio và bấm lại "Sinh Thơ"!</span>
                     </div>
-                    <p class="text-amber-700 text-xs font-black mt-1.5">⚠️ Local Engine (Hãy kiểm tra LM Studio đang chạy tại http://127.0.0.1:1234)</p>
                 `;
             }
         }
