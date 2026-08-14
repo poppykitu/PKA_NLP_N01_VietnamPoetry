@@ -165,12 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentSlideIndex > 0) showSlide(currentSlideIndex - 1);
     }
 
-    // Keyboard controls
+    // Keyboard controls (Ignores inputs/textareas and removed Backspace/Enter to prevent typing conflicts)
     window.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'Enter') {
+        if (e.target.closest('input, select, textarea') || e.target.isContentEditable) return;
+
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
             e.preventDefault();
             nextSlide();
-        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
             e.preventDefault();
             prevSlide();
         } else if (e.key === 'Home') {
