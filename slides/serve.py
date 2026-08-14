@@ -88,11 +88,19 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                     # Execute REAL Statistical N-gram Generation
                     poem_words_list = ngram_gen.generate_luc_bat_poem(seed_word=prompt)
                     latency = round(time.time() - t0, 2)
+                    topic_rel = []
+                    try:
+                        t_scores = ngram_gen.lm.get_topic_words(prompt.lower(), top_k=5)
+                        topic_rel = [w for w, _ in sorted(t_scores.items(), key=lambda x: x[1], reverse=True)[:5]]
+                    except Exception:
+                        pass
+
                     response_data = {
                         "status": "success",
                         "approach": "pa2",
                         "latency": latency,
                         "prompt": prompt,
+                        "topic_related": topic_rel,
                         "raw_lines": [" ".join(l) for l in poem_words_list],
                         "repaired_lines": [" ".join(l) for l in poem_words_list],
                         "final_eval": {"valid": True, "errors": []}

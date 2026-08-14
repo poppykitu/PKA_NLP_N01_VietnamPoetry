@@ -169,6 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.status === 'success' && data.repaired_lines && data.repaired_lines.length > 0) {
                         poemLines = data.repaired_lines;
                         latency = data.latency || ((performance.now() - startTime) / 1000).toFixed(2);
+                        if (data.topic_related && data.topic_related.length > 0) {
+                            appendCliLine(`[TOPIC PMI] Khai phá cụm từ liên quan nhất: [${data.topic_related.join(', ')}]`, 'info');
+                            appendCliLine(`[PRONOUN & SENTIMENT LOCK] Kích hoạt khóa đại từ & sắc thái ngữ cảnh nhất quán.`, 'info');
+                        }
                     }
                 }
 
