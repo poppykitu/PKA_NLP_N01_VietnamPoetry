@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const res = await fetch('http://127.0.0.1:1234/v1/chat/completions', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
                     signal: controller.signal,
                     body: JSON.stringify({
                         model: 'google/gemma-4-e2b',
