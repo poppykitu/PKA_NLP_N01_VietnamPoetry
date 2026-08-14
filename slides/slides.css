@@ -417,7 +417,7 @@ h2.section-headline {
 .active .stagger-from-bottom { opacity: 1; filter: blur(0px); transform: translate(0, 0); }
 .active .stagger-zoom-pop { opacity: 1; filter: blur(0px); transform: scale(1); }
 
-/* Interactive Web UI & CLI Terminal Playground Styles (Slide 23) */
+/* Interactive Web UI & CLI Terminal Playground Styles (Slide 23) - Fixed Pre-Reserved Dimensions */
 .demo-window {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(12px);
@@ -425,10 +425,25 @@ h2.section-headline {
     border-radius: 20px;
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
     padding: 22px 24px;
+    height: 480px;
+    min-height: 480px;
     max-height: 480px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+/* Pre-reserved Fixed Output Box (180px) to prevent Cumulative Layout Shift */
+.demo-output-box {
+    height: 180px;
+    min-height: 180px;
+    max-height: 180px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
 }
 
 /* Synchronized Custom Select Dropdown Styling */
@@ -470,7 +485,10 @@ h2.section-headline {
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
     overflow: hidden;
     font-family: var(--font-mono);
+    height: 480px;
+    min-height: 480px;
     max-height: 480px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
@@ -505,9 +523,11 @@ h2.section-headline {
     font-size: 14px;
     line-height: 1.65;
     flex: 1;
-    max-height: 420px;
+    height: calc(480px - 46px);
+    min-height: 0;
     overflow-y: auto;
     scroll-behavior: smooth;
+    box-sizing: border-box;
 }
 
 .cli-line-info { color: #60A5FA; }
