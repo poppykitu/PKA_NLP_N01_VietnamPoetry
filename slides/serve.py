@@ -9,6 +9,16 @@ import time
 
 PORT = 8000
 
+# Set directory paths
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, '..'))
+
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+# Change current working directory to PROJECT_ROOT for pickle/lexicon loading
+os.chdir(PROJECT_ROOT)
+
 # Try importing native Python RuleRepairEngine for highest accuracy
 rule_engine = None
 try:
@@ -19,6 +29,9 @@ except Exception as e:
     print(f"  [INIT] Notice: {e}")
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=CURRENT_DIR, **kwargs)
+
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
@@ -31,7 +44,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
-        # 1. High-Performance Full Neuro-Symbolic Endpoint
+        # High-Performance Full Neuro-Symbolic Endpoint
         if self.path in ['/api/generate', '/api/generate_poem', '/v1/chat/completions']:
             content_length = int(self.headers.get('Content-Length', 0))
             body = self.rfile.read(content_length).decode('utf-8')
@@ -154,13 +167,13 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         super().do_POST()
 
 def run():
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     socketserver.TCPServer.allow_reuse_address = True
     with socketserver.TCPServer(("", PORT), CustomHandler) as httpd:
-        url = f"http://localhost:{PORT}/presentation.html#slide-23"
+        url = f"http://localhost:{PORT}/index.html#slide-23"
         print(f"\n=======================================================")
         print(f"🚀 PKA NLP SLIDES SERVER + LM STUDIO PROXY RUNNING")
         print(f"👉 Mở trình duyệt tại: {url}")
+        print(f"👉 Thư mục Slide:      {CURRENT_DIR}")
         print(f"👉 LM Studio Server:   http://127.0.0.1:1234")
         print(f"👉 Proxy API Endpoint: http://localhost:{PORT}/api/generate")
         print(f"=======================================================\n")
