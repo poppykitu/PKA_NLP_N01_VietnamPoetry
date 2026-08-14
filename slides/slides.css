@@ -31,13 +31,13 @@
 html, body {
     width: 100vw;
     height: 100vh;
-    background-color: var(--bg-main);
+    background-color: #FAFCFF;
     color: var(--text-primary);
     font-family: var(--font-vietnam);
     overflow: hidden;
 }
 
-/* Ambient Canvas Background */
+/* Interactive Ambient Gradient Canvas Background (Light Theme) */
 #ambient-canvas {
     position: fixed;
     top: 0;
@@ -45,7 +45,7 @@ html, body {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
 }
 
 /* App Viewport */
@@ -53,10 +53,23 @@ html, body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    z-index: 10;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    pointer-events: none;
+}
+
+.kinetic-header,
+.kinetic-slide,
+.progress-bar-dock,
+.brand-tag,
+.badge-tag,
+button,
+select,
+input,
+a {
+    pointer-events: auto;
 }
 
 /* Header Bar */

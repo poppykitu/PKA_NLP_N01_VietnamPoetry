@@ -664,63 +664,254 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(0);
 
     // -------------------------------------------------------------------------
-    // AUTOMATIC AMBIENT FLUID PARTICLES CANVAS (60FPS AUTO DRIFT)
+    // INTERACTIVE SMOOTHLY ANIMATED GRADIENT BUBBLES CANVAS (LIGHT THEME)
+    // Playful, dynamic, and visually engaging interactive gradient backdrop
     // -------------------------------------------------------------------------
     const canvas = document.getElementById('ambient-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
 
-        const colors = ['rgba(66, 133, 244, ', 'rgba(234, 67, 53, ', 'rgba(251, 188, 5, ', 'rgba(52, 168, 83, '];
+        // Smooth Mouse Tracking with Low-Pass Damping
+        const mouse = {
+            x: width / 2,
+            y: height / 2,
+            targetX: width / 2,
+            targetY: height / 2,
+            isMoving: false,
+            lastMoveTime: 0
+        };
 
-        class AutoParticle {
-            constructor() {
-                this.reset();
+        window.addEventListener('mousemove', (e) => {
+            mouse.targetX = e.clientX;
+            mouse.targetY = e.clientY;
+            mouse.isMoving = true;
+            mouse.lastMoveTime = Date.now();
+        });
+
+        // Touch support for tablets / touch screens
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                mouse.targetX = e.touches[0].clientX;
+                mouse.targetY = e.touches[0].clientY;
+                mouse.isMoving = true;
+                mouse.lastMoveTime = Date.now();
             }
-            reset() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.radius = Math.random() * 120 + 40;
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = Math.random() * 0.12 + 0.04;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
+        }, { passive: true });
+
+        // Palette presets (Luminous Pastel Gradients tailored for Light Background)
+        const bubblePalettes = [
+            { name: 'Google Blue', c1: [66, 133, 244], c2: [56, 189, 248], alpha: 0.20 },
+            { name: 'Mint Emerald', c1: [52, 168, 83], c2: [74, 222, 128], alpha: 0.18 },
+            { name: 'Radiant Amber', c1: [251, 188, 5], c2: [253, 224, 71], alpha: 0.22 },
+            { name: 'Coral Rose', c1: [234, 67, 53], c2: [251, 113, 133], alpha: 0.16 },
+            { name: 'Lavender Purple', c1: [168, 85, 247], c2: [192, 132, 252], alpha: 0.18 },
+            { name: 'Ocean Turquoise', c1: [14, 165, 233], c2: [45, 212, 191], alpha: 0.18 },
+            { name: 'Sunset Peach', c1: [249, 115, 22], c2: [254, 215, 170], alpha: 0.16 }
+        ];
+
+        class GradientBubble {
+            constructor(type = 'medium') {
+                this.type = type;
+                this.init(true);
             }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < -150 || this.x > width + 150 || this.y < -150 || this.y > height + 150) {
-                    this.reset();
+
+            init(firstTime = false) {
+                this.palette = bubblePalettes[Math.floor(Math.random() * bubblePalettes.length)];
+                
+                if (this.type === 'hero') {
+                    this.baseRadius = Math.random() * 120 + 200; // 200 - 320px
+                    this.speed = Math.random() * 0.3 + 0.2;
+                    this.alphaMult = 1.0;
+                } else if (this.type === 'medium') {
+                    this.baseRadius = Math.random() * 70 + 90;   // 90 - 160px
+                    this.speed = Math.random() * 0.5 + 0.35;
+                    this.alphaMult = 0.85;
+                } else {
+                    // Small / playful floaters
+                    this.baseRadius = Math.random() * 35 + 25;   // 25 - 60px
+                    this.speed = Math.random() * 0.8 + 0.5;
+                    this.alphaMult = 0.75;
+                }
+
+                this.radius = this.baseRadius;
+                this.x = firstTime ? Math.random() * width : (Math.random() > 0.5 ? -this.radius : width + this.radius);
+                this.y = firstTime ? Math.random() * height : Math.random() * height;
+                this.baseX = this.x;
+                this.baseY = this.y;
+
+                // Organic float velocities
+                this.vx = (Math.random() - 0.5) * this.speed;
+                this.vy = (Math.random() - 0.5) * this.speed;
+
+                // Sine wave harmonic offsets
+                this.phaseX = Math.random() * Math.PI * 2;
+                this.phaseY = Math.random() * Math.PI * 2;
+                this.phaseR = Math.random() * Math.PI * 2;
+                this.freqX = Math.random() * 0.0015 + 0.0008;
+                this.freqY = Math.random() * 0.0015 + 0.0008;
+                this.freqR = Math.random() * 0.002 + 0.001;
+                this.ampX = Math.random() * 40 + 20;
+                this.ampY = Math.random() * 40 + 20;
+
+                // Interactive displacement
+                this.dispX = 0;
+                this.dispY = 0;
+            }
+
+            update(time) {
+                // Harmonic natural drifting
+                this.baseX += this.vx;
+                this.baseY += this.vy;
+
+                // Sine wave breathing and floating
+                const waveX = Math.sin(time * this.freqX + this.phaseX) * this.ampX;
+                const waveY = Math.cos(time * this.freqY + this.phaseY) * this.ampY;
+                const scalePulse = 1 + Math.sin(time * this.freqR + this.phaseR) * 0.12;
+                this.radius = this.baseRadius * scalePulse;
+
+                const currX = this.baseX + waveX + this.dispX;
+                const currY = this.baseY + waveY + this.dispY;
+
+                // Interactive Mouse Reaction (Fluid Bubble Repulsion & Elastic Recovery)
+                const dx = currX - mouse.x;
+                const dy = currY - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const interactRadius = this.radius + 180;
+
+                if (dist < interactRadius && dist > 1) {
+                    const force = (interactRadius - dist) / interactRadius;
+                    const pushX = (dx / dist) * force * 45;
+                    const pushY = (dy / dist) * force * 45;
+                    this.dispX += (pushX - this.dispX) * 0.08;
+                    this.dispY += (pushY - this.dispY) * 0.08;
+                } else {
+                    // Smooth elastic return
+                    this.dispX *= 0.94;
+                    this.dispY *= 0.94;
+                }
+
+                // Wrap around edges smoothly
+                const margin = this.radius + 100;
+                if (this.baseX < -margin) this.baseX = width + margin;
+                if (this.baseX > width + margin) this.baseX = -margin;
+                if (this.baseY < -margin) this.baseY = height + margin;
+                if (this.baseY > height + margin) this.baseY = -margin;
+
+                this.drawX = currX;
+                this.drawY = currY;
+            }
+
+            draw() {
+                const c1 = this.palette.c1;
+                const c2 = this.palette.c2;
+                const alpha = this.palette.alpha * this.alphaMult;
+
+                ctx.save();
+                ctx.beginPath();
+                const radGrad = ctx.createRadialGradient(
+                    this.drawX - this.radius * 0.25,
+                    this.drawY - this.radius * 0.25,
+                    this.radius * 0.05,
+                    this.drawX,
+                    this.drawY,
+                    this.radius
+                );
+
+                // Multi-Stop Vibrant Soft Gradient
+                radGrad.addColorStop(0, `rgba(${c2[0]}, ${c2[1]}, ${c2[2]}, ${alpha * 1.35})`);
+                radGrad.addColorStop(0.45, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.9})`);
+                radGrad.addColorStop(0.80, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, ${alpha * 0.3})`);
+                radGrad.addColorStop(1, `rgba(${c1[0]}, ${c1[1]}, ${c1[2]}, 0)`);
+
+                ctx.fillStyle = radGrad;
+                ctx.arc(this.drawX, this.drawY, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Playful Inner Specular Light Glint
+                if (this.type !== 'small') {
+                    ctx.beginPath();
+                    const highlightGrad = ctx.createRadialGradient(
+                        this.drawX - this.radius * 0.35,
+                        this.drawY - this.radius * 0.35,
+                        0,
+                        this.drawX - this.radius * 0.35,
+                        this.drawY - this.radius * 0.35,
+                        this.radius * 0.4
+                    );
+                    highlightGrad.addColorStop(0, `rgba(255, 255, 255, ${alpha * 0.95})`);
+                    highlightGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    ctx.fillStyle = highlightGrad;
+                    ctx.arc(this.drawX - this.radius * 0.35, this.drawY - this.radius * 0.35, this.radius * 0.4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+        }
+
+        // Initialize Bubble Group
+        const bubbles = [
+            ...Array.from({ length: 6 }, () => new GradientBubble('hero')),
+            ...Array.from({ length: 9 }, () => new GradientBubble('medium')),
+            ...Array.from({ length: 12 }, () => new GradientBubble('small'))
+        ];
+
+        let animationFrameId;
+        function renderGradientBubbles(time) {
+            // Smooth mouse low-pass interpolation
+            mouse.x += (mouse.targetX - mouse.x) * 0.06;
+            mouse.y += (mouse.targetY - mouse.y) * 0.06;
+
+            // Clear with luminous light backdrop
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw subtle ambient background wash
+            const bgGrad = ctx.createLinearGradient(0, 0, width, height);
+            bgGrad.addColorStop(0, '#FAFCFF');
+            bgGrad.addColorStop(0.5, '#F8FAFD');
+            bgGrad.addColorStop(1, '#F5F8FC');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, width, height);
+
+            // Draw and update all organic gradient bubbles
+            bubbles.forEach((b) => {
+                b.update(time);
+                b.draw();
+            });
+
+            // Interactive Cursor Ambient Aura (Subtle Soft Glow around cursor)
+            if (mouse.isMoving) {
+                const elapsed = Date.now() - mouse.lastMoveTime;
+                const auraAlpha = Math.max(0, 0.12 * (1 - elapsed / 2500));
+                if (auraAlpha > 0.005) {
+                    ctx.save();
+                    const cursorGrad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 140);
+                    cursorGrad.addColorStop(0, `rgba(66, 133, 244, ${auraAlpha})`);
+                    cursorGrad.addColorStop(0.6, `rgba(168, 85, 247, ${auraAlpha * 0.5})`);
+                    cursorGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                    ctx.fillStyle = cursorGrad;
+                    ctx.beginPath();
+                    ctx.arc(mouse.x, mouse.y, 140, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
                 }
             }
-            draw() {
-                ctx.beginPath();
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
-                gradient.addColorStop(0, this.color + this.alpha + ')');
-                gradient.addColorStop(1, this.color + '0)');
-                ctx.fillStyle = gradient;
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
-            }
+
+            animationFrameId = requestAnimationFrame(renderGradientBubbles);
         }
 
-        const particles = Array.from({ length: 16 }, () => new AutoParticle());
+        animationFrameId = requestAnimationFrame(renderGradientBubbles);
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
+        // Window resize handler with debounce
+        let resizeTimer;
         window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }, 100);
         });
     }
 });
