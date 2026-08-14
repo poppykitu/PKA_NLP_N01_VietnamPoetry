@@ -12,7 +12,6 @@ import json
 import os
 import pickle
 from collections import Counter
-import requests
 import urllib.request
 import urllib.error
 
@@ -58,78 +57,80 @@ class LLMDraftGenerator:
 
         try:
             safe_print(f"  [*] Đang kết nối LM Studio API cho chủ đề '{prompt}'...")
-            res = requests.post(self.api_url, json=payload, timeout=180)
+            req = urllib.request.Request(
+                self.api_url,
+                data=json.dumps(payload).encode('utf-8'),
+                headers=headers
+            )
+            with urllib.request.urlopen(req, timeout=180) as resp:
+                res_data = json.loads(resp.read().decode('utf-8'))
 
-            if res.status_code == 200:
-                res_data = res.json()
-                msg_obj = res_data['choices'][0]['message']
-                
-                # UƯ TIÊN LẤY CONTENT CHÍNH THỨC (Nơi chứa kết quả JSON Schema)
-                raw_text = msg_obj.get('content', '') or ''
-                
-                # Nếu content bị rỗng do model reasoning, mới đọc từ reasoning_content
-                if not raw_text.strip():
-                    raw_text = msg_obj.get('reasoning_content', '') or ''
-                raw_text = raw_text.strip()
+            msg_obj = res_data['choices'][0]['message']
+            
+            # ƯU TIÊN LẤY CONTENT CHÍNH THỨC (Nơi chứa kết quả JSON Schema)
+            raw_text = msg_obj.get('content', '') or ''
+            
+            # Nếu content bị rỗng do model reasoning, mới đọc từ reasoning_content
+            if not raw_text.strip():
+                raw_text = msg_obj.get('reasoning_content', '') or ''
+            raw_text = raw_text.strip()
 
-                safe_print(f"  [LM Studio API Output]:\n{raw_text}\n")
+            safe_print(f"  [LM Studio API Output]:\n{raw_text}\n")
 
-                # Parse JSON Schema trực tiếp từ content
-                try:
-                    match_json = re.search(r'\{.*\}', raw_text, re.DOTALL)
-                    if match_json:
-                        json_obj = json.loads(match_json.group(0))
-                        lines = json_obj.get("poem_lines", [])
-                        poem_words = []
-                        for l in lines:
-                            words = [w.strip(".,!?:;\"'()[]*") for w in l.split() if w.strip()]
-                            words = [w for w in words if w]
-                            if words:
-                                poem_words.append(words)
-                        if len(poem_words) >= 4:
-                            safe_print(f"  [LM Studio JSON Schema API] ✓ Đã nhận mảng 4 câu thơ chuẩn 100% từ JSON Schema cho chủ đề '{prompt}'!")
-                            return poem_words[:4]
-                except Exception as json_err:
-                    safe_print(f"  [Notice] Thử nghiệm JSON parse rỗng/lỗi ({json_err}). Đang bóc tách dòng...")
+            # Parse JSON Schema trực tiếp từ content
+            try:
+                match_json = re.search(r'\{.*\}', raw_text, re.DOTALL)
+                if match_json:
+                    json_obj = json.loads(match_json.group(0))
+                    lines = json_obj.get("poem_lines", [])
+                    poem_words = []
+                    for l in lines:
+                        words = [w.strip(".,!?:;\"'()[]*") for w in l.split() if w.strip()]
+                        words = [w for w in words if w]
+                        if words:
+                            poem_words.append(words)
+                    if len(poem_words) >= 4:
+                        safe_print(f"  [LM Studio JSON Schema API] ✓ Đã nhận mảng 4 câu thơ chuẩn 100% từ JSON Schema cho chủ đề '{prompt}'!")
+                        return poem_words[:4]
+            except Exception as json_err:
+                safe_print(f"  [Notice] Thử nghiệm JSON parse rỗng/lỗi ({json_err}). Đang bóc tách dòng...")
 
-                lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
-                poem_words = []
-                seen_lines = set()
-                for line in lines:
-                    # Bóc tách các câu thơ Tiếng Việt thực sự (loại bỏ chú thích tiếng Anh phía sau)
-                    match_poem = re.search(r'[\*\:\d\(\)\s]*([À-ỹà-ỹA-Za-z\s]+?)(?:\s*\([A-Za-z\s\.,\'-]+\)|\s*-\s*\*|\s*$)', line)
-                    if match_poem:
-                        candidate = match_poem.group(1).strip()
-                        candidate = re.sub(r'^(?:Line\s*\d+|Draft\s*\d+|Revision|\d+|\*|\-|\:|\s)+', '', candidate, flags=re.IGNORECASE).strip()
-                        if any(candidate.lower().startswith(k) for k in ["form", "length", "topic", "constraint", "language", "phase", "critique", "visuals", "emotions", "vietnamese", "shoooting"]):
-                            continue
-                        
-                        words = [w.strip(".,!?:;\"'()[]*") for w in candidate.split() if w.strip()]
-                        # Bắt buộc phải chứa âm tiết Tiếng Việt thực thụ
-                        words = [w for w in words if w and (re.search(r'[à-ỹÀ-ỸđĐ]', w) or len(w) <= 3)]
-                        
-                        if 5 <= len(words) <= 9:
-                            line_str = " ".join(words).lower()
-                            if line_str not in seen_lines:
-                                seen_lines.add(line_str)
-                                poem_words.append(words)
+            lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
+            poem_words = []
+            seen_lines = set()
+            for line in lines:
+                # Bóc tách các câu thơ Tiếng Việt thực sự (loại bỏ chú thích tiếng Anh phía sau)
+                match_poem = re.search(r'[\*\:\d\(\)\s]*([À-ỹà-ỹA-Za-z\s]+?)(?:\s*\([A-Za-z\s\.,\'-]+\)|\s*-\s*\*|\s*$)', line)
+                if match_poem:
+                    candidate = match_poem.group(1).strip()
+                    candidate = re.sub(r'^(?:Line\s*\d+|Draft\s*\d+|Revision|\d+|\*|\-|\:|\s)+', '', candidate, flags=re.IGNORECASE).strip()
+                    if any(candidate.lower().startswith(k) for k in ["form", "length", "topic", "constraint", "language", "phase", "critique", "visuals", "emotions", "vietnamese", "shoooting"]):
+                        continue
+                    
+                    words = [w.strip(".,!?:;\"'()[]*") for w in candidate.split() if w.strip()]
+                    # Bắt buộc phải chứa âm tiết Tiếng Việt thực thụ
+                    words = [w for w in words if w and (re.search(r'[à-ỹÀ-ỸđĐ]', w) or len(w) <= 3)]
+                    
+                    if 5 <= len(words) <= 9:
+                        line_str = " ".join(words).lower()
+                        if line_str not in seen_lines:
+                            seen_lines.add(line_str)
+                            poem_words.append(words)
 
-                if len(poem_words) >= 4:
-                    safe_print(f"  [LM Studio API] ✓ Đã bóc tách đúng {len(poem_words[:4])} câu thơ Lục Bát Tiếng Việt trực tiếp từ '{self.model_name}'!")
-                    return poem_words[:4]
-                elif poem_words:
-                    safe_print(f"  [LM Studio API] ✓ Đã bóc tách {len(poem_words)} câu thơ từ '{self.model_name}'! (Đang bù đủ 4 câu)")
-                    fallback_pool = [
-                        ["sao", "băng", "rơi", "nhẹ", "giữa", "trời"],
-                        ["cho", "ta", "nhớ", "mãi", "những", "ngày", "đã", "qua"],
-                        ["người", "đi", "xa", "vắng", "tin", "nhà"],
-                        ["để", "lòng", "thương", "nhớ", "một", "trời", "yêu", "thương"]
-                    ]
-                    while len(poem_words) < 4:
-                        poem_words.append(fallback_pool[len(poem_words)])
-                    return poem_words[:4]
-            else:
-                safe_print(f"  [LM Studio API Error] HTTP Status {res.status_code}: {res.text[:200]}")
+            if len(poem_words) >= 4:
+                safe_print(f"  [LM Studio API] ✓ Đã bóc tách đúng {len(poem_words[:4])} câu thơ Lục Bát Tiếng Việt trực tiếp từ '{self.model_name}'!")
+                return poem_words[:4]
+            elif poem_words:
+                safe_print(f"  [LM Studio API] ✓ Đã bóc tách {len(poem_words)} câu thơ từ '{self.model_name}'! (Đang bù đủ 4 câu)")
+                fallback_pool = [
+                    ["sao", "băng", "rơi", "nhẹ", "giữa", "trời"],
+                    ["cho", "ta", "nhớ", "mãi", "những", "ngày", "đã", "qua"],
+                    ["người", "đi", "xa", "vắng", "tin", "nhà"],
+                    ["để", "lòng", "thương", "nhớ", "một", "trời", "yêu", "thương"]
+                ]
+                while len(poem_words) < 4:
+                    poem_words.append(fallback_pool[len(poem_words)])
+                return poem_words[:4]
         except Exception as e:
             safe_print(f"  [Notice] Lỗi kết nối LM Studio API ({type(e).__name__}: {e}). Đang dùng bản thảo dự phòng...")
 
