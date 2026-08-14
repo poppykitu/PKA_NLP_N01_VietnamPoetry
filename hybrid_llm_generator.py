@@ -45,7 +45,14 @@ class LLMDraftGenerator:
             "messages": [
                 {
                     "role": "system",
-                    "content": "Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát 4 câu (6-8-6-8 từ) mượt mà, liền mạch, câu chữ giàu cảm xúc. KHÔNG dùng nhiều dấu phẩy ngắt đoạn vụn vặt (không liệt kê dạng 'Lông mướt, mướt mát,'). Trả về duy nhất mảng JSON poem_lines gồm đúng 4 câu thơ Tiếng Việt."
+                    "content": (
+                        "Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát đúng chuẩn 4 câu (6-8-6-8 tiếng) thật giàu hình ảnh, cảm xúc và tự nhiên về chủ đề được yêu cầu:\n"
+                        "- Câu 1 (Lục): Đúng 6 tiếng\n"
+                        "- Câu 2 (Bát): Đúng 8 tiếng\n"
+                        "- Câu 3 (Lục): Đúng 6 tiếng\n"
+                        "- Câu 4 (Bát): Đúng 8 tiếng\n"
+                        "Tuyệt đối đếm đủ số từ 6-8-6-8. Trả về duy nhất mảng JSON: {\"poem_lines\": [\"câu 1 (6 từ)\", \"câu 2 (8 từ)\", \"câu 3 (6 từ)\", \"câu 4 (8 từ)\"]}"
+                    )
                 },
                 {
                     "role": "user",
@@ -297,7 +304,7 @@ class RuleRepairEngine:
 
     def repair_line_length(self, line: list, expected_length: int) -> list:
         """
-        Sửa lỗi độ dài câu: Cắt bớt hư từ nếu thừa chữ, chèn từ đệm nếu thiếu chữ.
+        Sửa lỗi độ dài câu: Cắt bớt hư từ nếu thừa chữ, chèn từ đệm hài hòa nếu thiếu chữ.
         """
         repaired = list(line)
 
@@ -305,17 +312,17 @@ class RuleRepairEngine:
         while len(repaired) > expected_length:
             removed = False
             for i in range(1, len(repaired) - 1):
-                if repaired[i].lower() in ["đâu", "đã", "thì", "mà", "là", "rằng", "hay", "đi", "nhà", "này"]:
+                if repaired[i].lower() in ["đâu", "đã", "thì", "mà", "là", "rằng", "hay", "đi", "nhà", "này", "qua"]:
                     repaired.pop(i)
                     removed = True
                     break
             if not removed:
                 repaired.pop(-2)
 
-        # Nếu thiếu từ: Chèn thêm từ đệm vào vị trí phù hợp
+        # Nếu thiếu từ: Chèn thêm từ đệm/tính từ hài hòa vào trước từ cuối
         while len(repaired) < expected_length:
-            insert_idx = min(2, len(repaired))
-            fill_word = "xưa" if expected_length == 6 else "yêu"
+            insert_idx = max(1, len(repaired) - 1)
+            fill_word = "xinh" if expected_length == 6 else "dịu"
             repaired.insert(insert_idx, fill_word)
 
         return repaired
@@ -528,11 +535,9 @@ class RuleRepairEngine:
 
     def repair_phrase_chunk(self, line: list, pos1: int, pos2: int, target_tone1: str, target_tone2: str) -> list:
         """
-        [SO SÁNH TẦN SUẤT N-GRAM CORPUS CÁC PHƯƠNG ÁN (CORPUS FREQUENCY RANKING ENGINE)]:
-        Hệ thống tự động sinh 2 phương án:
-          - Phương án A (Giữ từ trung gian w_mid 'tròn', sửa tiếng 2 'mắt' -> 'mi' & tiếng 4 'xoe' -> 'biếc')
-          - Phương án B (Thử bỏ/thay cả cụm bằng Cụm Thơ Phổ Biến Hơn trong 3.4M N-gram như 'đôi mi khép nhẹ')
-        Tự động chọn Phương Án có Điểm Tần Suất Thơ Cao Nhất!
+        Sửa lỗi lệch thanh tiếng 2 (Bằng) và tiếng 4 (Trắc) theo ngữ cảnh:
+        - Giữ nguyên 100% các từ của LLM nếu đã đúng thanh.
+        - Chỉ thay thế đúng vị trí từ bị sai thanh bằng từ đồng nghĩa hoặc từ ngữ cảnh tương thích nhất.
         """
         w1_orig = line[pos1].lower() if len(line) > pos1 else ""
         w2_orig = line[pos2].lower() if len(line) > pos2 else ""
@@ -544,45 +549,21 @@ class RuleRepairEngine:
         if w1_valid and w2_valid:
             return line
 
-        repaired_line_a = list(line)
+        repaired_line = list(line)
         w0_prev = line[pos1 - 1].lower() if pos1 > 0 else ""
         w_mid = line[pos1 + 1].lower() if len(line) > pos1 + 1 else ""
 
-        # --- PHƯƠNG ÁN A: GIỮ TỪ TRUNG GIAN w_mid ('tròn') ---
+        # Sửa đúng từ vi phạm tại pos1 nếu sai thanh:
         if not w1_valid:
-            repaired_line_a[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w_mid, target_tone1)
+            repaired_line[pos1] = self.pick_contextual_tone_repair_word(w0_prev, w1_orig, w_mid, target_tone1)
+
+        # Sửa đúng từ vi phạm tại pos2 nếu sai thanh:
         if not w2_valid:
-            prev_for_pos2 = repaired_line_a[pos2 - 1].lower() if pos2 > 0 else ""
-            next_for_pos2 = repaired_line_a[pos2 + 1].lower() if len(repaired_line_a) > pos2 + 1 else ""
-            repaired_line_a[pos2] = self.pick_contextual_tone_repair_word(prev_for_pos2, w2_orig, next_for_pos2, target_tone2)
+            prev_for_pos2 = repaired_line[pos2 - 1].lower() if pos2 > 0 else ""
+            next_for_pos2 = repaired_line[pos2 + 1].lower() if len(repaired_line) > pos2 + 1 else ""
+            repaired_line[pos2] = self.pick_contextual_tone_repair_word(prev_for_pos2, w2_orig, next_for_pos2, target_tone2)
 
-        score_a = self.score_segment_corpus_frequency(repaired_line_a[max(0, pos1-1):min(len(line), pos2+2)])
-
-        # --- PHƯƠNG ÁN B: KHAI PHÁ CỤM THƠ THAY THẾ TOÀN BỘ CỤM 3 TỪ TỪ N-GRAM CORPUS ---
-        best_line_b = None
-        best_score_b = -1
-
-        if w0_prev and w0_prev in self.corpus_bigrams:
-            for c1, count1 in self.corpus_bigrams[w0_prev].most_common(50):
-                if get_tone(c1) == target_tone1 and c1 in self.corpus_bigrams:
-                    for c2, count2 in self.corpus_bigrams[c1].most_common(50):
-                        if c2 in self.corpus_bigrams:
-                            for c3, count3 in self.corpus_bigrams[c2].most_common(50):
-                                if get_tone(c3) == target_tone2 and len(c3) >= 1:
-                                    cand_b = list(line)
-                                    cand_b[pos1] = c1
-                                    cand_b[pos1 + 1] = c2
-                                    cand_b[pos2] = c3
-                                    sc_b = self.score_segment_corpus_frequency(cand_b[max(0, pos1-1):min(len(line), pos2+2)])
-                                    if sc_b > best_score_b:
-                                        best_score_b = sc_b
-                                        best_line_b = cand_b
-
-        # SO SÁNH: Nếu Phương Án B (thay nguyên cụm bỏ 'tròn') phổ biến hơn hẳn trong tập thơ -> Chọn B!
-        if best_line_b and best_score_b > score_a + 5:
-            return best_line_b
-
-        return repaired_line_a
+        return repaired_line
 
     def repair_poem(self, raw_poem: list) -> list:
         """
