@@ -51,13 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function runDemoSimulation() {
-        const prompt = (demoPromptInput ? demoPromptInput.value.trim() : '') || 'Mùa thu sang';
+        const prompt = (demoPromptInput ? demoPromptInput.value.trim() : '') || 'con mèo';
         const approach = demoApproachSelect ? demoApproachSelect.value : 'pa3';
 
         if (!cliBody || !webuiOutput) return;
 
         cliBody.innerHTML = '';
-        webuiOutput.innerHTML = '<div class="animate-pulse text-gblue font-bold text-2xl">⏳ Đang khởi tạo mô hình & sinh thơ...</div>';
+        webuiOutput.innerHTML = '<div class="animate-pulse text-gblue font-bold text-lg text-center">⏳ Đang khởi tạo mô hình & sinh thơ...</div>';
 
         function appendCliLine(text, type = 'info') {
             const div = document.createElement('div');
@@ -71,56 +71,67 @@ document.addEventListener('DOMContentLoaded', () => {
         appendCliLine(`[START] Executive Command: python generate_poetry.py --prompt "${prompt}" --approach ${approach.toUpperCase()}`, 'info');
 
         if (approach === 'pa1') {
-            setTimeout(() => { appendCliLine(`[INFO] Connecting to Qwen-2.5-7B-Instruct fine-tuned checkpoint...`, 'info'); }, 300);
-            setTimeout(() => { appendCliLine(`[WARN] Model generating tokens without constrained tone grammar...`, 'warn'); }, 700);
-            setTimeout(() => { appendCliLine(`[ERR] Violation Detected: Tone mismatch at position 4 (Found Trắc instead of Bằng).`, 'err'); }, 1100);
-            setTimeout(() => { appendCliLine(`[FAIL] PA 1 Failed (0/100 points). Model hallucinated broken meter.`, 'err'); }, 1500);
+            setTimeout(() => { appendCliLine(`[INFO] Connecting to Qwen-2.5-7B-Instruct fine-tuned checkpoint...`, 'info'); }, 200);
+            setTimeout(() => { appendCliLine(`[WARN] Model generating tokens without constrained tone grammar...`, 'warn'); }, 500);
+            setTimeout(() => { appendCliLine(`[ERR] Violation Detected: Tone mismatch at position 4 (Found Trắc instead of Bằng).`, 'err'); }, 900);
+            setTimeout(() => { appendCliLine(`[FAIL] PA 1 Failed (0/100 points). Model hallucinated broken meter.`, 'err'); }, 1300);
             setTimeout(() => {
                 webuiOutput.innerHTML = `
-                    <div class="text-gred font-bold text-xl leading-relaxed border-l-4 border-gred pl-4">
+                    <div class="text-gred font-bold text-base leading-relaxed border-l-4 border-gred pl-3">
                         ❌ THẤT BẠI: Qwen 7B Fine-Tune bị vỡ luật thi ca!<br>
                         (Sai 68% luật Bằng-Trắc ở vị trí tiếng 4 & 6 câu Bát)
                     </div>
                 `;
-            }, 1600);
+            }, 1400);
         } else if (approach === 'pa2') {
-            setTimeout(() => { appendCliLine(`[INFO] Loading Interpolated Kneser-Ney 3-Gram Model (Discount d=0.75)...`, 'info'); }, 300);
-            setTimeout(() => { appendCliLine(`[SEARCH] Beam Search BeamWidth=10 evaluating PMI scores for "${prompt}"...`, 'info'); }, 700);
-            setTimeout(() => { appendCliLine(`[CHECK] Best-of-N Evaluator: Rhyme match = 100%, Anti-Repetition = 85%.`, 'warn'); }, 1100);
+            setTimeout(() => { appendCliLine(`[INFO] Loading Interpolated Kneser-Ney 3-Gram Model (Discount d=0.75)...`, 'info'); }, 200);
+            setTimeout(() => { appendCliLine(`[SEARCH] Beam Search BeamWidth=10 evaluating PMI scores for "${prompt}"...`, 'info'); }, 500);
+            setTimeout(() => { appendCliLine(`[CHECK] Best-of-N Evaluator: Rhyme match = 100%, Anti-Repetition = 85%.`, 'warn'); }, 800);
+            setTimeout(() => {
+                appendCliLine(`[OUTPUT POEM]\nThu sang lá rụng bên đình,\nGió thu se lạnh cho mình nhớ thương.\nMây trôi lặng lẽ dặm trường,\nNắng vàng trải nhẹ trên đường xóm xa.`, 'poem');
+            }, 1100);
             setTimeout(() => { appendCliLine(`[SUCCESS] Generated 4-line poem via Statistical N-Gram in 0.38s.`, 'success'); }, 1400);
             setTimeout(() => {
                 webuiOutput.innerHTML = `
-                    <div class="text-slate-900 font-bold text-2xl leading-relaxed border-l-4 border-amber-500 pl-4">
+                    <div class="text-slate-900 font-bold text-lg leading-snug border-l-4 border-amber-500 pl-3">
                         Thu sang lá rụng bên đình,<br>
                         Gió thu se lạnh cho mình nhớ thương.<br>
                         Mây trôi lặng lẽ dặm trường,<br>
                         Nắng vàng trải nhẹ trên đường xóm xa.
                     </div>
-                    <p class="text-amber-700 text-sm font-black mt-3">✓ 100% Đúng luật | ⚠️ 14.2% Trùng n-gram cũ trong dataset</p>
+                    <p class="text-amber-700 text-xs font-black mt-2">✓ 100% Đúng luật | ⚠️ 14.2% Trùng n-gram cũ trong dataset</p>
                 `;
             }, 1500);
         } else {
             // PA 3: Neuro-Symbolic Hybrid AI (SOTA)
-            setTimeout(() => { appendCliLine(`[INFO] Connecting to Local LLM Google Gemma-4-12B-QAT via LM Studio API...`, 'info'); }, 300);
-            setTimeout(() => { appendCliLine(`[NEURO] TẦNG 1: RAW Draft generated by Gemma-12B in 0.42s.`, 'info'); }, 700);
-            setTimeout(() => { appendCliLine(`[SYMBOLIC] TẦNG 2: Rule Repair Engine Tier 1 (Length Fixer): 6-8 syllables verified.`, 'info'); }, 1100);
-            setTimeout(() => { appendCliLine(`[SYMBOLIC] TẦNG 2: Tier 2 (Tone Repair at Pos 6): Repaired syllable with POETIC_SYNONYM_MAP.`, 'warn'); }, 1500);
-            setTimeout(() => { appendCliLine(`[SYMBOLIC] TẦNG 2: Tier 3 (Rhyme & Tone Oppositon): Ép đối Bằng (Ngang-Huyền) tiếng 6 & 8.`, 'warn'); }, 1800);
-            setTimeout(() => { appendCliLine(`[SUCCESS] Neuro-Symbolic Repair Finished! 100% Rule Valid, 0.0% Overfitting!`, 'success'); }, 2100);
+            setTimeout(() => { appendCliLine(`[INFO] Connecting to Local LLM Google Gemma-4-12B-QAT via LM Studio API...`, 'info'); }, 200);
+            setTimeout(() => { appendCliLine(`[NEURO] TẦNG 1: RAW Draft generated by Gemma-12B in 0.42s.`, 'info'); }, 500);
+            setTimeout(() => { appendCliLine(`[SYMBOLIC] TẦNG 2: Rule Repair Engine Tier 1 (Length Fixer): 6-8-6-8 syllables verified.`, 'info'); }, 800);
+            setTimeout(() => { appendCliLine(`[SYMBOLIC] TẦNG 2: Tier 2 (Tone Repair at Pos 6): Repaired 'cửa' (Trắc) -> 'cây' (Bằng) with POETIC_SYNONYM_MAP.`, 'warn'); }, 1100);
+            setTimeout(() => { appendCliLine(`[SYMBOLIC] TẦNG 2: Tier 3 (Rhyme & Tone Oppositon): Ép đối Bằng (Ngang-Huyền) tiếng 6 & 8.`, 'warn'); }, 1400);
+            
+            let poemText = '';
+            let poemHtml = '';
+            if (prompt.toLowerCase().includes('mèo')) {
+                poemText = `Nằm nghe nắng đổ chiều mây,\nMèo ngoan cuộn bóng bên cây mơ màng.\nLông mềm rủ mượt thu sang,\nKhẽ khàng bước nhẹ giữa hàng trút thơ.`;
+                poemHtml = `Nằm nghe nắng đổ chiều mây,<br>Mèo ngoan cuộn bóng bên <strong class="text-ggreen">cây</strong> mơ màng.<br>Lông mềm rủ mượt thu sang,<br>Khẽ khàng bước nhẹ giữa <strong class="text-ggreen">hàng</strong> trút thơ.`;
+            } else {
+                poemText = `Thu sang rải nắng bên làng,\nGió vờn mái tóc mơ màng chiều thu.\nHương hoa thoang thoảng sương mù,\nLời ca trầm bổng vi vu gió ngàn.`;
+                poemHtml = `Thu sang rải nắng bên làng,<br>Gió vờn mái tóc mơ màng <strong class="text-ggreen">chiều thu</strong>.<br>Hương hoa thoang thoảng sương mù,<br>Lời ca trầm bổng vi vu <strong class="text-ggreen">gió ngàn</strong>.`;
+            }
+
             setTimeout(() => {
-                let poemHtml = '';
-                if (prompt.toLowerCase().includes('mèo')) {
-                    poemHtml = `Nằm nghe nắng đổ chiều mây,<br>Mèo ngoan cuộn bóng bên <strong class="text-ggreen">cây</strong> mơ màng.<br>Lông mềm rủ mượt thu sang,<br>Khẽ khàng bước nhẹ giữa <strong class="text-ggreen">hàng</strong> trút thơ.`;
-                } else {
-                    poemHtml = `Thu sang rải nắng bên làng,<br>Gió vờn mái tóc mơ màng <strong class="text-ggreen">chiều thu</strong>.<br>Hương hoa thoang thoảng sương mù,<br>Lời ca trầm bổng vi vu <strong class="text-ggreen">gió ngàn</strong>.`;
-                }
+                appendCliLine(`[OUTPUT POEM]\n${poemText}`, 'poem');
+            }, 1700);
+            setTimeout(() => { appendCliLine(`[SUCCESS] Neuro-Symbolic Repair Finished! 100% Rule Valid, 0.0% Overfitting!`, 'success'); }, 1900);
+            setTimeout(() => {
                 webuiOutput.innerHTML = `
-                    <div class="text-slate-900 font-black text-2.5xl leading-relaxed border-l-6 border-ggreen pl-5">
+                    <div class="text-slate-900 font-extrabold text-xl leading-snug border-l-4 border-ggreen pl-3">
                         ${poemHtml}
                     </div>
-                    <p class="text-ggreen text-base font-black mt-4">✨ SOTA NEURO-SYMBOLIC: 100% Chuẩn Luật | 0.0% Overfitting | Ý Thơ Thi Vị</p>
+                    <p class="text-ggreen text-xs font-black mt-2">✨ SOTA NEURO-SYMBOLIC: 100% Chuẩn Luật | 0.0% Overfitting | Ý Thơ Thi Vị</p>
                 `;
-            }, 2200);
+            }, 2000);
         }
     }
 
