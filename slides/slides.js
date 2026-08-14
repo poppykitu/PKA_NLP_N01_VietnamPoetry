@@ -169,9 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const timeoutId = setTimeout(() => controller.abort(), 60000);
 
                 let rawLines = [];
+                let serverRepairedLines = null;
                 let latency = 0;
 
-                // Attempt 1: Call Local Python Bridge Proxy at /api/generate (Zero CORS issues)
+                // Attempt 1: Call Local Python Bridge Proxy at /api/generate (Zero CORS issues & Full N-gram Engine)
                 let connected = false;
                 try {
                     const proxyRes = await fetch('/api/generate', {
@@ -184,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const proxyData = await proxyRes.json();
                         if (proxyData.status === 'success' && proxyData.raw_lines && proxyData.raw_lines.length > 0) {
                             rawLines = proxyData.raw_lines;
+                            serverRepairedLines = proxyData.repaired_lines;
                             latency = proxyData.latency || ((performance.now() - startTime) / 1000).toFixed(2);
                             connected = true;
                             appendCliLine(`[PROXY BRIDGE] ✓ Kết nối thành công LM Studio qua Python Bridge!`, 'success');
@@ -224,19 +226,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     const msgObj = (data.choices && data.choices[0] && data.choices[0].message) || {};
                     const rawContent = (msgObj.content || msgObj.reasoning_content || '').trim();
 
-                    rawLines = rawContent.split('\n')
-                        .map(l => l.replace(/^(?:Line\s*\d+|Draft\s*\d+|\d+|\*|\-|\:|\s)+/i, '').trim())
-                        .filter(l => l.length > 5 && /[a-zA-Zà-ỹÀ-Ỹ]/.test(l));
+                    // Filter out JSON keys like poem_lines
+                    try {
+                        const match = rawContent.match(/\{[\s\S]*\}/);
+                        if (match) {
+                            const j = JSON.parse(match[0]);
+                            const arr = j.poem_lines || j.lines || j.poem;
+                            if (Array.isArray(arr)) {
+                                rawLines = arr.map(l => String(l).trim());
+                            }
+                        }
+                    } catch (e) {}
 
-                    if (rawLines.length < 4) {
-                        rawLines = rawContent.split('\n').filter(l => l.trim().length > 0);
+                    if (rawLines.length === 0) {
+                        rawLines = rawContent.split('\n')
+                            .map(l => l.replace(/^(?:Line\s*\d+|Draft\s*\d+|\d+|\*|\-|\:|\s)+/i, '').replace(/["'{}[\],]/g, '').trim())
+                            .filter(l => l.length > 5 && !/poem_lines|poemlines|json/i.test(l) && /[a-zA-Zà-ỹÀ-Ỹ]/.test(l));
                     }
                 }
 
                 clearTimeout(timeoutId);
 
                 if (rawLines.length === 0) {
-                    throw new Error('LM Studio trả về nội dung rỗng');
+                    throw new Error('LM Studio trả về nội dung rỗng hoặc không thể parse');
                 }
 
                 appendCliLine(`[HTTP 200 OK] Nhận phản hồi thực tế từ Gemma-4-e2b trong ${latency}s!`, 'success');
@@ -249,8 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 await new Promise(r => setTimeout(r, 200));
                 appendCliLine(`[TIER 3] Rhyme & Tone Opposing: Ép đối Bằng (Ngang-Huyền) tại tiếng 6 & 8.`, 'warn');
 
-                // Repair the EXACT lines from the model!
-                const repairedLines = repairPoemClient(rawLines.slice(0, 4), prompt);
+                // Use SOTA repaired lines from Python server or client repair engine
+                const repairedLines = (serverRepairedLines && serverRepairedLines.length >= 4)
+                    ? serverRepairedLines.slice(0, 4)
+                    : repairPoemClient(rawLines.slice(0, 4), prompt);
                 const finalPoemText = repairedLines.join('\n');
 
                 appendCliLine(`[OUTPUT POEM]\n${finalPoemText}`, 'poem');

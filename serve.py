@@ -76,13 +76,43 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                 msg_obj = lm_res.get('choices', [{}])[0].get('message', {})
                 raw_text = (msg_obj.get('content') or msg_obj.get('reasoning_content') or '').strip()
 
-                raw_lines = [l.strip() for l in raw_text.split('\n') if l.strip() and len(l.strip()) > 3]
-                raw_lines = [l for l in raw_lines if not any(l.lower().startswith(k) for k in ['dưới đây', 'chắc chắn', 'bài thơ'])]
+                # Robust JSON & Text Extractor (Filters out 'poem_lines' metadata key)
+                import re
+                clean_lines = []
+                try:
+                    match_json = re.search(r'\{.*\}', raw_text, re.DOTALL)
+                    if match_json:
+                        json_data = json.loads(match_json.group(0))
+                        for key in ['poem_lines', 'lines', 'poem']:
+                            if key in json_data and isinstance(json_data[key], list):
+                                clean_lines = [str(l).strip(".,!?:;\"'()[]{}*`-_/ ") for l in json_data[key] if str(l).strip()]
+                                break
+                except Exception:
+                    pass
 
-                # Extract word tokens from raw lines
+                if not clean_lines:
+                    lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
+                    ignore_kw = [
+                        'poem_lines', 'poemlines', 'json', 'schema', 'prompt', 'draft', 
+                        'revision', 'phase', 'constraint', 'dưới đây', 'chắc chắn', 'bài thơ', 
+                        'lục bát', 'chủ đề', 'tác giả', '{', '}', '[', ']', '```', "'''"
+                    ]
+                    for l in lines:
+                        cl = l.strip(".,!?:;\"'()[]{}*`-_/ ")
+                        cl = re.sub(r'^(?:Line\s*\d+|Draft\s*\d+|\d+|\*|\-|\:|\s)+', '', cl, flags=re.IGNORECASE).strip()
+                        low = cl.lower()
+                        if any(low.startswith(k) or k == low or k in low for k in ['poem_lines', 'poemlines', '{', '}', '[', ']']):
+                            continue
+                        if len(cl.split()) < 3:
+                            continue
+                        if re.search(r'[a-zA-Zà-ỹÀ-Ỹ]', cl):
+                            clean_lines.append(cl)
+
+                # Extract word tokens from clean lines
                 raw_words = []
-                for l in raw_lines[:4]:
+                for l in clean_lines[:4]:
                     w_list = [w.strip(".,!?:;\"'()[]*") for w in l.split() if w.strip()]
+                    w_list = [w for w in w_list if w.lower() not in ['poem_lines', 'poemlines', 'json']]
                     if w_list:
                         raw_words.append(w_list)
 
