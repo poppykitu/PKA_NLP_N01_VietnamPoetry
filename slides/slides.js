@@ -111,7 +111,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cliBody || !webuiOutput) return;
 
         cliBody.innerHTML = '';
-        webuiOutput.innerHTML = '<div class="animate-pulse text-gblue font-bold text-base text-center">⏳ Đang gửi request tới LM Studio & chờ mô hình sinh thơ...</div>';
+        webuiOutput.innerHTML = `
+            <div class="skeleton-card">
+                <div class="skeleton-badge">
+                    <span class="skeleton-pulse-dot"></span>
+                    <span>Đang kết nối LM Studio (google/gemma-4-e2b)...</span>
+                </div>
+                <div class="skeleton-line skeleton-w-65"></div>
+                <div class="skeleton-line skeleton-w-90"></div>
+                <div class="skeleton-line skeleton-w-70"></div>
+                <div class="skeleton-line skeleton-w-95"></div>
+            </div>
+        `;
 
         function appendCliLine(text, type = 'info') {
             const div = document.createElement('div');
@@ -134,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appendCliLine(`[FAIL] PA 1 Failed (0/100 points). Model hallucinated broken meter.`, 'err');
             webuiOutput.innerHTML = `
                 <div class="text-gred font-bold text-sm leading-relaxed border-l-4 border-gred pl-3">
-                    ❌ THẤT BẠI: Qwen 7B Fine-Tune bị vỡ luật thi ca!<br>
+                    [THẤT BẠI] Qwen 7B Fine-Tune bị vỡ luật thi ca!<br>
                     (Sai 68% luật Bằng-Trắc ở vị trí tiếng 4 & 6 câu Bát)
                 </div>
             `;
@@ -155,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="text-slate-900 font-bold text-sm leading-snug border-l-4 border-amber-500 pl-3">
                     ${poemText.replace(/\n/g, '<br>')}
                 </div>
-                <p class="text-amber-700 text-xs font-black mt-1.5">✓ 100% Đúng luật | ⚠️ 14.2% Trùng n-gram cũ trong dataset</p>
+                <p class="text-amber-700 text-xs font-black mt-1.5 uppercase tracking-wide">[PA 2] 100% Đúng Luật • 14.2% Trùng N-gram Cũ</p>
             `;
         } else {
             // PA 3: LIVE REAL CONNECTION TO LM STUDIO (google/gemma-4-e2b)
@@ -192,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             finalEval = proxyData.final_eval;
                             latency = proxyData.latency || ((performance.now() - startTime) / 1000).toFixed(2);
                             connected = true;
-                            appendCliLine(`[MAIN_LLM.PY] ✓ Khởi chạy thành công main_llm.py Engine! (Độ trễ: ${latency}s)`, 'success');
+                            appendCliLine(`[MAIN_LLM.PY] [OK] Khởi chạy thành công main_llm.py Engine! (Độ trễ: ${latency}s)`, 'success');
                         }
                     }
                 } catch (proxyErr) {
@@ -210,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             messages: [
                                 {
                                     role: 'system',
-                                    content: 'Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát 4 câu (6-8-6-8 từ) mượt mà, giàu cảm xúc về chủ đề được yêu cầu. Trả về đúng 4 câu thơ Tiếng Việt, mỗi câu trên một dòng.'
+                                    content: 'Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát đúng chuẩn 4 câu (6-8-6-8 từ) mượt mà, giàu cảm xúc về chủ đề được yêu cầu. Trả về đúng định dạng JSON: {"poem_lines": ["câu 1", "câu 2", "câu 3", "câu 4"]}.'
                                 },
                                 {
                                     role: 'user',
@@ -264,13 +275,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 appendCliLine(rawLog, 'info');
 
                 if (rawEval && rawEval.errors && rawEval.errors.length > 0) {
-                    let errLog = `[ĐÁNH GIÁ BẢN THẢO RAW: ✗ Lỗi Luật Thơ]:`;
+                    let errLog = `[ĐÁNH GIÁ BẢN THẢO RAW: Phát hiện vi phạm luật thơ]:`;
                     rawEval.errors.forEach(err => {
                         errLog += `\n   - ${err}`;
                     });
                     appendCliLine(errLog, 'err');
                 } else {
-                    appendCliLine(`[ĐÁNH GIÁ BẢN THẢO RAW]: Phát hiện độ dài / thanh điệu cần chuẩn hóa qua Symbolic Engine.`, 'warn');
+                    appendCliLine(`[ĐÁNH GIÁ BẢN THẢO RAW]: Bản thảo đang được chuyển tiếp qua Symbolic Repair Engine.`, 'warn');
                 }
 
                 await new Promise(r => setTimeout(r, 300));
@@ -280,14 +291,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? serverRepairedLines.slice(0, 4)
                     : repairPoemClient(rawLines.slice(0, 4), prompt);
 
-                let repLog = `[TẦNG 2: RULE REPAIR ENGINE (Đã Được Sửa Lỗi Tự Động 100% Đúng Luật)]:`;
+                let repLog = `[TẦNG 2: RULE REPAIR ENGINE (Đã Được Soát Lỗi & Sửa Tự Động 100% Đúng Luật)]:`;
                 repairedLines.forEach((line, idx) => {
                     const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' : '&nbsp;&nbsp;&nbsp;';
                     repLog += `\n${indent}${line} (${line.split(/\s+/).length} từ)`;
                 });
                 appendCliLine(repLog, 'poem');
 
-                appendCliLine(`==> Đánh Giá Sau Khi Sửa: ✓ THỎA MÃN 100% QUY TẮC LỤC BÁT`, 'success');
+                appendCliLine(`[KẾT QUẢ SOÁT LỖI]: THỎA MÃN 100% QUY TẮC LỤC BÁT (0 LỖI)`, 'success');
 
                 // 3. Render Kết Quả Lên Web UI
                 webuiOutput.innerHTML = `
@@ -297,7 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             return `${indent}${l}`;
                         }).join('<br>')}
                     </div>
-                    <p class="text-ggreen text-xs font-black mt-1.5">✨ SOTA NEURO-SYMBOLIC: 100% Chuẩn Luật Lục Bát | 0.0% Overfitting</p>
+                    <div class="text-ggreen text-xs font-black mt-2 uppercase tracking-wide">
+                        [SOTA NEURO-SYMBOLIC] 100% CHUẨN LUẬT LỤC BÁT • 0.0% OVERFITTING
+                    </div>
                 `;
 
             } catch (err) {
@@ -306,9 +319,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 webuiOutput.innerHTML = `
                     <div class="text-gred font-bold text-sm leading-relaxed border-l-4 border-gred pl-3">
-                        ❌ Lỗi kết nối LM Studio (http://127.0.0.1:1234):<br>
+                        [LỖI KẾT NỐI LM STUDIO]: http://127.0.0.1:1234<br>
                         <span class="text-slate-600 font-mono text-xs">${err.message}</span><br>
-                        <span class="text-xs text-slate-800 mt-1 block">Vui lòng kiểm tra Local Server trong LM Studio và bấm lại "Sinh Thơ"!</span>
+                        <span class="text-xs text-slate-800 mt-1 block">Vui lòng kiểm tra Local Server trong LM Studio và bấm lại "SINH THƠ LỤC BÁT NGAY".</span>
                     </div>
                 `;
             }

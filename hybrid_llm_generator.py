@@ -479,11 +479,11 @@ class RuleRepairEngine:
         if used_words is None:
             used_words = set()
 
-        # Nếu curr_word đã đúng vần & thanh Bằng & đúng đối thanh -> Giữ nguyên 100%!
+        # Nếu curr_word đã đúng vần & thanh Bằng & đúng đối thanh & chưa từng bị dùng gieo vần -> Giữ nguyên 100%!
         if curr_clean and get_tone(curr_clean) == "B":
             valid_rhyme = True if not target_rhyme else is_rhyme(target_rhyme, curr_clean)
             valid_huyen = True if need_huyen is None else (is_huyen_tone(curr_clean) if need_huyen else is_ngang_tone(curr_clean))
-            if valid_rhyme and valid_huyen:
+            if valid_rhyme and valid_huyen and curr_clean not in used_words:
                 return curr_word
 
         # 0. KHAI PHÁ TỰ ĐỘNG N-GRAM BIGRAM TỪ CORPUS THƠ LỤC BÁT (3.4 Triệu N-gram)
@@ -567,56 +567,63 @@ class RuleRepairEngine:
 
     def repair_poem(self, raw_poem: list) -> list:
         """
-        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Phrase-Level Chunk Repair Pipeline:
-        Raw Draft -> Fix Length -> Phrase-Level Chunk Repair (Pos 2/4 Tones) -> POS-Aware Rhymes & Pitch Alternation
+        Toàn bộ quy trình Sửa Lỗi Tự Động POS-Aware & Vòng Lặp Soát Lỗi Tự Động (Iterative Self-Correction Loop):
+        Raw Draft -> Fix Length -> Phrase-Level Chunk Repair -> Rhymes & Pitches -> Tự Động Soát Lại (check_luc_bat_poem_rules) Đến Khi Hết Sạch Lỗi
         """
-        # Step 1: Sửa độ dài 6-8 chữ
-        length_fixed = []
-        for i, line in enumerate(raw_poem):
-            expected_len = 6 if i % 2 == 0 else 8
-            length_fixed.append(self.repair_line_length(line, expected_len))
+        p = [list(line) for line in raw_poem]
+        
+        # Vòng lặp tự động soát lỗi và sửa lặp lại đến khi 100% sạch lỗi
+        max_passes = 5
+        for pass_idx in range(max_passes):
+            # Step 1: Sửa độ dài chuẩn 6-8 chữ
+            for i in range(len(p)):
+                expected_len = 6 if i % 2 == 0 else 8
+                p[i] = self.repair_line_length(p[i], expected_len)
 
-        # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc) THEO NGUYÊN CỤM 2 TỪ (PHRASE-LEVEL REPAIR)
-        tone_fixed = []
-        for i, line in enumerate(length_fixed):
-            repaired = self.repair_phrase_chunk(line, pos1=1, pos2=3, target_tone1="B", target_tone2="T")
-            tone_fixed.append(repaired)
+            # Step 2: Sửa thanh tiếng 2 (Bằng) và tiếng 4 (Trắc) theo ngữ cảnh cụm từ
+            for i in range(len(p)):
+                p[i] = self.repair_phrase_chunk(p[i], pos1=1, pos2=3, target_tone1="B", target_tone2="T")
 
-        # Step 3 & 4: Sửa gieo vần POS-Aware & ép tiểu đối Bằng-Thanh & Chống lặp từ gieo vần
-        p = [list(line) for line in tone_fixed]
-        used_rhymes = set()
+            # Step 3: Sửa gieo vần & ép tiểu đối Bằng-Thanh Ngang/Huyền
+            used_rhymes = set()
 
-        # Câu Lục 1 (pos 6):
-        w6_l1 = self.pick_pos_valid_rhyme(p[0][4], curr_word=p[0][5], target_rhyme=None, used_words=used_rhymes)
-        p[0][5] = w6_l1
-        used_rhymes.add(w6_l1.lower())
+            # Câu Lục 1 (pos 6):
+            w6_l1 = self.pick_pos_valid_rhyme(p[0][4], curr_word=p[0][5], target_rhyme=None, used_words=used_rhymes)
+            p[0][5] = w6_l1
+            used_rhymes.add(w6_l1.lower())
 
-        # Câu Bát 1 (pos 6): Gieo vần với w6_l1 (khác w6_l1)
-        w6_b1 = self.pick_pos_valid_rhyme(p[1][4], curr_word=p[1][5], target_rhyme=w6_l1, used_words=used_rhymes)
-        p[1][5] = w6_b1
-        used_rhymes.add(w6_b1.lower())
+            # Câu Bát 1 (pos 6): Gieo vần với w6_l1 (khác w6_l1)
+            w6_b1 = self.pick_pos_valid_rhyme(p[1][4], curr_word=p[1][5], target_rhyme=w6_l1, used_words=used_rhymes)
+            p[1][5] = w6_b1
+            used_rhymes.add(w6_b1.lower())
 
-        # Câu Bát 1 (pos 8): Đối thanh với w6_b1 (1 Ngang, 1 Huyền)
-        w6_b1_huyen = is_huyen_tone(w6_b1)
-        w8_b1 = self.pick_pos_valid_rhyme(p[1][6], curr_word=p[1][7], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
-        p[1][7] = w8_b1
-        used_rhymes.add(w8_b1.lower())
+            # Câu Bát 1 (pos 8): Đối thanh với w6_b1 (1 Ngang, 1 Huyền)
+            w6_b1_huyen = is_huyen_tone(w6_b1)
+            w8_b1 = self.pick_pos_valid_rhyme(p[1][6], curr_word=p[1][7], target_rhyme=None, need_huyen=not w6_b1_huyen, used_words=used_rhymes)
+            p[1][7] = w8_b1
+            used_rhymes.add(w8_b1.lower())
 
-        # Câu Lục 2 (pos 6): Gieo vần với w8_b1
-        w6_l2 = self.pick_pos_valid_rhyme(p[2][4], curr_word=p[2][5], target_rhyme=w8_b1, used_words=used_rhymes)
-        p[2][5] = w6_l2
-        used_rhymes.add(w6_l2.lower())
+            # Câu Lục 2 (pos 6): Gieo vần với w8_b1
+            w6_l2 = self.pick_pos_valid_rhyme(p[2][4], curr_word=p[2][5], target_rhyme=w8_b1, used_words=used_rhymes)
+            p[2][5] = w6_l2
+            used_rhymes.add(w6_l2.lower())
 
-        # Câu Bát 2 (pos 6): Gieo vần với w6_l2 (khác w6_l2)
-        w6_b2 = self.pick_pos_valid_rhyme(p[3][4], curr_word=p[3][5], target_rhyme=w6_l2, used_words=used_rhymes)
-        p[3][5] = w6_b2
-        used_rhymes.add(w6_b2.lower())
+            # Câu Bát 2 (pos 6): Gieo vần với w6_l2 (khác w6_l2)
+            w6_b2 = self.pick_pos_valid_rhyme(p[3][4], curr_word=p[3][5], target_rhyme=w6_l2, used_words=used_rhymes)
+            p[3][5] = w6_b2
+            used_rhymes.add(w6_b2.lower())
 
-        # Câu Bát 2 (pos 8): Đối thanh với w6_b2
-        w6_b2_huyen = is_huyen_tone(w6_b2)
-        w8_b2 = self.pick_pos_valid_rhyme(p[3][6], curr_word=p[3][7], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
-        p[3][7] = w8_b2
-        used_rhymes.add(w8_b2.lower())
+            # Câu Bát 2 (pos 8): Đối thanh với w6_b2
+            w6_b2_huyen = is_huyen_tone(w6_b2)
+            w8_b2 = self.pick_pos_valid_rhyme(p[3][6], curr_word=p[3][7], target_rhyme=None, need_huyen=not w6_b2_huyen, used_words=used_rhymes)
+            p[3][7] = w8_b2
+            used_rhymes.add(w8_b2.lower())
+
+            # Step 4: Thực sự soát lại luật thơ (check_luc_bat_poem_rules)
+            from luc_bat_rules import check_luc_bat_poem_rules
+            eval_res = check_luc_bat_poem_rules(p)
+            if eval_res["valid"]:
+                break
 
         return p
 
