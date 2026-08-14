@@ -240,23 +240,53 @@ h2.section-headline {
     letter-spacing: -0.04em;
 }
 
-/* Sleek Segmented Progress Bar Dock (Zero Buttons, Thin >= 4px, Subtle Rounded Segments) */
+/* Sleek Segmented Progress Bar Dock with 2 Mini Navigation Buttons */
 .progress-bar-dock {
     position: fixed;
-    bottom: 24px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(20px);
-    border: 1.5px solid rgba(203, 213, 225, 0.8);
+    border: 1.5px solid rgba(203, 213, 225, 0.85);
     border-radius: 9999px;
-    padding: 10px 20px;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
-    gap: 6px;
-    width: min(650px, 85vw);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    gap: 12px;
+    width: min(720px, 90vw);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     z-index: 1000;
+}
+
+.dock-nav-btn {
+    background: #F1F5F9;
+    color: var(--text-primary);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    flex-shrink: 0;
+}
+
+.dock-nav-btn:hover {
+    background: var(--g-blue);
+    color: #FFFFFF;
+    transform: scale(1.12);
+}
+
+.progress-segments-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .progress-segment {

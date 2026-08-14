@@ -8,9 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalSlides = slides.length;
     let currentSlideIndex = 0;
 
-    const progressBarDock = document.getElementById('progress-bar-dock');
-    if (progressBarDock && totalSlides > 0) {
-        progressBarDock.innerHTML = '';
+    const btnDockPrev = document.getElementById('btn-dock-prev');
+    const btnDockNext = document.getElementById('btn-dock-next');
+
+    if (btnDockNext) btnDockNext.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+    if (btnDockPrev) btnDockPrev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+
+    const progressSegmentsWrapper = document.getElementById('progress-segments-wrapper');
+    if (progressSegmentsWrapper && totalSlides > 0) {
+        progressSegmentsWrapper.innerHTML = '';
         for (let i = 0; i < totalSlides; i++) {
             const seg = document.createElement('div');
             seg.className = 'progress-segment';
@@ -19,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.stopPropagation();
                 showSlide(i);
             });
-            progressBarDock.appendChild(seg);
+            progressSegmentsWrapper.appendChild(seg);
         }
     }
 
@@ -188,11 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // Stage Click Navigation
+    // Stage Click Navigation (Ignores interactive demo UI elements to prevent navigation conflicts)
     const stage = document.querySelector('.kinetic-stage');
     if (stage) {
         stage.addEventListener('click', (e) => {
-            if (e.target.closest('button, a, code, pre, canvas')) return;
+            if (e.target.closest('button, a, code, pre, canvas, input, select, textarea, .demo-window, .cli-window')) return;
             const width = window.innerWidth;
             if (e.clientX > width / 2) nextSlide();
             else prevSlide();
