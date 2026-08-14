@@ -9,5 +9,5 @@ __pycache__/
 # Large model cache files (exceeding GitHub 100MB limit)
 *.pkl
 
-# Build / export outputs
-*.html
+# Do not ignore slides html
+!slides/*.html

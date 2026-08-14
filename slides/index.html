@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Báo Cáo Đồ Án NLP - Hệ Thống Sinh Thơ Lục Bát Tiếng Việt (24-Slide SOTA Edition)</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        gblue: '#4285F4',
+                        gred: '#EA4335',
+                        gyellow: '#FBBC05',
+                        ggreen: '#34A853',
+                        gdark: '#0F172A',
+                        gslate: '#334155',
+                        gbg: '#FAFAFC'
+                    },
+                    fontFamily: {
+                        vietnam: ['Be Vietnam Pro', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Borderless Editorial Stylesheet -->
+    <link rel="stylesheet" href="slides.css?v=4.6">
+
+    <!-- Highlight.js GitHub Light Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- KaTeX Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+        onload="renderMathInElement(document.body);"></script>
+
+    <!-- Be Vietnam Pro (100% Native Vietnamese Diacritics Support) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Fira+Code:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Automatic Ambient Background Canvas (Zero Mouse Tracking) -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- Main App Viewport -->
+    <div class="kinetic-viewport">
+
+        <!-- Header Navigation Bar -->
+        <header class="kinetic-header">
+            <div class="brand-tag floating-y stagger-from-left delay-1">
+                <span class="w-3.5 h-3.5 rounded-full bg-gblue animate-ping"></span>
+                <span class="font-black text-slate-900">PHENIKAA UNIVERSITY • NLP_N01_PKA_2</span>
+            </div>
+            <div class="badge-tag tag-blue stagger-zoom-pop delay-2">
+                24 SLIDES • N-GRAM CORE & DEMO PLAYGROUND
+            </div>
+        </header>
+
+        <!-- Main Stage for 24 Slides -->
+        <main class="kinetic-stage">
+
+            <!-- SLIDE 1: Title -->
+            <section class="kinetic-slide active" id="slide-1">
+                <div class="content-max text-center">
+                    <div class="mb-4 stagger-from-top delay-1">
+                        <span class="badge-tag tag-blue text-base px-6 py-2.5">BÁO CÁO ĐỒ ÁN MÔN HỌC NLP</span>
+                    </div>
+                    <h1 class="hero-headline mb-6 text-slate-900 stagger-zoom-pop delay-2">HỆ THỐNG SINH THƠ LỤC BÁT
+                        TIẾNG VIỆT ĐA PHƯƠNG ÁN</h1>
+                    <p
+                        class="text-slate-800 text-3xl font-extrabold max-w-5xl mx-auto mb-10 stagger-from-bottom delay-3">
+                        Từ Fine-Tuning/Chưng Cất Mô Hình, Thống Kê Rule Engine Đến Neuro-Symbolic Hybrid AI
+                    </p>
+                    <hr class="border-slate-300 my-8 max-w-2xl mx-auto border-t-2 stagger-zoom-pop delay-4">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+                        <div class="editorial-column stagger-from-left delay-5">
+                            <span class="text-sm font-black text-gblue uppercase">TÁC GIẢ</span>
+                            <p class="text-slate-900 font-black text-2xl mt-1">PKA NLP Team</p>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-bottom delay-6">
+                            <span class="text-sm font-black text-ggreen uppercase">ĐƠN VỊ</span>
+                            <p class="text-slate-900 font-black text-2xl mt-1">Khoa CNTT Phenikaa</p>
+                        </div>
+                        <div class="editorial-column column-yellow stagger-from-right delay-7">
+                            <span class="text-sm font-black text-amber-800 uppercase">REPOSITORY</span>
+                            <p class="text-slate-900 font-black text-2xl mt-1">poppykitu/PKA_NLP_N01</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: Problem Statement -->
+            <section class="kinetic-slide" id="slide-2">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-left delay-1">THÁCH THỨC CỦA BÀI TOÁN SINH
+                        THƠ LỤC BÁT</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-4">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <span class="badge-tag tag-blue mb-4 stagger-from-top delay-3">ĐẶC TÍNH NGÔN NGỮ</span>
+                            <h3 class="text-gblue text-3.5xl font-black mb-4 stagger-from-left delay-4">Đặc Tính Tiếng
+                                Việt</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-5">Ngôn ngữ đơn lập (Isolating language).</li>
+                                <li class="stagger-from-left delay-6">Đa thanh điệu: 6 thanh cơ bản (Ngang, Huyền, Sắc,
+                                    Hỏi, Ngã, Nặng).</li>
+                                <li class="stagger-from-left delay-7">Thanh điệu ẩn trong âm tiết chữ viết.</li>
+                            </ul>
+                        </div>
+
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <span class="badge-tag tag-green mb-4 stagger-from-top delay-4">LUẬT THI CA KHẮT KHE</span>
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4 stagger-from-right delay-5">5 Ràng Buộc
+                                Thi Ca</h3>
+                            <ul class="editorial-list editorial-list-green space-y-2">
+                                <li class="stagger-from-right delay-6"><span class="text-slate-900 font-black">Số âm
+                                        tiết:</span> Xen kẽ cặp câu Lục (6 tiếng) và Bát (8 tiếng).</li>
+                                <li class="stagger-from-right delay-7"><span class="text-slate-900 font-black">Bằng -
+                                        Trắc:</span> Cố định vị trí tiếng 2 (Bằng) - 4 (Trắc) - 6 (Bằng) - 8 (Bằng).
+                                </li>
+                                <li class="stagger-from-right delay-8"><span class="text-slate-900 font-black">Gieo vần
+                                        kép:</span> Vần chân (tiếng 6 Lục với 6 Bát) & Vần lưng (tiếng 8 Bát với 6 Lục
+                                    sau).</li>
+                                <li class="stagger-from-right delay-8"><span class="text-slate-900 font-black">Đối âm
+                                        vực:</span> Tiếng thứ 6 và 8 câu Bát phải đối thanh Ngang - Huyền.</li>
+                                <li class="stagger-from-right delay-8"><span class="text-slate-900 font-black">Cú pháp
+                                        POS:</span> Bảo tồn cụm Danh từ & Tính từ Tiếng Việt tự nhiên.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: Objectives & LOs -->
+            <section class="kinetic-slide" id="slide-3">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">MỤC TIÊU & CHUẨN ĐẦU RA HỌC
+                        PHẦN (LOs)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-4">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <span class="badge-tag tag-blue mb-4 stagger-from-top delay-3">LO1 & LO2</span>
+                            <h3 class="text-gblue text-3.5xl font-black mb-4 stagger-from-left delay-4">Lý Thuyết & Dữ
+                                Liệu Lớn</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-5">Nghiên cứu từ Statistical NLP (N-gram) đến Deep
+                                    Learning & LLMs.</li>
+                                <li class="stagger-from-left delay-6">Thu thập & tiền xử lý <span
+                                        class="text-gblue font-black">84.686 bài thơ Lục Bát</span> (3.4M tokens).</li>
+                                <li class="stagger-from-left delay-7">Chiết xuất <span
+                                        class="text-gblue font-black">38.633 từ vựng POS</span> chuẩn Quốc gia.</li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <span class="badge-tag tag-green mb-4 stagger-from-top delay-4">LO3 & LO4</span>
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4 stagger-from-right delay-5">Neuro-Symbolic
+                                & Đánh Giá</h3>
+                            <ul class="editorial-list editorial-list-green">
+                                <li class="stagger-from-right delay-6">Thiết kế <span
+                                        class="text-ggreen font-black">Rule Repair Engine 3 Tầng</span> tự động sửa lỗi.
+                                </li>
+                                <li class="stagger-from-right delay-7">Tích hợp ma trận bảo tồn miền ngữ nghĩa
+                                    POETIC_SYNONYM_MAP.</li>
+                                <li class="stagger-from-right delay-8">Đánh giá định lượng: Đạt 100% đúng luật, <span
+                                        class="text-ggreen font-black">0.0% trùng câu</span> (Chống overfitting).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: Overview of 3 Approaches -->
+            <section class="kinetic-slide" id="slide-approaches">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">KHẢO SÁT & THỬ NGHIỆM 3 PHƯƠNG
+                        ÁN</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="stagger-zoom-pop delay-2">
+                            <h3 class="text-slate-900 text-2.5xl font-bold mb-3 stagger-from-left delay-3">So Sánh Điểm
+                                Tổng Thể (Thang 100)</h3>
+                            <div class="chart-container stagger-zoom-pop delay-4">
+                                <canvas id="chart-approaches"></canvas>
+                            </div>
+                        </div>
+                        <div class="flex flex-col space-y-6">
+                            <div class="editorial-column column-red stagger-from-right delay-3">
+                                <span class="badge-tag tag-red mb-2">Phương Án 1</span>
+                                <h4 class="text-slate-900 text-3xl font-black">Fine-Tuning Qwen 7B (Distillation)</h4>
+                                <p class="text-gred text-2xl font-black mt-1">0 / 100 ĐIỂM: Thất bại (Sai 68% luật
+                                    Bằng-Trắc)</p>
+                            </div>
+                            <div class="editorial-column column-yellow stagger-from-bottom delay-4">
+                                <span class="badge-tag tag-yellow mb-2">Phương Án 2</span>
+                                <h4 class="text-slate-900 text-3xl font-black">Statistical N-Gram (Kneser-Ney)</h4>
+                                <p class="text-amber-800 text-2xl font-black mt-1">60 / 100 ĐIỂM: Đúng luật 100% nhưng
+                                    lặp câu cũ</p>
+                            </div>
+                            <div class="editorial-column stagger-zoom-pop delay-5">
+                                <span class="badge-tag tag-blue mb-2">Phương Án 3 (SOTA)</span>
+                                <h4 class="text-slate-900 text-3xl font-black">Neuro-Symbolic Hybrid AI</h4>
+                                <p class="text-gblue text-2.5xl font-black mt-1">95 / 100 ĐIỂM: Xuất sắc (Sáng tạo &
+                                    Chuẩn luật)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: Datasets & Taxonomy -->
+            <section class="kinetic-slide" id="slide-datasets">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">TẬP DỮ LIỆU & TỪ ĐIỂN THI CA
+                        QUỐC GIA</h2>
+
+                    <div class="slide5-stage-wrapper items-center mt-2">
+
+                        <div class="chart-hero-wrapper">
+                            <h3 class="text-slate-900 text-2.5xl font-bold mb-3 text-center">Phân Bố Tập Từ Vựng (38.633
+                                Từ)</h3>
+                            <div class="chart-container">
+                                <canvas id="chart-datasets"></canvas>
+
+                                <div class="chart-callout-overlay">
+                                    <svg class="absolute inset-0 w-full h-full pointer-events-none"
+                                        viewBox="0 0 650 380">
+                                        <polyline points="180,45 250,45 270,120" stroke="#FBBC05" stroke-width="2.5"
+                                            fill="none" stroke-dasharray="4 2" />
+                                        <circle cx="270" cy="120" r="5" fill="#FBBC05" />
+
+                                        <polyline points="180,315 240,315 260,240" stroke="#34A853" stroke-width="2.5"
+                                            fill="none" stroke-dasharray="4 2" />
+                                        <circle cx="260" cy="240" r="5" fill="#34A853" />
+
+                                        <polyline points="475,165 410,165 380,200" stroke="#4285F4" stroke-width="2.5"
+                                            fill="none" stroke-dasharray="4 2" />
+                                        <circle cx="380" cy="200" r="5" fill="#4285F4" />
+                                    </svg>
+
+                                    <div class="callout-badge callout-top-left">
+                                        <span class="w-3.5 h-3.5 rounded-full bg-amber-500"></span>
+                                        <span>9.366 Syllables</span>
+                                    </div>
+
+                                    <div class="callout-badge callout-bottom-left">
+                                        <span class="w-3.5 h-3.5 rounded-full bg-ggreen"></span>
+                                        <span>4.659 Lexicon</span>
+                                    </div>
+
+                                    <div class="callout-badge callout-right-middle">
+                                        <span class="w-3.5 h-3.5 rounded-full bg-gblue"></span>
+                                        <span>24.608 POS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="content-panel-right editorial-column">
+                            <h3 class="text-gblue text-3.5xl font-black mb-4">Thống Kê Dữ Liệu Quy Mô Lớn</h3>
+                            <ul class="editorial-list">
+                                <li><span class="text-slate-900 font-black">84.686 bài thơ Lục Bát:</span> Dataset
+                                    <code>phamson02/vietnamese-poetry-corpus</code>.</li>
+                                <li><span class="text-slate-900 font-black">286.206 câu thơ:</span> Phân tách câu Lục
+                                    (6) và câu Bát (8).</li>
+                                <li><span class="text-slate-900 font-black">3.401.833 âm tiết:</span> Huấn luyện ma trận
+                                    Bigram N-gram.</li>
+                                <li><span class="text-slate-900 font-black">36.764 mục từ điển:</span> Từ điển Tiếng
+                                    Việt Quốc Gia.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: N-Gram Core Theory (NEW CORE KNOWLEDGE) -->
+            <section class="kinetic-slide" id="slide-6">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">N-GRAM LANGUAGE MODEL: CỐT LÕI
+                        MÔ HÌNH THỐNG KÊ</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <span class="badge-tag tag-blue mb-4">MÔ HÌNH XÁC SUẤT N-GRAM</span>
+                            <h3 class="text-gblue text-3.5xl font-black mb-4">Nền Tảng Thống Kê Thi Ca</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-4"><span class="text-slate-900 font-black">Giả thiết
+                                        Markov (Markov Assumption):</span> Xác suất từ $w_i$ xuất hiện chỉ phụ thuộc vào
+                                    $n-1$ từ liền trước.</li>
+                                <li class="stagger-from-left delay-5"><span class="text-slate-900 font-black">Xác suất
+                                        chuỗi câu Lục Bát:</span>
+                                    $$P(w_1, w_2, ..., w_N) = \prod_{i=1}^N P(w_i | w_{i-n+1}^{i-1})$$
+                                </li>
+                                <li class="stagger-from-left delay-6"><span class="text-slate-900 font-black">Ứng dụng
+                                        kép:</span> Là nền tảng cho Beam Search Generator (Phương Án 2) và Bigram
+                                    Followers (Phương Án 3).</li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-yellow stagger-from-right delay-3">
+                            <span class="badge-tag tag-yellow mb-4">VÍ DỤ THỰC TẾ TRONG THƠ</span>
+                            <h3 class="text-amber-800 text-3.5xl font-black mb-4">Mô Hình Unigram - Bigram - Trigram
+                            </h3>
+                            <div class="space-y-4 text-xl font-bold">
+                                <p><strong class="text-amber-800">Unigram (1-gram):</strong> $P(\text{"nắng"}) =
+                                    \frac{C(\text{"nắng"})}{N_{total}}$</p>
+                                <p><strong class="text-amber-800">Bigram (2-gram):</strong> $P(\text{"vàng"} |
+                                    \text{"nắng"}) = \frac{C(\text{"nắng vàng"})}{C(\text{"nắng"})}$</p>
+                                <p><strong class="text-amber-800">Trigram (3-gram):</strong> $P(\text{"bên"} |
+                                    \text{"nắng"}, \text{"vàng"}) = \frac{C(\text{"nắng vàng bên"})}{C(\text{"nắng
+                                    vàng"})}$</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: Kneser-Ney & PMI Math (NEW CORE KNOWLEDGE) -->
+            <section class="kinetic-slide" id="slide-7">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">THUẬT TOÁN KNESER-NEY SMOOTHING
+                        & MA TRẬN PMI</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column column-green stagger-from-left delay-2">
+                            <span class="badge-tag tag-green mb-4">KNESER-NEY SMOOTHING</span>
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4">Mịn Hóa Xác Suất (Discount d=0.75)</h3>
+                            <p class="text-xl font-bold text-slate-800 mb-3">Giải quyết triệt để sự cố Zero-Probability
+                                cho các cụm từ N-gram chưa xuất hiện trong tập huấn luyện:</p>
+                            <div
+                                class="p-4 bg-slate-100 rounded-2xl font-mono text-base font-black text-slate-900 overflow-x-auto">
+                                $$P_{KN}(w_i | w_{i-1}) = \frac{\max(c(w_{i-1} w_i) - d, 0)}{c(w_{i-1})} +
+                                \lambda(w_{i-1}) P_{continuation}(w_i)$$
+                            </div>
+                        </div>
+
+                        <div class="editorial-column column-red stagger-from-right delay-3">
+                            <span class="badge-tag tag-red mb-4">POINTWISE MUTUAL INFORMATION</span>
+                            <h3 class="text-gred text-3.5xl font-black mb-4">Ma Trận Tương Quan Ngữ Nghĩa PMI</h3>
+                            <p class="text-xl font-bold text-slate-800 mb-3">Đánh giá mức độ gắn kết chủ đề giữa Prompt
+                                hạt nhân ($w_A$) và từ gieo vần thi ca ($w_B$):</p>
+                            <div
+                                class="p-4 bg-slate-100 rounded-2xl font-mono text-base font-black text-gred overflow-x-auto">
+                                $$\text{PMI}(w_A, w_B) = \log_2 \frac{P(w_A, w_B)}{P(w_A) \cdot P(w_B)}$$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: Approach 1 - Distillation -->
+            <section class="kinetic-slide" id="slide-8">
+                <div class="content-max text-left">
+                    <h2 class="section-headline mb-2 stagger-from-top delay-1">PHƯƠNG ÁN 1: THỬ NGHIỆM FINE-TUNING QWEN
+                        7B</h2>
+                    <p class="text-slate-700 text-2xl font-bold mb-8 stagger-from-left delay-2">Knowledge Distillation
+                        Pipeline (Tiến Trình Chưng Cất Tri Thức 3 Bước)</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
+                        <div class="editorial-column stagger-from-left delay-3">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="badge-tag tag-blue">BƯỚC 1</span>
+                                <span class="font-mono text-base text-slate-700 font-black">10K PAIRS</span>
+                            </div>
+                            <h3 class="text-slate-900 text-3xl font-black mb-2">Gemini 3.5 Flash API</h3>
+                            <p class="text-slate-800 text-xl font-bold">Sinh 10.000 cặp Prompt-Poem Lục Bát chuẩn mực
+                                làm Synthetic Dataset chất lượng cao.</p>
+                            <p class="mt-4 text-base text-gblue font-black uppercase">TEACHER MODEL</p>
+                        </div>
+
+                        <div class="editorial-column column-yellow stagger-from-bottom delay-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="badge-tag tag-yellow">BƯỚC 2</span>
+                                <span class="font-mono text-base text-slate-700 font-black">RANK=16</span>
+                            </div>
+                            <h3 class="text-slate-900 text-3xl font-black mb-2">QLoRA Fine-Tuning</h3>
+                            <p class="text-slate-800 text-xl font-bold">Đóng gói dữ liệu chưng cất, căn chỉnh Tokenizer
+                                Tiếng Việt và nén trọng số mô hình.</p>
+                            <p class="mt-4 text-base text-amber-800 font-black uppercase">ALIGNMENT STAGE</p>
+                        </div>
+
+                        <div class="editorial-column column-red stagger-from-right delay-5">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="badge-tag tag-red">BƯỚC 3</span>
+                                <span class="font-mono text-base text-gred font-black">0/100 ĐIỂM</span>
+                            </div>
+                            <h3 class="text-slate-900 text-3xl font-black mb-2">Qwen-2.5-7B-Instruct</h3>
+                            <p class="text-gred text-xl font-black">Huấn luyện 3 Epochs nhưng KHÔNG hội tụ luật thi ca
+                                (Sai 68% luật Bằng-Trắc).</p>
+                            <p class="mt-4 text-base text-gred font-black uppercase">STUDENT MODEL (FAILED)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9: Failure Analysis -->
+            <section class="kinetic-slide" id="slide-9">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">PHÂN TÍCH NGUYÊN NHÂN THẤT BẠI
+                        (0/100 ĐIỂM)</h2>
+                    <div class="editorial-column column-red stagger-from-left delay-2">
+                        <span class="badge-tag tag-red mb-4 stagger-from-top delay-3">KẾT QUẢ THỰC NGHIỆM</span>
+                        <ul class="editorial-list editorial-list-red mt-4 space-y-4">
+                            <li class="stagger-from-left delay-4"><span class="text-gred font-black">Tỷ lệ sai luật
+                                    thanh điệu: 68%</span> (Qwen 7B không hội tụ luật Bằng - Trắc ở vị trí 2-4-6-8).
+                            </li>
+                            <li class="stagger-from-left delay-5"><span class="text-gred font-black">Hiện tượng
+                                    Hallucination & Lặp câu:</span> Mô hình bị lặp từ gieo vần và vỡ vần lưng nghiêm
+                                trọng.</li>
+                            <li class="stagger-from-left delay-6"><span class="text-gred font-black">Nguyên nhân cốt
+                                    lõi:</span> Tiếng Việt là ngôn ngữ thanh điệu ẩn. Mô hình Neural pure chỉ dự đoán
+                                token tiếp theo theo xác suất thống kê chuỗi, không thể tự đếm âm tiết (6-8) hay ép bảng
+                                thanh điệu cứng.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 10: Statistical N-Gram -->
+            <section class="kinetic-slide" id="slide-10">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">PHƯƠNG ÁN 2: MÔ HÌNH THỐNG KÊ
+                        RULE-BASED ENGINE</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <h3 class="text-gblue text-3.5xl font-black mb-4 stagger-from-left delay-3">Kiến Trúc Mô
+                                Hình</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-4"><span
+                                        class="text-slate-900 font-black">Interpolated Kneser-Ney 3-Gram:</span> Mịn hóa
+                                    xác suất N-gram với Discount $d=0.75$.</li>
+                                <li class="stagger-from-left delay-5"><span class="text-slate-900 font-black">Ma Trận
+                                        PMI:</span> Tính toán độ tương quan ngữ nghĩa giữa Seed Prompt & từ gieo vần.
+                                </li>
+                                <li class="stagger-from-left delay-6"><span class="text-slate-900 font-black">Beam
+                                        Search Generator:</span> Sinh câu thơ từ các cụm N-gram khả dĩ.</li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-yellow stagger-from-right delay-3">
+                            <h3 class="text-amber-800 text-3.5xl font-black mb-4 stagger-from-right delay-4">Best-of-N
+                                Evaluator (5 Tiêu Chí)</h3>
+                            <ul class="editorial-list editorial-list-yellow">
+                                <li class="stagger-from-right delay-5">1. Điểm Luật & Âm Điệu (25đ)</li>
+                                <li class="stagger-from-right delay-6">2. Điểm Nhịp Đôi PMI (25đ)</li>
+                                <li class="stagger-from-right delay-7">3. Điểm Từ Vựng Thi Ca (20đ)</li>
+                                <li class="stagger-from-right delay-8">4. Điểm Anti-Repetition (15đ)</li>
+                                <li class="stagger-from-right delay-8">5. Điểm Mượt Mà Toàn Bài (15đ)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 11: Approach 2 - Evaluation -->
+            <section class="kinetic-slide" id="slide-11">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">ĐÁNH GIÁ PHƯƠNG ÁN 2 (ĐẠT
+                        60/100 ĐIỂM)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column column-green stagger-from-left delay-2">
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4 stagger-from-left delay-3">Ưu Điểm
+                                (Strengths)</h3>
+                            <ul class="editorial-list editorial-list-green">
+                                <li class="stagger-from-left delay-4">Độ chính xác luật thơ Lục Bát: <span
+                                        class="text-ggreen font-black">100%</span> (Nhờ Best-of-N Filter).</li>
+                                <li class="stagger-from-left delay-5">Tốc độ xử lý: Cực nhanh (<span
+                                        class="text-ggreen font-black">&lt; 0.5 giây</span>).</li>
+                                <li class="stagger-from-left delay-6">Tối ưu bộ nhớ: Persistent pickle cache.</li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-red stagger-from-right delay-3">
+                            <h3 class="text-gred text-3.5xl font-black mb-4 stagger-from-right delay-4">Nhược Điểm Lớn
+                                (Limitations)</h3>
+                            <ul class="editorial-list editorial-list-red">
+                                <li class="stagger-from-right delay-5"><span class="text-gred font-black">Thiếu sáng
+                                        tạo:</span> Ý tưởng khô cứng, phụ thuộc vào n-gram sẵn có.</li>
+                                <li class="stagger-from-right delay-6"><span class="text-gred font-black">Dễ bị
+                                        Overfitting:</span> Tỷ lệ trùng câu cũ trong dataset lên tới <span
+                                        class="text-gred font-black">14.2%</span> (Jaccard = 0.42).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 12: N-Gram Bigram Followers for Tier 2 (NEW CORE KNOWLEDGE) -->
+            <section class="kinetic-slide" id="slide-12">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">KHAI PHÁ BIGRAM FOLLOWERS TRONG
+                        NEURO-SYMBOLIC</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <span class="badge-tag tag-blue mb-4">CẤP NĂNG LƯỢNG CHO TẦNG 2</span>
+                            <h3 class="text-gblue text-3.5xl font-black mb-4">Chiết Xuất 3.4M N-Gram Corpus</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-4"><span class="text-slate-900 font-black">Ma trận
+                                        Bigram Followers:</span> Lưu giữ các cặp từ $(w_1 \rightarrow w_2)$ xuất hiện
+                                    phổ biến nhất trong 84.686 bài thơ.</li>
+                                <li class="stagger-from-left delay-5"><span class="text-slate-900 font-black">Ràng buộc
+                                        3 yếu tố:</span> Chọn $w_2$ sau $w_1$ thỏa mãn:
+                                    <br>1. Đúng thanh điệu Bằng/Trắc tại vị trí 2 & 4.
+                                    <br>2. Đúng nhãn POS (Danh từ, Tính từ).
+                                    <br>3. Điểm tần suất Bigram cao nhất trong tập thơ.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <span class="badge-tag tag-green mb-4">MÃ NGUỒN THUẬT TOÁN</span>
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4">Cấu Trúc Tra Cứu N-gram POS</h3>
+                            <pre class="stagger-zoom-pop delay-5"><code class="language-python"># Tra cứu Bigram follower thỏa mãn Thanh & POS
+followers = bigram_matrix.get(w1, [])
+for candidate, count in followers:
+    if get_tone(candidate) == target_tone:
+        if get_pos(candidate) in allowed_pos:
+            return candidate  # Chọn từ mượt nhất!</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 13: Approach 3 SOTA Neuro-Symbolic -->
+            <section class="kinetic-slide" id="slide-13">
+                <div class="content-max text-center">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">PHƯƠNG ÁN 3: NEURO-SYMBOLIC
+                        HYBRID AI (90+/100 ĐIỂM)</h2>
+                    <div class="editorial-column text-left stagger-zoom-pop delay-2">
+                        <span class="badge-tag tag-blue mb-4 stagger-from-top delay-3">TRIẾT LÝ KẾT HỢP ĐỈNH CAO</span>
+                        <h3 class="text-gblue text-4.5xl font-black my-4 stagger-zoom-pop delay-4">NEURAL CREATIVITY +
+                            SYMBOLIC PRECISION</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mt-6">
+                            <div class="editorial-column stagger-from-left delay-5">
+                                <h4 class="text-gblue font-black text-3xl mb-2">TẦNG 1: NEURO STAGE</h4>
+                                <p class="text-xl text-slate-800 font-bold">Local LLM <strong>Google
+                                        Gemma-4-12B-QAT</strong> sinh bản thảo thô (RAW Draft) vô cùng phong phú ý tưởng
+                                    & hình ảnh thi vị.</p>
+                            </div>
+                            <div class="editorial-column column-green stagger-from-right delay-6">
+                                <h4 class="text-ggreen font-black text-3xl mb-2">TẦNG 2: SYMBOLIC STAGE</h4>
+                                <p class="text-xl text-slate-800 font-bold"><strong>Rule Repair Engine 3 Tầng</strong>
+                                    tự động sửa lỗi cấu trúc 6-8, thanh điệu 2-4-6-8, vần lưng/chân & đối Ngang-Huyền.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 14: Tier 1 Local LLM -->
+            <section class="kinetic-slide" id="slide-14">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">TẦNG 1: LOCAL LLM GEMMA-4-12B &
+                        JSON SCHEMA</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <h3 class="text-gblue text-3.5xl font-black mb-4 stagger-from-left delay-3">Local Inference
+                                Server</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-4">Host mô hình <code>google/gemma-4-12b-qat</code>
+                                    trên <strong>LM Studio Server</strong>.</li>
+                                <li class="stagger-from-left delay-5">Endpoint:
+                                    <code>http://127.0.0.1:1234/v1/chat/completions</code>.</li>
+                                <li class="stagger-from-left delay-6">Giao tiếp qua HTTP REST API.</li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4 stagger-from-right delay-4">Structured
+                                JSON Schema Payload</h3>
+                            <pre class="stagger-zoom-pop delay-5"><code class="language-json">{
+  "type": "object",
+  "properties": {
+    "poem_lines": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 4, "maxItems": 4
+    }
+  },
+  "required": ["poem_lines"]
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 15: Tier 2 Rule Repair Engine -->
+            <section class="kinetic-slide" id="slide-15">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">TẦNG 2: RULE REPAIR ENGINE 3
+                        TẦNG</h2>
+                    <div class="flex flex-col space-y-6 mt-4">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <strong class="text-gblue font-black text-2xl">TIER 1: SỬA ĐỘ DÀI CÂU (LENGTH
+                                FIXER)</strong>
+                            <p class="text-xl text-slate-800 font-bold mt-1">Cắt bỏ hư từ thừa nếu câu &gt; 6/8 từ; chèn
+                                từ đệm thi ca tự nhiên nếu câu &lt; 6/8 từ.</p>
+                        </div>
+                        <div class="editorial-column column-yellow stagger-from-left delay-3">
+                            <strong class="text-amber-800 font-black text-2xl">TIER 2: SỬA THANH POSITION 2 & 4 VÀ BẢO
+                                TỒN CỤM TỪ</strong>
+                            <p class="text-xl text-slate-800 font-bold mt-1">Khai phá Bigram Followers từ 3.4M N-gram
+                                tập thơ để sửa tiếng 2 (Bằng) & tiếng 4 (Trắc) mà vẫn bảo tồn cụm từ Danh-Tính từ.</p>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-left delay-4">
+                            <strong class="text-ggreen font-black text-2xl">TIER 3: SỬA RHYME POS-AWARE & ÉP ĐỐI NGANG -
+                                HUYỀN</strong>
+                            <p class="text-xl text-slate-800 font-bold mt-1">Tra cứu vần chân/lưng trong Từ Điển Vần và
+                                ép đối thanh Bằng (1 Ngang, 1 Huyền) ở tiếng 6 & 8 câu Bát.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 16: Problem 1 Token Exhaustion -->
+            <section class="kinetic-slide" id="slide-16">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">VẤN ĐỀ 1: LỖI KIỆT TOKEN SUY
+                        LUẬN API LM STUDIO</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column column-red stagger-from-left delay-2">
+                            <h3 class="text-gred text-3.5xl font-black mb-3 stagger-from-left delay-3">Vấn Đề Phát Sinh
+                            </h3>
+                            <p class="text-2xl text-slate-900 font-extrabold stagger-from-left delay-4">Đặt
+                                <code>max_tokens: 300</code> làm LM Studio API trả về chuỗi JSON rỗng hoặc lỗi parse
+                                JSON.</p>
+                            <p class="text-xl text-slate-700 mt-3 font-bold stagger-from-left delay-5"><strong>Nguyên
+                                    nhân:</strong> Gemma-4-12B sinh các reasoning tokens vào
+                                <code>reasoning_content</code> trước khi xuất kết quả. Ngân sách 300 tokens bị tiêu tốn
+                                hết trước khi kịp xuất JSON.</p>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <h3 class="text-ggreen text-3.5xl font-black mb-3 stagger-from-right delay-4">Biện Pháp Khắc
+                                Phục</h3>
+                            <p class="text-2xl text-slate-900 font-extrabold stagger-from-right delay-5">Loại bỏ hoàn
+                                toàn tham số <code>max_tokens</code> khỏi HTTP Payload trong
+                                <code>hybrid_llm_generator.py</code>.</p>
+                            <p class="text-xl text-ggreen font-black mt-3 stagger-from-right delay-6"><strong>Kết
+                                    quả:</strong> LLM tự do suy luận và xuất mảng JSON 4 câu thơ trọn vẹn 100% thành
+                                công!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 17: Problem 2 Bigram N-gram Followers Mining -->
+            <section class="kinetic-slide" id="slide-17">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">VẤN ĐỀ 2: TỰ ĐỘNG KHAI PHÁ
+                        BIGRAM N-GRAM CORPUS</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column column-yellow stagger-from-left delay-2">
+                            <h3 class="text-amber-800 text-3.5xl font-black mb-3 stagger-from-left delay-3">Vấn Đề: Từ
+                                Điển Cứng</h3>
+                            <p class="text-2xl text-slate-900 font-extrabold stagger-from-left delay-4">Mảng tra cứu thủ
+                                công <code>POETIC_COLLOCATIONS</code> làm câu thơ bị gượng ép, lặp lại từ và thiếu vốn
+                                từ thi ca.</p>
+                        </div>
+                        <div class="editorial-column stagger-from-right delay-3">
+                            <h3 class="text-gblue text-3.5xl font-black mb-3 stagger-from-right delay-4">Giải Pháp:
+                                Bigram Followers</h3>
+                            <p class="text-2xl text-slate-900 font-extrabold stagger-from-right delay-5">Khai phá tự
+                                động Bigram followers từ <strong>3.4M N-gram tập thơ</strong>
+                                (<code>ngram_model_hf.pkl</code>).</p>
+                            <p class="text-xl text-slate-700 mt-3 font-bold stagger-from-right delay-6">Tự động tìm từ
+                                $w_2$ có tần suất cao nhất sau $w_1$ thỏa mãn thanh Bằng/Trắc và nhãn POS!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 18: Problem 3 & 4 Semantic Preservation -->
+            <section class="kinetic-slide" id="slide-18">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">VẤN ĐỀ 3 & 4: BẢO TỒN MIỀN NGỮ
+                        NGHĨA & CỤM TỪ</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column column-red stagger-from-left delay-2">
+                            <h4 class="text-gred font-black text-3xl mb-3 stagger-from-left delay-3">Vấn Đề 3: Lệch Miền
+                                Ngữ Nghĩa</h4>
+                            <p class="text-xl text-slate-800 font-bold stagger-from-left delay-4">Thay <em>"Đôi
+                                    mắt"</em> (Trắc) $\rightarrow$ <em>"Đôi ta"</em> (Bằng) làm vỡ ngữ nghĩa tả đôi mắt.
+                            </p>
+                            <p class="text-xl text-gblue font-black mt-4 stagger-from-left delay-5">✓ Giải pháp:
+                                <code>POETIC_SYNONYM_MAP</code> đổi <em>mắt</em> $\rightarrow$ <strong>mi</strong>
+                                (<em>"Đôi mi"</em>).</p>
+                        </div>
+                        <div class="editorial-column column-red stagger-from-right delay-3">
+                            <h4 class="text-gred font-black text-3xl mb-3 stagger-from-right delay-4">Vấn Đề 4: Phá Vỡ
+                                Từ Trung Gian</h4>
+                            <p class="text-xl text-slate-800 font-bold stagger-from-right delay-5">Thay ngẫu nhiên 2 vị
+                                trí làm vỡ từ ở giữa (<em>"tròn"</em>) thành <em>"Đôi ta tròn lại"</em>.</p>
+                            <p class="text-xl text-gblue font-black mt-4 stagger-from-right delay-6">✓ Giải pháp:
+                                <code>repair_phrase_chunk</code> bảo tồn từ <em>tròn</em> thành <strong>"Đôi mi tròn
+                                    biếc"</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 19: Problem 5 Corpus Frequency Ranking -->
+            <section class="kinetic-slide" id="slide-ranking">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">VẤN ĐỀ 5: BỘ SO SÁNH TẦN SUẤT
+                        CORPUS RANKING</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="stagger-zoom-pop delay-2">
+                            <h3 class="text-slate-900 text-2.5xl font-bold mb-3 stagger-from-left delay-3">Điểm Tần Suất
+                                Bigram (3.4M N-Gram)</h3>
+                            <div class="chart-container stagger-zoom-pop delay-4">
+                                <canvas id="chart-ranking"></canvas>
+                            </div>
+                        </div>
+                        <div class="editorial-column stagger-from-right delay-3">
+                            <h3 class="text-gblue text-3.5xl font-black mb-3 stagger-from-right delay-4">Thuật Toán Chọn
+                                Candidate</h3>
+                            <p class="text-xl text-slate-800 font-bold stagger-from-right delay-5">Băn khoăn: Giữ từ
+                                <em>"tròn"</em> (<em>"Đôi mi tròn biếc"</em> - Điểm 28) hay Bỏ <em>"tròn"</em> thay cụm
+                                mới?</p>
+                            <p class="text-2xl text-ggreen font-black mt-4 stagger-from-right delay-6"><strong>Tự động
+                                    quyết định:</strong> Cụm <code>"Đôi hàng mi nhỏ"</code> đạt điểm tần suất
+                                <strong>217</strong> (Phổ biến gấp 7.7 lần!). Thuật toán
+                                <code>score_segment_corpus_frequency</code> TỰ ĐỘNG CHỌN cụm phổ biến hơn trong tập thơ!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 20: Case Study Poem -->
+            <section class="kinetic-slide" id="slide-20">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">PHÂN TÍCH CASE STUDY BÀI THƠ
+                        "MÈO SƯỞI NẮNG"</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column column-yellow stagger-from-left delay-2">
+                            <span class="badge-tag tag-yellow mb-3 stagger-from-top delay-3">LLM RAW DRAFT (TẦNG
+                                1)</span>
+                            <p class="text-2xl text-slate-900 mt-3 font-bold stagger-from-left delay-4">Nằm nghe nắng đổ
+                                chiều mây</p>
+                            <p class="text-2xl text-gred font-black stagger-from-left delay-5">Mèo ngoan cuộn bóng bên
+                                cửa mơ màng (Lỗi thanh: 'cửa' Trắc ở tiếng 6)</p>
+                            <p class="text-2xl text-slate-900 font-bold stagger-from-left delay-6">Lông mềm rủ mượt thu
+                                sang</p>
+                            <p class="text-2xl text-gred font-black stagger-from-left delay-7">Khẽ khàng bước nhẹ giữa
+                                sân trút thơ (Lỗi vần lưng: 'sân' không vần 'sang')</p>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <span class="badge-tag tag-green mb-3 stagger-from-top delay-4">NEURO-SYMBOLIC REPAIRED
+                                (TẦNG 2)</span>
+                            <div
+                                class="text-2xl my-4 text-slate-900 font-black leading-relaxed pl-4 border-l-6 border-l-ggreen stagger-from-right delay-5">
+                                Nằm nghe nắng đổ chiều mây,<br>
+                                Mèo ngoan cuộn bóng bên <strong class="text-ggreen font-black">cây</strong> mơ màng.<br>
+                                Lông mềm rủ mượt thu sang,<br>
+                                Khẽ khàng bước nhẹ giữa <strong class="text-ggreen font-black">hàng</strong> trút thơ.
+                            </div>
+                            <p class="text-xl text-ggreen font-black stagger-from-right delay-6">✓ THỎA MÃN 100% QUY TẮC
+                                LỤC BÁT, VẦN ĐIỆU & ĐẠT CHẤT THƠ CAO</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 21: Overfitting & Creativity -->
+            <section class="kinetic-slide" id="slide-overfitting">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">KIỂM THỬ CHỐNG OVERFITTING & ĐỘ
+                        SÁNG TẠO</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="stagger-zoom-pop delay-2">
+                            <h3 class="text-slate-900 text-2.5xl font-bold mb-3 stagger-from-left delay-3">Chỉ Số Trùng
+                                Lặp & Jaccard</h3>
+                            <div class="chart-container stagger-zoom-pop delay-4">
+                                <canvas id="chart-overfitting"></canvas>
+                            </div>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <h3 class="text-ggreen text-3.5xl font-black mb-3 stagger-from-top delay-4">Khả Năng Sáng
+                                Tạo 100%</h3>
+                            <p class="text-xl text-slate-800 font-bold stagger-from-right delay-5">So sánh 100 bài thơ
+                                sinh ra với 84.686 bài thơ gốc:</p>
+                            <ul class="editorial-list editorial-list-green mt-4">
+                                <li class="stagger-from-right delay-6"><span class="text-slate-900 font-black">Phương Án
+                                        2 (N-gram):</span> Trùng câu 14.2%, Jaccard = 0.42 (Dễ học thuộc 3-gram).</li>
+                                <li class="stagger-from-right delay-7"><span class="text-ggreen font-black">Phương Án 3
+                                        (Neuro-Symbolic):</span> <strong class="text-ggreen">TRÙNG CÂU 0.0%</strong>,
+                                    Jaccard = <strong>0.18</strong>.</li>
+                            </ul>
+                            <p class="text-2xl text-ggreen font-black mt-4 stagger-from-right delay-8"><strong>Kết
+                                    luận:</strong> Phương án 3 sinh câu thơ hoàn toàn mới, 0% học vẹt!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 22: 3-Way Summary -->
+            <section class="kinetic-slide" id="slide-22">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">BẢNG TỔNG KẾT SO SÁNH 3 PHƯƠNG
+                        ÁN</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div class="editorial-column column-red stagger-from-left delay-2">
+                            <span class="badge-tag tag-red mb-3 stagger-from-top delay-3">Phương Án 1</span>
+                            <h3 class="text-slate-900 text-3.5xl font-black mb-1 stagger-from-left delay-4">Qwen 7B
+                                Fine-Tune</h3>
+                            <div class="giant-number text-gred my-2 stagger-zoom-pop delay-5">0/100</div>
+                            <p class="text-lg text-slate-700 font-black mb-3 stagger-from-left delay-6">Distillation từ
+                                Gemini 3.5</p>
+                            <ul class="text-lg space-y-2 font-bold">
+                                <li class="stagger-from-left delay-7"><strong class="text-gred">Độ chính xác:</strong>
+                                    Sai 68% luật Bằng-Trắc</li>
+                                <li class="stagger-from-left delay-8"><strong class="text-gred">Lỗi gieo vần:</strong>
+                                    Vỡ vần lưng & vần chân</li>
+                                <li class="stagger-from-left delay-8"><strong class="text-gred">Kết luận:</strong> THẤT
+                                    BẠI HỌC VẸT</li>
+                            </ul>
+                        </div>
+
+                        <div class="editorial-column column-yellow stagger-from-bottom delay-3">
+                            <span class="badge-tag tag-yellow mb-3 stagger-from-top delay-4">Phương Án 2</span>
+                            <h3 class="text-slate-900 text-3.5xl font-black mb-1 stagger-from-bottom delay-5">
+                                Statistical N-Gram</h3>
+                            <div class="giant-number text-amber-800 my-2 stagger-zoom-pop delay-6">60/100</div>
+                            <p class="text-lg text-slate-700 font-black mb-3 stagger-from-bottom delay-7">Rule-Engine +
+                                Kneser-Ney</p>
+                            <ul class="text-lg space-y-2 font-bold">
+                                <li class="stagger-from-bottom delay-8"><strong class="text-slate-900">Độ chính
+                                        xác:</strong> Đúng 100% luật thơ</li>
+                                <li class="stagger-from-bottom delay-8"><strong class="text-amber-800">Chống
+                                        Overfitting:</strong> Trùng câu cũ 14.2%</li>
+                                <li class="stagger-from-bottom delay-8"><strong class="text-amber-800">Kết
+                                        luận:</strong> ĐÚNG LUẬT NHƯNG KHÔ CỨNG</li>
+                            </ul>
+                        </div>
+
+                        <div class="editorial-column stagger-from-right delay-4">
+                            <span class="badge-tag tag-blue mb-3 stagger-from-top delay-5">Phương Án 3 (SOTA)</span>
+                            <h3 class="text-slate-900 text-3.5xl font-black mb-1 stagger-from-right delay-6">
+                                Neuro-Symbolic Hybrid</h3>
+                            <div class="giant-number text-gblue my-2 stagger-zoom-pop delay-7">95/100</div>
+                            <p class="text-lg text-slate-900 font-black mb-3 stagger-from-right delay-8">Gemma 12B +
+                                Rule Repair Engine</p>
+                            <ul class="text-lg space-y-2 font-black">
+                                <li class="stagger-from-right delay-8"><strong class="text-gblue">Tính sáng
+                                        tạo:</strong> Ý thơ thi vị (Gemma 12B)</li>
+                                <li class="stagger-from-right delay-8"><strong class="text-gblue">Độ chính xác:</strong>
+                                    100% chuẩn luật thi ca</li>
+                                <li class="stagger-from-right delay-8"><strong class="text-gblue">Chống
+                                        Overfitting:</strong> TRÙNG CÂU 0.0%</li>
+                                <li class="stagger-from-right delay-8"><strong class="text-gblue">Kết luận:</strong>
+                                    HOÀN HẢO XUẤT SẮC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 23: Live Interactive Demo Playground -->
+            <section class="kinetic-slide" id="slide-23">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 mb-3 stagger-from-top delay-1">DEMO TRỰC TIẾP: WEB UI & CLI TERMINAL SIMULATOR</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mt-1">
+
+                        <!-- Left: Interactive Web UI Generator -->
+                        <div class="demo-window stagger-from-left delay-2">
+                            <div>
+                                <div class="mb-3">
+                                    <label class="block text-slate-800 font-extrabold text-base mb-1">Chủ Đề / Prompt Hạt Nhân:</label>
+                                    <input type="text" id="demo-prompt-input" value="con mèo"
+                                        class="w-full px-4 py-2.5 rounded-xl border-2 border-slate-300 font-bold text-slate-900 text-lg focus:border-gblue focus:outline-none bg-white shadow-sm">
+                                </div>
+
+                                <div class="mb-4">
+                                    <label class="block text-slate-800 font-extrabold text-base mb-1">Chọn Phương Án Mô Hình:</label>
+                                    <select id="demo-approach-select" class="w-full px-4 py-2.5 custom-select text-base">
+                                        <option value="pa3">Phương Án 3: Neuro-Symbolic Hybrid (Gemma 4 e2b + Repair Engine)</option>
+                                        <option value="pa2">Phương Án 2: Statistical N-Gram (Kneser-Ney + Beam Search)</option>
+                                        <option value="pa1">Phương Án 1: Fine-Tuning DeepSeek R1 7B (poem-deepseek-r1-7b)</option>
+                                    </select>
+                                </div>
+
+                                <button id="btn-run-demo"
+                                    class="w-full py-3 bg-gblue hover:bg-blue-600 text-white font-black text-xl rounded-xl shadow-md transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                                    <span>SINH THƠ LỤC BÁT NGAY</span>
+                                </button>
+                            </div>
+
+                            <!-- Web UI Result Box (Pre-reserved Fixed Height 180px) -->
+                            <div class="mt-4 p-4 bg-slate-50 rounded-xl border-2 border-slate-200 demo-output-box" id="webui-output">
+                                <div class="text-slate-500 font-bold text-base italic text-center">
+                                    Nhấn "SINH THƠ LỤC BÁT NGAY" để chạy thử nghiệm trực tiếp
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right: CLI Terminal Simulator -->
+                        <div class="cli-window stagger-from-right delay-3">
+                            <div class="cli-header">
+                                <div class="cli-dots">
+                                    <span class="cli-dot dot-red"></span>
+                                    <span class="cli-dot dot-yellow"></span>
+                                    <span class="cli-dot dot-green"></span>
+                                </div>
+                                <span class="text-slate-400 font-mono text-xs font-bold">pka_nlp_engine_cli_v3.4.py</span>
+                            </div>
+                            <div class="cli-body" id="cli-body">
+                                <div class="cli-line-info">[SYSTEM READY] PKA NLP Engine v3.4 Loaded successfully.</div>
+                                <div class="cli-line-info">[DATASET] 84.686 Poems / 38.633 POS Lexicons Mounted.</div>
+                                <div class="cli-line-warn">[WAITING] Awaiting user prompt execution from Web UI...</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 24: Conclusion -->
+            <section class="kinetic-slide" id="slide-24">
+                <div class="content-max text-left">
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">KẾT LUẬN & HƯỚNG PHÁT TRIỂN
+                        TƯƠNG LAI</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="editorial-column stagger-from-left delay-2">
+                            <h3 class="text-gblue text-3.5xl font-black mb-4 stagger-from-left delay-3">Kết Luận Đóng
+                                Góp</h3>
+                            <ul class="editorial-list">
+                                <li class="stagger-from-left delay-4">Hoàn thành 100% 4 Chuẩn đầu ra (LO1 - LO4).</li>
+                                <li class="stagger-from-left delay-5">Xây dựng thành công hệ thống Neuro-Symbolic Hybrid
+                                    AI sinh thơ Lục Bát chuẩn mực đầu tiên tích hợp 38.633 từ vựng POS và 3.4M N-grams.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="editorial-column column-green stagger-from-right delay-3">
+                            <h3 class="text-ggreen text-3.5xl font-black mb-4 stagger-from-right delay-4">Hướng Phát
+                                Triển Tiếp Theo</h3>
+                            <ul class="editorial-list editorial-list-green">
+                                <li class="stagger-from-right delay-5">1. Thử nghiệm LoRA Fine-Tuning trực tiếp
+                                    Qwen-2.5-7B / LLaMA-3.</li>
+                                <li class="stagger-from-right delay-6">2. Xây dựng giao diện Web Application trực quan
+                                    bằng Next.js / FastAPI.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12 stagger-zoom-pop delay-5">
+                        <h3 class="text-gblue text-5.5xl font-black floating-y stagger-zoom-pop delay-6">XIN CHÂN THÀNH
+                            CẢM ƠN THẦY/CÔ VÀ CÁC BẠN!</h3>
+                        <p class="text-2xl text-slate-800 font-black mt-3 stagger-from-bottom delay-7">Kính mời Thầy/Cô
+                            đặt câu hỏi phản biện cho nhóm PKA NLP Team.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Sleek Ultra-Thin 6px Segmented Progress Bar Dock with Micro 6px Nav Dots -->
+        <div class="progress-bar-dock" id="progress-bar-dock" aria-label="Slide Progress Bar">
+            <button class="dock-nav-btn" id="btn-dock-prev" aria-label="Previous Slide" title="Slide trước"></button>
+            <div class="progress-segments-wrapper" id="progress-segments-wrapper"></div>
+            <button class="dock-nav-btn" id="btn-dock-next" aria-label="Next Slide" title="Slide tiếp"></button>
+        </div>
+
+    </div>
+
+    <!-- Engine JS -->
+    <script src="slides.js?v=4.6"></script>
+
+</body>
+
+</html>
