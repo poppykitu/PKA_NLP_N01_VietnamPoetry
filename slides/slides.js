@@ -196,10 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // Stage Click Navigation (Ignores interactive demo UI elements to prevent navigation conflicts)
+    // Stage Click Navigation (Completely disabled when viewing Slide 23 Demo Playground)
     const stage = document.querySelector('.kinetic-stage');
     if (stage) {
         stage.addEventListener('click', (e) => {
+            if (slides[currentSlideIndex] && slides[currentSlideIndex].id === 'slide-23') return;
             if (e.target.closest('button, a, code, pre, canvas, input, select, textarea, .demo-window, .cli-window')) return;
             const width = window.innerWidth;
             if (e.clientX > width / 2) nextSlide();
