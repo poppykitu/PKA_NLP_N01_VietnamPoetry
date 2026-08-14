@@ -136,19 +136,84 @@ document.addEventListener('DOMContentLoaded', () => {
         appendCliLine(`[START] Executive Command: python hybrid_llm_generator.py --prompt "${prompt}" --approach ${approach.toUpperCase()}`, 'info');
 
         if (approach === 'pa1') {
-            appendCliLine(`[INFO] Connecting to Qwen-2.5-7B-Instruct fine-tuned checkpoint...`, 'info');
-            await new Promise(r => setTimeout(r, 400));
-            appendCliLine(`[WARN] Model generating tokens without constrained tone grammar...`, 'warn');
-            await new Promise(r => setTimeout(r, 500));
-            appendCliLine(`[ERR] Violation Detected: Tone mismatch at position 4 & 6 for prompt "${prompt}".`, 'err');
-            await new Promise(r => setTimeout(r, 400));
-            appendCliLine(`[FAIL] PA 1 Failed (0/100 points). Model hallucinated broken meter.`, 'err');
-            webuiOutput.innerHTML = `
-                <div class="text-gred font-bold text-sm leading-relaxed border-l-4 border-gred pl-3">
-                    [THẤT BẠI] Qwen 7B Fine-Tune bị vỡ luật thi ca!<br>
-                    (Sai 68% luật Bằng-Trắc ở vị trí tiếng 4 & 6 câu Bát)
-                </div>
-            `;
+            appendCliLine(`[LM STUDIO] Kết nối tới Fine-Tuned Model (poem-deepseek-r1-7b)...`, 'info');
+            appendCliLine(`[MODEL] poem-deepseek-r1-7b | Prompt: "${prompt}"`, 'info');
+            appendCliLine(`[HTTP POST] Đang gửi prompt & đợi DeepSeek-R1-7B suy luận thời gian thực...`, 'info');
+
+            const startTime = performance.now();
+            try {
+                const res = await fetch('/api/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt, approach: 'pa1' })
+                });
+
+                let rawLines = [];
+                let rawEval = null;
+                let latency = 0;
+
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.status === 'success' && data.raw_lines && data.raw_lines.length > 0) {
+                        rawLines = data.raw_lines;
+                        rawEval = data.raw_eval;
+                        latency = data.latency || ((performance.now() - startTime) / 1000).toFixed(2);
+                    }
+                }
+
+                if (rawLines.length === 0) {
+                    throw new Error('Không nhận được phản hồi từ model poem-deepseek-r1-7b trên LM Studio');
+                }
+
+                let rawLog = `[PA 1: DEEPSEEK-R1-7B GENERATION (Pure Fine-Tuning)]:`;
+                rawLines.slice(0, 4).forEach((line, idx) => {
+                    const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' : '&nbsp;&nbsp;&nbsp;';
+                    rawLog += `\n${indent}${line} (${line.split(/\s+/).length} từ)`;
+                });
+                appendCliLine(rawLog, 'info');
+
+                if (rawEval && rawEval.errors && rawEval.errors.length > 0) {
+                    let errLog = `[KẾT QUẢ SOÁT LUẬT: VI PHẠM LUẬT THƠ (${rawEval.errors.length} lỗi)]:`;
+                    rawEval.errors.forEach(err => {
+                        errLog += `\n   - ${err}`;
+                    });
+                    appendCliLine(errLog, 'err');
+                    appendCliLine(`[KẾT LUẬN PA 1]: Pure Fine-Tuned LLM bị vỡ luật do thiếu Symbolic Repair Engine.`, 'warn');
+
+                    webuiOutput.innerHTML = `
+                        <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-gred pl-3">
+                            ${rawLines.map((l, idx) => {
+                                const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '';
+                                return `${indent}${l}`;
+                            }).join('<br>')}
+                        </div>
+                        <div class="text-gred text-xs font-black mt-2 uppercase tracking-wide">
+                            [PA 1: PURE FINE-TUNING] VI PHẠM LUẬT THƠ (${rawEval.errors.length} LỖI) • THIẾU RULE ENGINE
+                        </div>
+                    `;
+                } else {
+                    appendCliLine(`[KẾT QUẢ SOÁT LUẬT]: 100% Đúng Luật Lục Bát`, 'success');
+                    webuiOutput.innerHTML = `
+                        <div class="text-slate-900 font-extrabold text-base leading-snug border-l-4 border-amber-500 pl-3">
+                            ${rawLines.map((l, idx) => {
+                                const indent = (idx % 2 === 1) ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '';
+                                return `${indent}${l}`;
+                            }).join('<br>')}
+                        </div>
+                        <div class="text-amber-700 text-xs font-black mt-2 uppercase tracking-wide">
+                            [PA 1: DEEPSEEK-R1-7B] PURE LLM GENERATION (${latency}S)
+                        </div>
+                    `;
+                }
+            } catch (pa1Err) {
+                appendCliLine(`[HTTP ERROR] Lỗi kết nối poem-deepseek-r1-7b: ${pa1Err.message}`, 'err');
+                webuiOutput.innerHTML = `
+                    <div class="text-gred font-bold text-sm leading-relaxed border-l-4 border-gred pl-3">
+                        [LỖI KẾT NỐI PA 1]: poem-deepseek-r1-7b<br>
+                        <span class="text-slate-600 font-mono text-xs">${pa1Err.message}</span>
+                    </div>
+                `;
+            }
         } else if (approach === 'pa2') {
             appendCliLine(`[INFO] Loading Interpolated Kneser-Ney 3-Gram Model (Discount d=0.75)...`, 'info');
             appendCliLine(`[SEARCH] Beam Search evaluating PMI scores for seed "${prompt}"...`, 'info');

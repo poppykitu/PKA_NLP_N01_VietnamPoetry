@@ -18,19 +18,14 @@ if PROJECT_ROOT not in sys.path:
 # Change current working directory to PROJECT_ROOT for pickle/lexicon loading
 os.chdir(PROJECT_ROOT)
 
-# 1. Import PA3: Neuro-Symbolic Engine (Gemma-4-e2b + RuleRepairEngine)
-draft_gen = None
-rule_engine = None
-check_rules = None
-
+# 1. Import PA1: Fine-Tuned Model (poem-deepseek-r1-7b)
+draft_gen_pa1 = None
 try:
-    from hybrid_llm_generator import LLMDraftGenerator, RuleRepairEngine
-    from luc_bat_rules import check_luc_bat_poem_rules as check_rules
-    draft_gen = LLMDraftGenerator(model_name="google/gemma-4-e2b")
-    rule_engine = RuleRepairEngine()
-    print("  [INIT PA3] ✓ Loaded Native main_llm.py Engine (Gemma-4-e2b + 3.4M N-gram RuleRepairEngine) successfully!")
+    from hybrid_llm_generator import LLMDraftGenerator
+    draft_gen_pa1 = LLMDraftGenerator(model_name="poem-deepseek-r1-7b")
+    print("  [INIT PA1] ✓ Loaded DeepSeek R1 7B Generator (poem-deepseek-r1-7b) successfully!")
 except Exception as e:
-    print(f"  [INIT PA3] Notice: {e}")
+    print(f"  [INIT PA1] Notice: {e}")
 
 # 2. Import PA2: Statistical N-Gram Engine (Kneser-Ney 3-Gram + Beam Search + PMI)
 ngram_gen = None
@@ -46,6 +41,20 @@ try:
                 break
 except Exception as e:
     print(f"  [INIT PA2] Notice: {e}")
+
+# 3. Import PA3: Neuro-Symbolic Engine (Gemma-4-e2b + RuleRepairEngine)
+draft_gen_pa3 = None
+rule_engine = None
+check_rules = None
+
+try:
+    from hybrid_llm_generator import RuleRepairEngine
+    from luc_bat_rules import check_luc_bat_poem_rules as check_rules
+    draft_gen_pa3 = LLMDraftGenerator(model_name="google/gemma-4-e2b")
+    rule_engine = RuleRepairEngine()
+    print("  [INIT PA3] ✓ Loaded Native main_llm.py Engine (Gemma-4-e2b + 3.4M N-gram RuleRepairEngine) successfully!")
+except Exception as e:
+    print(f"  [INIT PA3] Notice: {e}")
 
 class CustomHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -63,7 +72,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
-        # High-Performance Endpoint directly executing PA2 & PA3 backend engines
+        # High-Performance Endpoint directly executing PA1, PA2 & PA3 backend engines
         if self.path in ['/api/generate', '/api/generate_poem', '/v1/chat/completions']:
             content_length = int(self.headers.get('Content-Length', 0))
             body = self.rfile.read(content_length).decode('utf-8')
@@ -84,7 +93,24 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
 
                 t0 = time.time()
 
-                if approach == 'pa2' and ngram_gen:
+                if approach == 'pa1':
+                    # Execute REAL Fine-Tuned DeepSeek R1 7B Generation (Pure LLM without Rule Repair)
+                    raw_draft = draft_gen_pa1.generate_draft(prompt) if draft_gen_pa1 else []
+                    raw_eval = check_rules(raw_draft) if (check_rules and raw_draft) else {"valid": False, "errors": []}
+                    latency = round(time.time() - t0, 2)
+                    response_data = {
+                        "status": "success",
+                        "approach": "pa1",
+                        "model": "poem-deepseek-r1-7b",
+                        "latency": latency,
+                        "prompt": prompt,
+                        "raw_lines": [" ".join(l) for l in raw_draft],
+                        "raw_eval": raw_eval,
+                        "repaired_lines": [" ".join(l) for l in raw_draft],
+                        "final_eval": raw_eval
+                    }
+
+                elif approach == 'pa2' and ngram_gen:
                     # Execute REAL Statistical N-gram Generation
                     poem_words_list = ngram_gen.generate_luc_bat_poem(seed_word=prompt)
                     latency = round(time.time() - t0, 2)
@@ -108,7 +134,7 @@ class CustomHandler(http.server.SimpleHTTPRequestHandler):
                 else:
                     # Execute PA3: Neuro-Symbolic Hybrid (Gemma-4-e2b + RuleRepairEngine)
                     # Step 1: LLM Generative Draft Stage (Exactly from main_llm.py)
-                    raw_draft = draft_gen.generate_draft(prompt) if draft_gen else []
+                    raw_draft = draft_gen_pa3.generate_draft(prompt) if draft_gen_pa3 else []
                     raw_eval = check_rules(raw_draft) if (check_rules and raw_draft) else {"valid": False, "errors": []}
                     
                     # Step 2: Symbolic Rule Repair Stage (Iterative Self-Correction Loop)
