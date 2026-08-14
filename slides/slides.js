@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="skeleton-card">
                 <div class="skeleton-badge">
                     <span class="skeleton-pulse-dot"></span>
-                    <span>Đang kết nối LM Studio (google/gemma-4-e2b)...</span>
+                    <span>Đang sáng tạo...</span>
                 </div>
                 <div class="skeleton-line skeleton-w-65"></div>
                 <div class="skeleton-line skeleton-w-90"></div>
