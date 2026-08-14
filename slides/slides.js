@@ -455,6 +455,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (slides[currentSlideIndex]) {
+            if (window.renderMathInElement) {
+                try {
+                    window.renderMathInElement(slides[currentSlideIndex], {
+                        delimiters: [
+                            {left: '$$', right: '$$', display: true},
+                            {left: '$', right: '$', display: false}
+                        ],
+                        throwOnError: false
+                    });
+                } catch(e) {}
+            }
             // Wait 250ms for slide fade-in transition to complete before triggering Chart.js canvas animation
             setTimeout(() => {
                 triggerSlideCharts(slides[currentSlideIndex].id);
