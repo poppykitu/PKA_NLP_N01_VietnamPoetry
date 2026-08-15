@@ -32,7 +32,7 @@
     </script>
 
     <!-- Borderless Editorial Stylesheet -->
-    <link rel="stylesheet" href="slides.css?v=5.0">
+    <link rel="stylesheet" href="slides.css?v=5.2">
 
     <!-- Highlight.js GitHub Light Theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
@@ -438,21 +438,18 @@
             <!-- SLIDE 8: Approach 1 - Distillation -->
             <section class="kinetic-slide" id="slide-8">
                 <div class="content-max text-left">
-                    <h2 class="section-headline mb-2 stagger-from-top delay-1">PHƯƠNG ÁN 1: THỬ NGHIỆM FINE-TUNING QWEN
-                        7B</h2>
-                    <p class="text-slate-700 text-2xl font-bold mb-8 stagger-from-left delay-2">Knowledge Distillation
-                        Pipeline (Tiến Trình Chưng Cất Tri Thức 3 Bước)</p>
+                    <h2 class="section-headline mb-2 stagger-from-top delay-1">PHƯƠNG ÁN 1: THỬ NGHIỆM FINE-TUNING REASONING 7B</h2>
+                    <p class="text-slate-700 text-2xl font-bold mb-8 stagger-from-left delay-2">Knowledge Distillation Pipeline (Tiến Trình Chưng Cất Tri Thức 3 Bước)</p>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
                         <div class="editorial-column stagger-from-left delay-3">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="badge-tag tag-blue">BƯỚC 1</span>
-                                <span class="font-mono text-base text-slate-700 font-black">10K PAIRS</span>
+                                <span class="font-mono text-base text-slate-700 font-black">4K SAMPLES</span>
                             </div>
                             <h3 class="text-slate-900 text-3xl font-black mb-2">Gemini 3.5 Flash API</h3>
-                            <p class="text-slate-800 text-xl font-bold">Sinh 10.000 cặp Prompt-Poem Lục Bát chuẩn mực
-                                làm Synthetic Dataset chất lượng cao.</p>
-                            <p class="mt-4 text-base text-gblue font-black uppercase">TEACHER MODEL</p>
+                            <p class="text-slate-800 text-xl font-bold">Trích xuất 4.000 mẫu dữ liệu suy luận (Thinking / Chain-of-Thought) phân tích cấu trúc thơ Lục Bát chất lượng cao.</p>
+                            <p class="mt-4 text-base text-gblue font-black uppercase">TEACHER MODEL (THINKING)</p>
                         </div>
 
                         <div class="editorial-column column-yellow stagger-from-bottom delay-4">
@@ -461,20 +458,18 @@
                                 <span class="font-mono text-base text-slate-700 font-black">RANK=16</span>
                             </div>
                             <h3 class="text-slate-900 text-3xl font-black mb-2">QLoRA Fine-Tuning</h3>
-                            <p class="text-slate-800 text-xl font-bold">Đóng gói dữ liệu chưng cất, căn chỉnh Tokenizer
-                                Tiếng Việt và nén trọng số mô hình.</p>
-                            <p class="mt-4 text-base text-amber-800 font-black uppercase">ALIGNMENT STAGE</p>
+                            <p class="text-slate-800 text-xl font-bold">Huấn luyện mô hình 7B (DeepSeek-R1 / Qwen) với Tokenizer Tiếng Việt và các bước tư duy suy luận vần luật.</p>
+                            <p class="mt-4 text-base text-amber-800 font-black uppercase">REASONING ALIGNMENT</p>
                         </div>
 
                         <div class="editorial-column column-red stagger-from-right delay-5">
                             <div class="flex items-center justify-between mb-3">
                                 <span class="badge-tag tag-red">BƯỚC 3</span>
-                                <span class="font-mono text-base text-gred font-black">0/100 ĐIỂM</span>
+                                <span class="font-mono text-base text-gred font-black">30/100 ĐIỂM</span>
                             </div>
-                            <h3 class="text-slate-900 text-3xl font-black mb-2">Qwen-2.5-7B-Instruct</h3>
-                            <p class="text-gred text-xl font-black">Huấn luyện 3 Epochs nhưng KHÔNG hội tụ luật thi ca
-                                (Sai 68% luật Bằng-Trắc).</p>
-                            <p class="mt-4 text-base text-gred font-black uppercase">STUDENT MODEL (FAILED)</p>
+                            <h3 class="text-slate-900 text-3xl font-black mb-2">Fine-Tuned Model 7B</h3>
+                            <p class="text-gred text-xl font-black">Huấn luyện 3 Epochs nhưng KHÔNG hội tụ luật cứng (Sai 68% luật Bằng-Trắc, 30/100 điểm).</p>
+                            <p class="mt-4 text-base text-gred font-black uppercase">STUDENT MODEL (30/100)</p>
                         </div>
                     </div>
                 </div>
@@ -483,21 +478,17 @@
             <!-- SLIDE 9: Failure Analysis -->
             <section class="kinetic-slide" id="slide-9">
                 <div class="content-max text-left">
-                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">PHÂN TÍCH NGUYÊN NHÂN THẤT BẠI
-                        (0/100 ĐIỂM)</h2>
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">PHÂN TÍCH KẾT QUẢ THỰC NGHIỆM PHƯƠNG ÁN 1 (30/100 ĐIỂM)</h2>
                     <div class="editorial-column column-red stagger-from-left delay-2">
                         <span class="badge-tag tag-red mb-4 stagger-from-top delay-3">KẾT QUẢ THỰC NGHIỆM</span>
                         <ul class="editorial-list editorial-list-red mt-4 space-y-4">
                             <li class="stagger-from-left delay-4"><span class="text-gred font-black">Tỷ lệ sai luật
-                                    thanh điệu: 68%</span> (Qwen 7B không hội tụ luật Bằng - Trắc ở vị trí 2-4-6-8).
+                                    thanh điệu: 68%</span> (Mô hình 7B không hội tụ luật Bằng - Trắc ở vị trí 2-4-6-8).
                             </li>
                             <li class="stagger-from-left delay-5"><span class="text-gred font-black">Hiện tượng
-                                    Hallucination & Lặp câu:</span> Mô hình bị lặp từ gieo vần và vỡ vần lưng nghiêm
-                                trọng.</li>
+                                    Hallucination & Lặp câu:</span> Dù có thinking tokens, mô hình vẫn bị lệch vần lưng và vần chân.</li>
                             <li class="stagger-from-left delay-6"><span class="text-gred font-black">Nguyên nhân cốt
-                                    lõi:</span> Tiếng Việt là ngôn ngữ thanh điệu ẩn. Mô hình Neural pure chỉ dự đoán
-                                token tiếp theo theo xác suất thống kê chuỗi, không thể tự đếm âm tiết (6-8) hay ép bảng
-                                thanh điệu cứng.</li>
+                                    lõi:</span> Pure Neural LLM sinh token theo phân phối xác suất thống kê tự do, không có cơ chế cứng kiểm soát âm tiết (6-8) và đối thanh (Bằng-Trắc).</li>
                         </ul>
                     </div>
                 </div>
@@ -923,8 +914,7 @@ for candidate, count in followers:
                             <h3 class="text-slate-900 text-3.5xl font-black mb-1 stagger-from-left delay-4">Qwen 7B
                                 Fine-Tune</h3>
                             <div class="giant-number text-gred my-2 stagger-zoom-pop delay-5">30/100</div>
-                            <p class="text-lg text-slate-700 font-black mb-3 stagger-from-left delay-6">Distillation từ
-                                Gemini 3.5</p>
+                            <p class="text-lg text-slate-700 font-black mb-3 stagger-from-left delay-6">Chưng cất 4.000 mẫu Thinking từ 3.5 Flash</p>
                             <ul class="text-lg space-y-2 font-bold">
                                 <li class="stagger-from-left delay-7"><strong class="text-gred">Độ chính xác:</strong>
                                     Sai 68% luật Bằng-Trắc</li>
@@ -1090,7 +1080,7 @@ for candidate, count in followers:
     </div>
 
     <!-- Engine JS -->
-    <script src="slides.js?v=5.1"></script>
+    <script src="slides.js?v=5.2"></script>
 
 </body>
 
