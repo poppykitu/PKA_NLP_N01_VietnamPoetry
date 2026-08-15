@@ -32,7 +32,7 @@
     </script>
 
     <!-- Borderless Editorial Stylesheet -->
-    <link rel="stylesheet" href="slides.css?v=5.2">
+    <link rel="stylesheet" href="slides.css?v=5.3">
 
     <!-- Highlight.js GitHub Light Theme -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
@@ -623,39 +623,63 @@ for candidate, count in followers:
                 </div>
             </section>
 
-            <!-- SLIDE 14: Tier 1 Local LLM -->
+            <!-- SLIDE 14: System Prompt & Structured JSON Schema -->
             <section class="kinetic-slide" id="slide-14">
                 <div class="content-max text-left">
-                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">TẦNG 1: LOCAL LLM GEMMA-4-12B &
-                        JSON SCHEMA</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div class="editorial-column stagger-from-left delay-2">
-                            <h3 class="text-gblue text-3.5xl font-black mb-4 stagger-from-left delay-3">Local Inference
-                                Server</h3>
-                            <ul class="editorial-list">
-                                <li class="stagger-from-left delay-4">Host mô hình <code>google/gemma-4-12b-qat</code>
-                                    trên <strong>LM Studio Server</strong>.</li>
-                                <li class="stagger-from-left delay-5">Endpoint:
-                                    <code>http://127.0.0.1:1234/v1/chat/completions</code>.
-                                </li>
-                                <li class="stagger-from-left delay-6">Giao tiếp qua HTTP REST API.</li>
-                            </ul>
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">TẦNG 1: SYSTEM PROMPT & STRUCTURED JSON SCHEMA</h2>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-2">
+                        
+                        <!-- Cột Trái: System Prompt -->
+                        <div class="editorial-column stagger-from-left delay-2 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="badge-tag tag-blue">SYSTEM PROMPT KỸ THUẬT</span>
+                                <span class="text-xs font-black text-slate-500 uppercase font-mono">ROLE: SYSTEM</span>
+                            </div>
+                            <h3 class="text-gblue text-2.5xl font-black">Prompt Định Hình Phong Cách & Nhịp Thơ</h3>
+                            
+                            <pre class="p-3.5 bg-slate-900 text-emerald-400 rounded-2xl font-mono text-sm leading-relaxed overflow-x-auto border-2 border-slate-800 shadow-md"><code>{
+  "role": "system",
+  "content": "Bạn là nhà thơ Việt Nam kiệt xuất. Hãy sáng tác bài thơ Lục Bát đúng chuẩn 4 câu (6-8-6-8 tiếng) thật giàu hình ảnh, cảm xúc:
+  - Câu 1 (Lục): Đúng 6 tiếng
+  - Câu 2 (Bát): Đúng 8 tiếng
+  - Câu 3 (Lục): Đúng 6 tiếng
+  - Câu 4 (Bát): Đúng 8 tiếng
+  Tuyệt đối đếm đủ từ 6-8-6-8. Trả về duy nhất JSON: {\"poem_lines\": [\"câu 1\", \"câu 2\", \"câu 3\", \"câu 4\"]}"
+}</code></pre>
+
+                            <div class="p-3 bg-blue-50/90 rounded-xl border border-blue-200 text-blue-950 font-bold text-sm">
+                                <strong class="text-blue-900">Mục tiêu:</strong> Định hướng LLM sáng tác với hình tượng thi vị, giàu xúc cảm và chuẩn bị cấu trúc 4 dòng thơ thô.
+                            </div>
                         </div>
-                        <div class="editorial-column column-green stagger-from-right delay-3">
-                            <h3 class="text-ggreen text-3.5xl font-black mb-4 stagger-from-right delay-4">Structured
-                                JSON Schema Payload</h3>
-                            <pre class="stagger-zoom-pop delay-5"><code class="language-json">{
+
+                        <!-- Cột Phải: JSON Schema Specification -->
+                        <div class="editorial-column column-green stagger-from-right delay-3 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="badge-tag tag-green">STRUCTURED JSON SCHEMA</span>
+                                <span class="text-xs font-black text-slate-500 uppercase font-mono">PAYLOAD SCHEMA</span>
+                            </div>
+                            <h3 class="text-ggreen text-2.5xl font-black">Ràng Buộc Cấu Trúc Đầu Ra 100% Khớp Chuẩn</h3>
+                            
+                            <pre class="p-3.5 bg-slate-900 text-amber-300 rounded-2xl font-mono text-sm leading-relaxed overflow-x-auto border-2 border-slate-800 shadow-md"><code>{
   "type": "object",
   "properties": {
     "poem_lines": {
       "type": "array",
       "items": { "type": "string" },
-      "minItems": 4, "maxItems": 4
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "Mảng gồm đúng 4 câu thơ Lục Bát"
     }
   },
   "required": ["poem_lines"]
 }</code></pre>
+
+                            <div class="p-3 bg-emerald-50/90 rounded-xl border border-emerald-200 text-emerald-950 font-bold text-sm">
+                                <strong class="text-emerald-900">Lợi ích:</strong> Loại bỏ toàn bộ văn nói rườm rà, đảm bảo đầu ra luôn là mảng 4 câu sạch để Tầng 2 (Rule Repair Engine) xử lý ngay.
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -1080,7 +1104,7 @@ for candidate, count in followers:
     </div>
 
     <!-- Engine JS -->
-    <script src="slides.js?v=5.2"></script>
+    <script src="slides.js?v=5.3"></script>
 
 </body>
 
