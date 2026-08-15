@@ -548,10 +548,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 chartApproachesInstance = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['PA 1: Qwen Fine-Tune', 'PA 2: Statistical N-Gram', 'PA 3: Neuro-Symbolic'],
+                        labels: ['PA 1: DeepSeek/Qwen Fine-Tune', 'PA 2: Statistical N-Gram', 'PA 3: Neuro-Symbolic (SOTA)'],
                         datasets: [{
                             label: 'Điểm Đánh Giá (Thang 100)',
-                            data: [0, 60, 95],
+                            data: [30, 60, 90],
                             backgroundColor: ['#EA4335', '#FBBC05', '#4285F4'],
                             borderRadius: 14,
                             borderWidth: 2,

@@ -201,7 +201,7 @@
                             <div class="editorial-column column-red stagger-from-right delay-3">
                                 <span class="badge-tag tag-red mb-2">Phương Án 1</span>
                                 <h4 class="text-slate-900 text-3xl font-black">Fine-Tuning Qwen 7B (Distillation)</h4>
-                                <p class="text-gred text-2xl font-black mt-1">0 / 100 ĐIỂM: Thất bại (Sai 68% luật
+                                <p class="text-gred text-2xl font-black mt-1">30 / 100 ĐIỂM: Thất bại (Sai 68% luật
                                     Bằng-Trắc)</p>
                             </div>
                             <div class="editorial-column column-yellow stagger-from-bottom delay-4">
@@ -213,7 +213,7 @@
                             <div class="editorial-column stagger-zoom-pop delay-5">
                                 <span class="badge-tag tag-blue mb-2">Phương Án 3 (SOTA)</span>
                                 <h4 class="text-slate-900 text-3xl font-black">Neuro-Symbolic Hybrid AI</h4>
-                                <p class="text-gblue text-2.5xl font-black mt-1">95 / 100 ĐIỂM: Xuất sắc (Sáng tạo &
+                                <p class="text-gblue text-2.5xl font-black mt-1">90 / 100 ĐIỂM: Xuất sắc (Sáng tạo &
                                     Chuẩn luật)</p>
                             </div>
                         </div>
@@ -618,7 +618,7 @@ for candidate, count in followers:
                             <div class="editorial-column stagger-from-left delay-5">
                                 <h4 class="text-gblue font-black text-3xl mb-2">TẦNG 1: NEURO STAGE</h4>
                                 <p class="text-xl text-slate-800 font-bold">Local LLM <strong>Google
-                                        Gemma-4-12B-QAT</strong> sinh bản thảo thô (RAW Draft) vô cùng phong phú ý tưởng
+                                        Gemma 4 E2B</strong> sinh bản thảo thô (RAW Draft) vô cùng phong phú ý tưởng
                                     & hình ảnh thi vị.</p>
                             </div>
                             <div class="editorial-column column-green stagger-from-right delay-6">
@@ -700,20 +700,26 @@ for candidate, count in followers:
             <!-- SLIDE 16: Problem 1 Semantic & Couplet Rhythm Preservation -->
             <section class="kinetic-slide" id="slide-16">
                 <div class="content-max text-left">
-                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">VẤN ĐỀ 1: BẢO TOÀN NGỮ NGHĨA & CẤU TRÚC CỤM TỪ KHI SỬA LUẬT THƠ</h2>
+                    <h2 class="section-headline text-slate-900 stagger-from-top delay-1">VẤN ĐỀ 1: BẢO TOÀN NGỮ NGHĨA &
+                        CẤU TRÚC CỤM TỪ KHI SỬA LUẬT THƠ</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-2">
-                        
+
                         <!-- Cột Trái: Thách Thức Vỡ Cụm Từ Ghép -->
                         <div class="editorial-column column-red stagger-from-left delay-2 space-y-4">
                             <span class="badge-tag tag-red mb-1">THÁCH THỨC BẢO TỒN Ý NGHĨA</span>
                             <h3 class="text-gred text-3xl font-black mb-2">Nguy Cơ "Vỡ Cụm Từ Ghép" & Từ Chắp Vá</h3>
-                            
-                            <div class="p-4 bg-white/90 backdrop-blur-md rounded-2xl border-2 border-red-200 shadow-sm space-y-3">
+
+                            <div
+                                class="p-4 bg-white/90 backdrop-blur-md rounded-2xl border-2 border-red-200 shadow-sm space-y-3">
                                 <p class="text-slate-800 text-lg font-bold leading-relaxed">
-                                    Khi Symbolic Engine can thiệp sửa các vị trí sai thanh (tiếng 2 Bằng, tiếng 4 Trắc) hoặc sai vần (tiếng 6, 8), việc <strong>thay thế từng từ đơn lẻ</strong> sẽ làm gãy cấu trúc từ ghép Tiếng Việt.
+                                    Khi Symbolic Engine can thiệp sửa các vị trí sai thanh (tiếng 2 Bằng, tiếng 4 Trắc)
+                                    hoặc sai vần (tiếng 6, 8), việc <strong>thay thế từng từ đơn lẻ</strong> sẽ làm gãy
+                                    cấu trúc từ ghép Tiếng Việt.
                                 </p>
-                                <div class="p-3 bg-red-50 rounded-xl border border-red-200 text-gred font-extrabold text-base">
-                                    Hệ quả: Sinh ra các cụm từ vô nghĩa, chắp vá (ví dụ: <em>xinh càng, dịu màng, xinh im</em>) làm mất đi cảm xúc tự nhiên của bài thơ!
+                                <div
+                                    class="p-3 bg-red-50 rounded-xl border border-red-200 text-gred font-extrabold text-base">
+                                    Hệ quả: Sinh ra các cụm từ vô nghĩa, chắp vá (ví dụ: <em>xinh càng, dịu màng, xinh
+                                        im</em>) làm mất đi cảm xúc tự nhiên của bài thơ!
                                 </div>
                             </div>
                         </div>
@@ -721,21 +727,28 @@ for candidate, count in followers:
                         <!-- Cột Phải: Giải Pháp Couplet Chunks & POS Filter -->
                         <div class="editorial-column column-green stagger-from-right delay-3 space-y-4">
                             <span class="badge-tag tag-green mb-1">GIẢI PHÁP THUẬT TOÁN ĐỘT PHÁ</span>
-                            <h3 class="text-ggreen text-3xl font-black mb-2">Kiến Trúc Nhịp Đôi 2:2:2 & POS-Aware Couplet Chunks</h3>
-                            
-                            <div class="p-4 bg-white/90 backdrop-blur-md rounded-2xl border-2 border-emerald-200 shadow-sm space-y-3">
+                            <h3 class="text-ggreen text-3xl font-black mb-2">Kiến Trúc Nhịp Đôi 2:2:2 & POS-Aware
+                                Couplet Chunks</h3>
+
+                            <div
+                                class="p-4 bg-white/90 backdrop-blur-md rounded-2xl border-2 border-emerald-200 shadow-sm space-y-3">
                                 <ul class="editorial-list space-y-2 text-base">
                                     <li>
-                                        <strong class="text-emerald-950 font-black">Khóa Nhịp Đôi Couplet Chunks:</strong> 
-                                        Đồng bộ hóa các cặp từ $(w_5, w_6)$ và $(w_7, w_8)$ theo cấu trúc nhịp <strong>2:2:2 (Lục)</strong> và <strong>2:2:2:2 (Bát)</strong> từ bộ từ điển thi ca chuẩn.
+                                        <strong class="text-emerald-950 font-black">Khóa Nhịp Đôi Couplet
+                                            Chunks:</strong>
+                                        Đồng bộ hóa các cặp từ $(w_5, w_6)$ và $(w_7, w_8)$ theo cấu trúc nhịp
+                                        <strong>2:2:2 (Lục)</strong> và <strong>2:2:2:2 (Bát)</strong> từ bộ từ điển thi
+                                        ca chuẩn.
                                     </li>
                                     <li>
-                                        <strong class="text-emerald-950 font-black">Bộ Lọc Cú Pháp POS-Grammar:</strong> 
-                                        Ràng buộc từ thay thế phải tương thích ngữ pháp với từ liền kề (Danh-Động-Tính từ).
+                                        <strong class="text-emerald-950 font-black">Bộ Lọc Cú Pháp POS-Grammar:</strong>
+                                        Ràng buộc từ thay thế phải tương thích ngữ pháp với từ liền kề (Danh-Động-Tính
+                                        từ).
                                     </li>
                                     <li>
-                                        <strong class="text-emerald-950 font-black">Vòng Lặp Hội Tụ Tự Động:</strong> 
-                                        Soát lỗi lặp lại đa vòng đến khi bài thơ đạt <strong>100% chuẩn luật & 0 lỗi</strong>.
+                                        <strong class="text-emerald-950 font-black">Vòng Lặp Hội Tụ Tự Động:</strong>
+                                        Soát lỗi lặp lại đa vòng đến khi bài thơ đạt <strong>100% chuẩn luật & 0
+                                            lỗi</strong>.
                                     </li>
                                 </ul>
                             </div>
@@ -909,7 +922,7 @@ for candidate, count in followers:
                             <span class="badge-tag tag-red mb-3 stagger-from-top delay-3">Phương Án 1</span>
                             <h3 class="text-slate-900 text-3.5xl font-black mb-1 stagger-from-left delay-4">Qwen 7B
                                 Fine-Tune</h3>
-                            <div class="giant-number text-gred my-2 stagger-zoom-pop delay-5">0/100</div>
+                            <div class="giant-number text-gred my-2 stagger-zoom-pop delay-5">30/100</div>
                             <p class="text-lg text-slate-700 font-black mb-3 stagger-from-left delay-6">Distillation từ
                                 Gemini 3.5</p>
                             <ul class="text-lg space-y-2 font-bold">
@@ -943,12 +956,12 @@ for candidate, count in followers:
                             <span class="badge-tag tag-blue mb-3 stagger-from-top delay-5">Phương Án 3 (SOTA)</span>
                             <h3 class="text-slate-900 text-3.5xl font-black mb-1 stagger-from-right delay-6">
                                 Neuro-Symbolic Hybrid</h3>
-                            <div class="giant-number text-gblue my-2 stagger-zoom-pop delay-7">95/100</div>
-                            <p class="text-lg text-slate-900 font-black mb-3 stagger-from-right delay-8">Gemma 12B +
+                            <div class="giant-number text-gblue my-2 stagger-zoom-pop delay-7">90/100</div>
+                            <p class="text-lg text-slate-900 font-black mb-3 stagger-from-right delay-8">Gemma 4 E2B +
                                 Rule Repair Engine</p>
                             <ul class="text-lg space-y-2 font-black">
                                 <li class="stagger-from-right delay-8"><strong class="text-gblue">Tính sáng
-                                        tạo:</strong> Ý thơ thi vị (Gemma 12B)</li>
+                                        tạo:</strong> Ý thơ thi vị (Gemma 4 E2B)</li>
                                 <li class="stagger-from-right delay-8"><strong class="text-gblue">Độ chính xác:</strong>
                                     100% chuẩn luật thi ca</li>
                                 <li class="stagger-from-right delay-8"><strong class="text-gblue">Chống
@@ -1077,7 +1090,7 @@ for candidate, count in followers:
     </div>
 
     <!-- Engine JS -->
-    <script src="slides.js?v=5.0"></script>
+    <script src="slides.js?v=5.1"></script>
 
 </body>
 
